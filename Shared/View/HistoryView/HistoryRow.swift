@@ -12,10 +12,8 @@ struct HistoryRow: View {
     var body: some View {
         VStack{
             HStack{
-                Image(systemName: "calendar")
-                    .foregroundColor(.gray)
+                Text("\(value.date.dayOfWeek())") // dayOfWeek is in extension folder
                 Text("\(value.date, style: .date)")
-                
                 Spacer()
             }
             HStack{

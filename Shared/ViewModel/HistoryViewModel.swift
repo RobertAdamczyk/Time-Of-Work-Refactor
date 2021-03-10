@@ -12,7 +12,6 @@ import CoreData
 class HistoryViewModel: ObservableObject {
     @Published var showHeader = false
     @Published var weeksAndYears: [WeekAndYear] = []
-    @Published var showWeek: [WeekAndYear] = []
     
     func loadArrays(array: FetchedResults<Dates>) {
         for date in array {

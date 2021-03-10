@@ -18,17 +18,24 @@ struct HistoryView: View {
         ZStack(alignment: .top){
             ScrollView(showsIndicators: false) {
                 GeometryReader { reader -> AnyView in
-                    DispatchQueue.main.async {
-                        withAnimation{
-                            if reader.frame(in: .global).minY < -50 {
+                    let offset = reader.frame(in: .global).minY
+                    if !viewModel.showHeader && offset < -50 {
+                        DispatchQueue.main.async {
+                            withAnimation{
                                 viewModel.showHeader = true
                             }
-                            else {
+                        }
+                    }else if viewModel.showHeader && offset > -50 {
+                        DispatchQueue.main.async {
+                            withAnimation{
                                 viewModel.showHeader = false
                             }
                         }
                     }
-                    return AnyView(EmptyView())
+                    return AnyView(
+                        EmptyView()
+                    )
+                    
                 }.frame(height: 0)
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
                 HistoryListView(result: result)
