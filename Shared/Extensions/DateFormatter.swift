@@ -8,10 +8,10 @@
 import Foundation
 
 extension Date {
-    func dayOfWeek() -> String {
+    func toString(format: DateFormat) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        let weekDay = dateFormatter.string(from: self)
-        return weekDay
+        dateFormatter.dateFormat = format.rawValue
+        let string = dateFormatter.string(from: self)
+        return string
     }
 }

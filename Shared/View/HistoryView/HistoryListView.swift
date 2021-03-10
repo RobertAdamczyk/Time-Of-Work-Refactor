@@ -49,10 +49,6 @@ struct HistoryListView: View {
                     }
                 }
                 .roundedBackgroundWithBorder
-                
-                
-                
-                
             }
         }
         .padding(.horizontal)

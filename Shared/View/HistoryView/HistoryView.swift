@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct HistoryView: View {
-    @StateObject var viewModel = HistoryViewModel()
+    @ObservedObject var viewModel = HistoryViewModel()
     @FetchRequest(entity: Dates.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
     var result : FetchedResults<Dates>
     

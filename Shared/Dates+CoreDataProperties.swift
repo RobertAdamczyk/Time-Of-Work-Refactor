@@ -2,7 +2,7 @@
 //  Dates+CoreDataProperties.swift
 //  Time Of Work (iOS)
 //
-//  Created by Robert Adamczyk on 09.03.21.
+//  Created by Robert Adamczyk on 10.03.21.
 //
 //
 
@@ -17,10 +17,12 @@ extension Dates {
     }
 
     @NSManaged public var date: Date
-    @NSManaged public var timeIn: Date
-    @NSManaged public var timeOut: Date
     @NSManaged public var night: Bool
     @NSManaged public var pause: Date
+    @NSManaged public var timeIn: Date
+    @NSManaged public var timeOut: Date
+    @NSManaged public var secWork: Int
+    @NSManaged public var secPause: Int
 
 }
 
