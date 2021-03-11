@@ -40,11 +40,14 @@ struct HistoryView: View {
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
                 HistoryListView(result: result)
                     .environmentObject(viewModel)
-                
+                Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.bottom) ?? 0) + 90)
             }
             HistoryHeader(show: $viewModel.showHeader)
             
         }.onAppear(){
+            viewModel.loadArrays(array: result)
+        }
+        .onReceive(viewModel.refreshHistory) { _ in
             viewModel.loadArrays(array: result)
         }
     }

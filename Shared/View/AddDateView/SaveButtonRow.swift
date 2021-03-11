@@ -15,6 +15,7 @@ struct SaveButtonRow: View {
         Button(action:{
             if viewModel.werifyDates() {
                 viewModel.save(context: viewContext)
+                NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
                 showSheet = false
             }
         }){

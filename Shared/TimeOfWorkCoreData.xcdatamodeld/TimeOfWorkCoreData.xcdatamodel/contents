@@ -4,8 +4,8 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="night" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="pause" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="secPause" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="secWork" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="secPause" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="secWork" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timeIn" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="timeOut" attributeType="Date" usesScalarValueType="NO"/>
     </entity>

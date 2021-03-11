@@ -13,12 +13,15 @@ class HistoryViewModel: ObservableObject {
     @Published var showHeader = false
     @Published var weeksAndYears: [WeekAndYear] = []
     
+    let refreshHistory = NotificationCenter.default.publisher(for:
+              Notification.Name(rawValue: "RefreshHistory"))
+    
     func loadArrays(array: FetchedResults<Dates>) {
+        weeksAndYears.removeAll()
         for date in array {
             let week = Calendar.current.component(.weekOfYear, from: date.date)
             let year = Calendar.current.component(.yearForWeekOfYear, from: date.date)
             let newValue = WeekAndYear(weekOfYear: week, yearForWeekOfYear: year)
-            print(weeksAndYears)
             if !weeksAndYears.contains(newValue){
                 weeksAndYears.append(newValue)
             }

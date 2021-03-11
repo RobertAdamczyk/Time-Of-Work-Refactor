@@ -43,20 +43,30 @@ struct HistoryRow: View {
                         .frame(width: 20)
                         .foregroundColor(.gray)
                     Text("\(value.secWork.toTimeString())")
+                    Spacer()
                 }
                 HStack{
                     Image(systemName: "pause.circle")
                         .frame(width: 20)
                         .foregroundColor(.gray)
                     Text("\(value.pause.toString(format: .shortTime))")
+                    Spacer()
                 }
                 
             }
             .frame(width: width)
+            
         }
         .padding(.horizontal)
         .padding(.vertical, 3)
     }
   
+}
+
+struct HistoryRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+    }
 }
 

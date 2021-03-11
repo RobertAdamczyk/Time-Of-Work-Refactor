@@ -10,8 +10,8 @@ extension Int {
         let positive = abs(self)
         let h = positive / 3600
         let m = positive % 3600 / 60
-        let hour = h < 10 ? "0\(h):" : "\(h):"
-        let mins = m < 10 ? "0\(m)" : "\(m)"
-        return self < 0 ? "- " + hour + mins : hour + mins
+        let hour = "\(h)h "
+        let mins = "\(m)m"
+        return self < 0 ? "-" + hour + mins : hour + mins
     }
 }

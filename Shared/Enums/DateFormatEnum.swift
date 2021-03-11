@@ -8,5 +8,5 @@
 enum DateFormat: String {
     case shortDate = "dd. MMMM"
     case dayOnly = "EEEE"
-    case shortTime = "HH:mm"
+    case shortTime = "H'h' m'm'"
 }
