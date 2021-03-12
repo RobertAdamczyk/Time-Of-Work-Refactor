@@ -39,18 +39,22 @@ struct HistoryRow: View {
             Spacer()
             VStack{
                 HStack{
+                    Spacer()
                     Image(systemName: "hammer.fill")
                         .frame(width: 20)
                         .foregroundColor(.gray)
+                    
                     Text("\(value.secWork.toTimeString())")
-                    Spacer()
+                        .frame(width: 65)
                 }
                 HStack{
+                    Spacer()
                     Image(systemName: "pause.circle")
                         .frame(width: 20)
                         .foregroundColor(.gray)
+                    
                     Text("\(value.pause.toString(format: .shortTime))")
-                    Spacer()
+                        .frame(width: 65)
                 }
                 
             }

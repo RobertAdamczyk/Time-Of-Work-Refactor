@@ -28,6 +28,18 @@ class HistoryViewModel: ObservableObject {
         }
     }
     
+    func weeklySum(array: FetchedResults<Dates>, week: WeekAndYear) -> (work: Int, pause: Int) {
+        var sumWork = 0
+        var sumPause = 0
+        for date in array {
+            if dateIsEqualWeekAndYear(date: date.date, value: week) {
+                sumWork += date.secWork
+                sumPause += date.secPause
+            }
+        }
+        return (sumWork, sumPause)
+    }
+    
     func dateIsEqualWeekAndYear(date: Date, value: WeekAndYear) -> Bool{
         let week = Calendar.current.component(.weekOfYear, from: date)
         let year = Calendar.current.component(.yearForWeekOfYear, from: date)

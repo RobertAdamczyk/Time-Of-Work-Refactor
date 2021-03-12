@@ -31,14 +31,24 @@ class AddDateViewModel: ObservableObject {
         let newData = Dates(context: context)
         newData.date = new.date
         newData.timeIn = new.timeIn
-        newData.timeOut = new.timeOut
+        
+        if new.night {
+            if let timeOut = new.timeOut.plusOneDay() {
+                newData.timeOut = timeOut
+            }else {
+                print("add date error")
+                return
+            }
+        }else {
+            newData.timeOut = new.timeOut
+        }
         newData.pause = new.pause
         newData.night = new.night
         let dateNull = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: new.pause) // date null for calculate timeInterval between pause and 00:00
         if let dateNull = dateNull {
             let pause = Int(new.pause.timeIntervalSince(dateNull))
             newData.secPause = pause
-            newData.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - pause
+            newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - pause
         }else {
             print("add date error")
             return

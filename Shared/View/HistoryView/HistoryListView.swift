@@ -47,6 +47,12 @@ struct HistoryListView: View {
                             }
                         }
                     }
+                    Divider()
+                    HStack{
+                        Text("\(viewModel.weeklySum(array: result, week: item).work.toTimeString())")
+                        Text("\(viewModel.weeklySum(array: result, week: item).pause.toTimeString())")
+                    }
+                    
                 }
                 .roundedBackgroundWithBorder
             }
