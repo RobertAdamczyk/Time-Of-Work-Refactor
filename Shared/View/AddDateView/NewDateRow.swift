@@ -19,9 +19,12 @@ struct NewDateRow: View {
                 Spacer()
                 HStack{
                     if viewModel.new.night {
-                        Image(systemName: "moon.stars.fill")
+                        Text("\(viewModel.new.date.toString(format: .shortDate)) -").bold()
+                        Text("\(viewModel.new.date.plusOneDay()!, style: .date)").bold()
+                    }else {
+                        Text("\(viewModel.new.date, style: .date)").bold()
                     }
-                    Text("\(viewModel.new.date, style: .date)").bold()       
+                         
                 }
                 .foregroundColor(Color("Orange"))
             }

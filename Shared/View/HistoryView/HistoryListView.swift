@@ -30,9 +30,13 @@ struct HistoryListView: View {
                         HStack{
                             Spacer()
                             Text("\(item.beginOfWeek, style: .date) -").bold()
+                                .font(.system(size: 16))
                             Text("\(item.endOfWeek, style: .date)").bold()
+                                .font(.system(size: 16))
                             Spacer()
                         }
+                        .lineLimit(1)
+                        .fixedSize(horizontal: false, vertical: false)
                         .foregroundColor(Color("Orange"))
                         .padding(10)
                     }

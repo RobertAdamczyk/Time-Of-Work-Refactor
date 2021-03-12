@@ -19,8 +19,14 @@ struct HistoryRow: View {
                 .foregroundColor(Color("Orange"))
             
             VStack{
-                Text("\(value.date.toString(format: .dayOnly))")
-                Text("\(value.date.toString(format: .shortDate))")
+                
+                if value.night {
+                    Text("\(value.date.toString(format: .dayOnlyShort))-\(value.date.plusOneDay()!.toString(format: .dayOnlyShort))")
+                    Text("\(value.date.toString(format: .dayOnlyNumber))-\(value.date.plusOneDay()!.toString(format: .shortDate))")
+                }else{
+                    Text("\(value.date.toString(format: .dayOnly))")
+                    Text("\(value.date.toString(format: .shortDate))")
+                }
             }
             .frame(width: width)
             Spacer()
@@ -64,22 +70,6 @@ struct HistoryRow: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 3)
-        .background(
-            Image(systemName: "moon.stars")
-                        .resizable()
-                .frame(width: value.night ? 50 : 0, height: value.night ? 50 : 0)
-                        .offset(x: -130)
-                        .foregroundColor(Color("DarkGrey").opacity(0.3)))
-        .clipped()
     }
   
 }
-
-struct HistoryRowView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        MainView()
-            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-    }
-}
-

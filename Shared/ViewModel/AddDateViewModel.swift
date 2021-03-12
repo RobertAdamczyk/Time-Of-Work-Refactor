@@ -22,9 +22,9 @@ class AddDateViewModel: ObservableObject {
     
     func werifyDates() -> Bool{
         withAnimation{
-            showError = new.timeIn >= new.timeOut
+            showError = new.timeIn >= new.timeOut && !new.night
         }
-        return new.timeIn < new.timeOut
+        return new.timeIn < new.timeOut || new.night
     }
     
     func save(context: NSManagedObjectContext) {
