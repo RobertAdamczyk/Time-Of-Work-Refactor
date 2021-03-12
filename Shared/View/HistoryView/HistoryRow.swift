@@ -12,6 +12,7 @@ struct HistoryRow: View {
     var width = UIScreen.main.bounds.width * 0.25
     var body: some View {
         HStack{
+            
             Rectangle()
                 .frame(width: 2)
                 .padding(.vertical, 3)
@@ -63,11 +64,19 @@ struct HistoryRow: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 3)
+        .background(
+            Image(systemName: "moon.stars")
+                        .resizable()
+                .frame(width: value.night ? 50 : 0, height: value.night ? 50 : 0)
+                        .offset(x: -130)
+                        .foregroundColor(Color("DarkGrey").opacity(0.3)))
+        .clipped()
     }
   
 }
 
 struct HistoryRowView_Previews: PreviewProvider {
+    
     static var previews: some View {
         MainView()
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)

@@ -49,9 +49,18 @@ struct HistoryListView: View {
                     }
                     Divider()
                     HStack{
+                        Text("Total:")
+                            .foregroundColor(.gray)
+                        Image(systemName: "hammer.fill")
+                            .foregroundColor(.gray)
                         Text("\(viewModel.weeklySum(array: result, week: item).work.toTimeString())")
+                            .bold()
+                        Image(systemName: "pause.circle")
+                            .foregroundColor(.gray)
                         Text("\(viewModel.weeklySum(array: result, week: item).pause.toTimeString())")
+                            .bold()
                     }
+                    .foregroundColor(Color("Orange"))
                     
                 }
                 .roundedBackgroundWithBorder
