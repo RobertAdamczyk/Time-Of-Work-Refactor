@@ -18,7 +18,6 @@ extension Dates {
 
     @NSManaged public var date: Date
     @NSManaged public var night: Bool
-    @NSManaged public var pause: Date
     @NSManaged public var timeIn: Date
     @NSManaged public var timeOut: Date
     @NSManaged public var secWork: Int

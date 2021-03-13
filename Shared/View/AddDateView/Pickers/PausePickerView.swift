@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct PausePickerView: View {
-    @Binding var date: Date
+    @Binding var sec: Int
     @State var value1: Int = 0
     @State var value2: Int = 0
     
-    init(date: Binding<Date>){
-        self._date = date
-        value1 = Calendar.current.component(.hour, from: self.date)
-        value2 = Calendar.current.component(.minute, from: self.date)
+    init(sec: Binding<Int>){
+        self._sec = sec
+        value1 = self.sec / 3600
+        value2 = self.sec % 3600 / 60
     }
     var body: some View {
         GeometryReader { reader in
@@ -51,10 +51,10 @@ struct PausePickerView: View {
                 .clipped()
             }
             .onChange(of: value1) { _ in
-                self.date = Calendar.current.date(bySettingHour: value1, minute: value2, second: 0, of: self.date)!
+                self.sec = value1 * 3600 + value2 * 60
             }
             .onChange(of: value2) { _ in
-                self.date = Calendar.current.date(bySettingHour: value1, minute: value2, second: 0, of: self.date)!
+                self.sec = value1 * 3600 + value2 * 60
             }
         }
         .frame(width: UIScreen.main.bounds.width-20, height: 220)

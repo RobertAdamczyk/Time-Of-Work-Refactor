@@ -10,14 +10,14 @@ struct New {
     var date: Date
     var timeIn: Date
     var timeOut: Date
-    var pause: Date
+    var secPause: Int
     var night: Bool
     
     init(){
         date = Date()
         timeIn = Date()
         timeOut = Date()
-        pause = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
+        secPause = 0
         night = false
     }
 }
