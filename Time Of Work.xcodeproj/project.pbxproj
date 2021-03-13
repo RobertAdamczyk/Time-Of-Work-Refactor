@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189325FCBE9500A32772 /* PausePickerView.swift */; };
+		E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189E25FCE50B00A32772 /* ProgressCircleView.swift */; };
 		E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575525F91F3B003BD1CD /* DateFormatter.swift */; };
 		E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575825F9330E003BD1CD /* DateFormatEnum.swift */; };
 		E119576725F94891003BD1CD /* IntToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* IntToTime.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		E112189325FCBE9500A32772 /* PausePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePickerView.swift; sourceTree = "<group>"; };
+		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
 		E119575525F91F3B003BD1CD /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E119575825F9330E003BD1CD /* DateFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatEnum.swift; sourceTree = "<group>"; };
 		E119576625F94891003BD1CD /* IntToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntToTime.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				E18335B725EE9B6A00E3A952 /* GlassEffect.swift */,
+				E112189E25FCE50B00A32772 /* ProgressCircleView.swift */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,
 				E13291CB25F2B2A500348BC3 /* AddDateViewModel.swift in Sources */,
 				E17FD87425F7D56D00CD126F /* WeekAndYear.swift in Sources */,
+				E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */,
 				E13291CE25F2B2C500348BC3 /* New.swift in Sources */,
 				E18335C325EEA03900E3A952 /* ViewsEnum.swift in Sources */,
 				E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */,

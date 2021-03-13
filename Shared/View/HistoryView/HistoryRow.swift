@@ -66,14 +66,3 @@ struct HistoryRow: View {
     }
   
 }
-
-
-struct Example {
-    var secWork = 43513
-    var secPause = 431413
-    var timeIn = Date()
-    var timeOut = Date()
-    var date = Date()
-    var night = true
-    static var example = Example()
-}
