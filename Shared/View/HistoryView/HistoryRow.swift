@@ -60,7 +60,7 @@ struct HistoryRow: View {
                         .frame(width: 20)
                         .foregroundColor(.gray)
                     
-                    Text("\(value.pause.toString(format: .shortTime))")
+                    Text("\(value.secPause.toTimeString())")
                         .frame(width: 65)
                 }
                 

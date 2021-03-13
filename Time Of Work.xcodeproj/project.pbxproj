@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189325FCBE9500A32772 /* PausePickerView.swift */; };
 		E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575525F91F3B003BD1CD /* DateFormatter.swift */; };
 		E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575825F9330E003BD1CD /* DateFormatEnum.swift */; };
 		E119576725F94891003BD1CD /* IntToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* IntToTime.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E112189325FCBE9500A32772 /* PausePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePickerView.swift; sourceTree = "<group>"; };
 		E119575525F91F3B003BD1CD /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E119575825F9330E003BD1CD /* DateFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatEnum.swift; sourceTree = "<group>"; };
 		E119576625F94891003BD1CD /* IntToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntToTime.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		E174F5BB25F2AE4700707C97 /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
+				E112189325FCBE9500A32772 /* PausePickerView.swift */,
 				E17E365325F15659009C9519 /* DatePickerView.swift */,
 				E174F5B325F2A0AC00707C97 /* TimePickerView.swift */,
 			);
@@ -428,6 +431,7 @@
 				E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */,
 				E1851EB125EFEF6700C721E9 /* OrangeButtonStyle.swift in Sources */,
 				E17E365425F15659009C9519 /* DatePickerView.swift in Sources */,
+				E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */,
 				E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */,
 				E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */,
 				E17E365125F14B16009C9519 /* AddDateView.swift in Sources */,

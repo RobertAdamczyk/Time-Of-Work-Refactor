@@ -17,7 +17,7 @@ struct PauseRow: View {
                 Text("Pause").bold()
                     .foregroundColor(.gray)
                 Spacer()
-                Text("\(viewModel.new.pause, style: .time)").bold()
+                Text("\(viewModel.new.pause.toString(format: .shortTime))").bold()
                     .foregroundColor(Color("Orange"))
             }
             .padding()

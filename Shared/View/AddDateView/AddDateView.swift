@@ -47,7 +47,8 @@ struct AddDateView: View {
                     TimePickerView(time: $viewModel.new.timeOut)
                         .transition(.scale)
                 case .pausePicker:
-                    TimePickerView(time: $viewModel.new.pause)
+                    //TimePickerView(time: $viewModel.new.pause)
+                    PausePickerView(date: $viewModel.new.pause)
                         .transition(.scale)
                 default:
                     EmptyView()
