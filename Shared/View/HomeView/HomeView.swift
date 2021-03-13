@@ -8,19 +8,37 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var viewModel : HomeViewModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        VStack{
-            HomeHeader(value: "Time Of Work")
+        ZStack{
             
-            DateRow()
-            
-            ButtonsRow()
-            
-            TodayRow()
+            VStack{
+                HomeHeader(value: "Time Of Work")
+                
+                DateRow()
+                
+                ButtonsRow()
+                
+                TodayRow()
 
-            Spacer()
+                Spacer()
+            }
+            .onTapGesture {
+                if viewModel.showPausePicker {
+                    withAnimation{
+                        viewModel.showPausePicker.toggle()
+                    }
+                }
+            }
+            if viewModel.showPausePicker {
+                PausePickerView(sec: $viewModel.pause)
+                    .offset(y: 150)
+                    .transition(.scale)
+            }
         }
+        .environmentObject(viewModel)
+        
     }
 }
 

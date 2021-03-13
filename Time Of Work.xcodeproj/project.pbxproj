@@ -47,6 +47,7 @@
 		E1851EBC25EFF79500C721E9 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EBB25EFF79500C721E9 /* HomeHeader.swift */; };
 		E1851EBF25EFF82F00C721E9 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EBE25EFF82F00C721E9 /* DateRow.swift */; };
 		E1851EC225EFF89E00C721E9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EC125EFF89E00C721E9 /* HistoryView.swift */; };
+		E1AD08F025FD0F8A00A8213C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */; };
 		E1FA2F0D25F681AB00CFB7B8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		E1851EBB25EFF79500C721E9 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		E1851EBE25EFF82F00C721E9 /* DateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRow.swift; sourceTree = "<group>"; };
 		E1851EC125EFF89E00C721E9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +237,7 @@
 			children = (
 				E13291CA25F2B2A500348BC3 /* AddDateViewModel.swift */,
 				E17FD86E25F7D0F100CD126F /* HistoryViewModel.swift */,
+				E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				E13291CB25F2B2A500348BC3 /* AddDateViewModel.swift in Sources */,
 				E17FD87425F7D56D00CD126F /* WeekAndYear.swift in Sources */,
 				E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */,
+				E1AD08F025FD0F8A00A8213C /* HomeViewModel.swift in Sources */,
 				E13291CE25F2B2C500348BC3 /* New.swift in Sources */,
 				E18335C325EEA03900E3A952 /* ViewsEnum.swift in Sources */,
 				E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */,

@@ -30,17 +30,17 @@ class AddDateViewModel: ObservableObject {
     func save(context: NSManagedObjectContext) {
         let newData = Dates(context: context)
         newData.date = new.date
-        newData.timeIn = new.timeIn
+        newData.timeIn = Calendar.current.date(bySetting: .second, value: 0, of: new.timeIn) ?? new.timeIn
         
         if new.night {
             if let timeOut = new.timeOut.plusOneDay() {
-                newData.timeOut = timeOut
+                newData.timeOut = Calendar.current.date(bySetting: .second, value: 0, of: timeOut) ?? timeOut
             }else {
                 print("add date error")
                 return
             }
         }else {
-            newData.timeOut = new.timeOut
+            newData.timeOut = Calendar.current.date(bySetting: .second, value: 0, of: new.timeOut) ?? new.timeOut
         }
         newData.night = new.night
         newData.secPause = new.secPause

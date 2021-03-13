@@ -11,12 +11,6 @@ struct PausePickerView: View {
     @Binding var sec: Int
     @State var value1: Int = 0
     @State var value2: Int = 0
-    
-    init(sec: Binding<Int>){
-        self._sec = sec
-        value1 = self.sec / 3600
-        value2 = self.sec % 3600 / 60
-    }
     var body: some View {
         GeometryReader { reader in
             HStack (spacing: 0){
@@ -55,6 +49,10 @@ struct PausePickerView: View {
             }
             .onChange(of: value2) { _ in
                 self.sec = value1 * 3600 + value2 * 60
+            }
+            .onAppear(){
+                value1 = self.sec / 3600
+                value2 = self.sec % 3600 / 60
             }
         }
         .frame(width: UIScreen.main.bounds.width-20, height: 220)

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TodayRow: View {
+    @EnvironmentObject var viewModel: HomeViewModel
+    @AppStorage("working") var working = false
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("TODAY")
@@ -16,20 +18,26 @@ struct TodayRow: View {
                 .padding(.leading)
             HStack{
                 Spacer()
-                Text("Work: --:--")
+                Text("Work: \(working ? viewModel.currentTime.toTimeString() : "--:--")")
                     .fontWeight(.semibold)
                     .foregroundColor(Color("Orange"))
                     .frame(width: 120)
-                Text("Pause: --:--")
+                Text("Pause: \(working ? viewModel.pause.toTimeString() : "--:--")")
                     .fontWeight(.semibold)
                     .foregroundColor(Color("Orange"))
                     .frame(width: 120)
+                    .onChange(of: viewModel.pause) { _ in
+                        viewModel.currentTime = viewModel.currentWorkTime()
+                    }
                 Spacer()
             }
             .padding()
             .roundedBackgroundWithBorder
         }
         .padding()
+        .onReceive(viewModel.timer) { _ in
+            viewModel.currentTime = viewModel.currentWorkTime()
+        }
     }
 }
 
