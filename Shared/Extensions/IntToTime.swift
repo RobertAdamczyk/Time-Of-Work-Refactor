@@ -7,10 +7,7 @@
 
 extension Int {
     func toTimeString() -> String{
-        var positive = abs(self)
-        if positive % 3600 % 60 > 0 { // if sec rest add one min more
-            positive += 60
-        }
+        let positive = abs(self)
         let m = positive % 3600 / 60
         let h = positive / 3600
         

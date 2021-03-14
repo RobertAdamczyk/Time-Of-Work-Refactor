@@ -27,7 +27,7 @@ struct TodayRow: View {
                     .foregroundColor(Color("Orange"))
                     .frame(width: 120)
                     .onChange(of: viewModel.pause) { _ in
-                        viewModel.currentTime = viewModel.currentWorkTime()
+                       viewModel.refreshWorkTime()
                     }
                 Spacer()
             }
@@ -36,7 +36,9 @@ struct TodayRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            viewModel.currentTime = viewModel.currentWorkTime()
+            if !viewModel.showPausePicker{
+                viewModel.refreshWorkTime()
+            }
         }
     }
 }

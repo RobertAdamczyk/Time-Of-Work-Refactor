@@ -21,7 +21,7 @@ struct ProgressCircleView: View {
                     .stroke(Color.orange, style: StrokeStyle(lineWidth: reader.size.width/7, lineCap: .round))
                     .frame(width: reader.size.width, height: reader.size.height)
             }
-        }.frame(width: 250, height: 250)
+        }
         
     }
 }

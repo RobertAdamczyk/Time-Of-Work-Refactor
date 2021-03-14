@@ -14,19 +14,26 @@ class HomeViewModel: ObservableObject {
     @Published var showPausePicker = false
     @AppStorage("pause") var pause: Int = 0
     var lastDate: Date = UserDefaults.standard.object(forKey: "lastDate") as? Date ?? Date()
-    let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+    @Published var working: Bool = UserDefaults.standard.bool(forKey: "working")
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    init(){
-        currentTime = currentWorkTime()
-    }
     
     func setLastDate(value: Date) {
         lastDate = value
         UserDefaults.standard.set(value, forKey: "lastDate")
     }
+    func toggleWorking() {
+        withAnimation{
+            working.toggle()
+            UserDefaults.standard.set(working, forKey: "working")
+        }
+    }
     
-    func currentWorkTime() -> Int {
-        return Int(Date().timeIntervalSince(lastDate)) - pause
+    func refreshWorkTime() {
+        withAnimation{
+            currentTime = Int(Date().timeIntervalSince(lastDate)) - pause
+        }
+        
     }
     
     func endWork(context: NSManagedObjectContext) {

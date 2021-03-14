@@ -9,24 +9,21 @@ import SwiftUI
 
 struct ButtonsRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @AppStorage("working") var working: Bool = false
     @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
         HStack{
             Button(action:{
                 
-                if working {
+                if viewModel.working {
                     viewModel.endWork(context: viewContext)
                 }
                 viewModel.setLastDate(value: Date())
-                viewModel.currentTime = viewModel.currentWorkTime()
-                withAnimation{
-                    working.toggle()
-                }
+                viewModel.refreshWorkTime()
+                viewModel.toggleWorking()
                
             }){
-                Text(working ? "End Work" : "Start Work")
+                Text(viewModel.working ? "End Work" : "Start Work")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(width: 100)
