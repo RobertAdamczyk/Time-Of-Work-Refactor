@@ -8,23 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var viewModel = HomeViewModel()
     @State var view = Views.home
     @State var showAddDate = false
     var body: some View {
         ZStack(alignment: .bottom){
             Color("BackgroundColor")
-                .onTapGesture {
-                    if viewModel.showPausePicker {
-                        withAnimation{
-                            viewModel.showPausePicker.toggle()
-                        }
-                    }
-                }
+                
             VStack{
                 if view == .home {
                     HomeView()
-                        .environmentObject(viewModel)
                 }
                 if view == .history {
                     HistoryView()

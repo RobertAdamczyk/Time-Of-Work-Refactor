@@ -12,6 +12,7 @@ import CoreData
 class HistoryViewModel: ObservableObject {
     @Published var showHeader = false
     @Published var weeksAndYears: [WeekAndYear] = []
+    @Published var selectedDate: FetchedResults<Dates>.Element?
     
     let refreshHistory = NotificationCenter.default.publisher(for:
               Notification.Name(rawValue: "RefreshHistory"))

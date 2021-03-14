@@ -45,6 +45,15 @@ struct HistoryListView: View {
                                 if viewModel.dateIsEqualWeekAndYear(date: date.date, value: item) {
                                     Divider()
                                     HistoryRow(value: date)
+                                        .contentShape(Rectangle())
+                                        .onTapGesture{
+                                            withAnimation{
+                                                viewModel.selectedDate = viewModel.selectedDate == date ? nil : date
+                                            }
+                                        }
+                                        .overlay(
+                                            MenuBarView(date: date) // menu delete edit row of date
+                                        )
                                 }
                             }
                         }

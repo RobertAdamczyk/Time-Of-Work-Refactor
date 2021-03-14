@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var viewModel : HomeViewModel
+    @ObservedObject var viewModel = HomeViewModel()
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack{
@@ -24,6 +24,7 @@ struct HomeView: View {
 
                 Spacer()
             }
+            .contentShape(Rectangle())
             .onTapGesture {
                 if viewModel.showPausePicker {
                     withAnimation{

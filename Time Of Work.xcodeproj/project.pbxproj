@@ -47,6 +47,7 @@
 		E1851EBC25EFF79500C721E9 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EBB25EFF79500C721E9 /* HomeHeader.swift */; };
 		E1851EBF25EFF82F00C721E9 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EBE25EFF82F00C721E9 /* DateRow.swift */; };
 		E1851EC225EFF89E00C721E9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EC125EFF89E00C721E9 /* HistoryView.swift */; };
+		E198AF5125FE9D9500742E2E /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198AF5025FE9D9500742E2E /* MenuBarView.swift */; };
 		E1AD08F025FD0F8A00A8213C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */; };
 		E1FA2F0D25F681AB00CFB7B8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		E1851EBB25EFF79500C721E9 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		E1851EBE25EFF82F00C721E9 /* DateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRow.swift; sourceTree = "<group>"; };
 		E1851EC125EFF89E00C721E9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		E198AF5025FE9D9500742E2E /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 				E17E364B25F1475D009C9519 /* HistoryHeader.swift */,
 				E17FD87A25F7D9D700CD126F /* HistoryListView.swift */,
 				E17FD87D25F7FF4700CD126F /* HistoryRow.swift */,
+				E198AF5025FE9D9500742E2E /* MenuBarView.swift */,
 			);
 			path = HistoryView;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				E18335B825EE9B6A00E3A952 /* GlassEffect.swift in Sources */,
 				E183359425EE988100E3A952 /* ContentView.swift in Sources */,
 				E1851EB925EFF71D00C721E9 /* ButtonsRow.swift in Sources */,
+				E198AF5125FE9D9500742E2E /* MenuBarView.swift in Sources */,
 				E17FD87B25F7D9D700CD126F /* HistoryListView.swift in Sources */,
 				E1851EC225EFF89E00C721E9 /* HistoryView.swift in Sources */,
 				E1851EB425EFF60D00C721E9 /* TodayRow.swift in Sources */,
