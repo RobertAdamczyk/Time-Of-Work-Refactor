@@ -11,10 +11,16 @@ struct SaveButtonRow: View {
     @EnvironmentObject var viewModel: AddDateViewModel
     @Environment(\.managedObjectContext) var viewContext
     @Binding var showSheet: Bool
+    var date: FetchedResults<Dates>.Element?
+    
     var body: some View {
         Button(action:{
             if viewModel.werifyDates() {
-                viewModel.save(context: viewContext)
+                if let date = date {
+                    viewModel.editDate(date: date, context: viewContext)
+                }else {
+                    viewModel.addDate(context: viewContext)
+                }
                 NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
                 showSheet = false
             }

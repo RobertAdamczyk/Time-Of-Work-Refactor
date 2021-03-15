@@ -24,6 +24,7 @@
 		E17E364C25F1475D009C9519 /* HistoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E364B25F1475D009C9519 /* HistoryHeader.swift */; };
 		E17E365125F14B16009C9519 /* AddDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E365025F14B16009C9519 /* AddDateView.swift */; };
 		E17E365425F15659009C9519 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E365325F15659009C9519 /* DatePickerView.swift */; };
+		E17F19E425FFDA1D009C3674 /* EditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F19E325FFDA1D009C3674 /* EditDateView.swift */; };
 		E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86425F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld */; };
 		E17FD86A25F7D06300CD126F /* Dates+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86825F7D06300CD126F /* Dates+CoreDataClass.swift */; };
 		E17FD86B25F7D06300CD126F /* Dates+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86925F7D06300CD126F /* Dates+CoreDataProperties.swift */; };
@@ -71,6 +72,7 @@
 		E17E364B25F1475D009C9519 /* HistoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHeader.swift; sourceTree = "<group>"; };
 		E17E365025F14B16009C9519 /* AddDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateView.swift; sourceTree = "<group>"; };
 		E17E365325F15659009C9519 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		E17F19E325FFDA1D009C3674 /* EditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateView.swift; sourceTree = "<group>"; };
 		E17FD86525F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeOfWorkCoreData.xcdatamodel; sourceTree = "<group>"; };
 		E17FD86825F7D06300CD126F /* Dates+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dates+CoreDataClass.swift"; path = "Shared/Dates+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E17FD86925F7D06300CD126F /* Dates+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dates+CoreDataProperties.swift"; path = "Shared/Dates+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -166,6 +168,14 @@
 			path = HistoryView;
 			sourceTree = "<group>";
 		};
+		E17F19E225FFDA02009C3674 /* EditDateView */ = {
+			isa = PBXGroup;
+			children = (
+				E17F19E325FFDA1D009C3674 /* EditDateView.swift */,
+			);
+			path = EditDateView;
+			sourceTree = "<group>";
+		};
 		E183357925EE987F00E3A952 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +234,7 @@
 		E18335A225EE988D00E3A952 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E17F19E225FFDA02009C3674 /* EditDateView */,
 				E174F5B925F2AE0000707C97 /* AddDateView */,
 				E17E364A25F14710009C9519 /* HistoryView */,
 				E1851EB625EFF6AA00C721E9 /* HomeView */,
@@ -238,8 +249,8 @@
 		E18335A325EE989300E3A952 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				E13291CA25F2B2A500348BC3 /* AddDateViewModel.swift */,
 				E17FD86E25F7D0F100CD126F /* HistoryViewModel.swift */,
+				E13291CA25F2B2A500348BC3 /* AddDateViewModel.swift */,
 				E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
@@ -432,6 +443,7 @@
 				E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */,
 				E13291C825F2B0FD00348BC3 /* StartEndRow.swift in Sources */,
 				E17FD86F25F7D0F100CD126F /* HistoryViewModel.swift in Sources */,
+				E17F19E425FFDA1D009C3674 /* EditDateView.swift in Sources */,
 				E17E364C25F1475D009C9519 /* HistoryHeader.swift in Sources */,
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,
 				E13291CB25F2B2A500348BC3 /* AddDateViewModel.swift in Sources */,

@@ -13,6 +13,8 @@ class HistoryViewModel: ObservableObject {
     @Published var showHeader = false
     @Published var weeksAndYears: [WeekAndYear] = []
     @Published var selectedDate: FetchedResults<Dates>.Element?
+    @Published var editDate: Bool = false
+    
     
     let refreshHistory = NotificationCenter.default.publisher(for:
               Notification.Name(rawValue: "RefreshHistory"))
@@ -25,6 +27,17 @@ class HistoryViewModel: ObservableObject {
             let newValue = WeekAndYear(weekOfYear: week, yearForWeekOfYear: year)
             if !weeksAndYears.contains(newValue){
                 weeksAndYears.append(newValue)
+            }
+        }
+    }
+    
+    func removeDate(date: FetchedResults<Dates>.Element, context: NSManagedObjectContext) {
+        withAnimation{
+            context.delete(date)
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }

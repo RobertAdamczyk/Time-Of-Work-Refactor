@@ -10,13 +10,14 @@ import SwiftUI
 struct MenuBarView: View {
     var date: FetchedResults<Dates>.Element?
     @EnvironmentObject var viewModel: HistoryViewModel
+    @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
         if viewModel.selectedDate == date {
             HStack{
                 Spacer()
                 Button(action:{
-                    
+                    viewModel.editDate.toggle()
                 }){
                     Text("Edit")
                         .padding(6)
@@ -25,7 +26,9 @@ struct MenuBarView: View {
                         
                 }
                 Button(action:{
-                    
+                    if let date = date {
+                        viewModel.removeDate(date: date, context: viewContext)
+                    }
                 }){
                     Text("Delete")
                         .padding(6)

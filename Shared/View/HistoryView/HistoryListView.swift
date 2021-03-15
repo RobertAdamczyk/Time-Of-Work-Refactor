@@ -45,6 +45,7 @@ struct HistoryListView: View {
                                 if viewModel.dateIsEqualWeekAndYear(date: date.date, value: item) {
                                     Divider()
                                     HistoryRow(value: date)
+                                        
                                         .contentShape(Rectangle())
                                         .onTapGesture{
                                             withAnimation{

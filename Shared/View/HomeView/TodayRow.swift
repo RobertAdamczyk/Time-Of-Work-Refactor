@@ -40,6 +40,9 @@ struct TodayRow: View {
                 viewModel.refreshWorkTime()
             }
         }
+        .onAppear(){
+            viewModel.refreshWorkTime()
+        }
     }
 }
 

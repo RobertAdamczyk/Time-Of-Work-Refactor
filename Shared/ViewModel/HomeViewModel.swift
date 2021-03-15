@@ -30,10 +30,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func refreshWorkTime() {
-        withAnimation{
-            currentTime = Int(Date().timeIntervalSince(lastDate)) - pause
-        }
-        
+        currentTime = Int(Date().timeIntervalSince(lastDate)) - pause
     }
     
     func endWork(context: NSManagedObjectContext) {

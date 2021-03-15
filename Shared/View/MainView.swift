@@ -23,13 +23,14 @@ struct MainView: View {
                 }
             }
             
+            
             ToolbarView(view: $view, showAddDate: $showAddDate)
-            
-            
+                
         }
         .sheet(isPresented: $showAddDate){
             AddDateView(showSheet: $showAddDate)
         }
+        
         .ignoresSafeArea(.all)
         
     }

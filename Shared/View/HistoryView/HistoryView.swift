@@ -43,6 +43,7 @@ struct HistoryView: View {
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.bottom) ?? 0) + 90)
             }
             HistoryHeader(show: $viewModel.showHeader)
+                
             
         }.onAppear(){
             viewModel.loadArrays(array: result)
@@ -50,6 +51,9 @@ struct HistoryView: View {
         .onReceive(viewModel.refreshHistory) { _ in
             viewModel.loadArrays(array: result)
         }
+        
+        
+        
     }
 }
 
