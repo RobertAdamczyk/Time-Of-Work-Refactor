@@ -25,6 +25,7 @@ struct HistoryListView: View {
                     Button(action:{
                         withAnimation {
                             viewModel.weeksAndYears[viewModel.weeksAndYears.firstIndex(of: item)!].showWeek.toggle()
+                            viewModel.selectedDate = nil
                         }
                     }){
                         HStack{

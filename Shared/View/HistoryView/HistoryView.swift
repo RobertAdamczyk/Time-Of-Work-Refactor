@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct HistoryView: View {
-    @ObservedObject var viewModel = HistoryViewModel()
+    @EnvironmentObject var viewModel: HistoryViewModel
     @FetchRequest(entity: Dates.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
     var result : FetchedResults<Dates>
     
@@ -39,13 +39,18 @@ struct HistoryView: View {
                 }.frame(height: 0)
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
                 HistoryListView(result: result)
-                    .environmentObject(viewModel)
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.bottom) ?? 0) + 90)
             }
             HistoryHeader(show: $viewModel.showHeader)
                 
             
-        }.onAppear(){
+        }
+        .onTapGesture {
+            withAnimation{
+                viewModel.selectedDate = nil
+            }
+        }
+        .onAppear(){
             viewModel.loadArrays(array: result)
         }
         .onReceive(viewModel.refreshHistory) { _ in

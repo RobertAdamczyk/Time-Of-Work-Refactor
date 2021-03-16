@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ToolbarView: View {
     @Environment(\.colorScheme) var colorScheme
-    @Binding var view: Views
-    @Binding var showAddDate: Bool
+    @EnvironmentObject var viewModel: MainViewModel
     var body: some View {
         ZStack(alignment: .top){
             VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
@@ -20,7 +19,7 @@ struct ToolbarView: View {
             HStack{
                 Spacer()
                 
-                Button(action: { view = .home }){
+                Button(action: { viewModel.view = .home }){
                     VStack{
                         Image(systemName: "square.grid.2x2")
                             .resizable()
@@ -30,13 +29,13 @@ struct ToolbarView: View {
                     }
                     .frame(width: 50)
                     .padding(.top, 40)
-                    .foregroundColor(view == .home ? Color("Orange") : Color.gray)
+                    .foregroundColor(viewModel.view == .home ? Color("Orange") : Color.gray)
                     
                 }
                 
                 Spacer()
                 
-                Button(action: { showAddDate = true }){
+                Button(action: { viewModel.activeSheet = .addDate }){
                     Image(systemName: "plus.circle.fill")
                         .resizable()
                         .frame(width: 40, height: 40)
@@ -46,7 +45,7 @@ struct ToolbarView: View {
                 
                 Spacer()
                 
-                Button(action: { view = .history }){
+                Button(action: { viewModel.view = .history }){
                     VStack{
                         Image(systemName: "calendar")
                             .resizable()
@@ -56,7 +55,7 @@ struct ToolbarView: View {
                     }
                     .frame(width: 50)
                     .padding(.top, 40)
-                    .foregroundColor(view == .history ? Color("Orange") : Color.gray)
+                    .foregroundColor(viewModel.view == .history ? Color("Orange") : Color.gray)
                 }
                 
                 Spacer()

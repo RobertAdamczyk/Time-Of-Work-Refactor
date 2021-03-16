@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SaveButtonRow: View {
-    @EnvironmentObject var viewModel: AddDateViewModel
+    @EnvironmentObject var viewModel: AddEditDateViewModel
     @Environment(\.managedObjectContext) var viewContext
-    @Binding var showSheet: Bool
+    @Binding var activeSheet: SheetView?
     var date: FetchedResults<Dates>.Element?
     
     var body: some View {
@@ -22,7 +22,7 @@ struct SaveButtonRow: View {
                     viewModel.addDate(context: viewContext)
                 }
                 NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
-                showSheet = false
+                activeSheet = nil
             }
         }){
             Text("Save")

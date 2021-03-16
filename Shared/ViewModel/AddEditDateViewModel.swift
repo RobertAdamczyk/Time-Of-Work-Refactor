@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 
-class AddDateViewModel: ObservableObject {
+class AddEditDateViewModel: ObservableObject {
     @Published var new = New()
     @Published var showComponent: ShowComponents?
     @Published var showError = false // error if timeIn is smaller then timeOut

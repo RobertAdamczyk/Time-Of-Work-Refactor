@@ -7,28 +7,40 @@
 
 import SwiftUI
 
+class MainViewModel: ObservableObject {
+    @Published var view = Views.home
+    @Published var activeSheet: SheetView?
+}
+
 struct MainView: View {
-    @State var view = Views.home
-    @State var showAddDate = false
+    @ObservedObject var viewModel = MainViewModel()
+    @StateObject var homeViewModel = HomeViewModel()
+    @ObservedObject var historyViewModel = HistoryViewModel()
     var body: some View {
         ZStack(alignment: .bottom){
             Color("BackgroundColor")
                 
             VStack{
-                if view == .home {
+                if viewModel.view == .home {
                     HomeView()
+                        .environmentObject(homeViewModel)
                 }
-                if view == .history {
+                if viewModel.view == .history {
                     HistoryView()
+                        .environmentObject(historyViewModel)
                 }
             }
-            
-            
-            ToolbarView(view: $view, showAddDate: $showAddDate)
-                
+            ToolbarView()
         }
-        .sheet(isPresented: $showAddDate){
-            AddDateView(showSheet: $showAddDate)
+        .environmentObject(viewModel)
+        .sheet(item: $viewModel.activeSheet){ item in
+            switch(item) {
+            case .addDate:
+                AddEditDateView(activeSheet: $viewModel.activeSheet, name: "New Date")
+            case .editDate:
+                AddEditDateView(activeSheet: $viewModel.activeSheet, date: historyViewModel.selectedDate, name: "Edit Date")
+            }
+            
         }
         
         .ignoresSafeArea(.all)

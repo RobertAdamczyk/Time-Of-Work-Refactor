@@ -13,18 +13,18 @@
 		E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575825F9330E003BD1CD /* DateFormatEnum.swift */; };
 		E119576725F94891003BD1CD /* IntToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* IntToTime.swift */; };
 		E13291C825F2B0FD00348BC3 /* StartEndRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291C725F2B0FD00348BC3 /* StartEndRow.swift */; };
-		E13291CB25F2B2A500348BC3 /* AddDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddDateViewModel.swift */; };
+		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
 		E167660F25F3B7A2007ECDC9 /* DateOneDayLater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167660E25F3B7A2007ECDC9 /* DateOneDayLater.swift */; };
 		E167661325F3C110007ECDC9 /* PauseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167661225F3C110007ECDC9 /* PauseRow.swift */; };
 		E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167661525F3C294007ECDC9 /* SaveButtonRow.swift */; };
+		E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17468752601377B00F9CE02 /* SheetViewsEnum.swift */; };
 		E174F5B425F2A0AC00707C97 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B325F2A0AC00707C97 /* TimePickerView.swift */; };
 		E174F5B725F2AB7300707C97 /* ShowComponentsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */; };
 		E174F5BD25F2AE8300707C97 /* NewDateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5BC25F2AE8300707C97 /* NewDateRow.swift */; };
 		E17E364C25F1475D009C9519 /* HistoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E364B25F1475D009C9519 /* HistoryHeader.swift */; };
-		E17E365125F14B16009C9519 /* AddDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E365025F14B16009C9519 /* AddDateView.swift */; };
 		E17E365425F15659009C9519 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E365325F15659009C9519 /* DatePickerView.swift */; };
-		E17F19E425FFDA1D009C3674 /* EditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F19E325FFDA1D009C3674 /* EditDateView.swift */; };
+		E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */; };
 		E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86425F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld */; };
 		E17FD86A25F7D06300CD126F /* Dates+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86825F7D06300CD126F /* Dates+CoreDataClass.swift */; };
 		E17FD86B25F7D06300CD126F /* Dates+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86925F7D06300CD126F /* Dates+CoreDataProperties.swift */; };
@@ -60,19 +60,19 @@
 		E119575825F9330E003BD1CD /* DateFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatEnum.swift; sourceTree = "<group>"; };
 		E119576625F94891003BD1CD /* IntToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntToTime.swift; sourceTree = "<group>"; };
 		E13291C725F2B0FD00348BC3 /* StartEndRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndRow.swift; sourceTree = "<group>"; };
-		E13291CA25F2B2A500348BC3 /* AddDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateViewModel.swift; sourceTree = "<group>"; };
+		E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateViewModel.swift; sourceTree = "<group>"; };
 		E13291CD25F2B2C500348BC3 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
 		E167660E25F3B7A2007ECDC9 /* DateOneDayLater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOneDayLater.swift; sourceTree = "<group>"; };
 		E167661225F3C110007ECDC9 /* PauseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseRow.swift; sourceTree = "<group>"; };
 		E167661525F3C294007ECDC9 /* SaveButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonRow.swift; sourceTree = "<group>"; };
+		E17468752601377B00F9CE02 /* SheetViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewsEnum.swift; sourceTree = "<group>"; };
 		E174F5B325F2A0AC00707C97 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowComponentsEnum.swift; sourceTree = "<group>"; };
 		E174F5BC25F2AE8300707C97 /* NewDateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDateRow.swift; sourceTree = "<group>"; };
 		E1784B3625FBD3ED00D3E41A /* NewTarget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewTarget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17E364B25F1475D009C9519 /* HistoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHeader.swift; sourceTree = "<group>"; };
-		E17E365025F14B16009C9519 /* AddDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateView.swift; sourceTree = "<group>"; };
 		E17E365325F15659009C9519 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
-		E17F19E325FFDA1D009C3674 /* EditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateView.swift; sourceTree = "<group>"; };
+		E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateView.swift; sourceTree = "<group>"; };
 		E17FD86525F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeOfWorkCoreData.xcdatamodel; sourceTree = "<group>"; };
 		E17FD86825F7D06300CD126F /* Dates+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dates+CoreDataClass.swift"; path = "Shared/Dates+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E17FD86925F7D06300CD126F /* Dates+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dates+CoreDataProperties.swift"; path = "Shared/Dates+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -133,17 +133,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E174F5B925F2AE0000707C97 /* AddDateView */ = {
+		E174F5B925F2AE0000707C97 /* AddEditDateView */ = {
 			isa = PBXGroup;
 			children = (
 				E174F5BB25F2AE4700707C97 /* Pickers */,
-				E17E365025F14B16009C9519 /* AddDateView.swift */,
+				E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */,
 				E174F5BC25F2AE8300707C97 /* NewDateRow.swift */,
 				E13291C725F2B0FD00348BC3 /* StartEndRow.swift */,
 				E167661225F3C110007ECDC9 /* PauseRow.swift */,
 				E167661525F3C294007ECDC9 /* SaveButtonRow.swift */,
 			);
-			path = AddDateView;
+			path = AddEditDateView;
 			sourceTree = "<group>";
 		};
 		E174F5BB25F2AE4700707C97 /* Pickers */ = {
@@ -166,14 +166,6 @@
 				E198AF5025FE9D9500742E2E /* MenuBarView.swift */,
 			);
 			path = HistoryView;
-			sourceTree = "<group>";
-		};
-		E17F19E225FFDA02009C3674 /* EditDateView */ = {
-			isa = PBXGroup;
-			children = (
-				E17F19E325FFDA1D009C3674 /* EditDateView.swift */,
-			);
-			path = EditDateView;
 			sourceTree = "<group>";
 		};
 		E183357925EE987F00E3A952 = {
@@ -234,8 +226,7 @@
 		E18335A225EE988D00E3A952 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E17F19E225FFDA02009C3674 /* EditDateView */,
-				E174F5B925F2AE0000707C97 /* AddDateView */,
+				E174F5B925F2AE0000707C97 /* AddEditDateView */,
 				E17E364A25F14710009C9519 /* HistoryView */,
 				E1851EB625EFF6AA00C721E9 /* HomeView */,
 				E18335B625EE9B4D00E3A952 /* Effects */,
@@ -250,7 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				E17FD86E25F7D0F100CD126F /* HistoryViewModel.swift */,
-				E13291CA25F2B2A500348BC3 /* AddDateViewModel.swift */,
+				E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */,
 				E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
@@ -288,6 +279,7 @@
 				E18335C225EEA03900E3A952 /* ViewsEnum.swift */,
 				E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */,
 				E119575825F9330E003BD1CD /* DateFormatEnum.swift */,
+				E17468752601377B00F9CE02 /* SheetViewsEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -428,6 +420,7 @@
 				E18335A825EE98B100E3A952 /* HomeView.swift in Sources */,
 				E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */,
 				E18335AE25EE98C500E3A952 /* MainView.swift in Sources */,
+				E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */,
 				E174F5B425F2A0AC00707C97 /* TimePickerView.swift in Sources */,
 				E18335B325EE9ACC00E3A952 /* CustomToolbar.swift in Sources */,
 				E174F5BD25F2AE8300707C97 /* NewDateRow.swift in Sources */,
@@ -443,10 +436,10 @@
 				E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */,
 				E13291C825F2B0FD00348BC3 /* StartEndRow.swift in Sources */,
 				E17FD86F25F7D0F100CD126F /* HistoryViewModel.swift in Sources */,
-				E17F19E425FFDA1D009C3674 /* EditDateView.swift in Sources */,
+				E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */,
 				E17E364C25F1475D009C9519 /* HistoryHeader.swift in Sources */,
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,
-				E13291CB25F2B2A500348BC3 /* AddDateViewModel.swift in Sources */,
+				E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */,
 				E17FD87425F7D56D00CD126F /* WeekAndYear.swift in Sources */,
 				E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */,
 				E1AD08F025FD0F8A00A8213C /* HomeViewModel.swift in Sources */,
@@ -458,7 +451,6 @@
 				E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */,
 				E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */,
 				E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */,
-				E17E365125F14B16009C9519 /* AddDateView.swift in Sources */,
 				E18335BE25EE9D5300E3A952 /* ToolbarView.swift in Sources */,
 				E167660F25F3B7A2007ECDC9 /* DateOneDayLater.swift in Sources */,
 				E17FD86A25F7D06300CD126F /* Dates+CoreDataClass.swift in Sources */,

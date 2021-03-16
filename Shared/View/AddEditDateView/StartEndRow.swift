@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartEndRow: View {
-    @EnvironmentObject var viewModel: AddDateViewModel
+    @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
         HStack{
             Button(action:{

@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct EditDateView: View {
-    @StateObject var viewModel = AddDateViewModel()
-    @Binding var showSheet: Bool
-    var date: FetchedResults<Dates>.Element
+struct AddEditDateView: View {
+    @StateObject var viewModel = AddEditDateViewModel()
+    @Binding var activeSheet: SheetView?
+    var date: FetchedResults<Dates>.Element?
+    var name: String
     var body: some View {
         ZStack(alignment: .top){
             Color("BackgroundColor")
@@ -26,12 +27,12 @@ struct EditDateView: View {
                 NewDateRow()
                 StartEndRow()
                 PauseRow()
-                SaveButtonRow(showSheet: $showSheet, date: date)
+                SaveButtonRow(activeSheet: $activeSheet, date: date)
             }
             .environmentObject(viewModel)
             .padding(.horizontal)
             .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
-            HomeHeader(value: "Edit Date") // file in HomeView folder
+            HomeHeader(value: name) // file in HomeView folder
             
             
             
@@ -60,5 +61,14 @@ struct EditDateView: View {
             
         }
         .ignoresSafeArea()
+        .onAppear(){
+            if let date = date {
+                viewModel.new.date = date.date
+                viewModel.new.timeIn = date.timeIn
+                viewModel.new.timeOut = date.timeOut
+                viewModel.new.night = date.night
+                viewModel.new.secPause = date.secPause
+            }
+        }
     }
 }

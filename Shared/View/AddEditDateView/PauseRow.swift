@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PauseRow: View {
-    @EnvironmentObject var viewModel: AddDateViewModel
+    @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
         Button(action:{
             viewModel.changeShowComponent(newValue: .pausePicker)

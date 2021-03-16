@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuBarView: View {
     var date: FetchedResults<Dates>.Element?
     @EnvironmentObject var viewModel: HistoryViewModel
+    @EnvironmentObject var mainViewModel: MainViewModel
     @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
@@ -17,7 +18,7 @@ struct MenuBarView: View {
             HStack{
                 Spacer()
                 Button(action:{
-                    viewModel.editDate.toggle()
+                    mainViewModel.activeSheet = .editDate
                 }){
                     Text("Edit")
                         .padding(6)

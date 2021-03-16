@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel = HomeViewModel()
+    @EnvironmentObject var viewModel: HomeViewModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack{
