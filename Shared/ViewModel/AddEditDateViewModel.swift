@@ -59,15 +59,12 @@ class AddEditDateViewModel: ObservableObject {
         date.date = new.date
         date.timeIn = Calendar.current.date(bySetting: .second, value: 0, of: new.timeIn) ?? new.timeIn
         
-        if new.night {
-            if let timeOut = new.timeOut.plusOneDay() {
-                date.timeOut = Calendar.current.date(bySetting: .second, value: 0, of: timeOut) ?? timeOut
-            }else {
-                print("add date error")
-                return
-            }
-        }else {
+        if new.night == date.night { // if not changed
             date.timeOut = Calendar.current.date(bySetting: .second, value: 0, of: new.timeOut) ?? new.timeOut
+        }else { // if user changed work at night
+            if let timeOut = Calendar.current.date(byAdding: .day, value: new.night ? 1 : -1, to: new.timeOut) {
+                date.timeOut = timeOut
+            }
         }
         date.night = new.night
         date.secPause = new.secPause
