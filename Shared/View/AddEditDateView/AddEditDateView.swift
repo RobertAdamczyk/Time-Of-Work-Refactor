@@ -19,11 +19,6 @@ struct AddEditDateView: View {
                     viewModel.changeShowComponent(newValue: nil)
                 }
             VStack(spacing: 20){
-                if viewModel.showError {
-                    Text("Start of work can't be bigger or equals than end.")
-                        .foregroundColor(.red)
-                        .padding(.vertical, -5)
-                }
                 NewDateRow()
                 StartEndRow()
                 PauseRow()

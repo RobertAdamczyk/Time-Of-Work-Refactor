@@ -12,21 +12,13 @@ import CoreData
 class AddEditDateViewModel: ObservableObject {
     @Published var new = New()
     @Published var showComponent: ShowComponents?
-    @Published var showError = false // error if timeIn is smaller then timeOut
     
     func changeShowComponent(newValue: ShowComponents?) {
         withAnimation{
             showComponent = showComponent == newValue ? nil : newValue // if old value is new value remove picker from screen
         }
     }
-    
-    func werifyDates() -> Bool{
-        withAnimation{
-            showError = new.timeIn >= new.timeOut && !new.night
-        }
-        return new.timeIn < new.timeOut || new.night
-    }
-    
+
     func addDate(context: NSManagedObjectContext) {
         let newData = Dates(context: context)
         newData.date = new.date

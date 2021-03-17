@@ -15,15 +15,14 @@ struct SaveButtonRow: View {
     
     var body: some View {
         Button(action:{
-            if viewModel.werifyDates() {
-                if let date = date {
-                    viewModel.editDate(date: date, context: viewContext)
-                }else {
-                    viewModel.addDate(context: viewContext)
-                }
-                NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
-                activeSheet = nil
+            if let date = date {
+                viewModel.editDate(date: date, context: viewContext)
+            }else {
+                viewModel.addDate(context: viewContext)
             }
+            NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
+            activeSheet = nil
+            
         }){
             Text("Save")
                 .fontWeight(.bold)
