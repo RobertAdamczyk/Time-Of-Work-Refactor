@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10B09F72603F739009FADEB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B09F62603F739009FADEB /* LoadingView.swift */; };
 		E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189325FCBE9500A32772 /* PausePickerView.swift */; };
 		E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189E25FCE50B00A32772 /* ProgressCircleView.swift */; };
 		E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575525F91F3B003BD1CD /* DateFormatter.swift */; };
@@ -43,7 +44,7 @@
 		E18335C325EEA03900E3A952 /* ViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18335C225EEA03900E3A952 /* ViewsEnum.swift */; };
 		E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EAC25EFEEB400C721E9 /* BackgroundWithBorder.swift */; };
 		E1851EB125EFEF6700C721E9 /* OrangeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EB025EFEF6700C721E9 /* OrangeButtonStyle.swift */; };
-		E1851EB425EFF60D00C721E9 /* TodayRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EB325EFF60D00C721E9 /* TodayRow.swift */; };
+		E1851EB425EFF60D00C721E9 /* NowRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EB325EFF60D00C721E9 /* NowRow.swift */; };
 		E1851EB925EFF71D00C721E9 /* ButtonsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */; };
 		E1851EBC25EFF79500C721E9 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EBB25EFF79500C721E9 /* HomeHeader.swift */; };
 		E1851EBF25EFF82F00C721E9 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EBE25EFF82F00C721E9 /* DateRow.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E10B09F62603F739009FADEB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E112189325FCBE9500A32772 /* PausePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePickerView.swift; sourceTree = "<group>"; };
 		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
 		E119575525F91F3B003BD1CD /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 		E18335C225EEA03900E3A952 /* ViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsEnum.swift; sourceTree = "<group>"; };
 		E1851EAC25EFEEB400C721E9 /* BackgroundWithBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWithBorder.swift; sourceTree = "<group>"; };
 		E1851EB025EFEF6700C721E9 /* OrangeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButtonStyle.swift; sourceTree = "<group>"; };
-		E1851EB325EFF60D00C721E9 /* TodayRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRow.swift; sourceTree = "<group>"; };
+		E1851EB325EFF60D00C721E9 /* NowRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowRow.swift; sourceTree = "<group>"; };
 		E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsRow.swift; sourceTree = "<group>"; };
 		E1851EBB25EFF79500C721E9 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		E1851EBE25EFF82F00C721E9 /* DateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRow.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				E18335B725EE9B6A00E3A952 /* GlassEffect.swift */,
 				E112189E25FCE50B00A32772 /* ProgressCircleView.swift */,
+				E10B09F62603F739009FADEB /* LoadingView.swift */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -296,7 +299,7 @@
 		E1851EB625EFF6AA00C721E9 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				E1851EB325EFF60D00C721E9 /* TodayRow.swift */,
+				E1851EB325EFF60D00C721E9 /* NowRow.swift */,
 				E18335A725EE98B100E3A952 /* HomeView.swift */,
 				E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */,
 				E1851EBB25EFF79500C721E9 /* HomeHeader.swift */,
@@ -430,7 +433,7 @@
 				E198AF5125FE9D9500742E2E /* MenuBarView.swift in Sources */,
 				E17FD87B25F7D9D700CD126F /* HistoryListView.swift in Sources */,
 				E1851EC225EFF89E00C721E9 /* HistoryView.swift in Sources */,
-				E1851EB425EFF60D00C721E9 /* TodayRow.swift in Sources */,
+				E1851EB425EFF60D00C721E9 /* NowRow.swift in Sources */,
 				E167661325F3C110007ECDC9 /* PauseRow.swift in Sources */,
 				E17FD86B25F7D06300CD126F /* Dates+CoreDataProperties.swift in Sources */,
 				E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */,
@@ -442,6 +445,7 @@
 				E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */,
 				E17FD87425F7D56D00CD126F /* WeekAndYear.swift in Sources */,
 				E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */,
+				E10B09F72603F739009FADEB /* LoadingView.swift in Sources */,
 				E1AD08F025FD0F8A00A8213C /* HomeViewModel.swift in Sources */,
 				E13291CE25F2B2C500348BC3 /* New.swift in Sources */,
 				E18335C325EEA03900E3A952 /* ViewsEnum.swift in Sources */,

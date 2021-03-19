@@ -20,7 +20,10 @@ struct HomeView: View {
                 
                 ButtonsRow()
                 
-                TodayRow()
+                if viewModel.working {
+                    NowRow()
+                        .transition(.move(edge: .leading))
+                }
 
                 Spacer()
             }
