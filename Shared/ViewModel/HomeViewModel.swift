@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 
 class HomeViewModel: ObservableObject {
+    
     @Published var currentTime: Int = 0
     @Published var showPausePicker = false
     @Published var lastRecord: New?
@@ -18,6 +19,14 @@ class HomeViewModel: ObservableObject {
     @Published var working: Bool = UserDefaults.standard.bool(forKey: "working")
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    var height = UIScreen.main.bounds.height // for circle size in nowView
+    var padding : CGFloat { // for home views for smaller iphones
+        if UIScreen.main.bounds.height < 700 {
+            return 0
+        }else {
+            return 20
+        }
+    }
     
     func setLastDate(value: Date) {
         lastDate = value

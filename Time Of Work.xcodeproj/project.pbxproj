@@ -301,8 +301,8 @@
 		E1851EB625EFF6AA00C721E9 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				E1851EB325EFF60D00C721E9 /* NowRow.swift */,
 				E18335A725EE98B100E3A952 /* HomeView.swift */,
+				E1851EB325EFF60D00C721E9 /* NowRow.swift */,
 				E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */,
 				E1851EBB25EFF79500C721E9 /* HomeHeader.swift */,
 				E1851EBE25EFF82F00C721E9 /* DateRow.swift */,

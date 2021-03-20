@@ -75,7 +75,8 @@ struct LastWorkView: View {
             
             
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, viewModel.padding)
         .onAppear() {
             viewModel.loadLast(result: result)
         }

@@ -11,7 +11,6 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     var body: some View {
         ZStack{
-            
             VStack{
                 HomeHeader(value: "Time Of Work")
                 

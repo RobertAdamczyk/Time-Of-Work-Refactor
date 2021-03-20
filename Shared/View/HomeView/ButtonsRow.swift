@@ -43,7 +43,7 @@ struct ButtonsRow: View {
             
         }
         .buttonStyle(OrangeButtonStyle())
-        .padding(.vertical)
+        .padding(.vertical, viewModel.padding)
         .padding(.horizontal, 40)
     }
 }

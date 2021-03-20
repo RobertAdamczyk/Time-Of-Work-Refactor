@@ -34,7 +34,6 @@ struct ProgressCircleView: View {
     func setProgress(new: CGFloat) {
         withAnimation(Animation.spring(response: 1, dampingFraction: 1, blendDuration: 1).speed(0.3).delay(0.5)){
             progressAnimation = new
-            print("onChange \(new)")
         }
     }
 }

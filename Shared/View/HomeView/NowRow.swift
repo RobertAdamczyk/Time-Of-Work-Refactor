@@ -10,6 +10,7 @@ import SwiftUI
 struct NowRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
     @AppStorage("working") var working = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("NOW")
@@ -31,13 +32,13 @@ struct NowRow: View {
                 }
                 
                 ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / 3600 : 0)
-                    .frame(width: 150, height: 150)
+                    .frame(width: viewModel.height * 0.18, height: viewModel.height * 0.18)
                     .overlay(Text("Work:\n\(working ? viewModel.currentTime.toTimeString() : "--:--")")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color("Orange"))
                                 .frame(width: 120))
                     .overlay(LoadingView()
-                                .frame(width: 100, height: 100))
+                                .frame(width: viewModel.height * 0.12, height: viewModel.height * 0.12))
                 
             }
             .padding()
