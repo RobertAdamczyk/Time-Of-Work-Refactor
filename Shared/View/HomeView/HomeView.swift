@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack{
             
@@ -24,6 +23,8 @@ struct HomeView: View {
                     NowRow()
                         .transition(.move(edge: .leading))
                 }
+                
+                LastWorkView()
 
                 Spacer()
             }

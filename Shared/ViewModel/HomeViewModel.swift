@@ -12,6 +12,7 @@ import CoreData
 class HomeViewModel: ObservableObject {
     @Published var currentTime: Int = 0
     @Published var showPausePicker = false
+    @Published var lastRecord: New?
     @AppStorage("pause") var pause: Int = 0
     var lastDate: Date = UserDefaults.standard.object(forKey: "lastDate") as? Date ?? Date()
     @Published var working: Bool = UserDefaults.standard.bool(forKey: "working")
@@ -49,5 +50,15 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    func loadLast(result: FetchedResults<Dates>) {
+        withAnimation{
+            if result.count > 0 {
+                lastRecord = New(result: result)
+            }else {
+                lastRecord = nil
+                return
+            }
+        }
+    }
     
 }

@@ -30,7 +30,7 @@ struct NowRow: View {
                         .foregroundColor(Color("Orange"))
                 }
                 
-                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / 60 : 0)
+                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / 3600 : 0)
                     .frame(width: 150, height: 150)
                     .overlay(Text("Work:\n\(working ? viewModel.currentTime.toTimeString() : "--:--")")
                                 .fontWeight(.semibold)

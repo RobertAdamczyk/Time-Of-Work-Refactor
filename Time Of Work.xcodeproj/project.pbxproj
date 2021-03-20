@@ -10,6 +10,7 @@
 		E10B09F72603F739009FADEB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B09F62603F739009FADEB /* LoadingView.swift */; };
 		E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189325FCBE9500A32772 /* PausePickerView.swift */; };
 		E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189E25FCE50B00A32772 /* ProgressCircleView.swift */; };
+		E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1134CDD26053A9D006BFD87 /* LastWorkView.swift */; };
 		E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575525F91F3B003BD1CD /* DateFormatter.swift */; };
 		E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575825F9330E003BD1CD /* DateFormatEnum.swift */; };
 		E119576725F94891003BD1CD /* IntToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* IntToTime.swift */; };
@@ -58,6 +59,7 @@
 		E10B09F62603F739009FADEB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E112189325FCBE9500A32772 /* PausePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePickerView.swift; sourceTree = "<group>"; };
 		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
+		E1134CDD26053A9D006BFD87 /* LastWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastWorkView.swift; sourceTree = "<group>"; };
 		E119575525F91F3B003BD1CD /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E119575825F9330E003BD1CD /* DateFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatEnum.swift; sourceTree = "<group>"; };
 		E119576625F94891003BD1CD /* IntToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntToTime.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */,
 				E1851EBB25EFF79500C721E9 /* HomeHeader.swift */,
 				E1851EBE25EFF82F00C721E9 /* DateRow.swift */,
+				E1134CDD26053A9D006BFD87 /* LastWorkView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			files = (
 				E18335A825EE98B100E3A952 /* HomeView.swift in Sources */,
 				E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */,
+				E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */,
 				E18335AE25EE98C500E3A952 /* MainView.swift in Sources */,
 				E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */,
 				E174F5B425F2A0AC00707C97 /* TimePickerView.swift in Sources */,

@@ -5,13 +5,14 @@
 //  Created by Robert Adamczyk on 05.03.21.
 //
 
-import Foundation
+import SwiftUI
 struct New {
     var date: Date
     var timeIn: Date
     var timeOut: Date
     var secPause: Int
     var night: Bool
+    var secWork: Int? // only for LastDateView
     
     init(){
         date = Date()
@@ -19,6 +20,15 @@ struct New {
         timeOut = Date()
         secPause = 0
         night = false
+    }
+    
+    init(result: FetchedResults<Dates>) { // only for LastDateView
+        date = result[0].date
+        timeIn = result[0].timeIn
+        timeOut = result[0].timeOut
+        secPause = result[0].secPause
+        night = result[0].night
+        secWork = result[0].secWork
     }
 }
 
