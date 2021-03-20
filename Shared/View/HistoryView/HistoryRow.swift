@@ -9,13 +9,9 @@ import SwiftUI
 
 struct HistoryRow: View {
     var value : FetchedResults<Dates>.Element
-    var width = UIScreen.main.bounds.width * 0.25
+    var width = UIScreen.main.bounds.width * 0.27
     var body: some View {
         HStack(spacing: 0){
-            Rectangle()
-                .frame(width: 2)
-                .padding(.vertical, 3)
-                .foregroundColor(Color("Orange"))
             HStack{
                 VStack{
                     
@@ -28,10 +24,9 @@ struct HistoryRow: View {
                     }
                 }
             }
-            
-            .frame(width: width)
+            .frame(width: width-5)
             Spacer()
-            VStack{
+            VStack(alignment: .trailing){
                 HStack{
                     
                     Text("\(value.timeIn, style: .time)")
@@ -45,7 +40,8 @@ struct HistoryRow: View {
                         .foregroundColor(.red)
                 }
             }
-            .frame(width: width)
+            .frame(width: width+5)
+            
             Spacer()
             HStack{
                 VStack{
@@ -61,8 +57,19 @@ struct HistoryRow: View {
             .frame(width: width+5)
             
         }
-        .padding(.horizontal)
+        .overlay(
+            HStack{
+                Rectangle()
+                    .frame(width: 2)
+                    .padding(.vertical, 3)
+                    .foregroundColor(Color("Orange"))
+                    .padding(.leading, 3)
+                Spacer()
+            }
+        )
+        .padding(.horizontal, 5)
         .padding(.vertical, 3)
+        
     }
   
 }
