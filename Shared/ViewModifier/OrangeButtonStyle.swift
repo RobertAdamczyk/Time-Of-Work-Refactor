@@ -17,4 +17,3 @@ struct OrangeButtonStyle: ButtonStyle {
             .offset(x: configuration.isPressed ? 1 : 0, y: configuration.isPressed ? 1 : 0)
     }
 }
-//

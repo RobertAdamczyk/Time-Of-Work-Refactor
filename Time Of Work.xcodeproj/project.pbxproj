@@ -52,6 +52,7 @@
 		E1851EC225EFF89E00C721E9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EC125EFF89E00C721E9 /* HistoryView.swift */; };
 		E198AF5125FE9D9500742E2E /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198AF5025FE9D9500742E2E /* MenuBarView.swift */; };
 		E1AD08F025FD0F8A00A8213C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */; };
+		E1F20B4326073F5E00790CEA /* AddEditHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B4226073F5E00790CEA /* AddEditHeaderView.swift */; };
 		E1FA2F0D25F681AB00CFB7B8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		E1851EC125EFF89E00C721E9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		E198AF5025FE9D9500742E2E /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		E1AD08EF25FD0F8A00A8213C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E1F20B4226073F5E00790CEA /* AddEditHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditHeaderView.swift; sourceTree = "<group>"; };
 		E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				E13291C725F2B0FD00348BC3 /* StartEndRow.swift */,
 				E167661225F3C110007ECDC9 /* PauseRow.swift */,
 				E167661525F3C294007ECDC9 /* SaveButtonRow.swift */,
+				E1F20B4226073F5E00790CEA /* AddEditHeaderView.swift */,
 			);
 			path = AddEditDateView;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18335A825EE98B100E3A952 /* HomeView.swift in Sources */,
+				E1F20B4326073F5E00790CEA /* AddEditHeaderView.swift in Sources */,
 				E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */,
 				E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */,
 				E18335AE25EE98C500E3A952 /* MainView.swift in Sources */,

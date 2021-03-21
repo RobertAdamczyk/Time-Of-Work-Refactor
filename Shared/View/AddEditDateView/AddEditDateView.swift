@@ -27,7 +27,7 @@ struct AddEditDateView: View {
             .environmentObject(viewModel)
             .padding(.horizontal)
             .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
-            HomeHeader(value: name) // file in HomeView folder
+            AddEditHeaderView(value: name)
             
             
             
