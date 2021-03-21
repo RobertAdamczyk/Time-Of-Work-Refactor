@@ -13,16 +13,21 @@ struct SettingsView: View {
     var body: some View {
         ZStack(alignment: .top){
             Color(colorScheme == .light ? "BackgroundColor" : "Black")
-                .ignoresSafeArea()
-            if viewModel.view == .menu {
-                MenuSettingView()
-            }
+                
+            MenuSettingView()
+            
             if viewModel.view == .workTime {
                 Color.blue
-                    .ignoresSafeArea()
                     .transition(.move(edge: .trailing))
+                    
             }
-            AddEditHeaderView(value: "Settings")
+            
+            
+            
+        }
+        .ignoresSafeArea()
+        .onDisappear(){
+            viewModel.view = .menu
         }
         
     }

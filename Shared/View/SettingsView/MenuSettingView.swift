@@ -10,17 +10,21 @@ import SwiftUI
 struct MenuSettingView: View {
     @EnvironmentObject var viewModel: SettingsViewModel
     var body: some View {
-        VStack{
-            Button(action:{
-                viewModel.changeSettingView(new: .workTime)
-            }){
-                MenuSettingRow(name: "Time")
-            }
+        VStack(spacing: 20){
+            AddEditHeaderView(value: "Settings")
             
+            VStack{
+                Button(action:{
+                    viewModel.changeSettingView(new: .workTime)
+                }){
+                    MenuSettingRow(name: "Time")
+                }
+                
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding(.horizontal)
         }
-        .buttonStyle(PlainButtonStyle())
-        .padding(.horizontal)
-        .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
+        
     }
 }
 
