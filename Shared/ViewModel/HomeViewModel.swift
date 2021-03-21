@@ -12,7 +12,7 @@ import CoreData
 class HomeViewModel: ObservableObject {
     
     @Published var currentTime: Int = 0
-    @Published var showPausePicker = false
+    @Published var showComponent: ShowComponents?
     @Published var lastRecord: New?
     @AppStorage("pause") var pause: Int = 0
     var lastDate: Date = UserDefaults.standard.object(forKey: "lastDate") as? Date ?? Date()
@@ -36,6 +36,11 @@ class HomeViewModel: ObservableObject {
         withAnimation{
             working.toggle()
             UserDefaults.standard.set(working, forKey: "working")
+        }
+    }
+    func changeShowComponent(newValue: ShowComponents?) {
+        withAnimation{
+            showComponent = showComponent == newValue ? nil : newValue // if old value is new value remove picker from screen
         }
     }
     

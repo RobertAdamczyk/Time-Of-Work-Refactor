@@ -31,9 +31,7 @@ struct ButtonsRow: View {
                 
             Spacer()
             Button(action:{
-                withAnimation{
-                    viewModel.showPausePicker.toggle()
-                }
+                viewModel.changeShowComponent(newValue: .pausePicker)
             }){
                 Text("Set Pause")
                     .fontWeight(.bold)

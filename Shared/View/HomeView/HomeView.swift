@@ -29,13 +29,9 @@ struct HomeView: View {
             }
             .contentShape(Rectangle())
             .onTapGesture {
-                if viewModel.showPausePicker {
-                    withAnimation{
-                        viewModel.showPausePicker.toggle()
-                    }
-                }
+                viewModel.changeShowComponent(newValue: nil)
             }
-            if viewModel.showPausePicker {
+            if viewModel.showComponent == .pausePicker {
                 PausePickerView(sec: $viewModel.pause)
                     .offset(y: 150)
                     .transition(.scale)

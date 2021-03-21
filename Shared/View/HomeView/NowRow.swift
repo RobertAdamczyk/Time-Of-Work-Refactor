@@ -78,7 +78,7 @@ struct NowRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            if !viewModel.showPausePicker{
+            if viewModel.showComponent == nil{
                 viewModel.refreshWorkTime()
             }
         }
