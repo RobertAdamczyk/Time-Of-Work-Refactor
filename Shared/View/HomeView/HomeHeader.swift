@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeHeader: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     var value : String
     @State var animation = false
     var body: some View {
@@ -20,7 +21,9 @@ struct HomeHeader: View {
             Spacer()
             
             Button(action:{
-                
+                withAnimation {
+                    mainViewModel.activeSheet = .settings
+                }
             }){
                 Image(systemName: "gearshape.fill")
                     .font(.largeTitle)

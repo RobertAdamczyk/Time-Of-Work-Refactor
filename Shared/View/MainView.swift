@@ -7,19 +7,14 @@
 
 import SwiftUI
 
-class MainViewModel: ObservableObject {
-    @Published var view = Views.home
-    @Published var activeSheet: SheetView?
-}
-
 struct MainView: View {
     @ObservedObject var viewModel = MainViewModel()
     @StateObject var homeViewModel = HomeViewModel()
     @ObservedObject var historyViewModel = HistoryViewModel()
+    @ObservedObject var settingsViewModel = SettingsViewModel()
     var body: some View {
         ZStack(alignment: .bottom){
             Color("BackgroundColor")
-                
             VStack{
                 if viewModel.view == .home {
                     HomeView()
@@ -39,6 +34,9 @@ struct MainView: View {
                 AddEditDateView(activeSheet: $viewModel.activeSheet, name: "New Date")
             case .editDate:
                 AddEditDateView(activeSheet: $viewModel.activeSheet, date: historyViewModel.selectedDate, name: "Edit Date")
+            case .settings:
+                SettingsView()
+                    .environmentObject(settingsViewModel)
             }
             
         }

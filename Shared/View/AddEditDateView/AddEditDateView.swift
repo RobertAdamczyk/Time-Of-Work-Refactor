@@ -10,11 +10,13 @@ import SwiftUI
 struct AddEditDateView: View {
     @StateObject var viewModel = AddEditDateViewModel()
     @Binding var activeSheet: SheetView?
+    @Environment(\.colorScheme) var colorScheme
     var date: FetchedResults<Dates>.Element?
     var name: String
     var body: some View {
         ZStack(alignment: .top){
-            Color("BackgroundColor")
+
+            Color(colorScheme == .light ? "BackgroundColor" : "Black")
                 .onTapGesture {
                     viewModel.changeShowComponent(newValue: nil)
                 }
