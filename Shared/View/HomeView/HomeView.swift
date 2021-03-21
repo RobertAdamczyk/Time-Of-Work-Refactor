@@ -36,6 +36,11 @@ struct HomeView: View {
                     .offset(y: 150)
                     .transition(.scale)
             }
+            if viewModel.showComponent == .timeInPicker {
+                TimePickerView(time: $viewModel.lastDate)
+                    .offset(y: -100)
+                    .transition(.scale)
+            }
         }
         .environmentObject(viewModel)
         

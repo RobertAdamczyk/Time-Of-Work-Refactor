@@ -59,7 +59,7 @@ struct NowRow: View {
                     HStack{
                         Spacer()
                         Button(action:{
-                            
+                            viewModel.changeShowComponent(newValue: .timeInPicker)
                         }){
                             Text("New Start")
                                 .fontWeight(.semibold)
