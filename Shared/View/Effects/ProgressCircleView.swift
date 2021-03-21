@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProgressCircleView: View {
     @State var progressAnimation: CGFloat = 0
+    @State var showEffect = false
     var progress: CGFloat
     var body: some View {
         GeometryReader { reader in
@@ -22,18 +23,35 @@ struct ProgressCircleView: View {
                     .stroke(Color("Orange"), style: StrokeStyle(lineWidth: reader.size.width/10, lineCap: .round))
                     .frame(width: reader.size.width, height: reader.size.height)
             }
+            .scaleEffect(showEffect ? 1.05 : 1)
         }.onAppear() {
             setProgress(new: progress)
         }
         .onChange(of: progress) { new in
             setProgress(new: new)
         }
+        .onChange(of: progressAnimation) { new in
+            if new == 1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.7) {
+                    toggleShowEffect()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        toggleShowEffect()
+                    }
+                }
+            }
+        }
         
     }
     
     func setProgress(new: CGFloat) {
         withAnimation(Animation.spring(response: 1, dampingFraction: 1, blendDuration: 1).speed(0.3).delay(0.5)){
-            progressAnimation = new
+            progressAnimation = new > 1 ? 1 : new
+        }
+    }
+    
+    func toggleShowEffect(){
+        withAnimation{
+            showEffect.toggle()
         }
     }
 }

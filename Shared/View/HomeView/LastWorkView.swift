@@ -14,14 +14,14 @@ struct LastWorkView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text("LAST WORK")
-                .font(.system(size: 12))
-                .foregroundColor(Color.gray.opacity(0.8))
-                .padding(.leading)
-            HStack{
-                Spacer()
-                VStack(spacing: 5){
-                    if viewModel.lastRecord != nil {
+            if viewModel.lastRecord != nil {
+                Text("LAST WORK")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.gray.opacity(0.8))
+                    .padding(.leading)
+                HStack{
+                    Spacer()
+                    VStack(spacing: 5){
                         HStack{ // hstack for date
                             Image(systemName: "calendar")
                                 .foregroundColor(.gray)
@@ -30,7 +30,7 @@ struct LastWorkView: View {
                             }else{
                                 Text("\(viewModel.lastRecord!.date, style: .date)")
                             }
-                           
+                            
                         }
                         HStack(spacing: 10){ // hstack for timeIn and timeOut
                             HStack(spacing: 2){
@@ -49,7 +49,7 @@ struct LastWorkView: View {
                                 Image(systemName: "hammer.fill")
                                     .foregroundColor(.gray)
                                 Text("\(viewModel.lastRecord!.secWork!.toTimeString())")
-
+                                
                             }
                             HStack(spacing: 2){
                                 Image(systemName: "pause.circle")
@@ -57,21 +57,21 @@ struct LastWorkView: View {
                                 Text("\(viewModel.lastRecord!.secPause.toTimeString())")
                             }
                         }
-                    } // close If lastRecord != NIL
-                    
-                }// close VStack
-                Spacer()
-            }
-            .overlay(
-                HStack{
-                    Rectangle()
-                        .fill(Color("Orange"))
-                        .frame(width: 2)
+                        
+                    }// close VStack
                     Spacer()
                 }
-            )
-            .padding()
-            .roundedBackgroundWithBorder
+                .overlay(
+                    HStack{
+                        Rectangle()
+                            .fill(Color("Orange"))
+                            .frame(width: 2)
+                        Spacer()
+                    }
+                )
+                .padding()
+                .roundedBackgroundWithBorder
+            }
             
             
         }

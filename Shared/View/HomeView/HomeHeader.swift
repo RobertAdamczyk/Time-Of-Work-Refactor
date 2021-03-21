@@ -25,8 +25,8 @@ struct HomeHeader: View {
                 Image(systemName: "gearshape.fill")
                     .font(.largeTitle)
                     .foregroundColor(Color("Orange"))
-                    .shadow(color: .black, radius: 1, x: 1, y: 1)
                     .rotationEffect(.init(degrees: animation ? 0 : -360))
+                    .shadow(color: .black, radius: 1, x: 1, y: 1)
             }
             .padding(.trailing, 10)
                 
