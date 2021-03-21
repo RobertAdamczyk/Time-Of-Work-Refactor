@@ -19,28 +19,58 @@ struct NowRow: View {
                 .padding(.leading)
             ZStack(alignment: .top){
                 HStack{
-                    Text("Pause: \n\(working ? viewModel.pause.toTimeString() : "--:--")")
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color("Orange"))
-                        .onChange(of: viewModel.pause) { _ in
-                           viewModel.refreshWorkTime()
-                        }
+                    VStack{
+                        Text("Pause:")
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("Orange"))
+                        Text("\(working ? viewModel.pause.toTimeString() : "--:--")")
+                    }
+                    .onChange(of: viewModel.pause) { _ in
+                       viewModel.refreshWorkTime()
+                    }
+                        
                     Spacer()
-                    Text("Start: \n\(viewModel.lastDate, style: .time)")
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color("Orange"))
+                    VStack{
+                        Text("Start:")
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("Orange"))
+                        Text("\(viewModel.lastDate, style: .time)")
+                            
+                    }
                 }
                 
                 ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / 3600 : 0)
                     .frame(width: viewModel.height * 0.18, height: viewModel.height * 0.18)
-                    .overlay(Text("Work:\n\(working ? viewModel.currentTime.toTimeString() : "--:--")")
+                    .overlay(
+                        VStack{
+                            Text("Work:")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color("Orange"))
-                                .frame(width: 120))
+                            Text("\(working ? viewModel.currentTime.toTimeString() : "--:--")")
+                        }.offset(y: -5)
+                    )
                     .overlay(LoadingView()
                                 .frame(width: viewModel.height * 0.12, height: viewModel.height * 0.12))
                 
             }
+            .overlay(
+                VStack{
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        Button(action:{
+                            
+                        }){
+                            Text("New Start")
+                                .fontWeight(.semibold)
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .padding(-5)
+                        }
+                        .buttonStyle(OrangeButtonStyle())
+                    }
+                }
+            )
             .padding()
             .roundedBackgroundWithBorder
             
