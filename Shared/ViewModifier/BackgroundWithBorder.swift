@@ -12,6 +12,12 @@ extension View {
     var backgroundWithBorder: some View {
         self
             .background(VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial)))
+            .border(Color("BorderColor"))
+    }
+    
+    var backgroundWithBottom: some View {
+        self
+            .background(VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial)))
             .overlay(
                 VStack{
                     Spacer()
@@ -19,7 +25,6 @@ extension View {
                         .foregroundColor(Color("BorderColor"))
                 }
             )
-            //.border(Color("BorderColor"))
     }
     
     var roundedBackgroundWithBorder: some View {

@@ -28,7 +28,7 @@ struct AddEditDateView: View {
             }
             .environmentObject(viewModel)
             .padding(.horizontal)
-            .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
+            .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
             AddEditHeaderView(value: name)
             
             

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var viewModel : SettingsViewModel
+    
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         NavigationView{

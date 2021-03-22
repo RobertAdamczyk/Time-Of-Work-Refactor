@@ -38,8 +38,6 @@ struct SettingHeaderView: View {
             }
         )
         .padding(20)
-        .backgroundWithBorder
-        .padding(.horizontal, -1)
-        .padding(.top, -1)
+        .backgroundWithBottom
     }
 }
