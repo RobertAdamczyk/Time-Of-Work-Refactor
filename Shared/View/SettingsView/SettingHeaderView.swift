@@ -29,7 +29,7 @@ struct SettingHeaderView: View {
                         Image(systemName: "chevron.backward")
                         Spacer()
                     }
-                    .font(.system(size: 20, weight: .regular))
+                    .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color("Orange"))
                     .frame(width: 60, height: 50)
                 }

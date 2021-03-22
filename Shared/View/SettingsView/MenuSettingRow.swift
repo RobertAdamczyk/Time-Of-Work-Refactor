@@ -9,18 +9,17 @@ import SwiftUI
 
 struct MenuSettingRow: View {
     var name: String
+    var value: String?
     var body: some View {
-        HStack{
+        HStack(spacing: 20){
             Text("\(name)")
-                .foregroundColor(Color("Orange"))
-                .font(.title3)
-                
             Spacer()
+            if value != nil { Text("\(value!)") }
             Image(systemName: "chevron.right")
                 .foregroundColor(Color("Orange"))
-                .font(.title3)
         }
+        .foregroundColor(.gray)
+        .font(.system(size: 18, weight: .semibold))
         .padding()
-        .roundedBackgroundWithBorder
     }
 }

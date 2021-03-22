@@ -19,11 +19,12 @@ struct SettingsView: View {
                     AddEditHeaderView(value: "Settings")
                     NavigationLink(destination: TimeSettingView()) {
                         MenuSettingRow(name: "Time")
-                            .padding(.horizontal)
+                            .backgroundWithBottomTop
                     }
                     
                     Spacer()
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             .navigationBarHidden(true)
         }

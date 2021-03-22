@@ -19,6 +19,7 @@ struct MainView: View {
                 if viewModel.view == .home {
                     HomeView()
                         .environmentObject(homeViewModel)
+                        .environmentObject(settingsViewModel)
                 }
                 if viewModel.view == .history {
                     HistoryView()

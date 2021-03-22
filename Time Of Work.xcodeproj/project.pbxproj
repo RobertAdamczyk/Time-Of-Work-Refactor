@@ -22,6 +22,7 @@
 		E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167661525F3C294007ECDC9 /* SaveButtonRow.swift */; };
 		E16D43CD26090CB4001D5D49 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16D43CC26090CB4001D5D49 /* SettingHeaderView.swift */; };
 		E16D43D326090F23001D5D49 /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16D43D226090F23001D5D49 /* TimeSettingView.swift */; };
+		E16D43DA26092D20001D5D49 /* HoursPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16D43D926092D20001D5D49 /* HoursPicker.swift */; };
 		E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17468752601377B00F9CE02 /* SheetViewsEnum.swift */; };
 		E174F5B425F2A0AC00707C97 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B325F2A0AC00707C97 /* TimePickerView.swift */; };
 		E174F5B725F2AB7300707C97 /* ShowComponentsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */; };
@@ -78,6 +79,7 @@
 		E167661525F3C294007ECDC9 /* SaveButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonRow.swift; sourceTree = "<group>"; };
 		E16D43CC26090CB4001D5D49 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		E16D43D226090F23001D5D49 /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
+		E16D43D926092D20001D5D49 /* HoursPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursPicker.swift; sourceTree = "<group>"; };
 		E17468752601377B00F9CE02 /* SheetViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewsEnum.swift; sourceTree = "<group>"; };
 		E174F5B325F2A0AC00707C97 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowComponentsEnum.swift; sourceTree = "<group>"; };
@@ -149,6 +151,14 @@
 				E119576625F94891003BD1CD /* IntToTime.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E16D43D826092CBC001D5D49 /* ComponentsView */ = {
+			isa = PBXGroup;
+			children = (
+				E16D43D926092D20001D5D49 /* HoursPicker.swift */,
+			);
+			path = ComponentsView;
 			sourceTree = "<group>";
 		};
 		E174F5B925F2AE0000707C97 /* AddEditDateView */ = {
@@ -332,6 +342,7 @@
 		E1F20B5A2607B79900790CEA /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				E16D43D826092CBC001D5D49 /* ComponentsView */,
 				E1F20B5B2607B7A800790CEA /* SettingsView.swift */,
 				E1F20B6D2607C76000790CEA /* MenuSettingRow.swift */,
 				E16D43CC26090CB4001D5D49 /* SettingHeaderView.swift */,
@@ -480,6 +491,7 @@
 				E17E364C25F1475D009C9519 /* HistoryHeader.swift in Sources */,
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,
 				E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */,
+				E16D43DA26092D20001D5D49 /* HoursPicker.swift in Sources */,
 				E1F20B622607C0AB00790CEA /* SettingsViewModel.swift in Sources */,
 				E17FD87425F7D56D00CD126F /* WeekAndYear.swift in Sources */,
 				E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */,

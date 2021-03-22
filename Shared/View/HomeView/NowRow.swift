@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NowRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
+    @EnvironmentObject var setting: SettingsViewModel
     @AppStorage("working") var working = false
     
     var body: some View {
@@ -39,7 +40,7 @@ struct NowRow: View {
                     }
                 }
                 
-                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / 3600 : 0)
+                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / CGFloat( 3600 * setting.hoursWeek / setting.daysWeek ) : 0)
                     .frame(width: viewModel.height * 0.18, height: viewModel.height * 0.18)
                     .overlay(
                         VStack{

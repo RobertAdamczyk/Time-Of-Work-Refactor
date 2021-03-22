@@ -14,10 +14,18 @@ struct TimeSettingView: View {
         ZStack{
             Color(colorScheme == .light ? "BackgroundColor" : "Black")
                 .ignoresSafeArea()
-            VStack{
+            VStack(spacing: 0){
                 SettingHeaderView(name: "Time")
+                    .padding(.bottom, 20)
+                NavigationLink(destination: HoursPicker()) {
+                    MenuSettingRow(name: "Hours a week", value: "\(viewModel.hoursWeek)")
+                        .backgroundWithBottomTop
+                }
+                MenuSettingRow(name: "Days a week", value: "\(viewModel.daysWeek)")
+                    .backgroundWithBottom
                 Spacer()
             }
+            .font(.system(size: 18, weight: .semibold))
         }
         .navigationBarHidden(true)
     }

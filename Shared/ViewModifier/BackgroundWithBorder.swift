@@ -27,6 +27,19 @@ extension View {
             )
     }
     
+    var backgroundWithBottomTop: some View {
+        self
+            .background(VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial)))
+            .overlay(
+                VStack{
+                    Rectangle().frame(height: 1)
+                    Spacer()
+                    Rectangle().frame(height: 1)
+                }
+                .foregroundColor(Color("BorderColor"))
+            )
+    }
+    
     var roundedBackgroundWithBorder: some View {
         self
             .background(VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
