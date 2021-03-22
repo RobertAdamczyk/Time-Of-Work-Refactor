@@ -12,7 +12,14 @@ extension View {
     var backgroundWithBorder: some View {
         self
             .background(VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial)))
-            .border(Color("BorderColor"))
+            .overlay(
+                VStack{
+                    Spacer()
+                    Rectangle().frame(height: 1)
+                        .foregroundColor(Color("BorderColor"))
+                }
+            )
+            //.border(Color("BorderColor"))
     }
     
     var roundedBackgroundWithBorder: some View {

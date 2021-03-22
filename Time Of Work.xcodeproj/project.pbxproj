@@ -20,6 +20,8 @@
 		E167660F25F3B7A2007ECDC9 /* DateOneDayLater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167660E25F3B7A2007ECDC9 /* DateOneDayLater.swift */; };
 		E167661325F3C110007ECDC9 /* PauseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167661225F3C110007ECDC9 /* PauseRow.swift */; };
 		E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167661525F3C294007ECDC9 /* SaveButtonRow.swift */; };
+		E16D43CD26090CB4001D5D49 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16D43CC26090CB4001D5D49 /* SettingHeaderView.swift */; };
+		E16D43D326090F23001D5D49 /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16D43D226090F23001D5D49 /* TimeSettingView.swift */; };
 		E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17468752601377B00F9CE02 /* SheetViewsEnum.swift */; };
 		E174F5B425F2A0AC00707C97 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B325F2A0AC00707C97 /* TimePickerView.swift */; };
 		E174F5B725F2AB7300707C97 /* ShowComponentsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */; };
@@ -56,8 +58,6 @@
 		E1F20B572607B5E100790CEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B562607B5E100790CEA /* MainViewModel.swift */; };
 		E1F20B5C2607B7A800790CEA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B5B2607B7A800790CEA /* SettingsView.swift */; };
 		E1F20B622607C0AB00790CEA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B612607C0AB00790CEA /* SettingsViewModel.swift */; };
-		E1F20B662607C1FD00790CEA /* SettingsViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B652607C1FD00790CEA /* SettingsViewsEnum.swift */; };
-		E1F20B6A2607C3AC00790CEA /* MenuSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B692607C3AC00790CEA /* MenuSettingView.swift */; };
 		E1F20B6E2607C76000790CEA /* MenuSettingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B6D2607C76000790CEA /* MenuSettingRow.swift */; };
 		E1FA2F0D25F681AB00CFB7B8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +76,8 @@
 		E167660E25F3B7A2007ECDC9 /* DateOneDayLater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOneDayLater.swift; sourceTree = "<group>"; };
 		E167661225F3C110007ECDC9 /* PauseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseRow.swift; sourceTree = "<group>"; };
 		E167661525F3C294007ECDC9 /* SaveButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonRow.swift; sourceTree = "<group>"; };
+		E16D43CC26090CB4001D5D49 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
+		E16D43D226090F23001D5D49 /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
 		E17468752601377B00F9CE02 /* SheetViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewsEnum.swift; sourceTree = "<group>"; };
 		E174F5B325F2A0AC00707C97 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowComponentsEnum.swift; sourceTree = "<group>"; };
@@ -117,8 +119,6 @@
 		E1F20B562607B5E100790CEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E1F20B5B2607B7A800790CEA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E1F20B612607C0AB00790CEA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		E1F20B652607C1FD00790CEA /* SettingsViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewsEnum.swift; sourceTree = "<group>"; };
-		E1F20B692607C3AC00790CEA /* MenuSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSettingView.swift; sourceTree = "<group>"; };
 		E1F20B6D2607C76000790CEA /* MenuSettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSettingRow.swift; sourceTree = "<group>"; };
 		E1FA2F0C25F681AB00CFB7B8 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -303,7 +303,6 @@
 				E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */,
 				E119575825F9330E003BD1CD /* DateFormatEnum.swift */,
 				E17468752601377B00F9CE02 /* SheetViewsEnum.swift */,
-				E1F20B652607C1FD00790CEA /* SettingsViewsEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -334,8 +333,9 @@
 			isa = PBXGroup;
 			children = (
 				E1F20B5B2607B7A800790CEA /* SettingsView.swift */,
-				E1F20B692607C3AC00790CEA /* MenuSettingView.swift */,
 				E1F20B6D2607C76000790CEA /* MenuSettingRow.swift */,
+				E16D43CC26090CB4001D5D49 /* SettingHeaderView.swift */,
+				E16D43D226090F23001D5D49 /* TimeSettingView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -453,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F20B572607B5E100790CEA /* MainViewModel.swift in Sources */,
+				E16D43CD26090CB4001D5D49 /* SettingHeaderView.swift in Sources */,
 				E18335A825EE98B100E3A952 /* HomeView.swift in Sources */,
 				E1F20B4326073F5E00790CEA /* AddEditHeaderView.swift in Sources */,
 				E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */,
@@ -474,7 +475,6 @@
 				E17FD86B25F7D06300CD126F /* Dates+CoreDataProperties.swift in Sources */,
 				E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */,
 				E13291C825F2B0FD00348BC3 /* StartEndRow.swift in Sources */,
-				E1F20B662607C1FD00790CEA /* SettingsViewsEnum.swift in Sources */,
 				E17FD86F25F7D0F100CD126F /* HistoryViewModel.swift in Sources */,
 				E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */,
 				E17E364C25F1475D009C9519 /* HistoryHeader.swift in Sources */,
@@ -493,13 +493,13 @@
 				E1F20B6E2607C76000790CEA /* MenuSettingRow.swift in Sources */,
 				E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */,
 				E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */,
+				E16D43D326090F23001D5D49 /* TimeSettingView.swift in Sources */,
 				E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */,
 				E18335BE25EE9D5300E3A952 /* ToolbarView.swift in Sources */,
 				E167660F25F3B7A2007ECDC9 /* DateOneDayLater.swift in Sources */,
 				E17FD86A25F7D06300CD126F /* Dates+CoreDataClass.swift in Sources */,
 				E17FD87E25F7FF4700CD126F /* HistoryRow.swift in Sources */,
 				E1851EBF25EFF82F00C721E9 /* DateRow.swift in Sources */,
-				E1F20B6A2607C3AC00790CEA /* MenuSettingView.swift in Sources */,
 				E119576725F94891003BD1CD /* IntToTime.swift in Sources */,
 				E1851EBC25EFF79500C721E9 /* HomeHeader.swift in Sources */,
 				E174F5B725F2AB7300707C97 /* ShowComponentsEnum.swift in Sources */,

@@ -8,12 +8,5 @@
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-    @Published var view: SettingView = .menu
     
-    
-    func changeSettingView(new: SettingView) {
-        withAnimation {
-            view = new
-        }
-    }
 }

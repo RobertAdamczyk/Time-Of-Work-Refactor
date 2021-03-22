@@ -23,8 +23,6 @@ struct AddEditHeaderView: View {
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
         .padding(10)
         .backgroundWithBorder
-        .padding(.horizontal,-1)
-        .padding(.top,-1)
     }
 }
 

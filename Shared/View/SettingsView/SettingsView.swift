@@ -11,24 +11,23 @@ struct SettingsView: View {
     @EnvironmentObject var viewModel : SettingsViewModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        ZStack(alignment: .top){
-            Color(colorScheme == .light ? "BackgroundColor" : "Black")
-                
-            MenuSettingView()
-            
-            if viewModel.view == .workTime {
-                Color.blue
-                    .transition(.move(edge: .trailing))
+        NavigationView{
+            ZStack{
+                Color(colorScheme == .light ? "BackgroundColor" : "Black")
+                    .ignoresSafeArea()
+                VStack(spacing: 20){
+                    AddEditHeaderView(value: "Settings")
+                    NavigationLink(destination: TimeSettingView()) {
+                        MenuSettingRow(name: "Time")
+                            .padding(.horizontal)
+                    }
                     
+                    Spacer()
+                }
             }
-            
-            
-            
+            .navigationBarHidden(true)
         }
         .ignoresSafeArea()
-        .onDisappear(){
-            viewModel.view = .menu
-        }
         
     }
 }
