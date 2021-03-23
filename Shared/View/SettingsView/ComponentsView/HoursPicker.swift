@@ -22,19 +22,20 @@ struct HoursPicker: View {
                         if i % 5 == 0 {
                             Button(action:{
                                 viewModel.hoursWeek = i
+                                UserDefaults.standard.setValue(viewModel.hoursWeek, forKey: "hoursWeek")
                                 presentationMode.wrappedValue.dismiss()
                             }){
                                 HStack{
                                     Text("\(i)")
-                                        .foregroundColor(.gray)
                                     Spacer()
                                     if viewModel.hoursWeek == i {
                                         Image(systemName: "checkmark")
                                             .foregroundColor(Color("Orange"))
                                     }
                                 }
-                                .font(.system(size: 18, weight: .semibold))
-                                .padding()
+                                .font(.system(size: 18, weight: .regular))
+                                .padding(.horizontal)
+                                .padding(.vertical, 12)
                                 .backgroundWithBottom
                             }
                             
@@ -47,6 +48,7 @@ struct HoursPicker: View {
                         Spacer()
                     }
                 )
+                .buttonStyle(PlainButtonStyle())
                 
                 Spacer()
             }

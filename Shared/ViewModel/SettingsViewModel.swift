@@ -8,6 +8,6 @@
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-    @Published var hoursWeek = 40
-    @Published var daysWeek = 5
+    @Published var hoursWeek = UserDefaults.standard.object(forKey: "hoursWeek") as? Int ?? 40
+    @Published var daysWeek = UserDefaults.standard.object(forKey: "daysWeek") as? Int ?? 5
 }

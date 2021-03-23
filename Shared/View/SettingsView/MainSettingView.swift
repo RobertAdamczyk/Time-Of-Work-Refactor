@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct MainSettingView: View {
     
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -17,10 +17,18 @@ struct SettingsView: View {
                     .ignoresSafeArea()
                 VStack(spacing: 20){
                     AddEditHeaderView(value: "Settings")
-                    NavigationLink(destination: TimeSettingView()) {
-                        MenuSettingRow(name: "Time")
-                            .backgroundWithBottomTop
-                    }
+                    
+                    VStack(alignment: .leading){
+                        NavigationLink(destination: TimeSettingView()) {
+                            RowSetting(name: "Time")
+                                .backgroundWithBottomTop
+                        }
+                        Text("Set your time of work.")
+                            .foregroundColor(.gray)
+                            .font(.subheadline)
+                            .padding(.horizontal)
+                    } // Time row in menu
+                    
                     
                     Spacer()
                 }
@@ -30,11 +38,5 @@ struct SettingsView: View {
         }
         .ignoresSafeArea()
         
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
     }
 }

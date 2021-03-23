@@ -14,18 +14,24 @@ struct TimeSettingView: View {
         ZStack{
             Color(colorScheme == .light ? "BackgroundColor" : "Black")
                 .ignoresSafeArea()
-            VStack(spacing: 0){
+            VStack(spacing: 20){
                 SettingHeaderView(name: "Time")
-                    .padding(.bottom, 20)
-                NavigationLink(destination: HoursPicker()) {
-                    MenuSettingRow(name: "Hours a week", value: "\(viewModel.hoursWeek)")
-                        .backgroundWithBottomTop
-                }
-                MenuSettingRow(name: "Days a week", value: "\(viewModel.daysWeek)")
-                    .backgroundWithBottom
+                VStack(spacing: 0){
+                    NavigationLink(destination: HoursPicker()) {
+                        RowSetting(name: "Hours a week", value: "\(viewModel.hoursWeek)")
+                            .backgroundWithBottomTop
+                    }
+                    NavigationLink(destination: DaysPicker()) {
+                        RowSetting(name: "Days a week", value: "\(viewModel.daysWeek)")
+                            .backgroundWithBottom
+                    }
+                }.buttonStyle(PlainButtonStyle())
+                
+                
                 Spacer()
             }
             .font(.system(size: 18, weight: .semibold))
+            
         }
         .navigationBarHidden(true)
     }
