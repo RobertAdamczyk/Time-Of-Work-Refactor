@@ -19,15 +19,33 @@ struct MainSettingView: View {
                     AddEditHeaderView(value: "Settings")
                     
                     VStack(alignment: .leading){
+                        HStack{
+                            Image(systemName: "person.fill")
+                            Text("User Preferences")
+                        }
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
+                        .padding(.horizontal)
                         NavigationLink(destination: TimeSettingView()) {
                             RowSetting(name: "Time")
                                 .backgroundWithBottomTop
                         }
-                        Text("Set your time of work.")
-                            .foregroundColor(.gray)
-                            .font(.subheadline)
-                            .padding(.horizontal)
                     } // Time row in menu
+                    
+                    VStack(alignment: .leading){
+                        HStack{
+                            Image(systemName: "info")
+                            Text("Info")
+                        }
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
+                        .padding(.horizontal)
+                        NavigationLink(destination: AboutView()) {
+                            RowSetting(name: "About")
+                                .backgroundWithBottomTop
+                        }
+                        
+                    }
                     
                     
                     Spacer()

@@ -25,6 +25,7 @@
 		E16D43DA26092D20001D5D49 /* HoursPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16D43D926092D20001D5D49 /* HoursPicker.swift */; };
 		E16E8F5E260A5B28006AA09A /* DaysPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E8F5D260A5B28006AA09A /* DaysPicker.swift */; };
 		E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17468752601377B00F9CE02 /* SheetViewsEnum.swift */; };
+		E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174B0B6260F0E53001B8B86 /* AboutView.swift */; };
 		E174F5B425F2A0AC00707C97 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B325F2A0AC00707C97 /* TimePickerView.swift */; };
 		E174F5B725F2AB7300707C97 /* ShowComponentsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */; };
 		E174F5BD25F2AE8300707C97 /* NewDateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174F5BC25F2AE8300707C97 /* NewDateRow.swift */; };
@@ -83,6 +84,7 @@
 		E16D43D926092D20001D5D49 /* HoursPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursPicker.swift; sourceTree = "<group>"; };
 		E16E8F5D260A5B28006AA09A /* DaysPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysPicker.swift; sourceTree = "<group>"; };
 		E17468752601377B00F9CE02 /* SheetViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewsEnum.swift; sourceTree = "<group>"; };
+		E174B0B6260F0E53001B8B86 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E174F5B325F2A0AC00707C97 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowComponentsEnum.swift; sourceTree = "<group>"; };
 		E174F5BC25F2AE8300707C97 /* NewDateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDateRow.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				E1F20B6D2607C76000790CEA /* RowSetting.swift */,
 				E16D43CC26090CB4001D5D49 /* SettingHeaderView.swift */,
 				E16D43D226090F23001D5D49 /* TimeSettingView.swift */,
+				E174B0B6260F0E53001B8B86 /* AboutView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				E167661625F3C294007ECDC9 /* SaveButtonRow.swift in Sources */,
 				E13291C825F2B0FD00348BC3 /* StartEndRow.swift in Sources */,
 				E17FD86F25F7D0F100CD126F /* HistoryViewModel.swift in Sources */,
+				E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */,
 				E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */,
 				E17E364C25F1475D009C9519 /* HistoryHeader.swift in Sources */,
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,

@@ -14,7 +14,7 @@ struct TimeSettingView: View {
         ZStack{
             Color(colorScheme == .light ? "BackgroundColor" : "Black")
                 .ignoresSafeArea()
-            VStack(spacing: 20){
+            VStack(alignment: .leading, spacing: 20){
                 SettingHeaderView(name: "Time")
                 VStack(spacing: 0){
                     NavigationLink(destination: HoursPicker()) {
@@ -25,9 +25,14 @@ struct TimeSettingView: View {
                         RowSetting(name: "Days a week", value: "\(viewModel.daysWeek)")
                             .backgroundWithBottom
                     }
+                    
                 }.buttonStyle(PlainButtonStyle())
                 
-                
+                Text("Set your time of work.")
+                    .foregroundColor(.gray)
+                    .font(.subheadline)
+                    .padding(.horizontal)
+                    .padding(.top, -5)
                 Spacer()
             }
             .font(.system(size: 18, weight: .semibold))
