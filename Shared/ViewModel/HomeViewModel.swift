@@ -51,8 +51,8 @@ class HomeViewModel: ObservableObject {
     func endWork(context: NSManagedObjectContext) {
         let newData = Dates(context: context)
         newData.date = lastDate
-        newData.timeIn = Calendar.current.date(bySetting: .second, value: 0, of: lastDate) ?? lastDate
-        newData.timeOut = Calendar.current.date(bySetting: .second, value: 0, of: Date()) ?? Date()
+        newData.timeIn = lastDate
+        newData.timeOut = Date()
         newData.secPause = pause
         newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - newData.secPause
         newData.night = Calendar.current.component(.day, from: newData.timeIn) != Calendar.current.component(.day, from: newData.timeOut)
