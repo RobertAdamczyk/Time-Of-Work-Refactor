@@ -2,13 +2,16 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Dates" representedClassName="Dates" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="holiday" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="night" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="publicHoliday" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="secPause" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="secWork" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="sickness" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="timeIn" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="timeOut" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Dates" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Dates" positionX="-63" positionY="-18" width="128" height="164"/>
     </elements>
 </model>
