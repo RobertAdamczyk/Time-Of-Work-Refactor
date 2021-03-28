@@ -41,5 +41,30 @@ struct TogglesView: View {
             Spacer()
         }
         .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+        .onChange(of: viewModel.new.holiday) { new in
+            if new {
+                withAnimation{
+                    viewModel.new.publicHoliday = false
+                    viewModel.new.sickness = false
+                }
+            }
+        }
+        .onChange(of: viewModel.new.publicHoliday) { new in
+            if new {
+                withAnimation{
+                    viewModel.new.holiday = false
+                    viewModel.new.sickness = false
+                }
+                
+            }
+        }
+        .onChange(of: viewModel.new.sickness) { new in
+            if new {
+                withAnimation{
+                    viewModel.new.publicHoliday = false
+                    viewModel.new.holiday = false
+                }
+            }
+        }
     }
 }

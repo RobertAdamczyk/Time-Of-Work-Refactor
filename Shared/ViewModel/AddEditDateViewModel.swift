@@ -38,9 +38,9 @@ class AddEditDateViewModel: ObservableObject {
         newData.secPause = new.secPause
         newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - new.secPause
 
-        newData.holiday = false
-        newData.publicHoliday = false
-        newData.sickness = false
+        newData.holiday = new.holiday
+        newData.publicHoliday = new.publicHoliday
+        newData.sickness = new.sickness
         
         do {
             try context.save()
@@ -64,6 +64,10 @@ class AddEditDateViewModel: ObservableObject {
         date.night = new.night
         date.secPause = new.secPause
         date.secWork = Int(date.timeOut.timeIntervalSince(date.timeIn)) - new.secPause
+        
+        date.holiday = new.holiday
+        date.publicHoliday = new.publicHoliday
+        date.sickness = new.sickness
         do {
             try context.save()
         }
