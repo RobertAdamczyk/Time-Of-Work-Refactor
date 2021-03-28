@@ -10,25 +10,42 @@ import SwiftUI
 struct AddEditDateView: View {
     @StateObject var viewModel = AddEditDateViewModel()
     @Binding var activeSheet: SheetView?
-    @Environment(\.colorScheme) var colorScheme
     var date: FetchedResults<Dates>.Element?
     var name: String
     var body: some View {
         ZStack(alignment: .top){
-
-            Color(colorScheme == .light ? "BackgroundColor" : "Black")
-                .onTapGesture {
-                    viewModel.changeShowComponent(newValue: nil)
-                }
-            VStack(spacing: 20){
-                NewDateRow()
-                StartEndRow()
-                PauseRow()
-                SaveButtonRow(activeSheet: $activeSheet, date: date)
+            Color("BackgroundColor")
+            TabView {
+                ZStack{
+                    Color("BackgroundColor")
+                        .onTapGesture {
+                            viewModel.changeShowComponent(newValue: nil)
+                        }
+                    VStack(spacing: 20){
+                        NewDateRow()
+                        StartEndRow()
+                        PauseRow()
+                        SaveButtonRow(activeSheet: $activeSheet, date: date)
+                        Spacer()
+                    }
+                    .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
+                    .padding(.horizontal)
+                } // Page 1 with Date , Time In, Out, Pause Save Button
+                
+                ZStack{
+                    Color("BackgroundColor")
+                        .onTapGesture {
+                            viewModel.changeShowComponent(newValue: nil)
+                        }
+                    TogglesView()
+                        .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
+                        .padding(.horizontal)
+                } // Page 2 with Holidays Settings
+                
             }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
             .environmentObject(viewModel)
-            .padding(.horizontal)
-            .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
+            
             AddEditHeaderView(value: name)
             
             
@@ -65,6 +82,9 @@ struct AddEditDateView: View {
                 viewModel.new.timeOut = date.timeOut
                 viewModel.new.night = date.night
                 viewModel.new.secPause = date.secPause
+                viewModel.new.holiday = date.holiday
+                viewModel.new.publicHoliday = date.publicHoliday
+                viewModel.new.sickness = date.sickness
             }
         }
     }
