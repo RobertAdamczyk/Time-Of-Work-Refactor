@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct MainSettingView: View {
-    
-    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         NavigationView{
             ZStack{
-                Color(colorScheme == .light ? "BackgroundColor" : "Black")
+                Color("BackgroundColor")
                     .ignoresSafeArea()
                 VStack(spacing: 20){
                     AddEditHeaderView(value: "Settings")

@@ -57,9 +57,7 @@ class HomeViewModel: ObservableObject {
         newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - newData.secPause
         newData.night = Calendar.current.component(.day, from: newData.timeIn) != Calendar.current.component(.day, from: newData.timeOut)
         
-        newData.holiday = false
-        newData.publicHoliday = false
-        newData.sickness = false
+        newData.specialDay = nil
         
         do {
             try context.save()

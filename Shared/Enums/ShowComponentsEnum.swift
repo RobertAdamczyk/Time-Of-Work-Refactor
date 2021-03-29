@@ -10,4 +10,5 @@ enum ShowComponents {
     case timeInPicker
     case timeOutPicker
     case pausePicker
+    case hoursPicker
 }

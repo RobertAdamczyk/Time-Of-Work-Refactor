@@ -12,6 +12,7 @@ import CoreData
 class AddEditDateViewModel: ObservableObject {
     @Published var new = New()
     @Published var showComponent: ShowComponents?
+    @Published var hoursCount: Int = 8 // variable for hours sickness/holiday
     
     func changeShowComponent(newValue: ShowComponents?) {
         withAnimation{
@@ -38,9 +39,12 @@ class AddEditDateViewModel: ObservableObject {
         newData.secPause = new.secPause
         newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - new.secPause
 
-        newData.holiday = new.holiday
-        newData.publicHoliday = new.publicHoliday
-        newData.sickness = new.sickness
+        if let special = new.specialDay {
+            newData.specialDay = special.rawValue
+            newData.night = false
+            newData.secPause = 0
+            newData.secWork = hoursCount * 3600
+        }
         
         do {
             try context.save()
@@ -65,9 +69,14 @@ class AddEditDateViewModel: ObservableObject {
         date.secPause = new.secPause
         date.secWork = Int(date.timeOut.timeIntervalSince(date.timeIn)) - new.secPause
         
-        date.holiday = new.holiday
-        date.publicHoliday = new.publicHoliday
-        date.sickness = new.sickness
+        if let special = new.specialDay {
+            date.specialDay = special.rawValue
+            date.night = false
+            date.secPause = 0
+            date.secWork = hoursCount * 3600
+        }else {
+            date.specialDay = nil
+        }
         do {
             try context.save()
         }

@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct HoursPicker: View {
-    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var viewModel: SettingsViewModel
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack{
-            Color(colorScheme == .light ? "BackgroundColor" : "Black")
+            Color("BackgroundColor")
                 .ignoresSafeArea()
             VStack(spacing: 20){
                 SettingHeaderView(name: "Hours a week")

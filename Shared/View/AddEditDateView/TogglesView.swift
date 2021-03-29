@@ -11,60 +11,25 @@ struct TogglesView: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
         VStack(spacing: 20){
-            HStack{
-                Text("Holiday").bold()
-                    .foregroundColor(.gray)
-                Spacer()
-                Toggle("", isOn: $viewModel.new.holiday)
+            ForEach(SpecialDays.allCases) { item in
+                Button(action:{
+                    viewModel.new.specialDay = viewModel.new.specialDay == item ? nil : item
+                }){
+                    HStack{
+                        Text("\(item.rawValue)").bold()
+                            .foregroundColor(viewModel.new.specialDay == item ? Color("Orange") : .gray)
+                        Spacer()
+                        if viewModel.new.specialDay == item {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(Color("Orange"))
+                        }
+                    }
+                    .padding()
+                    .roundedBackgroundWithBorder
+                }
             }
-            .padding(10)
-            .roundedBackgroundWithBorder
-            
-            HStack{
-                Text("Public Holiday").bold()
-                    .foregroundColor(.gray)
-                Spacer()
-                Toggle("", isOn: $viewModel.new.publicHoliday)
-            }
-            .padding(10)
-            .roundedBackgroundWithBorder
-            
-            HStack{
-                Text("Sickness").bold()
-                    .foregroundColor(.gray)
-                Spacer()
-                Toggle("", isOn: $viewModel.new.sickness)
-            }
-            .padding(10)
-            .roundedBackgroundWithBorder
-            
+            .buttonStyle(PlainButtonStyle())
             Spacer()
-        }
-        .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
-        .onChange(of: viewModel.new.holiday) { new in
-            if new {
-                withAnimation{
-                    viewModel.new.publicHoliday = false
-                    viewModel.new.sickness = false
-                }
-            }
-        }
-        .onChange(of: viewModel.new.publicHoliday) { new in
-            if new {
-                withAnimation{
-                    viewModel.new.holiday = false
-                    viewModel.new.sickness = false
-                }
-                
-            }
-        }
-        .onChange(of: viewModel.new.sickness) { new in
-            if new {
-                withAnimation{
-                    viewModel.new.publicHoliday = false
-                    viewModel.new.holiday = false
-                }
-            }
         }
     }
 }

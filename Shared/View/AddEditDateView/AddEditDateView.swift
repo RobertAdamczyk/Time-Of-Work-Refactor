@@ -23,8 +23,12 @@ struct AddEditDateView: View {
                         }
                     VStack(spacing: 20){
                         NewDateRow()
-                        StartEndRow()
-                        PauseRow()
+                        if viewModel.new.specialDay == nil {
+                            StartEndRow()
+                            PauseRow()
+                        }else {
+                            HoursRow()
+                        }
                         SaveButtonRow(activeSheet: $activeSheet, date: date)
                         Spacer()
                     }
@@ -66,6 +70,9 @@ struct AddEditDateView: View {
                     //TimePickerView(time: $viewModel.new.pause)
                     PausePickerView(sec: $viewModel.new.secPause)
                         .transition(.scale)
+                case .hoursPicker:
+                    HoursPickerView(value: $viewModel.hoursCount)
+                        .transition(.scale)
                 default:
                     EmptyView()
                 }
@@ -82,9 +89,8 @@ struct AddEditDateView: View {
                 viewModel.new.timeOut = date.timeOut
                 viewModel.new.night = date.night
                 viewModel.new.secPause = date.secPause
-                viewModel.new.holiday = date.holiday
-                viewModel.new.publicHoliday = date.publicHoliday
-                viewModel.new.sickness = date.sickness
+                viewModel.new.specialDay = SpecialDays(rawValue: date.specialDay ?? "")
+                viewModel.hoursCount = date.specialDay != nil ? date.secWork / 3600 : 8
             }
         }
     }

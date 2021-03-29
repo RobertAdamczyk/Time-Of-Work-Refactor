@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct AboutView: View {
-    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack{
-            Color(colorScheme == .light ? "BackgroundColor" : "Black")
+            Color("BackgroundColor")
                 .ignoresSafeArea()
             VStack{
                 SettingHeaderView(name: "About")

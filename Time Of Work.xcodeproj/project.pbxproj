@@ -14,6 +14,9 @@
 		E119575625F91F3B003BD1CD /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575525F91F3B003BD1CD /* DateFormatter.swift */; };
 		E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575825F9330E003BD1CD /* DateFormatEnum.swift */; };
 		E119576725F94891003BD1CD /* IntToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* IntToTime.swift */; };
+		E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */; };
+		E12C3F6A26127DFE0082EC30 /* HoursRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F6926127DFE0082EC30 /* HoursRow.swift */; };
+		E12C3F6E2612851D0082EC30 /* HoursPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F6D2612851D0082EC30 /* HoursPickerView.swift */; };
 		E13291C825F2B0FD00348BC3 /* StartEndRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291C725F2B0FD00348BC3 /* StartEndRow.swift */; };
 		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
@@ -74,6 +77,9 @@
 		E119575525F91F3B003BD1CD /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E119575825F9330E003BD1CD /* DateFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatEnum.swift; sourceTree = "<group>"; };
 		E119576625F94891003BD1CD /* IntToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntToTime.swift; sourceTree = "<group>"; };
+		E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDaysEnum.swift; sourceTree = "<group>"; };
+		E12C3F6926127DFE0082EC30 /* HoursRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursRow.swift; sourceTree = "<group>"; };
+		E12C3F6D2612851D0082EC30 /* HoursPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursPickerView.swift; sourceTree = "<group>"; };
 		E13291C725F2B0FD00348BC3 /* StartEndRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndRow.swift; sourceTree = "<group>"; };
 		E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateViewModel.swift; sourceTree = "<group>"; };
 		E13291CD25F2B2C500348BC3 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				E167661525F3C294007ECDC9 /* SaveButtonRow.swift */,
 				E1F20B4226073F5E00790CEA /* AddEditHeaderView.swift */,
 				E1923C1B261000A7001456CF /* TogglesView.swift */,
+				E12C3F6926127DFE0082EC30 /* HoursRow.swift */,
 			);
 			path = AddEditDateView;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				E112189325FCBE9500A32772 /* PausePickerView.swift */,
 				E17E365325F15659009C9519 /* DatePickerView.swift */,
 				E174F5B325F2A0AC00707C97 /* TimePickerView.swift */,
+				E12C3F6D2612851D0082EC30 /* HoursPickerView.swift */,
 			);
 			path = Pickers;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 				E174F5B625F2AB7300707C97 /* ShowComponentsEnum.swift */,
 				E119575825F9330E003BD1CD /* DateFormatEnum.swift */,
 				E17468752601377B00F9CE02 /* SheetViewsEnum.swift */,
+				E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -474,6 +483,8 @@
 			files = (
 				E1F20B572607B5E100790CEA /* MainViewModel.swift in Sources */,
 				E16D43CD26090CB4001D5D49 /* SettingHeaderView.swift in Sources */,
+				E12C3F6A26127DFE0082EC30 /* HoursRow.swift in Sources */,
+				E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */,
 				E18335A825EE98B100E3A952 /* HomeView.swift in Sources */,
 				E1F20B4326073F5E00790CEA /* AddEditHeaderView.swift in Sources */,
 				E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */,
@@ -524,6 +535,7 @@
 				E17FD87E25F7FF4700CD126F /* HistoryRow.swift in Sources */,
 				E1851EBF25EFF82F00C721E9 /* DateRow.swift in Sources */,
 				E119576725F94891003BD1CD /* IntToTime.swift in Sources */,
+				E12C3F6E2612851D0082EC30 /* HoursPickerView.swift in Sources */,
 				E1923C1C261000A7001456CF /* TogglesView.swift in Sources */,
 				E1851EBC25EFF79500C721E9 /* HomeHeader.swift in Sources */,
 				E174F5B725F2AB7300707C97 /* ShowComponentsEnum.swift in Sources */,
