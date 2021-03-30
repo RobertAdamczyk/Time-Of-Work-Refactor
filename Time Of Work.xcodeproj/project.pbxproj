@@ -17,6 +17,7 @@
 		E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */; };
 		E12C3F6A26127DFE0082EC30 /* HoursRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F6926127DFE0082EC30 /* HoursRow.swift */; };
 		E12C3F6E2612851D0082EC30 /* HoursPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F6D2612851D0082EC30 /* HoursPickerView.swift */; };
+		E12C3F7226128D550082EC30 /* HistorySpecialDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F7126128D550082EC30 /* HistorySpecialDayView.swift */; };
 		E13291C825F2B0FD00348BC3 /* StartEndRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291C725F2B0FD00348BC3 /* StartEndRow.swift */; };
 		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
@@ -80,6 +81,7 @@
 		E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDaysEnum.swift; sourceTree = "<group>"; };
 		E12C3F6926127DFE0082EC30 /* HoursRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursRow.swift; sourceTree = "<group>"; };
 		E12C3F6D2612851D0082EC30 /* HoursPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursPickerView.swift; sourceTree = "<group>"; };
+		E12C3F7126128D550082EC30 /* HistorySpecialDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySpecialDayView.swift; sourceTree = "<group>"; };
 		E13291C725F2B0FD00348BC3 /* StartEndRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndRow.swift; sourceTree = "<group>"; };
 		E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateViewModel.swift; sourceTree = "<group>"; };
 		E13291CD25F2B2C500348BC3 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				E17FD87A25F7D9D700CD126F /* HistoryListView.swift */,
 				E17FD87D25F7FF4700CD126F /* HistoryRow.swift */,
 				E198AF5025FE9D9500742E2E /* MenuBarView.swift */,
+				E12C3F7126128D550082EC30 /* HistorySpecialDayView.swift */,
 			);
 			path = HistoryView;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				E183359425EE988100E3A952 /* ContentView.swift in Sources */,
 				E1851EB925EFF71D00C721E9 /* ButtonsRow.swift in Sources */,
 				E198AF5125FE9D9500742E2E /* MenuBarView.swift in Sources */,
+				E12C3F7226128D550082EC30 /* HistorySpecialDayView.swift in Sources */,
 				E17FD87B25F7D9D700CD126F /* HistoryListView.swift in Sources */,
 				E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */,
 				E1851EC225EFF89E00C721E9 /* HistoryView.swift in Sources */,

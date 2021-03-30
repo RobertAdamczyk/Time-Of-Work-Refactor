@@ -26,31 +26,37 @@ struct HistoryRow: View {
             }
             .frame(width: width-5)
             Spacer()
-            VStack(alignment: .trailing){
-                HStack{
-                    
-                    Text("\(value.timeIn, style: .time)")
-                    Image(systemName: "arrowshape.turn.up.left.fill")
-                        .foregroundColor(.green)
+            
+            if value.specialDay == nil {
+                VStack(alignment: .trailing){
+                    HStack{
+                        
+                        Text("\(value.timeIn, style: .time)")
+                        Image(systemName: "arrowshape.turn.up.left.fill")
+                            .foregroundColor(.green)
+                    }
+                    HStack{
+                        
+                        Text("\(value.timeOut, style: .time)")
+                        Image(systemName: "arrowshape.turn.up.right.fill")
+                            .foregroundColor(.red)
+                    }
                 }
-                HStack{
-                    
-                    Text("\(value.timeOut, style: .time)")
-                    Image(systemName: "arrowshape.turn.up.right.fill")
-                        .foregroundColor(.red)
-                }
+                .frame(width: width+5)
+            }else {
+                HistorySpecialDayView(value: value)
+                    .frame(width: width+5)
             }
-            .frame(width: width+5)
             
             Spacer()
             HStack{
                 VStack{
                     Text("\(value.secWork.toTimeString())")
-                    Text("\(value.secPause.toTimeString())")
+                    if value.specialDay == nil { Text("\(value.secPause.toTimeString())") }
                 }
                 VStack{
                     Image(systemName: "hammer.fill")
-                    Image(systemName: "pause.circle")
+                    if value.specialDay == nil { Image(systemName: "pause.circle") }
                 }
                 .foregroundColor(.gray)
             }
