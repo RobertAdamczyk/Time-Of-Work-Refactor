@@ -46,7 +46,6 @@ struct HistoryListView: View {
                                 if viewModel.dateIsEqualWeekAndYear(date: date.date, value: item) {
                                     Divider()
                                     HistoryRow(value: date)
-                                        
                                         .contentShape(Rectangle())
                                         .onTapGesture{
                                             withAnimation{
@@ -61,19 +60,25 @@ struct HistoryListView: View {
                         }
                     }
                     Divider()
-                    HStack{
-                        Text("Total:")
-                            .foregroundColor(.gray)
-                        Image(systemName: "hammer.fill")
-                            .foregroundColor(.gray)
-                        Text("\(viewModel.weeklySum(array: result, week: item).work.toTimeString())")
-                            .bold()
-                        Image(systemName: "pause.circle")
-                            .foregroundColor(.gray)
-                        Text("\(viewModel.weeklySum(array: result, week: item).pause.toTimeString())")
-                            .bold()
+                    ForEach(viewModel.sumOfWeeks) { i in
+                        if i.week.weekOfYear == item.weekOfYear && i.week.yearForWeekOfYear == item.yearForWeekOfYear {
+                            HStack{
+                                Text("Total:")
+                                    .foregroundColor(.gray)
+                                Image(systemName: "hammer.fill")
+                                    .foregroundColor(.gray)
+                                Text("\(i.secWork.toTimeString())")
+                                    .bold()
+                                Image(systemName: "pause.circle")
+                                    .foregroundColor(.gray)
+                                Text("\(i.secPause.toTimeString())")
+                                    .bold()
+                            }
+                            .foregroundColor(Color("Orange"))
+                        }
                     }
-                    .foregroundColor(Color("Orange"))
+                    
+                    
                     
                 }
                 .roundedBackgroundWithBorder

@@ -22,13 +22,25 @@ class HistoryViewModel: ObservableObject {
     
     func loadArrays(array: FetchedResults<Dates>) {
         weeksAndYears.removeAll()
+        sumOfWeeks.removeAll()
         for date in array {
             let week = Calendar.current.component(.weekOfYear, from: date.date)
             let year = Calendar.current.component(.yearForWeekOfYear, from: date.date)
             let newValue = WeekAndYear(weekOfYear: week, yearForWeekOfYear: year)
             if !weeksAndYears.contains(newValue){
                 weeksAndYears.append(newValue)
+                weeklySum(date: date, week: newValue, contains: false)
+            }else {
+                weeklySum(date: date, week: newValue, contains: true)
             }
+        }
+    }
+    
+    func weeklySum(date: FetchedResults<Dates>.Element, week: WeekAndYear, contains: Bool) {
+        if contains {
+            sumOfWeeks.last?.add(date: date)
+        }else {
+            sumOfWeeks.append(SumOfWeek(date: date, week: week))
         }
     }
     
@@ -41,18 +53,6 @@ class HistoryViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    func weeklySum(array: FetchedResults<Dates>, week: WeekAndYear) -> (work: Int, pause: Int) {
-        var sumWork = 0
-        var sumPause = 0
-        for date in array {
-            if dateIsEqualWeekAndYear(date: date.date, value: week) {
-                sumWork += date.secWork
-                sumPause += date.secPause
-            }
-        }
-        return (sumWork, sumPause)
     }
     
     func dateIsEqualWeekAndYear(date: Date, value: WeekAndYear) -> Bool{
