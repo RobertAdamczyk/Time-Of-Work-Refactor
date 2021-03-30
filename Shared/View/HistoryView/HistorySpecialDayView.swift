@@ -13,8 +13,8 @@ struct HistorySpecialDayView: View {
         VStack(alignment: .trailing){
             HStack{
                 Text("\(value.specialDay!)")
-                Image(systemName: value.specialDay != SpecialDays.sickness
-                    .rawValue ? "case.fill" : "bandage.fill")
+                Image(systemName: value.specialDay == SpecialDays.sickness
+                    .rawValue ? "bandage.fill" : value.specialDay == SpecialDays.holiday.rawValue ? "case.fill" : "flag.fill")
                     .foregroundColor(.gray)
             }
         }

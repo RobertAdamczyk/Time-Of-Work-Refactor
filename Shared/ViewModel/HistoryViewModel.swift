@@ -12,6 +12,7 @@ import CoreData
 class HistoryViewModel: ObservableObject {
     @Published var showHeader = false
     @Published var weeksAndYears: [WeekAndYear] = []
+    @Published var sumOfWeeks: [SumOfWeek] = []
     @Published var selectedDate: FetchedResults<Dates>.Element?
     @Published var editDate: Bool = false
     
