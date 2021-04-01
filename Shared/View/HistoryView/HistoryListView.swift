@@ -62,19 +62,7 @@ struct HistoryListView: View {
                     Divider()
                     ForEach(viewModel.sumOfWeeks) { i in
                         if i.week.weekOfYear == item.weekOfYear && i.week.yearForWeekOfYear == item.yearForWeekOfYear {
-                            HStack{
-                                Text("Total:")
-                                    .foregroundColor(.gray)
-                                Image(systemName: "hammer.fill")
-                                    .foregroundColor(.gray)
-                                Text("\(i.secWork.toTimeString())")
-                                    .bold()
-                                Image(systemName: "pause.circle")
-                                    .foregroundColor(.gray)
-                                Text("\(i.secPause.toTimeString())")
-                                    .bold()
-                            }
-                            .foregroundColor(Color("Orange"))
+                            HistoryTotalView(item: i)
                         }
                     }
                     
