@@ -35,6 +35,7 @@ struct HomeView: View {
                 PausePickerView(sec: $viewModel.pause)
                     .offset(y: 150)
                     .transition(.scale)
+                    .padding(.horizontal, 15)
             }
             if viewModel.showComponent == .timeInPicker {
                 TimePickerView(time: $viewModel.lastDate)
