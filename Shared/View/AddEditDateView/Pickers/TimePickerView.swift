@@ -14,9 +14,7 @@ struct TimePickerView: View {
             DatePicker("Start time: ", selection: $time, displayedComponents: .hourAndMinute)
                 .datePickerStyle(WheelDatePickerStyle())
                 .labelsHidden()
-                .frame(width: UIScreen.main.bounds.width-20)
                 .backgroundWithBorder
-
         }
     }
 }

@@ -17,7 +17,6 @@ struct HoursPickerView: View {
                 }
             }
         }
-        .frame(width: UIScreen.main.bounds.width-20)
         .backgroundWithBorder
     }
 }

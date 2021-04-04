@@ -78,6 +78,7 @@ struct AddEditDateView: View {
                 
             }
             .padding(.bottom, 10 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0 ))
+            .padding(.horizontal, 15)
             
         }
         .ignoresSafeArea()

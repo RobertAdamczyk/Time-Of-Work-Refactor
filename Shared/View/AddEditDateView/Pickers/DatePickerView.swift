@@ -25,7 +25,6 @@ struct DatePickerView: View {
             .padding(.horizontal)
             .padding(.bottom, 10)
         }
-        .frame(width: UIScreen.main.bounds.width-20)
         .backgroundWithBorder
     }
 }

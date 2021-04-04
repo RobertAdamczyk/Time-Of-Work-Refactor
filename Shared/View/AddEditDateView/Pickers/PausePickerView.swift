@@ -55,7 +55,7 @@ struct PausePickerView: View {
                 value2 = self.sec % 3600 / 60
             }
         }
-        .frame(width: UIScreen.main.bounds.width-20, height: 220)
+        .frame(height: 220)
         .backgroundWithBorder
         
     }
