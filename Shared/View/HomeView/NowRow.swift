@@ -85,6 +85,7 @@ struct NowRow: View {
         }
         .onAppear(){
             viewModel.refreshWorkTime()
+            viewModel.checkCurrentWork()
         }
     }
 }
