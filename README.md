@@ -1,3 +1,5 @@
+
+[![AppStore](/appstore.png)](https://apps.apple.com/us/app/time-of-work/id1561487640)
 # Time Of Work
 
 The application is used to track your time at work. The idea for creating this app came from the fact that I wanted to be in charge of my working hours.
