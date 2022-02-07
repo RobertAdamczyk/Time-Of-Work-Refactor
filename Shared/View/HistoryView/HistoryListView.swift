@@ -12,13 +12,12 @@ struct HistoryListView: View {
     var result : FetchedResults<Dates>
     var body: some View {
         
-        ForEach(viewModel.weeksAndYears, id: \.self) { item in
+        ForEach(viewModel.weeksAndYears, id: \.id) { item in
             VStack{
                 HStack{
                     Text("\(item.weekOfYear)/\(String(item.yearForWeekOfYear))").bold()
                         .font(.title)
                         .foregroundColor(.gray)
-                    
                     Spacer()
                 }
                 VStack(spacing: 0){
@@ -39,7 +38,6 @@ struct HistoryListView: View {
                         .foregroundColor(Color("Orange"))
                         .padding(.vertical, 10)
                     }
-                    
                     if item.showWeek {
                         VStack(spacing: 0){
                             ForEach(result, id: \.self) { date in
@@ -65,9 +63,6 @@ struct HistoryListView: View {
                             HistoryTotalView(item: i)
                         }
                     }
-                    
-                    
-                    
                 }
                 .roundedBackgroundWithBorder
             }

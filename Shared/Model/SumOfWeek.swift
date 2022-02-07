@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 class SumOfWeek: Identifiable {
+    var id = UUID().uuidString
+    
     var week: WeekAndYear
     var secWork: Int
     var secPause: Int

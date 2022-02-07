@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct WeekAndYear: Equatable, Hashable {
+struct WeekAndYear: Equatable, Hashable, Identifiable {
+    let id = UUID().uuidString
     var weekOfYear: Int
     var yearForWeekOfYear: Int
     var beginOfWeek: Date
@@ -26,4 +27,9 @@ struct WeekAndYear: Equatable, Hashable {
         // bool for show/hide week in history view
         self.showWeek = false
     }
+    
+    static func == (lhs: WeekAndYear, rhs: WeekAndYear) -> Bool {
+        lhs.weekOfYear == rhs.weekOfYear && lhs.yearForWeekOfYear == rhs.yearForWeekOfYear
+    }
+    
 }

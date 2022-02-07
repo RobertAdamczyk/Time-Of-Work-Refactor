@@ -17,7 +17,7 @@ struct HoursPicker: View {
             VStack(spacing: 20){
                 SettingHeaderView(name: "Hours a week")
                 VStack(spacing: 0){
-                    ForEach(1..<51) { i in
+                    ForEach(1..<51, id: \.self) { i in
                         if i % 5 == 0 {
                             Button(action:{
                                 viewModel.hoursWeek = i
@@ -37,7 +37,7 @@ struct HoursPicker: View {
                                 .padding(.vertical, 12)
                                 .backgroundWithBottom
                             }
-                            
+
                         }
                     }
                 }.overlay(
@@ -48,7 +48,7 @@ struct HoursPicker: View {
                     }
                 )
                 .buttonStyle(PlainButtonStyle())
-                
+
                 Spacer()
             }
         }
