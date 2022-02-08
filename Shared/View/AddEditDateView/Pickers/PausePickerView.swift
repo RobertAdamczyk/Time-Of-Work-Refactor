@@ -13,35 +13,27 @@ struct PausePickerView: View {
     @State var value2: Int = 0
     var body: some View {
         GeometryReader { reader in
-            HStack (spacing: 0){
-                ZStack(alignment: Alignment.init(horizontal: .center, vertical: .center)){
-                    HStack{
-                        Text("hour").bold()
-                            .offset(x: 45)
+            HStack{
+                
+                Picker("h", selection: $value1) {
+                    ForEach(0...23, id: \.self) { i in
+                        Text("\(i) h")
                     }
-                    Picker("h", selection: $value1) {
-                        ForEach(0...23, id: \.self) { i in
-                            Text("\(i)")
-                                .padding(.leading, 50)
-                        }.offset(x: -115)
-                        
-                    }.offset(x: 100)
+                    
                 }
+                .pickerStyle(WheelPickerStyle())
                 .frame(width: reader.size.width/2, height: reader.size.height)
+                .compositingGroup()
                 .clipped()
-                ZStack(alignment: Alignment.init(horizontal: .center, vertical: .center)){
-                    HStack{
-                        Text("min").bold()
-                            .offset(x: 7)
+                Spacer()
+                Picker("h", selection: $value2) {
+                    ForEach(0...59, id: \.self) { i in
+                        Text("\(i) m")
                     }
-                    Picker("h", selection: $value2) {
-                        ForEach(0...59, id: \.self) { i in
-                            Text("\(i)")
-                                .padding(.trailing, 50)
-                        }.offset(x: 100)
-                    }.offset(x: -100)
                 }
+                .pickerStyle(WheelPickerStyle())
                 .frame(width: reader.size.width/2, height: reader.size.height)
+                .compositingGroup()
                 .clipped()
             }
             .onChange(of: value1) { _ in
