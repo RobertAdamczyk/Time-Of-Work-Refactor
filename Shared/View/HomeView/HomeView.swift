@@ -41,6 +41,9 @@ struct HomeView: View {
                 TimePickerView(time: $viewModel.lastDate)
                     .offset(y: -100)
                     .transition(.scale)
+                    .onDisappear {
+                        viewModel.setLastDate(value: viewModel.lastDate)
+                    }
             }
         }
         .environmentObject(viewModel)
