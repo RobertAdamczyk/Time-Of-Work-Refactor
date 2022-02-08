@@ -13,7 +13,7 @@ struct PausePickerView: View {
     @State var value2: Int = 0
     var body: some View {
         GeometryReader { reader in
-            HStack{
+            HStack(spacing: 0){
                 
                 Picker("h", selection: $value1) {
                     ForEach(0...23, id: \.self) { i in
@@ -25,7 +25,6 @@ struct PausePickerView: View {
                 .frame(width: reader.size.width/2, height: reader.size.height)
                 .compositingGroup()
                 .clipped()
-                Spacer()
                 Picker("h", selection: $value2) {
                     ForEach(0...59, id: \.self) { i in
                         Text("\(i) m")
