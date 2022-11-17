@@ -13,21 +13,19 @@ struct PausePickerView: View {
     @State var value2: Int = 0
     var body: some View {
         GeometryReader { reader in
-            HStack(spacing: 0){
-                
+            HStack(spacing: 0) {
                 Picker("h", selection: $value1) {
-                    ForEach(0...23, id: \.self) { i in
-                        Text("\(i) h")
+                    ForEach(0...23, id: \.self) { index in
+                        Text("\(index) h")
                     }
-                    
                 }
                 .pickerStyle(WheelPickerStyle())
                 .frame(width: reader.size.width/2, height: reader.size.height)
                 .compositingGroup()
                 .clipped()
                 Picker("h", selection: $value2) {
-                    ForEach(0...59, id: \.self) { i in
-                        Text("\(i) m")
+                    ForEach(0...59, id: \.self) { index in
+                        Text("\(index) m")
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
@@ -41,13 +39,12 @@ struct PausePickerView: View {
             .onChange(of: value2) { _ in
                 self.sec = value1 * 3600 + value2 * 60
             }
-            .onAppear(){
+            .onAppear {
                 value1 = self.sec / 3600
                 value2 = self.sec % 3600 / 60
             }
         }
         .frame(height: 220)
         .backgroundWithBorder
-        
     }
 }

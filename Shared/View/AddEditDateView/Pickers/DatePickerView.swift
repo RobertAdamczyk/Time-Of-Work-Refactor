@@ -11,14 +11,13 @@ struct DatePickerView: View {
     @Binding var date: Date
     @Binding var night: Bool
     var body: some View {
-        
-        VStack{
+        VStack {
             DatePicker("Start time: ", selection: $date, displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .labelsHidden()
             Divider()
-            HStack{
-                Toggle(isOn: $night){
+            HStack {
+                Toggle(isOn: $night) {
                     Text("Work at night ?")
                 }
             }
@@ -28,5 +27,3 @@ struct DatePickerView: View {
         .backgroundWithBorder
     }
 }
-
-

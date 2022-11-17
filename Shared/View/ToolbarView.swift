@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ToolbarView: View {
-    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var viewModel: MainViewModel
     var body: some View {
         ZStack(alignment: .top){

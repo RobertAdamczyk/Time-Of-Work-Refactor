@@ -11,22 +11,22 @@ struct DaysPicker: View {
     @EnvironmentObject var viewModel: SettingsViewModel
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        ZStack{
+        ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
-            VStack(spacing: 20){
+            VStack(spacing: 20) {
                 SettingHeaderView(name: "Days a week")
-                VStack(spacing: 0){
-                    ForEach(1..<8) { i in
-                        Button(action:{
-                            viewModel.daysWeek = i
+                VStack(spacing: 0) {
+                    ForEach(1..<8) { index in
+                        Button {
+                            viewModel.daysWeek = index
                             UserDefaults.standard.setValue(viewModel.daysWeek, forKey: "daysWeek")
                             presentationMode.wrappedValue.dismiss()
-                        }){
-                            HStack{
-                                Text("\(i)")
+                        } label: {
+                            HStack {
+                                Text("\(index)")
                                 Spacer()
-                                if viewModel.daysWeek == i {
+                                if viewModel.daysWeek == index {
                                     Image(systemName: "checkmark")
                                         .foregroundColor(Color("Orange"))
                                 }
@@ -36,18 +36,15 @@ struct DaysPicker: View {
                             .padding(.vertical, 12)
                             .backgroundWithBottom
                         }
-                        
-                        
                     }
                 }.overlay(
-                    VStack{
+                    VStack {
                         Rectangle().frame(height: 1)
                             .foregroundColor(Color("BorderColor"))
                         Spacer()
                     }
                 )
                 .buttonStyle(PlainButtonStyle())
-                
                 Spacer()
             }
         }

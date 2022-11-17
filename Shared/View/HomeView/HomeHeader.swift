@@ -9,22 +9,21 @@ import SwiftUI
 
 struct HomeHeader: View {
     @EnvironmentObject var mainViewModel: MainViewModel
-    var value : String
+    var value: String
     @State var animation = false
     var body: some View {
-        HStack{
+        HStack {
             Text("\(value)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(Color("Orange"))
                 .padding(.leading, 5)
             Spacer()
-            
-            Button(action:{
+            Button {
                 withAnimation {
                     mainViewModel.activeSheet = .settings
                 }
-            }){
+            } label: {
                 Image(systemName: "gearshape.fill")
                     .font(.largeTitle)
                     .foregroundColor(Color("Orange"))
@@ -32,15 +31,14 @@ struct HomeHeader: View {
                     .shadow(color: .black, radius: 1, x: 1, y: 1)
             }
             .padding(.trailing, 10)
-                
         }
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
         .padding(10)
         .backgroundWithBorder
-        .padding(.horizontal,-1)
-        .padding(.top,-1)
-        .onAppear(){
-            withAnimation(Animation.linear(duration: 9).repeatForever(autoreverses: false)){
+        .padding(.horizontal, -1)
+        .padding(.top, -1)
+        .onAppear {
+            withAnimation(Animation.linear(duration: 9).repeatForever(autoreverses: false)) {
                 animation.toggle()
             }
         }

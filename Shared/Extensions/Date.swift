@@ -1,8 +1,8 @@
 //
-//  DateDayOfWeek.swift
+//  Date.swift
 //  Time Of Work (iOS)
 //
-//  Created by Robert Adamczyk on 10.03.21.
+//  Created by Robert Adamczyk on 17.11.22.
 //
 
 import Foundation
@@ -13,5 +13,11 @@ extension Date {
         dateFormatter.dateFormat = format.rawValue
         let string = dateFormatter.string(from: self)
         return string
+    }
+}
+
+extension Date {
+    func plusOneDay() -> Date? {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self)
     }
 }

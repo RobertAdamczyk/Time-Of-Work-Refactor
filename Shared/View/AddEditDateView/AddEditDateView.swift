@@ -13,20 +13,20 @@ struct AddEditDateView: View {
     var date: FetchedResults<Dates>.Element?
     var name: String
     var body: some View {
-        ZStack(alignment: .top){
+        ZStack(alignment: .top) {
             Color("BackgroundColor")
             TabView {
-                ZStack{
+                ZStack {
                     Color("BackgroundColor")
                         .onTapGesture {
                             viewModel.changeShowComponent(newValue: nil)
                         }
-                    VStack(spacing: 20){
+                    VStack(spacing: 20) {
                         NewDateRow()
                         if viewModel.new.specialDay == nil {
                             StartEndRow()
                             PauseRow()
-                        }else {
+                        } else {
                             HoursRow()
                         }
                         SaveButtonRow(activeSheet: $activeSheet, date: date)
@@ -35,8 +35,7 @@ struct AddEditDateView: View {
                     .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
                     .padding(.horizontal)
                 } // Page 1 with Date , Time In, Out, Pause Save Button
-                
-                ZStack{
+                ZStack {
                     Color("BackgroundColor")
                         .onTapGesture {
                             viewModel.changeShowComponent(newValue: nil)
@@ -45,18 +44,15 @@ struct AddEditDateView: View {
                         .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
                         .padding(.horizontal)
                 } // Page 2 with Holidays Settings
-                
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
             .environmentObject(viewModel)
-            
+
             AddEditHeaderView(value: name)
-            
-            
-            
-            ZStack(alignment: .bottom){
+
+            ZStack(alignment: .bottom) {
                 Color.clear
-                switch(viewModel.showComponent) {
+                switch viewModel.showComponent {
                 case .datePicker:
                     DatePickerView(date: $viewModel.new.date, night: $viewModel.new.night)
                         .transition(.scale)
@@ -75,14 +71,12 @@ struct AddEditDateView: View {
                 default:
                     EmptyView()
                 }
-                
             }
             .padding(.bottom, 10 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0 ))
             .padding(.horizontal, 15)
-            
         }
         .ignoresSafeArea()
-        .onAppear(){
+        .onAppear {
             if let date = date {
                 viewModel.new.date = date.date
                 viewModel.new.timeIn = date.timeIn

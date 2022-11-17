@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DateRow: View {
     var body: some View {
-        HStack{
+        HStack {
             Spacer()
             Text("\(Date(), style: .date)")
                 .font(.title3)
