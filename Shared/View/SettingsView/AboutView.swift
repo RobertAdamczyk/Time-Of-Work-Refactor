@@ -27,7 +27,7 @@ struct AboutView: View {
                     }
                     VStack{
                         Text("Created by Robert Adamczyk")
-                        Text("Version 1.0.6")
+                        Text("Version 1.1.0")
                     }
                     .font(.subheadline)
                     
