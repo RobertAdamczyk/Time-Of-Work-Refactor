@@ -11,7 +11,7 @@ struct MainSettingView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("BackgroundColor")
+                Color.theme.background
                     .ignoresSafeArea()
                 VStack(spacing: 20) {
                     AddEditHeaderView(value: "Settings")
@@ -20,7 +20,7 @@ struct MainSettingView: View {
                             Image(systemName: "person.fill")
                             Text("User Preferences")
                         }
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.theme.gray)
                         .font(.subheadline)
                         .padding(.horizontal)
                         NavigationLink(destination: TimeSettingView()) {
@@ -33,7 +33,7 @@ struct MainSettingView: View {
                             Image(systemName: "info")
                             Text("Info")
                         }
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.theme.gray)
                         .font(.subheadline)
                         .padding(.horizontal)
                         NavigationLink(destination: AboutView()) {

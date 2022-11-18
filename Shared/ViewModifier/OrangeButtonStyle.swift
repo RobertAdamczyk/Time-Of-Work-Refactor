@@ -14,8 +14,8 @@ struct OrangeButtonStyle: ButtonStyle {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 15)
-                    .foregroundColor(Color("Orange"))
-                    .shadow(color: .black, radius: configuration.isPressed ? 0 : 1,
+                    .foregroundColor(Color.theme.accent)
+                    .shadow(color: Color.theme.shadow, radius: configuration.isPressed ? 0 : 1,
                             x: configuration.isPressed ? 0 : 1,
                             y: configuration.isPressed ? 0 : 1))
             .opacity(configuration.isPressed ? 0.7 : 1)

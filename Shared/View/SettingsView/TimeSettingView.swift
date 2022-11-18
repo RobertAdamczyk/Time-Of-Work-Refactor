@@ -11,7 +11,7 @@ struct TimeSettingView: View {
     @EnvironmentObject var viewModel: SettingsViewModel
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
+            Color.theme.background
                 .ignoresSafeArea()
             VStack(alignment: .leading, spacing: 20) {
                 SettingHeaderView(name: "Time")
@@ -27,7 +27,7 @@ struct TimeSettingView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 Text("Set your time of work.")
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.theme.gray)
                     .font(.subheadline)
                     .padding(.horizontal)
                     .padding(.top, -5)

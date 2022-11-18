@@ -16,7 +16,7 @@ struct SettingHeaderView: View {
             Spacer()
             Text("\(name)").bold()
                 .font(.title2)
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
             Spacer()
         }
         .overlay(
@@ -29,7 +29,7 @@ struct SettingHeaderView: View {
                         Spacer()
                     }
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(Color("Orange"))
+                    .foregroundColor(Color.theme.accent)
                     .frame(width: 60, height: 50)
                 }
                 Spacer()

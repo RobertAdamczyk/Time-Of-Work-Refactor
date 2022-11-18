@@ -12,7 +12,7 @@ struct DaysPicker: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
+            Color.theme.background
                 .ignoresSafeArea()
             VStack(spacing: 20) {
                 SettingHeaderView(name: "Days a week")
@@ -28,7 +28,7 @@ struct DaysPicker: View {
                                 Spacer()
                                 if viewModel.daysWeek == index {
                                     Image(systemName: "checkmark")
-                                        .foregroundColor(Color("Orange"))
+                                        .foregroundColor(Color.theme.accent)
                                 }
                             }
                             .font(.system(size: 18, weight: .regular))
@@ -40,7 +40,7 @@ struct DaysPicker: View {
                 }.overlay(
                     VStack {
                         Rectangle().frame(height: 1)
-                            .foregroundColor(Color("BorderColor"))
+                            .foregroundColor(Color.theme.border)
                         Spacer()
                     }
                 )

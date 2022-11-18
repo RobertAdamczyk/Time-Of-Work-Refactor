@@ -17,7 +17,7 @@ struct ToolbarView: View {
                 .clipShape(CustomToolbar(radius: 35))
                 .overlay(
                     CustomToolbar(radius: 35)
-                        .stroke(Color("BorderColor"))
+                        .stroke(Color.theme.border)
                         .padding(.horizontal, -1)
                         .padding(.bottom, -1)
                 )
@@ -35,7 +35,7 @@ struct ToolbarView: View {
                     }
                     .frame(width: 50)
                     .padding(.top, 40)
-                    .foregroundColor(viewModel.view == .home ? Color("Orange") : Color.gray)
+                    .foregroundColor(viewModel.view == .home ? Color.theme.accent : Color.theme.gray)
                 }
                 Spacer()
                 Button {
@@ -45,7 +45,7 @@ struct ToolbarView: View {
                         .resizable()
                         .frame(width: 40, height: 40)
                 }
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
                 .offset(y: -5)
                 Spacer()
                 Button {
@@ -60,7 +60,7 @@ struct ToolbarView: View {
                     }
                     .frame(width: 50)
                     .padding(.top, 40)
-                    .foregroundColor(viewModel.view == .history ? Color("Orange") : Color.gray)
+                    .foregroundColor(viewModel.view == .history ? Color.theme.accent : Color.theme.gray)
                 }
                 Spacer()
             }

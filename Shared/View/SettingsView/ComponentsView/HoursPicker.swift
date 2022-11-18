@@ -12,7 +12,7 @@ struct HoursPicker: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
+            Color.theme.background
                 .ignoresSafeArea()
             VStack(spacing: 20) {
                 SettingHeaderView(name: "Hours a week")
@@ -29,7 +29,7 @@ struct HoursPicker: View {
                                     Spacer()
                                     if viewModel.hoursWeek == index {
                                         Image(systemName: "checkmark")
-                                            .foregroundColor(Color("Orange"))
+                                            .foregroundColor(Color.theme.accent)
                                     }
                                 }
                                 .font(.system(size: 18, weight: .regular))
@@ -43,7 +43,7 @@ struct HoursPicker: View {
                 }.overlay(
                     VStack {
                         Rectangle().frame(height: 1)
-                            .foregroundColor(Color("BorderColor"))
+                            .foregroundColor(Color.theme.border)
                         Spacer()
                     }
                 )

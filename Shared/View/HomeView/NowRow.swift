@@ -16,14 +16,14 @@ struct NowRow: View {
         VStack(alignment: .leading, spacing: 2) {
             Text("NOW")
                 .font(.system(size: 12))
-                .foregroundColor(Color.gray.opacity(0.8))
+                .foregroundColor(Color.theme.gray.opacity(0.8))
                 .padding(.leading)
             ZStack(alignment: .top) {
                 HStack {
                     VStack {
                         Text("Pause:")
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("Orange"))
+                            .foregroundColor(Color.theme.accent)
                         Text("\(working ? viewModel.pause.toTimeString() : "--:--")")
                     }
                     .onChange(of: viewModel.pause) { _ in
@@ -33,7 +33,7 @@ struct NowRow: View {
                     VStack {
                         Text("Start:")
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("Orange"))
+                            .foregroundColor(Color.theme.accent)
                         Text("\(viewModel.lastDate, style: .time)")
                     }
                 }
@@ -43,7 +43,7 @@ struct NowRow: View {
                         VStack {
                             Text("Work:")
                                 .fontWeight(.semibold)
-                                .foregroundColor(Color("Orange"))
+                                .foregroundColor(Color.theme.accent)
                             Text("\(working ? viewModel.currentTime.toTimeString() : "--:--")")
                         }.offset(y: -5)
                     )
@@ -61,7 +61,7 @@ struct NowRow: View {
                             Text("New Start")
                                 .fontWeight(.semibold)
                                 .font(.caption)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color.theme.buttonText)
                                 .padding(-5)
                         }
                         .buttonStyle(OrangeButtonStyle())

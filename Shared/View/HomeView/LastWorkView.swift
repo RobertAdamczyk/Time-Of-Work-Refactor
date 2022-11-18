@@ -17,14 +17,14 @@ struct LastWorkView: View {
             if viewModel.lastRecord != nil {
                 Text("LAST WORK")
                     .font(.system(size: 12))
-                    .foregroundColor(Color.gray.opacity(0.8))
+                    .foregroundColor(Color.theme.gray.opacity(0.8))
                     .padding(.leading)
                 HStack {
                     Spacer()
                     VStack(spacing: 5) {
                         HStack { // hstack for date
                             Image(systemName: "calendar")
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color.theme.gray)
                             if viewModel.lastRecord!.night {
                                 VStack {
                                     Text("From \(viewModel.lastRecord!.date, style: .date)")
@@ -37,24 +37,24 @@ struct LastWorkView: View {
                         HStack(spacing: 10) { // hstack for timeIn and timeOut
                             HStack(spacing: 2) {
                                 Image(systemName: "arrowshape.turn.up.right.fill")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(Color.theme.green)
                                 Text("\(viewModel.lastRecord!.timeIn, style: .time)")
                             }
                             HStack(spacing: 2) {
                                 Image(systemName: "arrowshape.turn.up.left.fill")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(Color.theme.red)
                                 Text("\(viewModel.lastRecord!.timeOut, style: .time)")
                             }
                         }
                         HStack(spacing: 10) { // hstack for secwork and secpause
                             HStack(spacing: 2) {
                                 Image(systemName: "hammer.fill")
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(Color.theme.gray)
                                 Text("\(viewModel.lastRecord!.secWork!.toTimeString())")
                             }
                             HStack(spacing: 2) {
                                 Image(systemName: "pause.circle")
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(Color.theme.gray)
                                 Text("\(viewModel.lastRecord!.secPause.toTimeString())")
                             }
                         }
@@ -64,7 +64,7 @@ struct LastWorkView: View {
                 .overlay(
                     HStack {
                         Rectangle()
-                            .fill(Color("Orange"))
+                            .fill(Color.theme.accent)
                             .frame(width: 2)
                         Spacer()
                     }

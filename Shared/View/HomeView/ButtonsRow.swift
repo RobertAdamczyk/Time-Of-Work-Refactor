@@ -23,7 +23,7 @@ struct ButtonsRow: View {
             } label: {
                 Text(viewModel.working ? "End Work" : "Start Work")
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.theme.buttonText)
                     .frame(width: 100)
             }
 
@@ -33,7 +33,7 @@ struct ButtonsRow: View {
             } label: {
                 Text("Set Pause")
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.theme.buttonText)
                     .frame(width: 100)
             }
 

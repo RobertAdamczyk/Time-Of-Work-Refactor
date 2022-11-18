@@ -10,7 +10,7 @@ import SwiftUI
 struct AboutView: View {
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
+            Color.theme.background
                 .ignoresSafeArea()
             VStack {
                 SettingHeaderView(name: "About")

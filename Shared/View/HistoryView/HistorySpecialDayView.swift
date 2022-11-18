@@ -16,7 +16,7 @@ struct HistorySpecialDayView: View {
                 Image(systemName: value.specialDay == SpecialDays.sickness.rawValue ?
                       "bandage.fill" : value.specialDay == SpecialDays.holiday.rawValue ?
                       "case.fill" : "flag.fill")
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.theme.gray)
             }
         }
     }

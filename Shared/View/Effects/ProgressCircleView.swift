@@ -15,12 +15,12 @@ struct ProgressCircleView: View {
         GeometryReader { reader in
             ZStack {
                 Circle()
-                    .stroke(Color.gray, lineWidth: reader.size.width/10)
+                    .stroke(Color.theme.gray, lineWidth: reader.size.width/10)
                     .frame(width: reader.size.width, height: reader.size.height)
                 Circle()
                     .rotation(.init(degrees: -90))
                     .trim(from: 0, to: progressAnimation)
-                    .stroke(Color("Orange"), style: StrokeStyle(lineWidth: reader.size.width/10, lineCap: .round))
+                    .stroke(Color.theme.accent, style: StrokeStyle(lineWidth: reader.size.width/10, lineCap: .round))
                     .frame(width: reader.size.width, height: reader.size.height)
             }
             .scaleEffect(showEffect ? 1.05 : 1)

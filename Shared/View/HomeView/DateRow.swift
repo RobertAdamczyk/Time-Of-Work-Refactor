@@ -14,7 +14,7 @@ struct DateRow: View {
             Text("\(Date(), style: .date)")
                 .font(.title3)
                 .fontWeight(.semibold)
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
             Spacer()
         }
         .padding(.vertical)

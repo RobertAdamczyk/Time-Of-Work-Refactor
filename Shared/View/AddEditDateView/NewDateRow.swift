@@ -15,7 +15,7 @@ struct NewDateRow: View {
         } label: {
             HStack {
                 Text("Date").bold()
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.theme.gray)
                 Spacer()
                 HStack {
                     if viewModel.new.night {
@@ -25,7 +25,7 @@ struct NewDateRow: View {
                         Text("\(viewModel.new.date, style: .date)").bold()
                     }
                 }
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
             }
             .padding()
             .roundedBackgroundWithBorder

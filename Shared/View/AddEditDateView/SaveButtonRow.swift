@@ -25,7 +25,7 @@ struct SaveButtonRow: View {
         } label: {
             Text("Save")
                 .fontWeight(.bold)
-                .foregroundColor(.white)
+                .foregroundColor(Color.theme.buttonText)
                 .frame(width: 100)
         }
         .buttonStyle(OrangeButtonStyle())
