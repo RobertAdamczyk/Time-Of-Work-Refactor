@@ -26,7 +26,10 @@ struct LastWorkView: View {
                             Image(systemName: "calendar")
                                 .foregroundColor(.gray)
                             if viewModel.lastRecord!.night {
-                                Text("\(viewModel.lastRecord!.date, style: .date) - \(viewModel.lastRecord!.date.plusOneDay() ?? Date(), style: .date)")
+                                VStack {
+                                    Text("From \(viewModel.lastRecord!.date, style: .date)")
+                                    Text("Until \(viewModel.lastRecord!.date.plusOneDay() ?? Date(), style: .date)")
+                                }
                             } else {
                                 Text("\(viewModel.lastRecord!.date, style: .date)")
                             }
