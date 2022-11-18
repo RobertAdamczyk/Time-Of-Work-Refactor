@@ -10,7 +10,7 @@ import SwiftUI
 struct TimePickerView: View {
     @Binding var time: Date
     var body: some View {
-        VStack{
+        VStack {
             DatePicker("Start time: ", selection: $time, displayedComponents: .hourAndMinute)
                 .datePickerStyle(WheelDatePickerStyle())
                 .labelsHidden()

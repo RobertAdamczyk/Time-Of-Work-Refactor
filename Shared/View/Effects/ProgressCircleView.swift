@@ -13,7 +13,7 @@ struct ProgressCircleView: View {
     var progress: CGFloat
     var body: some View {
         GeometryReader { reader in
-            ZStack{
+            ZStack {
                 Circle()
                     .stroke(Color.gray, lineWidth: reader.size.width/10)
                     .frame(width: reader.size.width, height: reader.size.height)
@@ -24,7 +24,7 @@ struct ProgressCircleView: View {
                     .frame(width: reader.size.width, height: reader.size.height)
             }
             .scaleEffect(showEffect ? 1.05 : 1)
-        }.onAppear() {
+        }.onAppear {
             setProgress(new: progress)
         }
         .onChange(of: progress) { new in
@@ -40,17 +40,16 @@ struct ProgressCircleView: View {
                 }
             }
         }
-        
     }
-    
+
     func setProgress(new: CGFloat) {
-        withAnimation(Animation.spring(response: 1, dampingFraction: 1, blendDuration: 1).speed(0.3).delay(0.5)){
+        withAnimation(Animation.spring(response: 1, dampingFraction: 1, blendDuration: 1).speed(0.3).delay(0.5)) {
             progressAnimation = new > 1 ? 1 : new
         }
     }
-    
-    func toggleShowEffect(){
-        withAnimation{
+
+    func toggleShowEffect() {
+        withAnimation {
             showEffect.toggle()
         }
     }

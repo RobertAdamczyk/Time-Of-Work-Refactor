@@ -1,4 +1,4 @@
-//(
+//
 //  MenuBarView.swift
 //  Time Of Work (iOS)
 //
@@ -12,25 +12,24 @@ struct MenuBarView: View {
     @EnvironmentObject var viewModel: HistoryViewModel
     @EnvironmentObject var mainViewModel: MainViewModel
     @Environment(\.managedObjectContext) var viewContext
-    
+
     var body: some View {
         if viewModel.selectedDate == date {
-            HStack{
+            HStack {
                 Spacer()
-                Button(action:{
+                Button {
                     mainViewModel.activeSheet = .editDate
-                }){
+                } label: {
                     Text("Edit")
                         .padding(6)
                         .frame(width: 80)
                         .background(Color("Orange").opacity(0.9).cornerRadius(10))
-                        
                 }
-                Button(action:{
+                Button {
                     if let date = date {
                         viewModel.removeDate(date: date, context: viewContext)
                     }
-                }){
+                } label: {
                     Text("Delete")
                         .padding(6)
                         .frame(width: 80)
@@ -40,10 +39,8 @@ struct MenuBarView: View {
             .buttonStyle(PlainButtonStyle())
             .transition(.move(edge: .trailing))
             .padding(.horizontal, 5)
-        }else{
+        } else {
             EmptyView()
         }
-        
     }
 }
-

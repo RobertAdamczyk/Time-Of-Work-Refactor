@@ -10,14 +10,13 @@ import CoreData
 
 class SumOfWeek: Identifiable {
     var id = UUID().uuidString
-    
     var week: WeekAndYear
     var secWork: Int
     var secPause: Int
     var holidays: Int = 0
     var publicHolidays: Int = 0
     var sickness: Int = 0
-    
+
     init(date: FetchedResults<Dates>.Element, week: WeekAndYear) {
         self.week = week
         self.secWork = date.secWork
@@ -35,7 +34,7 @@ class SumOfWeek: Identifiable {
             }
         }
     }
-    
+
     func add(date: FetchedResults<Dates>.Element) {
         self.secWork += date.secWork
         self.secPause += date.secPause

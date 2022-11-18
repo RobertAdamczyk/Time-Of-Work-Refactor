@@ -11,16 +11,16 @@ struct NowRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
     @EnvironmentObject var setting: SettingsViewModel
     @AppStorage("working") var working = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("NOW")
                 .font(.system(size: 12))
                 .foregroundColor(Color.gray.opacity(0.8))
                 .padding(.leading)
-            ZStack(alignment: .top){
-                HStack{
-                    VStack{
+            ZStack(alignment: .top) {
+                HStack {
+                    VStack {
                         Text("Pause:")
                             .fontWeight(.semibold)
                             .foregroundColor(Color("Orange"))
@@ -29,21 +29,18 @@ struct NowRow: View {
                     .onChange(of: viewModel.pause) { _ in
                        viewModel.refreshWorkTime()
                     }
-                        
                     Spacer()
-                    VStack{
+                    VStack {
                         Text("Start:")
                             .fontWeight(.semibold)
                             .foregroundColor(Color("Orange"))
                         Text("\(viewModel.lastDate, style: .time)")
-                            
                     }
                 }
-                
                 ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / CGFloat( 3600 * setting.hoursWeek / setting.daysWeek ) : 0)
                     .frame(width: viewModel.height * 0.18, height: viewModel.height * 0.18)
                     .overlay(
-                        VStack{
+                        VStack {
                             Text("Work:")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color("Orange"))
@@ -52,16 +49,15 @@ struct NowRow: View {
                     )
                     .overlay(LoadingView()
                                 .frame(width: viewModel.height * 0.12, height: viewModel.height * 0.12))
-                
             }
             .overlay(
-                VStack{
+                VStack {
                     Spacer()
-                    HStack{
+                    HStack {
                         Spacer()
-                        Button(action:{
+                        Button {
                             viewModel.changeShowComponent(newValue: .timeInPicker)
-                        }){
+                        } label: {
                             Text("New Start")
                                 .fontWeight(.semibold)
                                 .font(.caption)
@@ -74,16 +70,14 @@ struct NowRow: View {
             )
             .padding()
             .roundedBackgroundWithBorder
-            
-            
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            if viewModel.showComponent == nil{
+            if viewModel.showComponent == nil {
                 viewModel.refreshWorkTime()
             }
         }
-        .onAppear(){
+        .onAppear {
             viewModel.refreshWorkTime()
             viewModel.checkCurrentWork()
         }

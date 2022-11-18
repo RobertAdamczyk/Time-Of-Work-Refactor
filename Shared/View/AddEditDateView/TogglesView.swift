@@ -10,12 +10,12 @@ import SwiftUI
 struct TogglesView: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
-        VStack(spacing: 20){
+        VStack(spacing: 20) {
             ForEach(SpecialDays.allCases) { item in
-                Button(action:{
+                Button {
                     viewModel.new.specialDay = viewModel.new.specialDay == item ? nil : item
-                }){
-                    HStack{
+                } label: {
+                    HStack {
                         Text("\(item.rawValue)").bold()
                             .foregroundColor(viewModel.new.specialDay == item ? Color("Orange") : .gray)
                         Spacer()

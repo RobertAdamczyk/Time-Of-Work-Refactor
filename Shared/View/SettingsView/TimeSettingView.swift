@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct TimeSettingView: View {
-    @EnvironmentObject var viewModel : SettingsViewModel
+    @EnvironmentObject var viewModel: SettingsViewModel
     var body: some View {
-        ZStack{
+        ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
-            VStack(alignment: .leading, spacing: 20){
+            VStack(alignment: .leading, spacing: 20) {
                 SettingHeaderView(name: "Time")
-                VStack(spacing: 0){
+                VStack(spacing: 0) {
                     NavigationLink(destination: HoursPicker()) {
                         RowSetting(name: "Hours a week", value: "\(viewModel.hoursWeek)")
                             .backgroundWithBottomTop
@@ -24,9 +24,8 @@ struct TimeSettingView: View {
                         RowSetting(name: "Days a week", value: "\(viewModel.daysWeek)")
                             .backgroundWithBottom
                     }
-                    
-                }.buttonStyle(PlainButtonStyle())
-                
+                }
+                .buttonStyle(PlainButtonStyle())
                 Text("Set your time of work.")
                     .foregroundColor(.gray)
                     .font(.subheadline)
@@ -35,7 +34,6 @@ struct TimeSettingView: View {
                 Spacer()
             }
             .font(.system(size: 18, weight: .semibold))
-            
         }
         .navigationBarHidden(true)
     }

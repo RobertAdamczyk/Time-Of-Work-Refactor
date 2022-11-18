@@ -11,8 +11,7 @@ struct SettingHeaderView: View {
     var name: String
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        
-        
+
         HStack {
             Spacer()
             Text("\(name)").bold()
@@ -21,11 +20,11 @@ struct SettingHeaderView: View {
             Spacer()
         }
         .overlay(
-            HStack{
-                Button(action: {
+            HStack {
+                Button {
                     presentationMode.wrappedValue.dismiss()
-                }){
-                    HStack{
+                } label: {
+                    HStack {
                         Image(systemName: "chevron.backward")
                         Spacer()
                     }
@@ -33,7 +32,6 @@ struct SettingHeaderView: View {
                     .foregroundColor(Color("Orange"))
                     .frame(width: 60, height: 50)
                 }
-                
                 Spacer()
             }
         )
