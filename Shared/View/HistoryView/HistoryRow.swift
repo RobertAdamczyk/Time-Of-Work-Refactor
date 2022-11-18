@@ -27,7 +27,10 @@ struct HistoryRow: View {
             }
             .frame(width: width-5)
             Spacer()
-            if value.specialDay == nil {
+            if let specialDay = value.specialDay {
+                HistorySpecialDayView(value: specialDay)
+                    .frame(width: width+5)
+            } else {
                 VStack(alignment: .trailing) {
                     HStack {
                         Text("\(value.timeIn, style: .time)")
@@ -41,9 +44,6 @@ struct HistoryRow: View {
                     }
                 }
                 .frame(width: width+5)
-            } else {
-                HistorySpecialDayView(value: value)
-                    .frame(width: width+5)
             }
             Spacer()
             HStack {
