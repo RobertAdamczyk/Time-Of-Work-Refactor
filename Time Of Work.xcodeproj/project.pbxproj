@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		692CF5A02928212F00C6B389 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF59F2928212F00C6B389 /* Colors.swift */; };
 		E10B09F72603F739009FADEB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B09F62603F739009FADEB /* LoadingView.swift */; };
 		E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189325FCBE9500A32772 /* PausePickerView.swift */; };
 		E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189E25FCE50B00A32772 /* ProgressCircleView.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		692CF59F2928212F00C6B389 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E10B09F62603F739009FADEB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E112189325FCBE9500A32772 /* PausePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePickerView.swift; sourceTree = "<group>"; };
 		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				E13291CD25F2B2C500348BC3 /* New.swift */,
 				E17FD87325F7D56D00CD126F /* WeekAndYear.swift */,
 				E181989F2613A4A400B602BD /* SumOfWeek.swift */,
+				692CF59F2928212F00C6B389 /* Colors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				E12C3F6A26127DFE0082EC30 /* HoursRow.swift in Sources */,
 				E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */,
 				E18335A825EE98B100E3A952 /* HomeView.swift in Sources */,
+				692CF5A02928212F00C6B389 /* Colors.swift in Sources */,
 				E1F20B4326073F5E00790CEA /* AddEditHeaderView.swift in Sources */,
 				E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */,
 				E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */,

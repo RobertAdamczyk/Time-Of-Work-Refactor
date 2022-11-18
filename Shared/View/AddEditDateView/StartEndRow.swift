@@ -16,10 +16,10 @@ struct StartEndRow: View {
             } label: {
                 HStack {
                     Text("Start").bold()
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.theme.gray)
                     Spacer()
                     Text("\(viewModel.new.timeIn, style: .time)").bold()
-                        .foregroundColor(Color("Orange"))
+                        .foregroundColor(Color.theme.accent)
                 }
                 .padding()
                 .roundedBackgroundWithBorder
@@ -30,10 +30,10 @@ struct StartEndRow: View {
             } label: {
                 HStack {
                     Text("End").bold()
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.theme.gray)
                     Spacer()
                     Text("\(viewModel.new.timeOut, style: .time)").bold()
-                        .foregroundColor(Color("Orange"))
+                        .foregroundColor(Color.theme.accent)
                 }
                 .padding()
                 .roundedBackgroundWithBorder

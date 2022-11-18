@@ -17,7 +17,7 @@ struct HistoryListView: View {
                 HStack {
                     Text("\(item.weekOfYear)/\(String(item.yearForWeekOfYear))").bold()
                         .font(.title)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.theme.gray)
                     Spacer()
                 }
                 VStack(spacing: 0) {
@@ -35,7 +35,7 @@ struct HistoryListView: View {
                         }
                         .lineLimit(1)
                         .fixedSize(horizontal: false, vertical: false)
-                        .foregroundColor(Color("Orange"))
+                        .foregroundColor(Color.theme.accent)
                         .padding(.vertical, 10)
                     }
                     if item.showWeek {

@@ -16,7 +16,7 @@ struct HomeHeader: View {
             Text("\(value)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
                 .padding(.leading, 5)
             Spacer()
             Button {
@@ -26,9 +26,9 @@ struct HomeHeader: View {
             } label: {
                 Image(systemName: "gearshape.fill")
                     .font(.largeTitle)
-                    .foregroundColor(Color("Orange"))
+                    .foregroundColor(Color.theme.accent)
                     .rotationEffect(.init(degrees: animation ? 0 : -360))
-                    .shadow(color: .black, radius: 1, x: 1, y: 1)
+                    .shadow(color: Color.theme.shadow, radius: 1, x: 1, y: 1)
             }
             .padding(.trailing, 10)
         }

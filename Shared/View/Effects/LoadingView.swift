@@ -17,7 +17,7 @@ struct LoadingView: View {
                 ForEach(0..<3) { index in
                     Circle()
                         .frame(width: reader.size.width/10, height: reader.size.height/10)
-                        .foregroundColor(Color("Orange"))
+                        .foregroundColor(Color.theme.accent)
                         .offset(x: reader.size.width/4 * offset[index], y: reader.size.height/2 * -1)
                         .rotationEffect(.init(degrees: startAnimation[index] ? 0 : -360))
                 }

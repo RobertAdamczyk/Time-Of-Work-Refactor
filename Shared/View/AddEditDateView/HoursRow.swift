@@ -15,10 +15,10 @@ struct HoursRow: View {
         } label: {
             HStack {
                 Text("Hours").bold()
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.theme.gray)
                 Spacer()
                 Text("\(viewModel.hoursCount)").bold()
-                    .foregroundColor(Color("Orange"))
+                    .foregroundColor(Color.theme.accent)
             }
             .padding()
             .roundedBackgroundWithBorder

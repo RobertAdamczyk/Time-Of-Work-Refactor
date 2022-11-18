@@ -14,7 +14,7 @@ struct MainView: View {
     @ObservedObject var settingsViewModel = SettingsViewModel()
     var body: some View {
         ZStack(alignment: .bottom) {
-            Color("BackgroundColor")
+            Color.theme.background
             VStack {
                 if viewModel.view == .home {
                     HomeView()

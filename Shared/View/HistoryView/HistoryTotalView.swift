@@ -12,42 +12,42 @@ struct HistoryTotalView: View {
     var body: some View {
         HStack(spacing: 15) {
             Text("Total:")
-                .foregroundColor(.gray)
+                .foregroundColor(Color.theme.gray)
             VStack {
                 HStack {
                     Image(systemName: "hammer.fill")
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.theme.gray)
                     Text("\(item.secWork.toTimeString())")
                         .bold()
                     Image(systemName: "pause.circle")
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.theme.gray)
                     Text("\(item.secPause.toTimeString())")
                         .bold()
                 }
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
                 HStack {
                     if item.holidays > 0 {
                         Image(systemName: "case.fill")
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.theme.gray)
                         Text("\(item.holidays) d")
                             .bold()
                         Spacer().frame(width: 20)
                     }
                     if item.publicHolidays > 0 {
                         Image(systemName: "flag.fill")
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.theme.gray)
                         Text("\(item.publicHolidays) d")
                             .bold()
                         Spacer().frame(width: 20)
                     }
                     if item.sickness > 0 {
                         Image(systemName: "bandage.fill")
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.theme.gray)
                         Text("\(item.sickness) d")
                             .bold()
                     }
                 }
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
             }
         }
     }

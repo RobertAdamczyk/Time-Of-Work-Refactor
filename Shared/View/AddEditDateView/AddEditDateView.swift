@@ -14,10 +14,10 @@ struct AddEditDateView: View {
     var name: String
     var body: some View {
         ZStack(alignment: .top) {
-            Color("BackgroundColor")
+            Color.theme.background
             TabView {
                 ZStack {
-                    Color("BackgroundColor")
+                    Color.theme.background
                         .onTapGesture {
                             viewModel.changeShowComponent(newValue: nil)
                         }
@@ -36,7 +36,7 @@ struct AddEditDateView: View {
                     .padding(.horizontal)
                 } // Page 1 with Date , Time In, Out, Pause Save Button
                 ZStack {
-                    Color("BackgroundColor")
+                    Color.theme.background
                         .onTapGesture {
                             viewModel.changeShowComponent(newValue: nil)
                         }

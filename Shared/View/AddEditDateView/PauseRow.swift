@@ -15,10 +15,10 @@ struct PauseRow: View {
         } label: {
             HStack {
                 Text("Pause").bold()
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.theme.gray)
                 Spacer()
                 Text("\(viewModel.new.secPause.toTimeString())").bold()
-                    .foregroundColor(Color("Orange"))
+                    .foregroundColor(Color.theme.accent)
             }
             .padding()
             .roundedBackgroundWithBorder

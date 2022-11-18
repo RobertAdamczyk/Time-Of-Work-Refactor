@@ -11,7 +11,7 @@ extension View {
     var backgroundWithBorder: some View {
         self
             .background(VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial)))
-            .border(Color("BorderColor"))
+            .border(Color.theme.border)
     }
 
     var backgroundWithBottom: some View {
@@ -21,7 +21,7 @@ extension View {
                 VStack {
                     Spacer()
                     Rectangle().frame(height: 1)
-                        .foregroundColor(Color("BorderColor"))
+                        .foregroundColor(Color.theme.border)
                 }
             )
     }
@@ -35,7 +35,7 @@ extension View {
                     Spacer()
                     Rectangle().frame(height: 1)
                 }
-                .foregroundColor(Color("BorderColor"))
+                .foregroundColor(Color.theme.border)
             )
     }
 
@@ -43,6 +43,6 @@ extension View {
         self
             .background(VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
                             .clipShape(RoundedRectangle(cornerRadius: 15)))
-            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("BorderColor")))
+            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.theme.border))
     }
 }

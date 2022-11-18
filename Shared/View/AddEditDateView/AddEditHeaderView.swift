@@ -14,7 +14,7 @@ struct AddEditHeaderView: View {
             Text("\(value)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
                 .padding(.leading, 5)
             Spacer()
         }

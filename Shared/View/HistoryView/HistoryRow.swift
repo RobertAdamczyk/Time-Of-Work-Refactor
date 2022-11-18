@@ -32,12 +32,12 @@ struct HistoryRow: View {
                     HStack {
                         Text("\(value.timeIn, style: .time)")
                         Image(systemName: "arrowshape.turn.up.left.fill")
-                            .foregroundColor(.green)
+                            .foregroundColor(Color.theme.green)
                     }
                     HStack {
                         Text("\(value.timeOut, style: .time)")
                         Image(systemName: "arrowshape.turn.up.right.fill")
-                            .foregroundColor(.red)
+                            .foregroundColor(Color.theme.red)
                     }
                 }
                 .frame(width: width+5)
@@ -55,7 +55,7 @@ struct HistoryRow: View {
                     Image(systemName: "hammer.fill")
                     if value.specialDay == nil { Image(systemName: "pause.circle") }
                 }
-                .foregroundColor(.gray)
+                .foregroundColor(Color.theme.gray)
             }
             .frame(width: width+5)
         }
@@ -64,7 +64,7 @@ struct HistoryRow: View {
                 Rectangle()
                     .frame(width: 2)
                     .padding(.vertical, 3)
-                    .foregroundColor(Color("Orange"))
+                    .foregroundColor(Color.theme.accent)
                     .padding(.leading, 3)
                 Spacer()
             }

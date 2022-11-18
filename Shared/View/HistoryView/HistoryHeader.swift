@@ -16,7 +16,7 @@ struct HistoryHeader: View {
                     Text("History")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(Color("Orange"))
+                        .foregroundColor(Color.theme.accent)
                         .padding(.leading, 5)
                     Spacer()
                 }
@@ -24,7 +24,7 @@ struct HistoryHeader: View {
                 HStack {
                     Spacer()
                     Text("History").bold()
-                        .foregroundColor(Color("Orange"))
+                        .foregroundColor(Color.theme.accent)
                     Spacer()
                 }
             }

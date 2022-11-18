@@ -23,7 +23,7 @@ struct MenuBarView: View {
                     Text("Edit")
                         .padding(6)
                         .frame(width: 80)
-                        .background(Color("Orange").opacity(0.9).cornerRadius(10))
+                        .background(Color.theme.accent.opacity(0.9).cornerRadius(10))
                 }
                 Button {
                     if let date = date {
@@ -33,7 +33,7 @@ struct MenuBarView: View {
                     Text("Delete")
                         .padding(6)
                         .frame(width: 80)
-                        .background(Color.red.opacity(0.9).cornerRadius(10))
+                        .background(Color.theme.red.opacity(0.9).cornerRadius(10))
                 }
             }
             .buttonStyle(PlainButtonStyle())

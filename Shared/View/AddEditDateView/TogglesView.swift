@@ -17,11 +17,11 @@ struct TogglesView: View {
                 } label: {
                     HStack {
                         Text("\(item.rawValue)").bold()
-                            .foregroundColor(viewModel.new.specialDay == item ? Color("Orange") : .gray)
+                            .foregroundColor(viewModel.new.specialDay == item ? Color.theme.accent : Color.theme.gray)
                         Spacer()
                         if viewModel.new.specialDay == item {
                             Image(systemName: "checkmark")
-                                .foregroundColor(Color("Orange"))
+                                .foregroundColor(Color.theme.accent)
                         }
                     }
                     .padding()
