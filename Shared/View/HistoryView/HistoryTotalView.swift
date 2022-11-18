@@ -27,21 +27,21 @@ struct HistoryTotalView: View {
                 .foregroundColor(Color.theme.accent)
                 HStack {
                     if item.holidays > 0 {
-                        Image.store.caseFill
+                        SpecialDays.holiday.image
                             .foregroundColor(Color.theme.gray)
                         Text("\(item.holidays) d")
                             .bold()
                         Spacer().frame(width: 20)
                     }
                     if item.publicHolidays > 0 {
-                        Image.store.flag
+                        SpecialDays.publicHoliday.image
                             .foregroundColor(Color.theme.gray)
                         Text("\(item.publicHolidays) d")
                             .bold()
                         Spacer().frame(width: 20)
                     }
                     if item.sickness > 0 {
-                        Image.store.bandage
+                        SpecialDays.sickness.image
                             .foregroundColor(Color.theme.gray)
                         Text("\(item.sickness) d")
                             .bold()
