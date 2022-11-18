@@ -27,23 +27,23 @@ struct HistoryRow: View {
             }
             .frame(width: width-5)
             Spacer()
-            if value.specialDay == nil {
+            if let specialDay = value.specialDay {
+                HistorySpecialDayView(value: specialDay)
+                    .frame(width: width+5)
+            } else {
                 VStack(alignment: .trailing) {
                     HStack {
                         Text("\(value.timeIn, style: .time)")
-                        Image(systemName: "arrowshape.turn.up.left.fill")
+                        Image.store.arrowUpLeft
                             .foregroundColor(Color.theme.green)
                     }
                     HStack {
                         Text("\(value.timeOut, style: .time)")
-                        Image(systemName: "arrowshape.turn.up.right.fill")
+                        Image.store.arrowUpRight
                             .foregroundColor(Color.theme.red)
                     }
                 }
                 .frame(width: width+5)
-            } else {
-                HistorySpecialDayView(value: value)
-                    .frame(width: width+5)
             }
             Spacer()
             HStack {
@@ -52,8 +52,8 @@ struct HistoryRow: View {
                     if value.specialDay == nil { Text("\(value.secPause.toTimeString())") }
                 }
                 VStack {
-                    Image(systemName: "hammer.fill")
-                    if value.specialDay == nil { Image(systemName: "pause.circle") }
+                    Image.store.hammer
+                    if value.specialDay == nil { Image.store.pauseCircle }
                 }
                 .foregroundColor(Color.theme.gray)
             }

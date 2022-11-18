@@ -20,7 +20,7 @@ struct TogglesView: View {
                             .foregroundColor(viewModel.new.specialDay == item ? Color.theme.accent : Color.theme.gray)
                         Spacer()
                         if viewModel.new.specialDay == item {
-                            Image(systemName: "checkmark")
+                            Image.store.checkmark
                                 .foregroundColor(Color.theme.accent)
                         }
                     }

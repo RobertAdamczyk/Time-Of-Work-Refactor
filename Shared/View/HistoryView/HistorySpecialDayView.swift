@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct HistorySpecialDayView: View {
-    var value: FetchedResults<Dates>.Element
+    var value: String
     var body: some View {
         VStack(alignment: .trailing) {
             HStack {
-                Text("\(value.specialDay!)")
-                Image(systemName: value.specialDay == SpecialDays.sickness.rawValue ?
-                      "bandage.fill" : value.specialDay == SpecialDays.holiday.rawValue ?
-                      "case.fill" : "flag.fill")
-                    .foregroundColor(Color.theme.gray)
+                Text("\(value)")
+                if let specialDay = SpecialDays.specialDay(for: value) {
+                    specialDay.image
+                        .foregroundColor(Color.theme.gray)
+                }
             }
         }
     }

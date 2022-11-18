@@ -25,7 +25,7 @@ struct SettingHeaderView: View {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     HStack {
-                        Image(systemName: "chevron.backward")
+                        Image.store.chevronBackward
                         Spacer()
                     }
                     .font(.system(size: 20, weight: .semibold))

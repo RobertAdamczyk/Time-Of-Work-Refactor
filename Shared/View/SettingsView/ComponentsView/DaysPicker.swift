@@ -27,7 +27,7 @@ struct DaysPicker: View {
                                 Text("\(index)")
                                 Spacer()
                                 if viewModel.daysWeek == index {
-                                    Image(systemName: "checkmark")
+                                    Image.store.checkmark
                                         .foregroundColor(Color.theme.accent)
                                 }
                             }

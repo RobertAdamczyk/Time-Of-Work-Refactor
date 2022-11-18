@@ -28,7 +28,7 @@ struct HoursPicker: View {
                                     Text("\(index)")
                                     Spacer()
                                     if viewModel.hoursWeek == index {
-                                        Image(systemName: "checkmark")
+                                        Image.store.checkmark
                                             .foregroundColor(Color.theme.accent)
                                     }
                                 }

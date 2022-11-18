@@ -15,11 +15,11 @@ struct HistoryTotalView: View {
                 .foregroundColor(Color.theme.gray)
             VStack {
                 HStack {
-                    Image(systemName: "hammer.fill")
+                    Image.store.hammer
                         .foregroundColor(Color.theme.gray)
                     Text("\(item.secWork.toTimeString())")
                         .bold()
-                    Image(systemName: "pause.circle")
+                    Image.store.pauseCircle
                         .foregroundColor(Color.theme.gray)
                     Text("\(item.secPause.toTimeString())")
                         .bold()
@@ -27,21 +27,21 @@ struct HistoryTotalView: View {
                 .foregroundColor(Color.theme.accent)
                 HStack {
                     if item.holidays > 0 {
-                        Image(systemName: "case.fill")
+                        SpecialDays.holiday.image
                             .foregroundColor(Color.theme.gray)
                         Text("\(item.holidays) d")
                             .bold()
                         Spacer().frame(width: 20)
                     }
                     if item.publicHolidays > 0 {
-                        Image(systemName: "flag.fill")
+                        SpecialDays.publicHoliday.image
                             .foregroundColor(Color.theme.gray)
                         Text("\(item.publicHolidays) d")
                             .bold()
                         Spacer().frame(width: 20)
                     }
                     if item.sickness > 0 {
-                        Image(systemName: "bandage.fill")
+                        SpecialDays.sickness.image
                             .foregroundColor(Color.theme.gray)
                         Text("\(item.sickness) d")
                             .bold()

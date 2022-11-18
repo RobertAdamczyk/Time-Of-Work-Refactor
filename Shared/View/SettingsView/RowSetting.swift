@@ -15,7 +15,7 @@ struct RowSetting: View {
             Text("\(name)")
             Spacer()
             if value != nil { Text("\(value!)").foregroundColor(Color.theme.gray) }
-            Image(systemName: "chevron.right")
+            Image.store.chevronRight
                 .foregroundColor(Color.theme.accent)
         }
         .font(.system(size: 18, weight: .regular))
