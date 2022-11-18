@@ -23,7 +23,7 @@ struct LastWorkView: View {
                     Spacer()
                     VStack(spacing: 5) {
                         HStack { // hstack for date
-                            Image(systemName: "calendar")
+                            Image.store.calendar
                                 .foregroundColor(Color.theme.gray)
                             if viewModel.lastRecord!.night {
                                 VStack {
@@ -36,24 +36,24 @@ struct LastWorkView: View {
                         }
                         HStack(spacing: 10) { // hstack for timeIn and timeOut
                             HStack(spacing: 2) {
-                                Image(systemName: "arrowshape.turn.up.right.fill")
+                                Image.store.arrowUpRight
                                     .foregroundColor(Color.theme.green)
                                 Text("\(viewModel.lastRecord!.timeIn, style: .time)")
                             }
                             HStack(spacing: 2) {
-                                Image(systemName: "arrowshape.turn.up.left.fill")
+                                Image.store.arrowUpLeft
                                     .foregroundColor(Color.theme.red)
                                 Text("\(viewModel.lastRecord!.timeOut, style: .time)")
                             }
                         }
                         HStack(spacing: 10) { // hstack for secwork and secpause
                             HStack(spacing: 2) {
-                                Image(systemName: "hammer.fill")
+                                Image.store.hammer
                                     .foregroundColor(Color.theme.gray)
                                 Text("\(viewModel.lastRecord!.secWork!.toTimeString())")
                             }
                             HStack(spacing: 2) {
-                                Image(systemName: "pause.circle")
+                                Image.store.pauseCircle
                                     .foregroundColor(Color.theme.gray)
                                 Text("\(viewModel.lastRecord!.secPause.toTimeString())")
                             }

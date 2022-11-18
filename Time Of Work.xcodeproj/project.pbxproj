@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		692CF5A02928212F00C6B389 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF59F2928212F00C6B389 /* Colors.swift */; };
+		692CF5A229282D3800C6B389 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF5A129282D3800C6B389 /* Images.swift */; };
 		E10B09F72603F739009FADEB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B09F62603F739009FADEB /* LoadingView.swift */; };
 		E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189325FCBE9500A32772 /* PausePickerView.swift */; };
 		E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189E25FCE50B00A32772 /* ProgressCircleView.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		692CF59F2928212F00C6B389 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		692CF5A129282D3800C6B389 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		E10B09F62603F739009FADEB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E112189325FCBE9500A32772 /* PausePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePickerView.swift; sourceTree = "<group>"; };
 		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				E17FD87325F7D56D00CD126F /* WeekAndYear.swift */,
 				E181989F2613A4A400B602BD /* SumOfWeek.swift */,
 				692CF59F2928212F00C6B389 /* Colors.swift */,
+				692CF5A129282D3800C6B389 /* Images.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				E1F20B6E2607C76000790CEA /* RowSetting.swift in Sources */,
 				E18198A42613CBF800B602BD /* HistoryTotalView.swift in Sources */,
 				E112189425FCBE9500A32772 /* PausePickerView.swift in Sources */,
+				692CF5A229282D3800C6B389 /* Images.swift in Sources */,
 				E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */,
 				E16D43D326090F23001D5D49 /* TimeSettingView.swift in Sources */,
 				E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */,

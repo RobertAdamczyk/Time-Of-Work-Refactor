@@ -24,7 +24,7 @@ struct HomeHeader: View {
                     mainViewModel.activeSheet = .settings
                 }
             } label: {
-                Image(systemName: "gearshape.fill")
+                Image.store.gearshape
                     .font(.largeTitle)
                     .foregroundColor(Color.theme.accent)
                     .rotationEffect(.init(degrees: animation ? 0 : -360))

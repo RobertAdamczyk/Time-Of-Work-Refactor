@@ -17,7 +17,7 @@ struct MainSettingView: View {
                     AddEditHeaderView(value: "Settings")
                     VStack(alignment: .leading) {
                         HStack {
-                            Image(systemName: "person.fill")
+                            Image.store.person
                             Text("User Preferences")
                         }
                         .foregroundColor(Color.theme.gray)
@@ -30,7 +30,7 @@ struct MainSettingView: View {
                     } // Time row in menu
                     VStack(alignment: .leading) {
                         HStack {
-                            Image(systemName: "info")
+                            Image.store.info
                             Text("Info")
                         }
                         .foregroundColor(Color.theme.gray)

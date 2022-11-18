@@ -27,7 +27,7 @@ struct ToolbarView: View {
                     viewModel.view = .home
                 } label: {
                     VStack {
-                        Image(systemName: "square.grid.2x2")
+                        Image.store.square2x2
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("Home")
@@ -41,7 +41,7 @@ struct ToolbarView: View {
                 Button {
                     viewModel.activeSheet = .addDate
                 } label: {
-                    Image(systemName: "plus.circle.fill")
+                    Image.store.plus
                         .resizable()
                         .frame(width: 40, height: 40)
                 }
@@ -52,7 +52,7 @@ struct ToolbarView: View {
                     viewModel.view = .history
                 } label: {
                     VStack {
-                        Image(systemName: "calendar")
+                        Image.store.calendar
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("History")
