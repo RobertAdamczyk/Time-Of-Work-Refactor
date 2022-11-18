@@ -9,25 +9,25 @@ import SwiftUI
 
 struct HistoryListView: View {
     @EnvironmentObject var viewModel: HistoryViewModel
-    var result : FetchedResults<Dates>
+    var result: FetchedResults<Dates>
     var body: some View {
-        
+
         ForEach(viewModel.weeksAndYears, id: \.id) { item in
-            VStack{
-                HStack{
+            VStack {
+                HStack {
                     Text("\(item.weekOfYear)/\(String(item.yearForWeekOfYear))").bold()
                         .font(.title)
                         .foregroundColor(.gray)
                     Spacer()
                 }
-                VStack(spacing: 0){
-                    Button(action:{
+                VStack(spacing: 0) {
+                    Button {
                         withAnimation {
                             viewModel.weeksAndYears[viewModel.weeksAndYears.firstIndex(of: item)!].showWeek.toggle()
                             viewModel.selectedDate = nil
                         }
-                    }){
-                        HStack{
+                    } label: {
+                        HStack {
                             Spacer()
                             Text("\(item.beginOfWeek, style: .date) -").bold()
                             Text("\(item.endOfWeek, style: .date)").bold()
@@ -39,14 +39,14 @@ struct HistoryListView: View {
                         .padding(.vertical, 10)
                     }
                     if item.showWeek {
-                        VStack(spacing: 0){
+                        VStack(spacing: 0) {
                             ForEach(result, id: \.self) { date in
                                 if viewModel.dateIsEqualWeekAndYear(date: date.date, value: item) {
                                     Divider()
                                     HistoryRow(value: date)
                                         .contentShape(Rectangle())
-                                        .onTapGesture{
-                                            withAnimation{
+                                        .onTapGesture {
+                                            withAnimation {
                                                 viewModel.selectedDate = viewModel.selectedDate == date ? nil : date
                                             }
                                         }
@@ -58,9 +58,10 @@ struct HistoryListView: View {
                         }
                     }
                     Divider()
-                    ForEach(viewModel.sumOfWeeks) { i in
-                        if i.week.weekOfYear == item.weekOfYear && i.week.yearForWeekOfYear == item.yearForWeekOfYear {
-                            HistoryTotalView(item: i)
+                    ForEach(viewModel.sumOfWeeks) { index in
+                        if index.week.weekOfYear == item.weekOfYear &&
+                           index.week.yearForWeekOfYear == item.yearForWeekOfYear {
+                            HistoryTotalView(item: index)
                         }
                     }
                 }

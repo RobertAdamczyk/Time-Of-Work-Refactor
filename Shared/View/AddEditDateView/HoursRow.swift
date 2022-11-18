@@ -10,10 +10,10 @@ import SwiftUI
 struct HoursRow: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
-        Button(action:{
+        Button {
             viewModel.changeShowComponent(newValue: .hoursPicker)
-        }){
-            HStack{
+        } label: {
+            HStack {
                 Text("Hours").bold()
                     .foregroundColor(.gray)
                 Spacer()
@@ -22,7 +22,6 @@ struct HoursRow: View {
             }
             .padding()
             .roundedBackgroundWithBorder
-            
         }
     }
 }

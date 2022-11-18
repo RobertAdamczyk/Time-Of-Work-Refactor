@@ -10,11 +10,11 @@ import SwiftUI
 struct StartEndRow: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
-        HStack{
-            Button(action:{
+        HStack {
+            Button {
                 viewModel.changeShowComponent(newValue: .timeInPicker)
-            }){
-                HStack{
+            } label: {
+                HStack {
                     Text("Start").bold()
                         .foregroundColor(.gray)
                     Spacer()
@@ -23,13 +23,12 @@ struct StartEndRow: View {
                 }
                 .padding()
                 .roundedBackgroundWithBorder
-                
             }
             Spacer().frame(width: 20)
-            Button(action:{
+            Button {
                 viewModel.changeShowComponent(newValue: .timeOutPicker)
-            }){
-                HStack{
+            } label: {
+                HStack {
                     Text("End").bold()
                         .foregroundColor(.gray)
                     Spacer()
@@ -38,9 +37,7 @@ struct StartEndRow: View {
                 }
                 .padding()
                 .roundedBackgroundWithBorder
-                
             }
-            
         }
     }
 }

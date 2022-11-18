@@ -12,18 +12,17 @@ struct SaveButtonRow: View {
     @Environment(\.managedObjectContext) var viewContext
     @Binding var activeSheet: SheetView?
     var date: FetchedResults<Dates>.Element?
-    
+
     var body: some View {
-        Button(action:{
+        Button {
             if let date = date {
                 viewModel.editDate(date: date, context: viewContext)
-            }else {
+            } else {
                 viewModel.addDate(context: viewContext)
             }
             NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
             activeSheet = nil
-            
-        }){
+        } label: {
             Text("Save")
                 .fontWeight(.bold)
                 .foregroundColor(.white)

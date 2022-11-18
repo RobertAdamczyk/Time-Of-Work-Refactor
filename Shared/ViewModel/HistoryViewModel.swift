@@ -15,11 +15,10 @@ class HistoryViewModel: ObservableObject {
     @Published var sumOfWeeks: [SumOfWeek] = []
     @Published var selectedDate: FetchedResults<Dates>.Element?
     @Published var editDate: Bool = false
-    
-    
+
     let refreshHistory = NotificationCenter.default.publisher(for:
               Notification.Name(rawValue: "RefreshHistory"))
-    
+
     func loadArrays(array: FetchedResults<Dates>) {
         weeksAndYears.removeAll()
         sumOfWeeks.removeAll()
@@ -27,25 +26,25 @@ class HistoryViewModel: ObservableObject {
             let week = Calendar.current.component(.weekOfYear, from: date.date)
             let year = Calendar.current.component(.yearForWeekOfYear, from: date.date)
             let newValue = WeekAndYear(weekOfYear: week, yearForWeekOfYear: year)
-            if !weeksAndYears.contains(newValue){
+            if !weeksAndYears.contains(newValue) {
                 weeksAndYears.append(newValue)
                 weeklySum(date: date, week: newValue, contains: false)
-            }else {
+            } else {
                 weeklySum(date: date, week: newValue, contains: true)
             }
         }
     }
-    
+
     func weeklySum(date: FetchedResults<Dates>.Element, week: WeekAndYear, contains: Bool) {
         if contains {
             sumOfWeeks.last?.add(date: date)
-        }else {
+        } else {
             sumOfWeeks.append(SumOfWeek(date: date, week: week))
         }
     }
-    
+
     func removeDate(date: FetchedResults<Dates>.Element, context: NSManagedObjectContext) {
-        withAnimation{
+        withAnimation {
             context.delete(date)
             do {
                 try context.save()
@@ -54,11 +53,11 @@ class HistoryViewModel: ObservableObject {
             }
         }
     }
-    
-    func dateIsEqualWeekAndYear(date: Date, value: WeekAndYear) -> Bool{
+
+    func dateIsEqualWeekAndYear(date: Date, value: WeekAndYear) -> Bool {
         let week = Calendar.current.component(.weekOfYear, from: date)
         let year = Calendar.current.component(.yearForWeekOfYear, from: date)
-        
+
         return week == value.weekOfYear && year == value.yearForWeekOfYear
     }
 }

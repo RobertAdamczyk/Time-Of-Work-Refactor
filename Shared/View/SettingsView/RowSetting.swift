@@ -11,7 +11,7 @@ struct RowSetting: View {
     var name: String
     var value: String?
     var body: some View {
-        HStack(spacing: 20){
+        HStack(spacing: 20) {
             Text("\(name)")
             Spacer()
             if value != nil { Text("\(value!)").foregroundColor(.gray) }

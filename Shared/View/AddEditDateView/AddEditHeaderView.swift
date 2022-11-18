@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct AddEditHeaderView: View {
-    var value : String
+    var value: String
     var body: some View {
-        HStack{
+        HStack {
             Text("\(value)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -25,4 +23,3 @@ struct AddEditHeaderView: View {
         .backgroundWithBottom
     }
 }
-

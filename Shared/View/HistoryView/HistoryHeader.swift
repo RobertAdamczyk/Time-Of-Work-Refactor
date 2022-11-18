@@ -10,9 +10,9 @@ import SwiftUI
 struct HistoryHeader: View {
     @Binding var show: Bool
     var body: some View {
-        HStack{
+        HStack {
             if !show {
-                HStack{
+                HStack {
                     Text("History")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -20,7 +20,7 @@ struct HistoryHeader: View {
                         .padding(.leading, 5)
                     Spacer()
                 }
-            }else {
+            } else {
                 HStack {
                     Spacer()
                     Text("History").bold()

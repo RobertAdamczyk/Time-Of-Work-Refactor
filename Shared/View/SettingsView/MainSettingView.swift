@@ -9,15 +9,14 @@ import SwiftUI
 
 struct MainSettingView: View {
     var body: some View {
-        NavigationView{
-            ZStack{
+        NavigationView {
+            ZStack {
                 Color("BackgroundColor")
                     .ignoresSafeArea()
-                VStack(spacing: 20){
+                VStack(spacing: 20) {
                     AddEditHeaderView(value: "Settings")
-                    
-                    VStack(alignment: .leading){
-                        HStack{
+                    VStack(alignment: .leading) {
+                        HStack {
                             Image(systemName: "person.fill")
                             Text("User Preferences")
                         }
@@ -29,9 +28,8 @@ struct MainSettingView: View {
                                 .backgroundWithBottomTop
                         }
                     } // Time row in menu
-                    
-                    VStack(alignment: .leading){
-                        HStack{
+                    VStack(alignment: .leading) {
+                        HStack {
                             Image(systemName: "info")
                             Text("Info")
                         }
@@ -42,10 +40,7 @@ struct MainSettingView: View {
                             RowSetting(name: "About")
                                 .backgroundWithBottomTop
                         }
-                        
                     }
-                    
-                    
                     Spacer()
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -53,6 +48,5 @@ struct MainSettingView: View {
             .navigationBarHidden(true)
         }
         .ignoresSafeArea()
-        
     }
 }

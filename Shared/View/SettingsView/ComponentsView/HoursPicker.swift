@@ -11,23 +11,23 @@ struct HoursPicker: View {
     @EnvironmentObject var viewModel: SettingsViewModel
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        ZStack{
+        ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
-            VStack(spacing: 20){
+            VStack(spacing: 20) {
                 SettingHeaderView(name: "Hours a week")
-                VStack(spacing: 0){
-                    ForEach(1..<51, id: \.self) { i in
-                        if i % 5 == 0 {
-                            Button(action:{
-                                viewModel.hoursWeek = i
+                VStack(spacing: 0) {
+                    ForEach(1..<51, id: \.self) { index in
+                        if index % 5 == 0 {
+                            Button {
+                                viewModel.hoursWeek = index
                                 UserDefaults.standard.setValue(viewModel.hoursWeek, forKey: "hoursWeek")
                                 presentationMode.wrappedValue.dismiss()
-                            }){
-                                HStack{
-                                    Text("\(i)")
+                            } label: {
+                                HStack {
+                                    Text("\(index)")
                                     Spacer()
-                                    if viewModel.hoursWeek == i {
+                                    if viewModel.hoursWeek == index {
                                         Image(systemName: "checkmark")
                                             .foregroundColor(Color("Orange"))
                                     }
@@ -41,18 +41,16 @@ struct HoursPicker: View {
                         }
                     }
                 }.overlay(
-                    VStack{
+                    VStack {
                         Rectangle().frame(height: 1)
                             .foregroundColor(Color("BorderColor"))
                         Spacer()
                     }
                 )
                 .buttonStyle(PlainButtonStyle())
-
                 Spacer()
             }
         }
         .navigationBarHidden(true)
     }
 }
-

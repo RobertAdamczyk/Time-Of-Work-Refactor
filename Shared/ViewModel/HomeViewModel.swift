@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 class HomeViewModel: ObservableObject {
-    
+
     @Published var currentTime: Int = 0
     @Published var showComponent: ShowComponents?
     @Published var lastRecord: New?
@@ -18,36 +18,37 @@ class HomeViewModel: ObservableObject {
     var lastDate: Date = UserDefaults.standard.object(forKey: "lastDate") as? Date ?? Date()
     @Published var working: Bool = UserDefaults.standard.bool(forKey: "working")
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+
     var height = UIScreen.main.bounds.height // for circle size in nowView
-    var padding : CGFloat { // for home views for smaller iphones
+    var padding: CGFloat { // for home views for smaller iphones
         if UIScreen.main.bounds.height < 700 {
             return 0
-        }else {
+        } else {
             return 20
         }
     }
-    
+
     func setLastDate(value: Date) {
         lastDate = value
         UserDefaults.standard.set(value, forKey: "lastDate")
     }
     func toggleWorking() {
-        withAnimation{
+        withAnimation {
             working.toggle()
             UserDefaults.standard.set(working, forKey: "working")
         }
     }
     func changeShowComponent(newValue: ShowComponents?) {
-        withAnimation{
-            showComponent = showComponent == newValue ? nil : newValue // if old value is new value remove picker from screen
+        withAnimation {
+            // if old value is new value remove picker from screen
+            showComponent = showComponent == newValue ? nil : newValue
         }
     }
-    
+
     func refreshWorkTime() {
         currentTime = Int(Date().timeIntervalSince(lastDate)) - pause
     }
-    
+
     func endWork(context: NSManagedObjectContext) {
         let newData = Dates(context: context)
         newData.date = lastDate
@@ -55,33 +56,32 @@ class HomeViewModel: ObservableObject {
         newData.timeOut = Date()
         newData.secPause = pause
         newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - newData.secPause
-        newData.night = Calendar.current.component(.day, from: newData.timeIn) != Calendar.current.component(.day, from: newData.timeOut)
-        
+        newData.night = Calendar.current.component(.day, from: newData.timeIn) !=
+                        Calendar.current.component(.day, from: newData.timeOut)
+
         newData.specialDay = nil
-        
+
         do {
             try context.save()
-        }
-        catch {
+        } catch {
             print(error.localizedDescription)
         }
     }
-    
+
     func loadLast(result: FetchedResults<Dates>) {
-        withAnimation{
+        withAnimation {
             if result.count > 0 {
                 lastRecord = New(result: result)
-            }else {
+            } else {
                 lastRecord = nil
                 return
             }
         }
     }
-    
+
     func checkCurrentWork() { // if user forgot stop working
         if working && abs(lastDate.timeIntervalSince(Date())) > 3600 * 48 {
             toggleWorking()
         }
     }
-    
 }

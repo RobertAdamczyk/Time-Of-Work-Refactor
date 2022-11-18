@@ -10,19 +10,19 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var viewModel: HomeViewModel
     var body: some View {
-        ZStack{
-            VStack{
+        ZStack {
+            VStack {
                 HomeHeader(value: "Time Of Work")
-                
+
                 DateRow()
-                
+
                 ButtonsRow()
-                
+
                 if viewModel.working {
                     NowRow()
                         .transition(.move(edge: .leading))
                 }
-                
+
                 LastWorkView()
 
                 Spacer()
@@ -47,7 +47,6 @@ struct HomeView: View {
             }
         }
         .environmentObject(viewModel)
-        
     }
 }
 

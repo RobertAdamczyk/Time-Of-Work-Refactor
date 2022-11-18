@@ -10,10 +10,10 @@ import SwiftUI
 struct PauseRow: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
-        Button(action:{
+        Button {
             viewModel.changeShowComponent(newValue: .pausePicker)
-        }){
-            HStack{
+        } label: {
+            HStack {
                 Text("Pause").bold()
                     .foregroundColor(.gray)
                 Spacer()
@@ -22,7 +22,6 @@ struct PauseRow: View {
             }
             .padding()
             .roundedBackgroundWithBorder
-            
         }
     }
 }

@@ -13,9 +13,9 @@ struct MainView: View {
     @ObservedObject var historyViewModel = HistoryViewModel()
     @ObservedObject var settingsViewModel = SettingsViewModel()
     var body: some View {
-        ZStack(alignment: .bottom){
+        ZStack(alignment: .bottom) {
             Color("BackgroundColor")
-            VStack{
+            VStack {
                 if viewModel.view == .home {
                     HomeView()
                         .environmentObject(homeViewModel)
@@ -29,21 +29,19 @@ struct MainView: View {
             ToolbarView()
         }
         .environmentObject(viewModel)
-        .sheet(item: $viewModel.activeSheet){ item in
-            switch(item) {
+        .sheet(item: $viewModel.activeSheet) { item in
+            switch item {
             case .addDate:
                 AddEditDateView(activeSheet: $viewModel.activeSheet, name: "New Date")
             case .editDate:
-                AddEditDateView(activeSheet: $viewModel.activeSheet, date: historyViewModel.selectedDate, name: "Edit Date")
+                AddEditDateView(activeSheet: $viewModel.activeSheet,
+                                date: historyViewModel.selectedDate, name: "Edit Date")
             case .settings:
                 MainSettingView()
                     .environmentObject(settingsViewModel)
             }
-            
         }
-        
         .ignoresSafeArea(.all)
-        
     }
 }
 

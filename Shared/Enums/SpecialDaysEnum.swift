@@ -11,7 +11,7 @@ enum SpecialDays: String, CaseIterable, Identifiable {
     case holiday = "Vacation"
     case publicHoliday = "Public Holiday"
     case sickness = "Sickness"
-    
+
     var id: String {
         rawValue
     }

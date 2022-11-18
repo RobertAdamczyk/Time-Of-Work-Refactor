@@ -9,14 +9,13 @@ import SwiftUI
 
 struct AboutView: View {
     var body: some View {
-        ZStack{
+        ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
-            VStack{
+            VStack {
                 SettingHeaderView(name: "About")
-                
-                VStack{
-                    HStack{
+                VStack {
+                    HStack {
                         Spacer()
                         Image("Icon")
                             .resizable()
@@ -25,26 +24,22 @@ struct AboutView: View {
                             .roundedBackgroundWithBorder
                         Spacer()
                     }
-                    VStack{
+                    VStack {
                         Text("Created by Robert Adamczyk")
                         Text("Version 1.1.0")
                     }
                     .font(.subheadline)
-                    
-                    
-                    VStack{
-                        Text("The app was made to keep track of your working hours as simple as possible. If you like it, leave a review on the AppStore. Thanks for using my application. ❤️❤️❤️ ")
+                    VStack {
+                        Text("The app was made to keep track of your working hours as simple as possible." +
+                             " If you like it, leave a review on the AppStore. Thanks for using my application. ❤️❤️❤️ ")
                             .multilineTextAlignment(.center)
                     }
                     .padding()
                     .roundedBackgroundWithBorder
-                    
-                    
                     Spacer()
                 }
                 .padding(.horizontal)
             }
-            
         }
         .navigationBarHidden(true)
     }
