@@ -76,6 +76,7 @@
 /* Begin PBXFileReference section */
 		692CF59F2928212F00C6B389 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		692CF5A129282D3800C6B389 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		692CF5A3292850DC00C6B389 /* Time Of Work (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Time Of Work (iOS).entitlements"; sourceTree = "<group>"; };
 		E10B09F62603F739009FADEB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E112189325FCBE9500A32772 /* PausePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePickerView.swift; sourceTree = "<group>"; };
 		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 		E183357925EE987F00E3A952 = {
 			isa = PBXGroup;
 			children = (
+				692CF5A3292850DC00C6B389 /* Time Of Work (iOS).entitlements */,
 				E183357E25EE988000E3A952 /* Shared */,
 				E183358825EE988100E3A952 /* iOS */,
 				E183358F25EE988100E3A952 /* macOS */,
@@ -655,6 +657,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Time Of Work (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 38Q6TG2KG3;
@@ -682,6 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Time Of Work (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 38Q6TG2KG3;
