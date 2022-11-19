@@ -12,11 +12,14 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init() {
-        container = NSPersistentContainer(name: "TimeOfWorkCoreData")
+        container = NSPersistentCloudKitContainer(name: "TimeOfWorkCoreData")
         container.loadPersistentStores { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error: \(error.description)")
             }
         }
+
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
 }
