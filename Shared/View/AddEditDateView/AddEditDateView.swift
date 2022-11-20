@@ -10,7 +10,7 @@ import SwiftUI
 struct AddEditDateView: View {
     @StateObject var viewModel = AddEditDateViewModel()
     @Binding var activeSheet: SheetView?
-    var date: FetchedResults<Dates>.Element?
+    var date: Dates?
     var name: String
     var body: some View {
         ZStack(alignment: .top) {
@@ -66,7 +66,7 @@ struct AddEditDateView: View {
                     PausePickerView(sec: $viewModel.new.secPause)
                         .transition(.scale)
                 case .hoursPicker:
-                    HoursPickerView(value: $viewModel.hoursCount)
+                    HoursPickerView(value: $viewModel.new.hoursSpecialDay)
                         .transition(.scale)
                 default:
                     EmptyView()
@@ -84,7 +84,7 @@ struct AddEditDateView: View {
                 viewModel.new.night = date.night
                 viewModel.new.secPause = date.secPause
                 viewModel.new.specialDay = SpecialDays(rawValue: date.specialDay ?? "")
-                viewModel.hoursCount = date.specialDay != nil ? date.secWork / 3600 : 8
+                viewModel.new.hoursSpecialDay = date.specialDay != nil ? date.secWork / 3600 : 8
             }
         }
     }

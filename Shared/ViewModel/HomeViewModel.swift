@@ -49,29 +49,23 @@ class HomeViewModel: ObservableObject {
         currentTime = Int(Date().timeIntervalSince(lastDate)) - pause
     }
 
-    func endWork(context: NSManagedObjectContext) {
-        let newData = Dates(context: context)
-        newData.date = lastDate
-        newData.timeIn = lastDate
-        newData.timeOut = Date()
-        newData.secPause = pause
-        newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - newData.secPause
-        newData.night = Calendar.current.component(.day, from: newData.timeIn) !=
-                        Calendar.current.component(.day, from: newData.timeOut)
-
-        newData.specialDay = nil
-
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+    func createNewDateForEndWork() -> New {
+        var new = New()
+        new.date = lastDate
+        new.timeIn = lastDate
+        new.timeOut = Date()
+        new.secPause = pause
+        new.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+        new.night = Calendar.current.component(.day, from: new.timeIn) !=
+                    Calendar.current.component(.day, from: new.timeOut)
+        new.specialDay = nil
+        return new
     }
 
-    func loadLast(result: FetchedResults<Dates>) {
+    func loadLast(dates: [Dates]) {
         withAnimation {
-            if result.count > 0 {
-                lastRecord = New(result: result)
+            if dates.count > 0 {
+                lastRecord = New(dates: dates)
             } else {
                 lastRecord = nil
                 return

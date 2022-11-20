@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryRow: View {
-    var value: FetchedResults<Dates>.Element
+    var value: Dates
     var width = UIScreen.main.bounds.width * 0.27
     var body: some View {
         HStack(spacing: 0) {

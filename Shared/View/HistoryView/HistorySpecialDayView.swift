@@ -13,7 +13,7 @@ struct HistorySpecialDayView: View {
         VStack(alignment: .trailing) {
             HStack {
                 Text("\(value)")
-                if let specialDay = SpecialDays.specialDay(for: value) {
+                if let specialDay = SpecialDays(rawValue: value) {
                     specialDay.image
                         .foregroundColor(Color.theme.gray)
                 }

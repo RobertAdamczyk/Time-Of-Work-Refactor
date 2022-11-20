@@ -11,10 +11,6 @@ import CoreData
 
 extension Dates {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Dates> {
-        return NSFetchRequest<Dates>(entityName: "Dates")
-    }
-
     @NSManaged public var date: Date
     @NSManaged public var night: Bool
     @NSManaged public var secPause: Int
