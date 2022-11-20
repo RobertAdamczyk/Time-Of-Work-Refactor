@@ -12,6 +12,7 @@ struct MainView: View {
     @StateObject var homeViewModel = HomeViewModel()
     @ObservedObject var historyViewModel = HistoryViewModel()
     @ObservedObject var settingsViewModel = SettingsViewModel()
+    @StateObject var coreDataManager = CoreDataManager()
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.theme.background
@@ -41,6 +42,7 @@ struct MainView: View {
                     .environmentObject(settingsViewModel)
             }
         }
+        .environmentObject(coreDataManager)
         .ignoresSafeArea(.all)
     }
 }

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct LastWorkView: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @FetchRequest(entity: Dates.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
-    var result: FetchedResults<Dates>
+    @EnvironmentObject var coreDataManager: CoreDataManager
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -76,10 +75,10 @@ struct LastWorkView: View {
         .padding(.horizontal)
         .padding(.vertical, viewModel.padding)
         .onAppear {
-            viewModel.loadLast(result: result)
+            viewModel.loadLast(dates: coreDataManager.dates)
         }
         .onChange(of: viewModel.working) { _ in
-            viewModel.loadLast(result: result)
+            viewModel.loadLast(dates: coreDataManager.dates)
         }
     }
 }

@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ButtonsRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @Environment(\.managedObjectContext) var viewContext
+    @EnvironmentObject var coreDataManager: CoreDataManager
 
     var body: some View {
         HStack {
             Button {
                 if viewModel.working {
-                    viewModel.endWork(context: viewContext)
+                    let newDate = viewModel.createNewRecordForEndWork()
+                    coreDataManager.addDate(for: newDate)
                 }
                 viewModel.setLastDate(value: Date())
                 viewModel.refreshWorkTime()

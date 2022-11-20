@@ -10,8 +10,7 @@ import CoreData
 
 struct HistoryView: View {
     @EnvironmentObject var viewModel: HistoryViewModel
-    @FetchRequest(entity: Dates.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
-    var result: FetchedResults<Dates>
+    @EnvironmentObject var coreDataManager: CoreDataManager
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -36,7 +35,7 @@ struct HistoryView: View {
                     )
                 }.frame(height: 0)
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
-                HistoryListView(result: result)
+                HistoryListView(dates: coreDataManager.dates)
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.bottom) ?? 0) + 90)
             }
             HistoryHeader(show: $viewModel.showHeader)
@@ -47,10 +46,10 @@ struct HistoryView: View {
             }
         }
         .onAppear {
-            viewModel.loadArrays(array: result)
+            viewModel.loadArrays(array: coreDataManager.dates)
         }
         .onReceive(viewModel.refreshHistory) { _ in
-            viewModel.loadArrays(array: result)
+            viewModel.loadArrays(array: coreDataManager.dates)
         }
     }
 }
@@ -58,6 +57,5 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }

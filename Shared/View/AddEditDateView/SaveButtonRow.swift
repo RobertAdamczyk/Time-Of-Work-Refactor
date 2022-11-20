@@ -9,16 +9,16 @@ import SwiftUI
 
 struct SaveButtonRow: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
-    @Environment(\.managedObjectContext) var viewContext
+    @EnvironmentObject var coreDataManager: CoreDataManager
     @Binding var activeSheet: SheetView?
-    var date: FetchedResults<Dates>.Element?
+    var date: Dates?
 
     var body: some View {
         Button {
             if let date = date {
-                viewModel.editDate(date: date, context: viewContext)
+                coreDataManager.editDate(date: date, for: viewModel.new)
             } else {
-                viewModel.addDate(context: viewContext)
+                coreDataManager.addDate(for: viewModel.new)
             }
             NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
             activeSheet = nil

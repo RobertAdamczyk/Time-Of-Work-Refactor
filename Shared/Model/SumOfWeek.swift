@@ -17,7 +17,7 @@ class SumOfWeek: Identifiable {
     var publicHolidays: Int = 0
     var sickness: Int = 0
 
-    init(date: FetchedResults<Dates>.Element, week: WeekAndYear) {
+    init(date: Dates, week: WeekAndYear) {
         self.week = week
         self.secWork = date.secWork
         self.secPause = date.secPause
@@ -35,7 +35,7 @@ class SumOfWeek: Identifiable {
         }
     }
 
-    func add(date: FetchedResults<Dates>.Element) {
+    func add(date: Dates) {
         self.secWork += date.secWork
         self.secPause += date.secPause
         if let special = date.specialDay {

@@ -26,16 +26,4 @@ enum SpecialDays: String, CaseIterable, Identifiable {
             return Image.store.bandage
         }
     }
-
-    static func specialDay(for value: String) -> SpecialDays? {
-        if SpecialDays.holiday.rawValue == value {
-            return .holiday
-        } else if SpecialDays.publicHoliday.rawValue == value {
-            return .publicHoliday
-        } else if SpecialDays.sickness.rawValue == value {
-            return .sickness
-        } else {
-            return nil
-        }
-    }
 }

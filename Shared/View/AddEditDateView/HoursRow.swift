@@ -17,7 +17,7 @@ struct HoursRow: View {
                 Text("Hours").bold()
                     .foregroundColor(Color.theme.gray)
                 Spacer()
-                Text("\(viewModel.hoursCount)").bold()
+                Text("\(viewModel.new.hoursSpecialDay)").bold()
                     .foregroundColor(Color.theme.accent)
             }
             .padding()

@@ -13,13 +13,13 @@ class HistoryViewModel: ObservableObject {
     @Published var showHeader = false
     @Published var weeksAndYears: [WeekAndYear] = []
     @Published var sumOfWeeks: [SumOfWeek] = []
-    @Published var selectedDate: FetchedResults<Dates>.Element?
+    @Published var selectedDate: Dates?
     @Published var editDate: Bool = false
 
     let refreshHistory = NotificationCenter.default.publisher(for:
               Notification.Name(rawValue: "RefreshHistory"))
 
-    func loadArrays(array: FetchedResults<Dates>) {
+    func loadArrays(array: [Dates]) {
         weeksAndYears.removeAll()
         sumOfWeeks.removeAll()
         for date in array {
@@ -35,22 +35,11 @@ class HistoryViewModel: ObservableObject {
         }
     }
 
-    func weeklySum(date: FetchedResults<Dates>.Element, week: WeekAndYear, contains: Bool) {
+    func weeklySum(date: Dates, week: WeekAndYear, contains: Bool) {
         if contains {
             sumOfWeeks.last?.add(date: date)
         } else {
             sumOfWeeks.append(SumOfWeek(date: date, week: week))
-        }
-    }
-
-    func removeDate(date: FetchedResults<Dates>.Element, context: NSManagedObjectContext) {
-        withAnimation {
-            context.delete(date)
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
         }
     }
 

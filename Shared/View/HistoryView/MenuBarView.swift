@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MenuBarView: View {
-    var date: FetchedResults<Dates>.Element?
     @EnvironmentObject var viewModel: HistoryViewModel
     @EnvironmentObject var mainViewModel: MainViewModel
-    @Environment(\.managedObjectContext) var viewContext
+    @EnvironmentObject var coreDataManager: CoreDataManager
+    var date: Dates
 
     var body: some View {
         if viewModel.selectedDate == date {
@@ -26,9 +26,7 @@ struct MenuBarView: View {
                         .background(Color.theme.accent.opacity(0.9).cornerRadius(10))
                 }
                 Button {
-                    if let date = date {
-                        viewModel.removeDate(date: date, context: viewContext)
-                    }
+                    coreDataManager.removeDate(date: date)
                 } label: {
                     Text("Delete")
                         .padding(6)
