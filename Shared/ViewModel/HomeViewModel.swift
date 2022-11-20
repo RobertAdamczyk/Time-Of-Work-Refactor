@@ -49,7 +49,7 @@ class HomeViewModel: ObservableObject {
         currentTime = Int(Date().timeIntervalSince(lastDate)) - pause
     }
 
-    func createNewRecordForEndWork() -> New {
+    func createNewDateForEndWork() -> New {
         var new = New()
         new.date = lastDate
         new.timeIn = lastDate

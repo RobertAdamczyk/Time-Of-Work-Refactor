@@ -15,7 +15,7 @@ struct ButtonsRow: View {
         HStack {
             Button {
                 if viewModel.working {
-                    let newDate = viewModel.createNewRecordForEndWork()
+                    let newDate = viewModel.createNewDateForEndWork()
                     coreDataManager.addDate(for: newDate)
                 }
                 viewModel.setLastDate(value: Date())
