@@ -35,7 +35,7 @@ struct HistoryView: View {
                     )
                 }.frame(height: 0)
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 70)
-                HistoryListView(dates: coreDataManager.dates)
+                HistoryListView()
                 Spacer().frame(height: ((UIApplication.shared.windows.first?.safeAreaInsets.bottom) ?? 0) + 90)
             }
             HistoryHeader(show: $viewModel.showHeader)
