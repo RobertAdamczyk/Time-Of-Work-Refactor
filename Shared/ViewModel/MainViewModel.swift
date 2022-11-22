@@ -7,6 +7,8 @@
 import Foundation
 
 class MainViewModel: ObservableObject {
+
+    // MARK: Published variables
     @Published var view = Views.home
     @Published var activeSheet: SheetView?
 }

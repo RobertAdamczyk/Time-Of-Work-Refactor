@@ -10,15 +10,17 @@ import SwiftUI
 import CoreData
 
 class HistoryViewModel: ObservableObject {
-    @Published var showHeader = false
+    // MARK: Published variables
     @Published var weeksAndYears: [WeekAndYear] = []
     @Published var sumOfWeeks: [SumOfWeek] = []
     @Published var selectedDate: Dates?
     @Published var editDate: Bool = false
 
+    // MARK: Public variables
     let refreshHistory = NotificationCenter.default.publisher(for:
               Notification.Name(rawValue: "RefreshHistory"))
 
+    // MARK: Public functions
     func loadArrays(array: [Dates]) {
         weeksAndYears.removeAll()
         sumOfWeeks.removeAll()
@@ -35,18 +37,19 @@ class HistoryViewModel: ObservableObject {
         }
     }
 
-    func weeklySum(date: Dates, week: WeekAndYear, contains: Bool) {
-        if contains {
-            sumOfWeeks.last?.add(date: date)
-        } else {
-            sumOfWeeks.append(SumOfWeek(date: date, week: week))
-        }
-    }
-
     func dateIsEqualWeekAndYear(date: Date, value: WeekAndYear) -> Bool {
         let week = Calendar.current.component(.weekOfYear, from: date)
         let year = Calendar.current.component(.yearForWeekOfYear, from: date)
 
         return week == value.weekOfYear && year == value.yearForWeekOfYear
+    }
+
+    // MARK: Private functions
+    private func weeklySum(date: Dates, week: WeekAndYear, contains: Bool) {
+        if contains {
+            sumOfWeeks.last?.add(date: date)
+        } else {
+            sumOfWeeks.append(SumOfWeek(date: date, week: week))
+        }
     }
 }

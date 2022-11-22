@@ -11,12 +11,16 @@ import CoreData
 
 class HomeViewModel: ObservableObject {
 
+    @AppStorage("pause") var pause: Int = 0
+
+    // MARK: Published variables
     @Published var currentTime: Int = 0
     @Published var showComponent: ShowComponents?
-    @Published var lastRecord: New?
-    @AppStorage("pause") var pause: Int = 0
-    var lastDate: Date = UserDefaults.standard.object(forKey: "lastDate") as? Date ?? Date()
+    @Published var lastRecord: Dates?
     @Published var working: Bool = UserDefaults.standard.bool(forKey: "working")
+
+    // MARK: Public variables
+    var lastDate: Date = UserDefaults.standard.object(forKey: "lastDate") as? Date ?? Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var height = UIScreen.main.bounds.height // for circle size in nowView
@@ -28,6 +32,7 @@ class HomeViewModel: ObservableObject {
         }
     }
 
+    // MARK: Public functions
     func setLastDate(value: Date) {
         lastDate = value
         UserDefaults.standard.set(value, forKey: "lastDate")
@@ -64,12 +69,7 @@ class HomeViewModel: ObservableObject {
 
     func loadLast(dates: [Dates]) {
         withAnimation {
-            if dates.count > 0 {
-                lastRecord = New(dates: dates)
-            } else {
-                lastRecord = nil
-                return
-            }
+            lastRecord = dates.first
         }
     }
 
