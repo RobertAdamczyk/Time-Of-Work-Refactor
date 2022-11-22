@@ -23,14 +23,4 @@ struct New {
         secPause = 0
         night = false
     }
-
-    init(dates: [Dates]) { // only for LastDateView
-        date = dates[0].date
-        timeIn = dates[0].timeIn
-        timeOut = dates[0].timeOut
-        secPause = dates[0].secPause
-        night = dates[0].night
-        secWork = dates[0].secWork
-        specialDay = SpecialDays(rawValue: dates[0].specialDay ?? "")
-    }
 }

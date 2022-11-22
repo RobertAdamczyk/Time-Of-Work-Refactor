@@ -8,25 +8,15 @@
 import SwiftUI
 
 struct HistoryHeader: View {
-    @Binding var show: Bool
     var body: some View {
         HStack {
-            if !show {
-                HStack {
-                    Text("History")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.theme.accent)
-                        .padding(.leading, 5)
-                    Spacer()
-                }
-            } else {
-                HStack {
-                    Spacer()
-                    Text("History").bold()
-                        .foregroundColor(Color.theme.accent)
-                    Spacer()
-                }
+            HStack {
+                Text("History")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.theme.accent)
+                    .padding(.leading, 5)
+                Spacer()
             }
         }
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)

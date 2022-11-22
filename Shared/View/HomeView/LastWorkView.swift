@@ -13,7 +13,9 @@ struct LastWorkView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            if viewModel.lastRecord != nil {
+            // Need to check coreDataManager.dates.count > 0,
+            // because we have crash when we try to read date from core data
+            if let last = viewModel.lastRecord, coreDataManager.dates.count > 0 {
                 Text("LAST WORK")
                     .font(.system(size: 12))
                     .foregroundColor(Color.theme.gray.opacity(0.8))
@@ -24,37 +26,37 @@ struct LastWorkView: View {
                         HStack { // hstack for date
                             Image.store.calendar
                                 .foregroundColor(Color.theme.gray)
-                            if viewModel.lastRecord!.night {
+                            if last.night {
                                 VStack {
-                                    Text("From \(viewModel.lastRecord!.date, style: .date)")
-                                    Text("Until \(viewModel.lastRecord!.date.plusOneDay() ?? Date(), style: .date)")
+                                    Text("From \(last.date, style: .date)")
+                                    Text("Until \(last.date.plusOneDay() ?? Date(), style: .date)")
                                 }
                             } else {
-                                Text("\(viewModel.lastRecord!.date, style: .date)")
+                                Text("\(last.date, style: .date)")
                             }
                         }
                         HStack(spacing: 10) { // hstack for timeIn and timeOut
                             HStack(spacing: 2) {
                                 Image.store.arrowUpRight
                                     .foregroundColor(Color.theme.green)
-                                Text("\(viewModel.lastRecord!.timeIn, style: .time)")
+                                Text("\(last.timeIn, style: .time)")
                             }
                             HStack(spacing: 2) {
                                 Image.store.arrowUpLeft
                                     .foregroundColor(Color.theme.red)
-                                Text("\(viewModel.lastRecord!.timeOut, style: .time)")
+                                Text("\(last.timeOut, style: .time)")
                             }
                         }
                         HStack(spacing: 10) { // hstack for secwork and secpause
                             HStack(spacing: 2) {
                                 Image.store.hammer
                                     .foregroundColor(Color.theme.gray)
-                                Text("\(viewModel.lastRecord!.secWork!.toTimeString())")
+                                Text("\(last.secWork.toTimeString())")
                             }
                             HStack(spacing: 2) {
                                 Image.store.pauseCircle
                                     .foregroundColor(Color.theme.gray)
-                                Text("\(viewModel.lastRecord!.secPause.toTimeString())")
+                                Text("\(last.secPause.toTimeString())")
                             }
                         }
                     }// close VStack

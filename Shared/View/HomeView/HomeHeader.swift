@@ -20,9 +20,7 @@ struct HomeHeader: View {
                 .padding(.leading, 5)
             Spacer()
             Button {
-                withAnimation {
-                    mainViewModel.activeSheet = .settings
-                }
+                mainViewModel.activeSheet = .settings
             } label: {
                 Image.store.gearshape
                     .font(.largeTitle)
