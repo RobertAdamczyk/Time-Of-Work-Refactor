@@ -64,10 +64,11 @@ extension HistoryViewModel {
         }
 
         func value(for date: Dates) -> (first: String, second: String) {
-            let firstValueFoSection = String(Calendar.current.component(self.component.first, from: date.date))
+            guard let date = date.date else { return (first: "", second: "") }
+            let firstValueFoSection = String(Calendar.current.component(self.component.first, from: date))
             let secondValueFoSection: String
             if let value = self.component.second {
-                secondValueFoSection = String(Calendar.current.component(value, from: date.date))
+                secondValueFoSection = String(Calendar.current.component(value, from: date))
             } else {
                 secondValueFoSection = ""
             }
@@ -91,9 +92,10 @@ struct HistoryView: View {
                     Section(header: Text(section)) {
                         ForEach(coreDataManager.dates, id: \.self) { date in
                             if viewModel.shouldShowDate(date: date, for: section) {
-                                HistoryListRowView(date: date)
+                                HistoryListRowView(value: date)
                             }
                         }
+                        .onDelete(perform: coreDataManager.removeDate)
                     }
                 }
             }
@@ -116,47 +118,49 @@ struct HistoryView: View {
 }
 
 struct HistoryListRowView: View {
-    let date: Dates
+    let value: Dates
     var body: some View {
         HStack(spacing: 0) {
-            VStack(alignment: .leading) {
-                if date.night {
-                    Text("\(date.date.toString(format: .dayOnlyShort))-" +
-                         "\(date.date.plusOneDay()!.toString(format: .dayOnlyShort))")
-                    Text("\(date.date.toString(format: .dayOnlyNumber))-" +
-                         "\(date.date.plusOneDay()!.toString(format: .shortDate))")
-                } else {
-                    Text("\(date.date.toString(format: .dayOnly))")
-                    Text("\(date.date.toString(format: .shortDate))")
+            if let timeIn = value.timeIn, let timeOut = value.timeOut, let date = value.date {
+                VStack(alignment: .leading) {
+                    if value.night {
+                        Text("\(date.toString(format: .dayOnlyShort))-" +
+                             "\(date.plusOneDay()!.toString(format: .dayOnlyShort))")
+                        Text("\(date.toString(format: .dayOnlyNumber))-" +
+                             "\(date.plusOneDay()!.toString(format: .shortDate))")
+                    } else {
+                        Text("\(date.toString(format: .dayOnly))")
+                        Text("\(date.toString(format: .shortDate))")
+                    }
                 }
-            }
-            .frame(width: UIScreen.main.bounds.width * 0.28, alignment: .leading)
-            Spacer()
-            VStack(alignment: .trailing) {
-                HStack {
-                    Text("\(date.timeIn, style: .time)")
-                    Image.store.arrowUpLeft
-                        .foregroundColor(Color.theme.green)
-                }
-                HStack {
-                    Text("\(date.timeOut, style: .time)")
-                    Image.store.arrowUpRight
-                        .foregroundColor(Color.theme.red)
-                }
-            }
-            Spacer()
-            HStack {
+                .frame(width: UIScreen.main.bounds.width * 0.28, alignment: .leading)
+                Spacer()
                 VStack(alignment: .trailing) {
-                    Text("\(date.secWork.toTimeString())")
-                    if date.specialDay == nil { Text("\(date.secPause.toTimeString())") }
+                    HStack {
+                        Text("\(timeIn, style: .time)")
+                        Image.store.arrowUpLeft
+                            .foregroundColor(Color.theme.green)
+                    }
+                    HStack {
+                        Text("\(timeOut, style: .time)")
+                        Image.store.arrowUpRight
+                            .foregroundColor(Color.theme.red)
+                    }
                 }
-                VStack {
-                    Image.store.hammer
-                    if date.specialDay == nil { Image.store.pauseCircle }
+                Spacer()
+                HStack {
+                    VStack(alignment: .trailing) {
+                        Text("\(value.secWork.toTimeString())")
+                        if value.specialDay == nil { Text("\(value.secPause.toTimeString())") }
+                    }
+                    VStack {
+                        Image.store.hammer
+                        if value.specialDay == nil { Image.store.pauseCircle }
+                    }
+                    .foregroundColor(Color.theme.gray)
                 }
-                .foregroundColor(Color.theme.gray)
+                .frame(width: UIScreen.main.bounds.width * 0.28, alignment: .trailing)
             }
-            .frame(width: UIScreen.main.bounds.width * 0.28, alignment: .trailing)
         }
         .font(.headline)
     }

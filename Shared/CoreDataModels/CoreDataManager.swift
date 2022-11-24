@@ -83,11 +83,11 @@ class CoreDataManager: ObservableObject {
         saveData()
     }
 
-    func removeDate(date: Dates) {
-        withAnimation {
-            container.viewContext.delete(date)
-            saveData()
-        }
+    func removeDate(indexSet: IndexSet) {
+        guard let index = indexSet.first else { return }
+        let date = dates[index]
+        container.viewContext.delete(date)
+        saveData()
     }
 
     // MARK: Private functions
