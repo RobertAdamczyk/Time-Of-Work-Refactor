@@ -11,13 +11,13 @@ import CoreData
 
 extension Dates {
 
-    @NSManaged public var date: Date
+    @NSManaged public var date: Date?
     @NSManaged public var night: Bool
     @NSManaged public var secPause: Int
     @NSManaged public var secWork: Int
     @NSManaged public var specialDay: String?
-    @NSManaged public var timeIn: Date
-    @NSManaged public var timeOut: Date
+    @NSManaged public var timeIn: Date?
+    @NSManaged public var timeOut: Date?
 
 }
 
