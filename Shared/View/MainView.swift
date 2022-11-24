@@ -36,7 +36,7 @@ struct MainView: View {
                 AddEditDateView(activeSheet: $viewModel.activeSheet, name: "New Date")
             case .editDate:
                 AddEditDateView(activeSheet: $viewModel.activeSheet,
-                                date: historyViewModel.selectedDate, name: "Edit Date")
+                                value: historyViewModel.selectedDate, name: "Edit Date")
             case .settings:
                 MainSettingView()
                     .environmentObject(settingsViewModel)

@@ -25,8 +25,9 @@ class HistoryViewModel: ObservableObject {
         weeksAndYears.removeAll()
         sumOfWeeks.removeAll()
         for date in array {
-            let week = Calendar.current.component(.weekOfYear, from: date.date)
-            let year = Calendar.current.component(.yearForWeekOfYear, from: date.date)
+            guard let dateForElement = date.date else { return }
+            let week = Calendar.current.component(.weekOfYear, from: dateForElement)
+            let year = Calendar.current.component(.yearForWeekOfYear, from: dateForElement)
             let newValue = WeekAndYear(weekOfYear: week, yearForWeekOfYear: year)
             if !weeksAndYears.contains(newValue) {
                 weeksAndYears.append(newValue)

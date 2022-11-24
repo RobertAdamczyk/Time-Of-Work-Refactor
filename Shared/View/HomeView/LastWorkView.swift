@@ -15,7 +15,8 @@ struct LastWorkView: View {
         VStack(alignment: .leading, spacing: 2) {
             // Need to check coreDataManager.dates.count > 0,
             // because we have crash when we try to read date from core data
-            if let last = viewModel.lastRecord, coreDataManager.dates.count > 0 {
+            if let last = viewModel.lastRecord, let date = last.date,
+               let timeIn = last.timeIn, let timeOut = last.timeOut {
                 Text("LAST WORK")
                     .font(.system(size: 12))
                     .foregroundColor(Color.theme.gray.opacity(0.8))
@@ -28,23 +29,23 @@ struct LastWorkView: View {
                                 .foregroundColor(Color.theme.gray)
                             if last.night {
                                 VStack {
-                                    Text("From \(last.date, style: .date)")
-                                    Text("Until \(last.date.plusOneDay() ?? Date(), style: .date)")
+                                    Text("From \(date, style: .date)")
+                                    Text("Until \(date.plusOneDay() ?? Date(), style: .date)")
                                 }
                             } else {
-                                Text("\(last.date, style: .date)")
+                                Text("\(date, style: .date)")
                             }
                         }
                         HStack(spacing: 10) { // hstack for timeIn and timeOut
                             HStack(spacing: 2) {
                                 Image.store.arrowUpRight
                                     .foregroundColor(Color.theme.green)
-                                Text("\(last.timeIn, style: .time)")
+                                Text("\(timeIn, style: .time)")
                             }
                             HStack(spacing: 2) {
                                 Image.store.arrowUpLeft
                                     .foregroundColor(Color.theme.red)
-                                Text("\(last.timeOut, style: .time)")
+                                Text("\(timeOut, style: .time)")
                             }
                         }
                         HStack(spacing: 10) { // hstack for secwork and secpause

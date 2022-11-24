@@ -39,12 +39,13 @@ class CoreDataManager: ObservableObject {
         if new.night {
             guard let timeOut = new.timeOut.plusOneDay() else { return }
             newData.timeOut = timeOut
+            newData.secWork = Int(timeOut.timeIntervalSince(new.timeIn)) - new.secPause
         } else {
             newData.timeOut = new.timeOut
+            newData.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
         }
         newData.night = new.night
         newData.secPause = new.secPause
-        newData.secWork = Int(newData.timeOut.timeIntervalSince(newData.timeIn)) - new.secPause
 
         if let special = new.specialDay {
             newData.specialDay = special.rawValue
@@ -61,14 +62,15 @@ class CoreDataManager: ObservableObject {
 
         if new.night == date.night { // if not changed
             date.timeOut = new.timeOut
+            date.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
         } else { // if user changed work at night
             if let timeOut = Calendar.current.date(byAdding: .day, value: new.night ? 1 : -1, to: new.timeOut) {
                 date.timeOut = timeOut
+                date.secWork = Int(timeOut.timeIntervalSince(new.timeIn)) - new.secPause
             }
         }
         date.night = new.night
         date.secPause = new.secPause
-        date.secWork = Int(date.timeOut.timeIntervalSince(date.timeIn)) - new.secPause
 
         if let special = new.specialDay {
             date.specialDay = special.rawValue

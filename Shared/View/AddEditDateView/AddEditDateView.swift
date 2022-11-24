@@ -10,7 +10,7 @@ import SwiftUI
 struct AddEditDateView: View {
     @StateObject var viewModel = AddEditDateViewModel()
     @Binding var activeSheet: SheetView?
-    var date: Dates?
+    var value: Dates?
     var name: String
     var body: some View {
         ZStack(alignment: .top) {
@@ -29,7 +29,7 @@ struct AddEditDateView: View {
                         } else {
                             HoursRow()
                         }
-                        SaveButtonRow(activeSheet: $activeSheet, date: date)
+                        SaveButtonRow(activeSheet: $activeSheet, date: value)
                         Spacer()
                     }
                     .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
@@ -77,14 +77,14 @@ struct AddEditDateView: View {
         }
         .ignoresSafeArea()
         .onAppear {
-            if let date = date {
-                viewModel.new.date = date.date
-                viewModel.new.timeIn = date.timeIn
-                viewModel.new.timeOut = date.timeOut
-                viewModel.new.night = date.night
-                viewModel.new.secPause = date.secPause
-                viewModel.new.specialDay = SpecialDays(rawValue: date.specialDay ?? "")
-                viewModel.new.hoursSpecialDay = date.specialDay != nil ? date.secWork / 3600 : 8
+            if let value = value, let timeIn = value.timeIn, let timeOut = value.timeOut, let date = value.date {
+                viewModel.new.date = date
+                viewModel.new.timeIn = timeIn
+                viewModel.new.timeOut = timeOut
+                viewModel.new.night = value.night
+                viewModel.new.secPause = value.secPause
+                viewModel.new.specialDay = SpecialDays(rawValue: value.specialDay ?? "")
+                viewModel.new.hoursSpecialDay = value.specialDay != nil ? value.secWork / 3600 : 8
             }
         }
     }
