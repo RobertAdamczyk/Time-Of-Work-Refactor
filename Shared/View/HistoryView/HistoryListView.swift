@@ -11,7 +11,6 @@ struct HistoryListView: View {
     @EnvironmentObject var viewModel: HistoryViewModel
     @EnvironmentObject var coreDataManager: CoreDataManager
     var body: some View {
-
         ForEach(viewModel.weeksAndYears, id: \.id) { item in
             VStack {
                 HStack {
@@ -41,7 +40,7 @@ struct HistoryListView: View {
                     if item.showWeek {
                         VStack(spacing: 0) {
                             ForEach(coreDataManager.dates, id: \.self) { date in
-                                if viewModel.dateIsEqualWeekAndYear(date: date.date, value: item) {
+                                if viewModel.dateIsEqualWeekAndYear(date: date.date ?? Date(), value: item) {
                                     Divider()
                                     HistoryRow(value: date)
                                         .contentShape(Rectangle())
