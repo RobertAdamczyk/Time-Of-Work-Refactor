@@ -11,4 +11,8 @@ class MainViewModel: ObservableObject {
     // MARK: Published variables
     @Published var view = Views.home
     @Published var activeSheet: SheetView?
+
+    // MARK: Public properties
+    /// Record from coreData that AddEditView takes to edit
+    var dateToEdit: Dates?
 }

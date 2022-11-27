@@ -16,11 +16,11 @@ struct SaveButtonRow: View {
     var body: some View {
         Button {
             if let date = date {
-                coreDataManager.editDate(date: date, for: viewModel.new)
+                coreDataManager.removeDate(date: date)
+                coreDataManager.addDate(for: viewModel.new)
             } else {
                 coreDataManager.addDate(for: viewModel.new)
             }
-            NotificationCenter.default.post(Notification(name: Notification.Name("RefreshHistory")))
             activeSheet = nil
         } label: {
             Text("Save")

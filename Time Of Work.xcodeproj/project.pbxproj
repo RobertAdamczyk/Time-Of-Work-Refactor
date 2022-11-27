@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		692CF5A02928212F00C6B389 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF59F2928212F00C6B389 /* Colors.swift */; };
 		692CF5A229282D3800C6B389 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF5A129282D3800C6B389 /* Images.swift */; };
+		694E2C7A293189C1009E923B /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2C79293189C1009E923B /* HistoryViewModel.swift */; };
 		69D4CDCF292AB39C00E04681 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */; };
 		69DCF7BB292D7A0F00520254 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCF7BA292D7A0F00520254 /* HistoryView.swift */; };
 		E10B09F72603F739009FADEB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B09F62603F739009FADEB /* LoadingView.swift */; };
@@ -68,6 +69,7 @@
 		692CF59F2928212F00C6B389 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		692CF5A129282D3800C6B389 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		692CF5A3292850DC00C6B389 /* Time Of Work (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Time Of Work (iOS).entitlements"; sourceTree = "<group>"; };
+		694E2C79293189C1009E923B /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		69DCF7BA292D7A0F00520254 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		E10B09F62603F739009FADEB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				69DCF7BA292D7A0F00520254 /* HistoryView.swift */,
+				694E2C79293189C1009E923B /* HistoryViewModel.swift */,
 			);
 			path = HistoryView;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				E10B09F72603F739009FADEB /* LoadingView.swift in Sources */,
 				E1AD08F025FD0F8A00A8213C /* HomeViewModel.swift in Sources */,
 				E16E8F5E260A5B28006AA09A /* DaysPicker.swift in Sources */,
+				694E2C7A293189C1009E923B /* HistoryViewModel.swift in Sources */,
 				E13291CE25F2B2C500348BC3 /* New.swift in Sources */,
 				69DCF7BB292D7A0F00520254 /* HistoryView.swift in Sources */,
 				E18335C325EEA03900E3A952 /* ViewsEnum.swift in Sources */,

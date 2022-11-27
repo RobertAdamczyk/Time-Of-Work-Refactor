@@ -23,7 +23,6 @@ struct MainView: View {
                 }
                 if viewModel.view == .history {
                     HistoryView()
-                        // .environmentObject(historyViewModel) TODO: Fixme
                 }
             }
             ToolbarView()
@@ -32,15 +31,16 @@ struct MainView: View {
         .sheet(item: $viewModel.activeSheet) { item in
             switch item {
             case .addDate:
-                AddEditDateView(activeSheet: $viewModel.activeSheet, name: "New Date")
-//            case .editDate:
-//                AddEditDateView(activeSheet: $viewModel.activeSheet,
-//                                date: historyViewModel.selectedDate, name: "Edit Date") TODO: Fixme
+                AddEditDateView(activeSheet: $viewModel.activeSheet)
+            case .editDate:
+                AddEditDateView(activeSheet: $viewModel.activeSheet,
+                                value: viewModel.dateToEdit, deleteAction: {
+                    coreDataManager.removeDate(date: viewModel.dateToEdit)
+                    viewModel.activeSheet = nil
+                })
             case .settings:
                 MainSettingView()
                     .environmentObject(settingsViewModel)
-            default: // Delete
-                EmptyView() // TODO: Delete
             }
         }
         .environmentObject(coreDataManager)

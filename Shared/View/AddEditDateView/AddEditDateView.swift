@@ -11,7 +11,7 @@ struct AddEditDateView: View {
     @StateObject var viewModel = AddEditDateViewModel()
     @Binding var activeSheet: SheetView?
     var value: Dates?
-    var name: String
+    var deleteAction: (() -> Void)?
     var body: some View {
         ZStack(alignment: .top) {
             Color.theme.background
@@ -48,7 +48,7 @@ struct AddEditDateView: View {
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
             .environmentObject(viewModel)
 
-            AddEditHeaderView(value: name)
+            AddEditHeaderView(deleteAction: deleteAction, value: value)
 
             ZStack(alignment: .bottom) {
                 Color.clear

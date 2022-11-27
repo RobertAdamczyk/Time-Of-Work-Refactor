@@ -56,36 +56,8 @@ class CoreDataManager: ObservableObject {
         saveData()
     }
 
-    func editDate(date: Dates, for new: New) {
-        date.date = new.date
-        date.timeIn = new.timeIn
-
-        if new.night == date.night { // if not changed
-            date.timeOut = new.timeOut
-            date.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
-        } else { // if user changed work at night
-            if let timeOut = Calendar.current.date(byAdding: .day, value: new.night ? 1 : -1, to: new.timeOut) {
-                date.timeOut = timeOut
-                date.secWork = Int(timeOut.timeIntervalSince(new.timeIn)) - new.secPause
-            }
-        }
-        date.night = new.night
-        date.secPause = new.secPause
-
-        if let special = new.specialDay {
-            date.specialDay = special.rawValue
-            date.night = false
-            date.secPause = 0
-            date.secWork = new.hoursSpecialDay * 3600
-        } else {
-            date.specialDay = nil
-        }
-        saveData()
-    }
-
-    func removeDate(indexSet: IndexSet) {
-        guard let index = indexSet.first else { return }
-        let date = dates[index]
+    func removeDate(date: Dates?) {
+        guard let date = date else { return }
         container.viewContext.delete(date)
         saveData()
     }
