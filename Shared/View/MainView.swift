@@ -12,6 +12,14 @@ struct MainView: View {
     @StateObject var homeViewModel = HomeViewModel()
     @ObservedObject var settingsViewModel = SettingsViewModel()
     @StateObject var coreDataManager = CoreDataManager()
+
+    init() {
+        /// Orange title in navigations view
+        let navBarAppearance = UINavigationBar.appearance()
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(.theme.accent)]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(.theme.accent)]
+    }
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.theme.background
