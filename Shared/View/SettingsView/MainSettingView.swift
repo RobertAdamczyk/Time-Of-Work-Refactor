@@ -14,7 +14,17 @@ struct MainSettingView: View {
                 Color.theme.background
                     .ignoresSafeArea()
                 VStack(spacing: 20) {
-                    AddEditHeaderView(value: "Settings")
+                    HStack {
+                        Text("Settings")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.theme.accent)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 5)
+                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .padding(10)
+                    .backgroundWithBottom
                     VStack(alignment: .leading) {
                         HStack {
                             Image.store.person

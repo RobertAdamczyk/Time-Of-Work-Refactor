@@ -28,4 +28,6 @@ struct ImageStore {
     let calendar = Image(systemName: "calendar")
     let plus = Image(systemName: "plus.circle.fill")
     let square2x2 = Image(systemName: "square.grid.2x2")
+    let listNumber = Image(systemName: "list.number")
+    let trash = Image(systemName: "trash.fill")
 }

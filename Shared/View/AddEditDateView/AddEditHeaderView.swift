@@ -8,16 +8,26 @@
 import SwiftUI
 
 struct AddEditHeaderView: View {
-    var value: String
+    var deleteAction: (() -> Void)?
+    var value: Dates?
     var body: some View {
         HStack {
-            Text("\(value)")
+            Text(value != nil ? "Edit Date" : "New Date")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(Color.theme.accent)
-                .padding(.leading, 5)
             Spacer()
+            if value != nil {
+                Button {
+                    deleteAction?()
+                } label: {
+                    Image.store.trash
+                        .font(.title)
+                        .foregroundColor(.red)
+                }
+            }
         }
+        .padding(.horizontal, 5)
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
         .padding(10)
         .backgroundWithBottom

@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     @ObservedObject var viewModel = MainViewModel()
     @StateObject var homeViewModel = HomeViewModel()
-    @ObservedObject var historyViewModel = HistoryViewModel()
     @ObservedObject var settingsViewModel = SettingsViewModel()
     @StateObject var coreDataManager = CoreDataManager()
     var body: some View {
@@ -24,7 +23,6 @@ struct MainView: View {
                 }
                 if viewModel.view == .history {
                     HistoryView()
-                        .environmentObject(historyViewModel)
                 }
             }
             ToolbarView()
@@ -33,10 +31,13 @@ struct MainView: View {
         .sheet(item: $viewModel.activeSheet) { item in
             switch item {
             case .addDate:
-                AddEditDateView(activeSheet: $viewModel.activeSheet, name: "New Date")
+                AddEditDateView(activeSheet: $viewModel.activeSheet)
             case .editDate:
                 AddEditDateView(activeSheet: $viewModel.activeSheet,
-                                value: historyViewModel.selectedDate, name: "Edit Date")
+                                value: viewModel.dateToEdit, deleteAction: {
+                    viewModel.activeSheet = nil
+                    coreDataManager.removeDate(date: viewModel.dateToEdit)
+                })
             case .settings:
                 MainSettingView()
                     .environmentObject(settingsViewModel)

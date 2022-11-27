@@ -4,6 +4,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="night" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="secPause" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="section" optional="YES" attributeType="String"/>
         <attribute name="secWork" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="specialDay" optional="YES" attributeType="String"/>
         <attribute name="timeIn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

@@ -18,6 +18,7 @@ extension Dates {
     @NSManaged public var specialDay: String?
     @NSManaged public var timeIn: Date?
     @NSManaged public var timeOut: Date?
+    @NSManaged public var section: String?
 
 }
 
