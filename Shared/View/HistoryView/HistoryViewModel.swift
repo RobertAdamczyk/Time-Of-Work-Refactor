@@ -11,10 +11,11 @@ class HistoryViewModel: ObservableObject {
 
     // MARK: Published properties
     @Published var sectionType: SectionType
+    @Published var total: [TotalValue] = [] // array with values for sums of week/month/year...
 
     // MARK: Lifecycle
     init() {
-        sectionType = .week
+        sectionType = .week // TODO: Save to userDefaults ?
     }
 
     // MARK: Public functions
@@ -29,13 +30,39 @@ class HistoryViewModel: ObservableObject {
         }
     }
 
+    /// Func to create sections und sums for history view
     func createSection(dates: [Dates]) {
         for date in dates {
             date.section = nil
+        }
+        total.removeAll()
+        for date in dates {
             let filter = dates.filter { $0.section == sectionType.sectionText(date: date) }
             if filter.isEmpty {
+                // We add section if not exist yet and we create first object of total
                 date.section = sectionType.sectionText(date: date)
+                total.append(TotalValue(date: date))
+            } else {
+                // If section already exist increacse only total value
+                if let lastTotal = total.last, let lastIndex = total.lastIndex(of: lastTotal) {
+                    total[lastIndex] = TotalValue(last: total[lastIndex], to: TotalValue(date: date))
+                }
             }
+        }
+    }
+
+    /// We check if next date has section value. If yes(date is lastone in section) show for current date totalView..
+    func showTotalView(in dates: [Dates], for date: Dates) -> Bool {
+        guard let index = dates.firstIndex(of: date) else { return false }
+        if index + 1 < dates.count {
+            let nextDate = dates[index+1]
+            if nextDate.section != nil {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return true
         }
     }
 }

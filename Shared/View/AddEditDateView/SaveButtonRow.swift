@@ -15,13 +15,13 @@ struct SaveButtonRow: View {
 
     var body: some View {
         Button {
+            activeSheet = nil
             if let date = date {
                 coreDataManager.removeDate(date: date)
                 coreDataManager.addDate(for: viewModel.new)
             } else {
                 coreDataManager.addDate(for: viewModel.new)
             }
-            activeSheet = nil
         } label: {
             Text("Save")
                 .fontWeight(.bold)

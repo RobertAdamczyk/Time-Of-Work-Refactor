@@ -35,8 +35,8 @@ struct MainView: View {
             case .editDate:
                 AddEditDateView(activeSheet: $viewModel.activeSheet,
                                 value: viewModel.dateToEdit, deleteAction: {
-                    coreDataManager.removeDate(date: viewModel.dateToEdit)
                     viewModel.activeSheet = nil
+                    coreDataManager.removeDate(date: viewModel.dateToEdit)
                 })
             case .settings:
                 MainSettingView()
