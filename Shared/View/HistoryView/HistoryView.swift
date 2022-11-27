@@ -52,6 +52,9 @@ struct HistoryView: View {
                         .padding(.horizontal, 17)
                     }
                 }
+                Spacer().frame(height: 120)
+                // TODO: Value = 120 ? Maybe property ?
+                // We need spacer, because last value is in the back of toolbar bottom
             }
             .navigationTitle("History")
             .toolbar {
