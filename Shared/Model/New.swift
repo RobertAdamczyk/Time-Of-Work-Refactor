@@ -23,4 +23,14 @@ struct New {
         secPause = 0
         night = false
     }
+
+    init(date: Date, timeIn: Date, timeOut: Date, secPause: Int, night: Bool, specialDay: SpecialDays?, secWork: Int) {
+        self.date = date
+        self.timeIn = timeIn
+        self.timeOut = timeOut
+        self.secPause = secPause
+        self.night = night
+        self.specialDay = specialDay
+        self.secWork = secWork
+    }
 }

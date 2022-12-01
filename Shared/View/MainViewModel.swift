@@ -4,15 +4,23 @@
 //
 //  Created by Robert Adamczyk on 21.03.21.
 //
-import Foundation
+import SwiftUI
 
 class MainViewModel: ObservableObject {
 
     // MARK: Published variables
     @Published var view = Views.home
     @Published var activeSheet: SheetView?
+    @Published var showPickerType: PickerType?
 
     // MARK: Public properties
     /// Record from coreData that AddEditView takes to edit
     var dateToEdit: Dates?
+
+    // MARK: Public functions
+    func showPicker(pickerType: PickerType?) {
+        withAnimation {
+            showPickerType = pickerType
+        }
+    }
 }

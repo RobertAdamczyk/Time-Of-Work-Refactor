@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var viewModel = MainViewModel()
-    @StateObject var homeViewModel = HomeViewModel()
     @ObservedObject var settingsViewModel = SettingsViewModel()
     @StateObject var coreDataManager = CoreDataManager()
+    @StateObject var homeViewModel = HomeViewModel()
 
     init() {
         /// Orange title in navigations view
@@ -21,19 +21,31 @@ struct MainView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Color.theme.background
-            VStack {
-                if viewModel.view == .home {
-                    HomeView()
-                        .environmentObject(homeViewModel)
-                        .environmentObject(settingsViewModel)
+        ZStack {
+            ZStack(alignment: .bottom) {
+                Color.theme.background
+                VStack {
+                    if viewModel.view == .home {
+                        HomeView()
+                            .environmentObject(settingsViewModel)
+                    }
+                    if viewModel.view == .history {
+                        HistoryView()
+                    }
                 }
-                if viewModel.view == .history {
-                    HistoryView()
-                }
+                ToolbarView()
             }
-            ToolbarView()
+            .zIndex(0)
+            .blur(radius: viewModel.showPickerType != nil ? 10 : 0)
+            if let pickerType = viewModel.showPickerType {
+                PickerView(type: pickerType, date: $homeViewModel.lastDate,
+                           pause: $homeViewModel.pause, onCloseAction: {
+                    homeViewModel.setLastDate(value: homeViewModel.lastDate)
+                    viewModel.showPicker(pickerType: nil)
+                })
+                .transition(.move(edge: .bottom))
+                .zIndex(1)
+            }
         }
         .environmentObject(viewModel)
         .sheet(item: $viewModel.activeSheet) { item in
@@ -52,6 +64,7 @@ struct MainView: View {
             }
         }
         .environmentObject(coreDataManager)
+        .environmentObject(homeViewModel)
         .ignoresSafeArea(.all)
     }
 }

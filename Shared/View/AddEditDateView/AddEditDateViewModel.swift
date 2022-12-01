@@ -10,15 +10,15 @@ import SwiftUI
 import CoreData
 
 class AddEditDateViewModel: ObservableObject {
+
     // MARK: Published variables
     @Published var new = New()
-    @Published var showComponent: ShowComponents?
+    @Published var showPickerType: PickerType?
 
     // MARK: Public functions
-    func changeShowComponent(newValue: ShowComponents?) {
+    func showPicker(pickerType: PickerType?) {
         withAnimation {
-            // if old value is new value remove picker from screen
-            showComponent = showComponent == newValue ? nil : newValue
+            showPickerType = pickerType
         }
     }
 }
