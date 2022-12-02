@@ -12,6 +12,7 @@ class CoreDataManager: ObservableObject {
 
     // MARK: Published variables
     @Published var dates: [Dates] = []
+    @Published var lastRecord: New?
 
     // MARK: Private variables
     private let container: NSPersistentContainer
@@ -68,6 +69,7 @@ class CoreDataManager: ObservableObject {
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
             dates = try container.viewContext.fetch(request)
+            loadLastRecord()
         } catch let error {
             print("Error featch Dates: \(error)")
         }
@@ -80,5 +82,13 @@ class CoreDataManager: ObservableObject {
             print("Error saving coredata: \(error)")
         }
         fetchDates()
+    }
+
+    private func loadLastRecord() {
+        if let last = dates.first, let date = last.date, let timeIn = last.timeIn, let timeOut = last.timeOut {
+            lastRecord = New(date: date, timeIn: timeIn, timeOut: timeOut, secPause: last.secPause,
+                             night: last.night, specialDay: SpecialDays(rawValue: last.specialDay ?? ""),
+                             secWork: last.secWork)
+        }
     }
 }

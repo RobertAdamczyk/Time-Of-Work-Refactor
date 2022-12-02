@@ -12,7 +12,7 @@ struct ToolbarView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
-                .frame(width: UIScreen.main.bounds.width,
+                .frame(width: Config.screenWidth,
                        height: 85 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
                 .clipShape(CustomToolbar(radius: 35))
                 .overlay(

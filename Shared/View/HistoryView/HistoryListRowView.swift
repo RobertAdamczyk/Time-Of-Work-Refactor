@@ -23,7 +23,7 @@ struct HistoryListRowView: View {
                         Text("\(date.toString(format: .shortDate))")
                     }
                 }
-                .frame(width: UIScreen.main.bounds.width * 0.28, alignment: .leading)
+                .frame(width: Config.screenWidth * 0.28, alignment: .leading)
                 Spacer()
                 if let specialDay = value.specialDay {
                     HStack {
@@ -59,7 +59,7 @@ struct HistoryListRowView: View {
                     }
                     .foregroundColor(Color.theme.gray)
                 }
-                .frame(width: UIScreen.main.bounds.width * 0.28, alignment: .trailing)
+                .frame(width: Config.screenWidth * 0.28, alignment: .trailing)
             }
         }
         .font(.headline)

@@ -11,7 +11,7 @@ struct NewDateRow: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
         Button {
-                viewModel.changeShowComponent(newValue: .datePicker)
+            viewModel.showPicker(pickerType: .date)
         } label: {
             HStack {
                 Text("Date").bold()

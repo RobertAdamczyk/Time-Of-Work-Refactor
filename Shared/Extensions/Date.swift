@@ -21,3 +21,16 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: self)
     }
 }
+
+/// AppStorage wrapper supports objects that conform to RawRepresentable protocol, where that raw value is a String or Int.
+extension Date: RawRepresentable {
+    private static let formatter = ISO8601DateFormatter()
+
+    public var rawValue: String {
+        Date.formatter.string(from: self)
+    }
+
+    public init?(rawValue: String) {
+        self = Date.formatter.date(from: rawValue) ?? Date()
+    }
+}

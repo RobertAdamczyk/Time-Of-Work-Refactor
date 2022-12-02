@@ -12,7 +12,7 @@ struct StartEndRow: View {
     var body: some View {
         HStack {
             Button {
-                viewModel.changeShowComponent(newValue: .timeInPicker)
+                viewModel.showPicker(pickerType: .timeIn)
             } label: {
                 HStack {
                     Text("Start").bold()
@@ -26,7 +26,7 @@ struct StartEndRow: View {
             }
             Spacer().frame(width: 20)
             Button {
-                viewModel.changeShowComponent(newValue: .timeOutPicker)
+                viewModel.showPicker(pickerType: .timeOut)
             } label: {
                 HStack {
                     Text("End").bold()

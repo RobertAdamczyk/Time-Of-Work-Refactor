@@ -11,7 +11,7 @@ struct PauseRow: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
         Button {
-            viewModel.changeShowComponent(newValue: .pausePicker)
+            viewModel.showPicker(pickerType: .pause)
         } label: {
             HStack {
                 Text("Pause").bold()

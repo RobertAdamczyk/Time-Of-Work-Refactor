@@ -13,67 +13,75 @@ struct AddEditDateView: View {
     var value: Dates?
     var deleteAction: (() -> Void)?
     var body: some View {
-        ZStack(alignment: .top) {
-            Color.theme.background
-            TabView {
-                ZStack {
-                    Color.theme.background
-                        .onTapGesture {
-                            viewModel.changeShowComponent(newValue: nil)
+        ZStack {
+            ZStack(alignment: .top) {
+                Color.theme.background
+                TabView {
+                    ZStack {
+                        Color.theme.background
+                            .onTapGesture {
+                                viewModel.showPicker(pickerType: nil)
+                            }
+                        VStack(spacing: 20) {
+                            NewDateRow()
+                            if viewModel.new.specialDay == nil {
+                                StartEndRow()
+                                PauseRow()
+                            } else {
+                                HoursRow()
+                            }
+                            SaveButtonRow(activeSheet: $activeSheet, date: value)
+                            Spacer()
                         }
-                    VStack(spacing: 20) {
-                        NewDateRow()
-                        if viewModel.new.specialDay == nil {
-                            StartEndRow()
-                            PauseRow()
-                        } else {
-                            HoursRow()
-                        }
-                        SaveButtonRow(activeSheet: $activeSheet, date: value)
-                        Spacer()
-                    }
-                    .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
-                    .padding(.horizontal)
-                } // Page 1 with Date , Time In, Out, Pause Save Button
-                ZStack {
-                    Color.theme.background
-                        .onTapGesture {
-                            viewModel.changeShowComponent(newValue: nil)
-                        }
-                    TogglesView()
                         .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
                         .padding(.horizontal)
-                } // Page 2 with Holidays Settings
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-            .environmentObject(viewModel)
-
-            AddEditHeaderView(deleteAction: deleteAction, value: value)
-
-            ZStack(alignment: .bottom) {
-                Color.clear
-                switch viewModel.showComponent {
-                case .datePicker:
-                    DatePickerView(date: $viewModel.new.date, night: $viewModel.new.night)
-                        .transition(.scale)
-                case .timeInPicker:
-                    TimePickerView(time: $viewModel.new.timeIn)
-                        .transition(.scale)
-                case .timeOutPicker:
-                    TimePickerView(time: $viewModel.new.timeOut)
-                        .transition(.scale)
-                case .pausePicker:
-                    PausePickerView(sec: $viewModel.new.secPause)
-                        .transition(.scale)
-                case .hoursPicker:
-                    HoursPickerView(value: $viewModel.new.hoursSpecialDay)
-                        .transition(.scale)
-                default:
-                    EmptyView()
+                    } // Page 1 with Date , Time In, Out, Pause Save Button
+                    ZStack {
+                        Color.theme.background
+                            .onTapGesture {
+                                viewModel.showPicker(pickerType: nil)
+                            }
+                        TogglesView()
+                            .padding(.top, ((UIApplication.shared.windows.first?.safeAreaInsets.top) ?? 0) + 80)
+                            .padding(.horizontal)
+                    } // Page 2 with Holidays Settings
                 }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                .environmentObject(viewModel)
+
+                AddEditHeaderView(deleteAction: deleteAction, value: value)
             }
-            .padding(.bottom, 10 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0 ))
-            .padding(.horizontal, 15)
+            .zIndex(0)
+            if let pickerType = viewModel.showPickerType {
+                ZStack {
+                    switch pickerType {
+                    case .pause:
+                        PickerView(type: pickerType, date: $viewModel.new.date,
+                                   pause: $viewModel.new.secPause, onCloseAction: {
+                            viewModel.showPicker(pickerType: nil)
+                        })
+                    case .timeIn:
+                        PickerView(type: pickerType, date: $viewModel.new.timeIn,
+                                   pause: $viewModel.new.secPause, onCloseAction: {
+                            viewModel.showPicker(pickerType: nil)
+                        })
+                    case .timeOut:
+                        PickerView(type: pickerType, date: $viewModel.new.timeOut,
+                                   pause: $viewModel.new.secPause, onCloseAction: {
+                            viewModel.showPicker(pickerType: nil)
+                        })
+                    case .date:
+                        PickerView(type: pickerType, date: $viewModel.new.date,
+                                   pause: $viewModel.new.secPause, onCloseAction: {
+                            viewModel.showPicker(pickerType: nil)
+                        })
+                    case .special:
+                        EmptyView()
+                    }
+                }
+                .transition(.move(edge: .bottom))
+                .zIndex(1)
+            }
         }
         .ignoresSafeArea()
         .onAppear {

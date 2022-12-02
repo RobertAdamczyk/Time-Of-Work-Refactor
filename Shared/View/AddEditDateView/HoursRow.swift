@@ -11,7 +11,7 @@ struct HoursRow: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
         Button {
-            viewModel.changeShowComponent(newValue: .hoursPicker)
+            viewModel.showPicker(pickerType: .special)
         } label: {
             HStack {
                 Text("Hours").bold()

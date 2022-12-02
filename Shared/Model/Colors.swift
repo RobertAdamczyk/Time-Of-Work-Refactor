@@ -19,5 +19,6 @@ struct ColorTheme {
     let red = Color("Red")
     let green = Color.green
     let gray = Color.gray
-    let shadow = Color.black
+    let shadow = Color("Shadow")
+    let cell = Color("CellColor")
 }

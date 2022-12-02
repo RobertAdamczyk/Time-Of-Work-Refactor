@@ -9,39 +9,30 @@ import SwiftUI
 
 struct ButtonsRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @EnvironmentObject var coreDataManager: CoreDataManager
+    @EnvironmentObject var mainViewModel: MainViewModel
 
     var body: some View {
         HStack {
             Button {
-                if viewModel.working {
-                    let newDate = viewModel.createNewDateForEndWork()
-                    coreDataManager.addDate(for: newDate)
-                }
-                viewModel.setLastDate(value: Date())
-                viewModel.refreshWorkTime()
-                viewModel.toggleWorking()
-            } label: {
-                Text(viewModel.working ? "End Work" : "Start Work")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.theme.buttonText)
-                    .frame(width: 100)
-            }
-
-            Spacer()
-            Button {
-                viewModel.changeShowComponent(newValue: .pausePicker)
+                mainViewModel.showPicker(pickerType: .pause)
             } label: {
                 Text("Set Pause")
-                    .fontWeight(.bold)
+                    .font(.caption)
                     .foregroundColor(Color.theme.buttonText)
-                    .frame(width: 100)
+                    .padding(-5)
             }
-
+            Spacer()
+            Button {
+                mainViewModel.showPicker(pickerType: .timeIn)
+            } label: {
+                Text("New Start")
+                    .font(.caption)
+                    .foregroundColor(Color.theme.buttonText)
+                    .padding(-5)
+            }
         }
+        .frame(maxWidth: 250)
         .buttonStyle(OrangeButtonStyle())
-        .padding(.vertical, viewModel.padding)
-        .padding(.horizontal, 40)
     }
 }
 
