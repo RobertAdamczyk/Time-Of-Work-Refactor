@@ -40,7 +40,6 @@ struct MainView: View {
             if let pickerType = viewModel.showPickerType {
                 PickerView(type: pickerType, date: $homeViewModel.lastDate,
                            pause: $homeViewModel.pause, onCloseAction: {
-                    homeViewModel.setLastDate(value: homeViewModel.lastDate)
                     viewModel.showPicker(pickerType: nil)
                 })
                 .transition(.move(edge: .bottom))

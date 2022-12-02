@@ -47,7 +47,10 @@ struct PickerView: View {
     @State var value2: Int = 0
     var body: some View {
         ZStack(alignment: .bottom) {
-            Color.clear
+            Color.theme.background.opacity(0.01) // need to be opacity, because .clear doesnt work
+                .onTapGesture {
+                    viewModel.onCloseAction()
+                }
             VStack(spacing: 5) {
                 HStack {
                     Spacer()
@@ -83,7 +86,7 @@ struct PickerView: View {
 
     var dateView: some View {
         DatePicker("", selection: $date, displayedComponents: .date)
-            .datePickerStyle(.graphical)
+            .datePickerStyle(.wheel)
     }
 
     var timeView: some View {

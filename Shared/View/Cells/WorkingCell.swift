@@ -19,9 +19,8 @@ struct WorkingCell: View, HomeCellProvider {
                     .padding(.top, 20)
                 Spacer()
                 SwipeButton(type: .end, disabled: viewModel.currentCell == .idle, action: {
-                    viewModel.onSwipeButton {
-                        let newDate = viewModel.createNewDateForEndWork()
-                        coreDataManager.addDate(for: newDate)
+                    viewModel.onSwipeButton { newRecord in
+                        coreDataManager.addDate(for: newRecord)
                     }
                 })
                 .padding(.bottom, 30)

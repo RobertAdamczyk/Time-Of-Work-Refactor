@@ -17,11 +17,11 @@ class SwipeButtonViewModel: ObservableObject {
             case .end:
                 return Text("End your work")
                         .font(.subheadline)
-                        .fontWeight(.bold)
+                        .fontWeight(.medium)
             case .start:
                 return Text("Start your work")
                         .font(.subheadline)
-                        .fontWeight(.bold)
+                        .fontWeight(.medium)
             }
         }
 
@@ -29,12 +29,14 @@ class SwipeButtonViewModel: ObservableObject {
             switch self {
             case .end:
                 return Text("Ended")
+                        .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
-                        .fontWeight(.bold)
+                        .fontWeight(.medium)
             case .start:
                 return Text("Started")
+                        .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
-                        .fontWeight(.bold)
+                        .fontWeight(.medium)
             }
         }
 
@@ -42,12 +44,14 @@ class SwipeButtonViewModel: ObservableObject {
             switch self {
             case .end:
                 return Text("Ending...")
+                        .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
-                        .fontWeight(.bold)
+                        .fontWeight(.medium)
             case .start:
                 return Text("Starting...")
+                        .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
-                        .fontWeight(.bold)
+                        .fontWeight(.medium)
             }
         }
     }
@@ -140,10 +144,9 @@ struct SwipeButton: View {
         ZStack {
             RoundedRectangle(cornerSize: CGSize(width: 25, height: 25))
                 .stroke(lineWidth: viewModel.strokeWidth)
-                .foregroundColor(Color.theme.gray)
+                .foregroundColor(Color.theme.shadow)
                 .frame(height: viewModel.buttonSize.height)
             viewModel.type.textBefore
-                .opacity( viewModel.circleOffset.width > viewModel.endOffset * 0.5 ? 0 : 1)
             HStack {
                 if viewModel.type == .end { Spacer(minLength: 0) }
                 RoundedRectangle(cornerSize: CGSize(width: viewModel.diameterCircle * 0.5,

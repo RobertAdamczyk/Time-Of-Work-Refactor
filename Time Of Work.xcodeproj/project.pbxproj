@@ -21,6 +21,7 @@
 		69981E7529392183007476D5 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69981E7429392183007476D5 /* PickerView.swift */; };
 		69981E7729392706007476D5 /* CustomRoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69981E7629392706007476D5 /* CustomRoundedCorner.swift */; };
 		69981E7B2939536B007476D5 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69981E7A2939536B007476D5 /* Config.swift */; };
+		69B53584293A42330000787D /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B53583293A42330000787D /* Storable.swift */; };
 		69D4CDCF292AB39C00E04681 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */; };
 		69DCF7BB292D7A0F00520254 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCF7BA292D7A0F00520254 /* HistoryView.swift */; };
 		69F8A96629353C41003C770C /* SwipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F8A96529353C41003C770C /* SwipeButton.swift */; };
@@ -84,6 +85,7 @@
 		69981E7429392183007476D5 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		69981E7629392706007476D5 /* CustomRoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedCorner.swift; sourceTree = "<group>"; };
 		69981E7A2939536B007476D5 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		69B53583293A42330000787D /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		69DCF7BA292D7A0F00520254 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		69F8A96529353C41003C770C /* SwipeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButton.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				692CF59F2928212F00C6B389 /* Colors.swift */,
 				692CF5A129282D3800C6B389 /* Images.swift */,
 				694E2C852933E72C009E923B /* TotalValue.swift */,
+				69B53583293A42330000787D /* Storable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				E1F20B4326073F5E00790CEA /* AddEditHeaderView.swift in Sources */,
 				E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */,
 				69839F8B2936A3E700920333 /* IdleCell.swift in Sources */,
+				69B53584293A42330000787D /* Storable.swift in Sources */,
 				E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */,
 				E18335AE25EE98C500E3A952 /* MainView.swift in Sources */,
 				E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */,

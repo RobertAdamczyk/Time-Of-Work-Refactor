@@ -18,7 +18,7 @@ class HistoryViewModel: ObservableObject {
 
     // MARK: Lifecycle
     init() {
-        sectionType = .week // TODO: Save to userDefaults ?
+        sectionType = .week
         state = .loading
     }
 

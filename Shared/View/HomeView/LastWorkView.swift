@@ -13,7 +13,7 @@ struct LastWorkView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            if let last = viewModel.lastRecord, let secWork = last.secWork {
+            if let last = coreDataManager.lastRecord, let secWork = last.secWork {
                 VStack(spacing: 5) {
                     Text("LAST WORK")
                         .font(.system(size: 12))
@@ -66,12 +66,6 @@ struct LastWorkView: View {
                     }
                 )
             }
-        }
-        .onAppear {
-            viewModel.loadLast(dates: coreDataManager.dates)
-        }
-        .onChange(of: coreDataManager.dates) { _ in
-            viewModel.loadLast(dates: coreDataManager.dates)
         }
     }
 }

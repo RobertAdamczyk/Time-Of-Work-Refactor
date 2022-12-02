@@ -34,6 +34,9 @@ struct NowRow: View {
                             .foregroundColor(Color.theme.accent)
                         Text("\(viewModel.lastDate, style: .time)")
                     }
+                    .onChange(of: viewModel.lastDate) { _ in
+                        viewModel.refreshWorkTime()
+                    }
                 }
                 ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursWeek / setting.daysWeek ) : 0)
                     .frame(width: Config.screenHeight * 0.18, height: Config.screenHeight * 0.18)

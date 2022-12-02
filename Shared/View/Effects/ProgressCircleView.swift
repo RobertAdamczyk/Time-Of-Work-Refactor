@@ -15,7 +15,7 @@ struct ProgressCircleView: View {
         GeometryReader { reader in
             ZStack {
                 Circle()
-                    .stroke(Color.theme.gray, lineWidth: reader.size.width/10)
+                    .stroke(Color.theme.shadow, lineWidth: reader.size.width/10)
                     .frame(width: reader.size.width, height: reader.size.height)
                 Circle()
                     .rotation(.init(degrees: -90))

@@ -8,13 +8,14 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @AppStorage("pause") var pause: Int = 0
+
+    // MARK: AppStorage variables
+    @AppStorage(Storable.pause.key) var pause: Int = 0
+    @AppStorage(Storable.working.key) var working: Bool = false
+    @AppStorage(Storable.lastDate.key) var lastDate: Date = Date()
 
     // MARK: Published variables
     @Published var currentWorkTimeInSec: Int = 0
-    @Published var lastRecord: New?
-    @Published var working: Bool = UserDefaults.standard.bool(forKey: "working")
-    @Published var lastDate: Date = UserDefaults.standard.object(forKey: "lastDate") as? Date ?? Date()
     @Published var currentCell: HomeCell = .idle
 
     // MARK: Public variables
@@ -25,43 +26,18 @@ class HomeViewModel: ObservableObject {
     }
 
     // MARK: Public functions
-    func onSwipeButton(action: (() -> Void)? = nil) {
+    func onSwipeButton(action: ((New) -> Void)? = nil) {
         if working {
-            action?()
+            let new = createNewDateForEndWork()
+            action?(new)
         }
-        setLastDate(value: Date())
+        lastDate = Date()
         refreshWorkTime()
         toggleWorking()
     }
 
-    func setLastDate(value: Date) {
-        lastDate = value
-        UserDefaults.standard.set(value, forKey: "lastDate")
-    }
-
-    func loadLast(dates: [Dates]) {
-        if let last = dates.first, let date = last.date, let timeIn = last.timeIn, let timeOut = last.timeOut {
-            lastRecord = New(date: date, timeIn: timeIn, timeOut: timeOut, secPause: last.secPause,
-                             night: last.night, specialDay: SpecialDays(rawValue: last.specialDay ?? ""),
-                             secWork: last.secWork)
-        }
-    }
-
     func refreshWorkTime() {
         currentWorkTimeInSec = Int(Date().timeIntervalSince(lastDate)) - pause
-    }
-
-    func createNewDateForEndWork() -> New {
-        var new = New()
-        new.date = lastDate
-        new.timeIn = lastDate
-        new.timeOut = Date()
-        new.secPause = pause
-        new.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
-        new.night = Calendar.current.component(.day, from: new.timeIn) !=
-                    Calendar.current.component(.day, from: new.timeOut)
-        new.specialDay = nil
-        return new
     }
 
     func checkCurrentWork() { // if user forgot stop working
@@ -73,9 +49,21 @@ class HomeViewModel: ObservableObject {
     // MARK: Private functions
     private func toggleWorking() {
         working.toggle()
-        UserDefaults.standard.set(working, forKey: "working")
         withAnimation(.easeInOut(duration: 1)) {
             self.currentCell = working ? .working : .idle
         }
+    }
+
+    private func createNewDateForEndWork() -> New {
+        var new = New()
+        new.date = lastDate
+        new.timeIn = lastDate
+        new.timeOut = Date()
+        new.secPause = pause
+        new.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+        new.night = Calendar.current.component(.day, from: new.timeIn) !=
+                    Calendar.current.component(.day, from: new.timeOut)
+        new.specialDay = nil
+        return new
     }
 }
