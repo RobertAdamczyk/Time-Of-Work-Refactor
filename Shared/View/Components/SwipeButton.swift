@@ -142,7 +142,8 @@ struct SwipeButton: View {
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerSize: CGSize(width: 25, height: 25))
+            RoundedRectangle(cornerSize: CGSize(width: viewModel.buttonSize.height * 0.5,
+                                                height: viewModel.buttonSize.height * 0.5))
                 .stroke(lineWidth: viewModel.strokeWidth)
                 .foregroundColor(Color.theme.shadow)
                 .frame(height: viewModel.buttonSize.height)
@@ -156,7 +157,7 @@ struct SwipeButton: View {
                     .frame(width: viewModel.diameterCircle + viewModel.circleOffset.width)
                 if viewModel.type == .start { Spacer(minLength: 0) }
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal, viewModel.strokeWidth)
             switch viewModel.state {
             case .done: viewModel.type.textAfter
             case .idle: viewModel.type.textDuring
@@ -191,7 +192,7 @@ struct SwipeButton: View {
                     )
                 if viewModel.type == .start { Spacer() }
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal, viewModel.strokeWidth)
         }
         .frame(width: viewModel.buttonSize.width)
         .onAppear {

@@ -41,7 +41,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func checkCurrentWork() { // if user forgot stop working
-        if working && abs(lastDate.timeIntervalSince(Date())) > 3600 * 24 {
+        if working && abs(lastDate.timeIntervalSince(Date())) > Config.automaticCheckoutAfterSec {
             toggleWorking()
         }
     }
