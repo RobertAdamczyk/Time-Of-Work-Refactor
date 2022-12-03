@@ -12,7 +12,6 @@ enum PickerType {
     case timeIn
     case timeOut
     case date
-    case special
 }
 
 class PickerViewModel: ObservableObject {
@@ -69,7 +68,6 @@ struct PickerView: View {
                 case .date: dateView
                 case .timeIn, .timeOut: timeView
                 case .pause: pauseView
-                case .special: EmptyView()
                 }
             }
             .padding()

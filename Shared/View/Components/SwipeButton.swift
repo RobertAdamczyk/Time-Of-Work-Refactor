@@ -95,9 +95,9 @@ class SwipeButtonViewModel: ObservableObject {
     func onEndedDragGesture(gesture: _ChangedGesture<DragGesture>.Value) {
         guard state == .idle else { return }
         if circleOffset.width >= endOffset {
+            state = .done
             simpleHaptic()
             action?()
-            state = .done
         } else {
             resetOffset()
         }

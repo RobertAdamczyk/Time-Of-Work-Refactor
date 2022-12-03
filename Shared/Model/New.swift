@@ -14,7 +14,7 @@ struct New {
     var night: Bool
     var secWork: Int? // only for LastDateView
     var specialDay: SpecialDays?
-    var hoursSpecialDay: Int = 8 // variable for hours sickness/holiday
+    var hoursSpecialDayInSec: Double = 8 * 3600 // variable for hours sickness/holiday
 
     init() {
         date = Date()
