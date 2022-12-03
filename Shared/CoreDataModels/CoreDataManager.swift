@@ -52,7 +52,7 @@ class CoreDataManager: ObservableObject {
             newData.specialDay = special.rawValue
             newData.night = false
             newData.secPause = 0
-            newData.secWork = new.hoursSpecialDay * 3600
+            newData.secWork = Int(new.hoursSpecialDayInSec)
         }
         saveData()
     }
