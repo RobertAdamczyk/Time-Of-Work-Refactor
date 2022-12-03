@@ -54,7 +54,6 @@
 		E1851EAD25EFEEB400C721E9 /* BackgroundWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EAC25EFEEB400C721E9 /* BackgroundWithBorder.swift */; };
 		E1851EB125EFEF6700C721E9 /* OrangeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EB025EFEF6700C721E9 /* OrangeButtonStyle.swift */; };
 		E1851EB425EFF60D00C721E9 /* NowRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EB325EFF60D00C721E9 /* NowRow.swift */; };
-		E1851EB925EFF71D00C721E9 /* ButtonsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */; };
 		E1D624382926E09C00AC87D6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D624372926E09C00AC87D6 /* Date.swift */; };
 		E1F20B572607B5E100790CEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B562607B5E100790CEA /* MainViewModel.swift */; };
 		E1F20B5C2607B7A800790CEA /* MainSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F20B5B2607B7A800790CEA /* MainSettingView.swift */; };
@@ -115,7 +114,6 @@
 		E1851EAC25EFEEB400C721E9 /* BackgroundWithBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWithBorder.swift; sourceTree = "<group>"; };
 		E1851EB025EFEF6700C721E9 /* OrangeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButtonStyle.swift; sourceTree = "<group>"; };
 		E1851EB325EFF60D00C721E9 /* NowRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowRow.swift; sourceTree = "<group>"; };
-		E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsRow.swift; sourceTree = "<group>"; };
 		E1D624372926E09C00AC87D6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		E1F20B562607B5E100790CEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E1F20B5B2607B7A800790CEA /* MainSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingView.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				E1851EB325EFF60D00C721E9 /* NowRow.swift */,
-				E1851EB825EFF71D00C721E9 /* ButtonsRow.swift */,
 				E1134CDD26053A9D006BFD87 /* LastWorkView.swift */,
 				694E2C8929340BB6009E923B /* HomeView.swift */,
 				69839F842936A05500920333 /* HomeViewModel.swift */,
@@ -259,11 +256,11 @@
 		E18335A225EE988D00E3A952 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				69981E7929395311007476D5 /* Cells */,
 				69981E78293952E4007476D5 /* Components */,
 				69DCF7B9292D79FC00520254 /* HistoryView */,
 				E1F20B5A2607B79900790CEA /* SettingsView */,
 				E174F5B925F2AE0000707C97 /* AddEditDateView */,
+				69981E7929395311007476D5 /* Cells */,
 				694E2C8829340B5F009E923B /* HomeView */,
 				E18335B625EE9B4D00E3A952 /* Effects */,
 				E18335B125EE9AC000E3A952 /* Shapes */,
@@ -456,7 +453,6 @@
 				E18335B825EE9B6A00E3A952 /* GlassEffect.swift in Sources */,
 				E1D624382926E09C00AC87D6 /* Date.swift in Sources */,
 				E183359425EE988100E3A952 /* ContentView.swift in Sources */,
-				E1851EB925EFF71D00C721E9 /* ButtonsRow.swift in Sources */,
 				E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */,
 				E1851EB425EFF60D00C721E9 /* NowRow.swift in Sources */,
 				69839F892936A0DD00920333 /* WorkingCell.swift in Sources */,

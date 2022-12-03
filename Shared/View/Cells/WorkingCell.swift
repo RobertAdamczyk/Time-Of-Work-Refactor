@@ -15,10 +15,8 @@ struct WorkingCell: View, HomeCellProvider {
             cellShape
             VStack {
                 NowRow()
-                ButtonsRow()
-                    .padding(.top, 20)
                 Spacer()
-                SwipeButton(type: .end, disabled: viewModel.currentCell == .idle, action: {
+                SwipeButton(type: .endWork, disabled: viewModel.currentCell == .idle, action: {
                     viewModel.onSwipeButton { newRecord in
                         coreDataManager.addDate(for: newRecord)
                     }

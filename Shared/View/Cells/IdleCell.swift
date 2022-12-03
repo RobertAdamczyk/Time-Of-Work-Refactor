@@ -16,7 +16,7 @@ struct IdleCell: View, HomeCellProvider {
             VStack {
                 LastWorkView()
                 Spacer()
-                SwipeButton(type: .start, disabled: viewModel.currentCell == .working, action: {
+                SwipeButton(type: .startWork, disabled: viewModel.currentCell == .working, action: {
                     viewModel.onSwipeButton()
                 })
             }

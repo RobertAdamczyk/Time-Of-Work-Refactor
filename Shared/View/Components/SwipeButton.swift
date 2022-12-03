@@ -9,16 +9,16 @@ import SwiftUI
 
 class SwipeButtonViewModel: ObservableObject {
     enum ButtonType {
-        case end
-        case start
+        case endWork
+        case startWork
 
         var textBefore: some View {
             switch self {
-            case .end:
+            case .endWork:
                 return Text("End your work")
                         .font(.subheadline)
                         .fontWeight(.medium)
-            case .start:
+            case .startWork:
                 return Text("Start your work")
                         .font(.subheadline)
                         .fontWeight(.medium)
@@ -27,12 +27,12 @@ class SwipeButtonViewModel: ObservableObject {
 
         var textAfter: some View {
             switch self {
-            case .end:
+            case .endWork:
                 return Text("Ended")
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
                         .fontWeight(.medium)
-            case .start:
+            case .startWork:
                 return Text("Started")
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
@@ -42,12 +42,12 @@ class SwipeButtonViewModel: ObservableObject {
 
         var textDuring: some View {
             switch self {
-            case .end:
+            case .endWork:
                 return Text("Ending...")
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
                         .fontWeight(.medium)
-            case .start:
+            case .startWork:
                 return Text("Starting...")
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
@@ -74,14 +74,14 @@ class SwipeButtonViewModel: ObservableObject {
 
     // MARK: Properties onAppear
     var action: (() -> Void)?
-    var type: ButtonType = .start
+    var type: ButtonType = .startWork
 
     // MARK: Public functions
     func onChangedDragGesture(gesture: DragGesture.Value) {
         guard state == .idle else { return }
         switch type {
-        case .start: circleOffset = CGSize(width: gesture.translation.width, height: 0)
-        case .end: circleOffset = CGSize(width: -gesture.translation.width, height: 0)
+        case .startWork: circleOffset = CGSize(width: gesture.translation.width, height: 0)
+        case .endWork: circleOffset = CGSize(width: -gesture.translation.width, height: 0)
         }
         guard circleOffset.width >= 0 else {
             circleOffset.width = 0
@@ -106,8 +106,8 @@ class SwipeButtonViewModel: ObservableObject {
     /// This function is implemented, because I don't want long line in view....
     func circleOffsetForView() -> CGSize {
         switch type {
-        case .start: return CGSize(width: circleOffset.width, height: 0)
-        case .end: return CGSize(width: -circleOffset.width, height: 0)
+        case .startWork: return CGSize(width: circleOffset.width, height: 0)
+        case .endWork: return CGSize(width: -circleOffset.width, height: 0)
         }
     }
 
@@ -149,13 +149,13 @@ struct SwipeButton: View {
                 .frame(height: viewModel.buttonSize.height)
             viewModel.type.textBefore
             HStack {
-                if viewModel.type == .end { Spacer(minLength: 0) }
+                if viewModel.type == .endWork { Spacer(minLength: 0) }
                 RoundedRectangle(cornerSize: CGSize(width: viewModel.diameterCircle * 0.5,
                                                     height: viewModel.diameterCircle * 0.5))
                     .foregroundColor(Color.theme.accent)
                     .frame(height: viewModel.diameterCircle)
                     .frame(width: viewModel.diameterCircle + viewModel.circleOffset.width)
-                if viewModel.type == .start { Spacer(minLength: 0) }
+                if viewModel.type == .startWork { Spacer(minLength: 0) }
             }
             .padding(.horizontal, viewModel.strokeWidth)
             switch viewModel.state {
@@ -164,17 +164,17 @@ struct SwipeButton: View {
                     .opacity( viewModel.circleOffset.width > viewModel.endOffset * 0.5 ? 1 : 0)
             }
             HStack {
-                if viewModel.type == .end { Spacer() }
+                if viewModel.type == .endWork { Spacer() }
                 Circle()
                     .foregroundColor(Color.theme.accent)
                     .frame(height: viewModel.diameterCircle)
                     .overlay(
                         ZStack {
                             switch viewModel.type {
-                            case .start:
+                            case .startWork:
                                 Image.store.arrowUpRight
                                     .foregroundColor(Color.theme.green)
-                            case .end:
+                            case .endWork:
                                 Image.store.arrowUpLeft
                                     .foregroundColor(Color.theme.red)
                             }
@@ -190,7 +190,7 @@ struct SwipeButton: View {
                                 viewModel.onEndedDragGesture(gesture: gesture)
                             }
                     )
-                if viewModel.type == .start { Spacer() }
+                if viewModel.type == .startWork { Spacer() }
             }
             .padding(.horizontal, viewModel.strokeWidth)
         }
@@ -208,6 +208,6 @@ struct SwipeButton: View {
 
 struct SwipeButton_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeButton(type: .start, disabled: false, action: nil)
+        SwipeButton(type: .startWork, disabled: false, action: nil)
     }
 }

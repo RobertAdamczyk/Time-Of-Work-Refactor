@@ -10,7 +10,7 @@ import SwiftUI
 struct NowRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
     @EnvironmentObject var setting: SettingsViewModel
-
+    @EnvironmentObject var mainViewModel: MainViewModel
     var body: some View {
         VStack(spacing: 40) {
             Text("NOW")
@@ -24,6 +24,9 @@ struct NowRow: View {
                             .foregroundColor(Color.theme.accent)
                         Text("\(viewModel.pause.toTimeString())")
                     }
+                    .onTapGesture {
+                        mainViewModel.showPicker(pickerType: .pause)
+                    }
                     .onChange(of: viewModel.pause) { _ in
                        viewModel.refreshWorkTime()
                     }
@@ -33,6 +36,9 @@ struct NowRow: View {
                             .fontWeight(.semibold)
                             .foregroundColor(Color.theme.accent)
                         Text("\(viewModel.lastDate, style: .time)")
+                    }
+                    .onTapGesture {
+                        mainViewModel.showPicker(pickerType: .timeIn)
                     }
                     .onChange(of: viewModel.lastDate) { _ in
                         viewModel.refreshWorkTime()
