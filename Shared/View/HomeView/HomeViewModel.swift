@@ -10,38 +10,61 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
 
     // MARK: AppStorage variables
-    @AppStorage(Storable.pause.key) var pause: Int = 0
+    @AppStorage(Storable.pauseTimeInSec.key) var pauseTimeInSec: Int = 0
     @AppStorage(Storable.working.key) var working: Bool = false
-    @AppStorage(Storable.lastDate.key) var lastDate: Date = Date()
+    @AppStorage(Storable.isPauseOn.key) var isPauseOn: Bool = false
+    @AppStorage(Storable.lastDateForWork.key) var lastDateForWork: Date = Date()
+    @AppStorage(Storable.lastDateForPause.key) var lastDateForPause: Date = Date()
 
     // MARK: Published variables
     @Published var currentWorkTimeInSec: Int = 0
+    @Published var currentPauseTimeInSec: Int = 0
     @Published var currentCell: HomeCell = .idle
 
     // MARK: Public variables
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     init() {
         self.currentCell = working ? .working : .idle
     }
 
     // MARK: Public functions
-    func onSwipeButton(action: ((New) -> Void)? = nil) {
+    func onSwipeWorkButton(action: ((New) -> Void)? = nil) {
+        if isPauseOn {
+            pauseTimeInSec += currentPauseTimeInSec
+        }
         if working {
             let new = createNewDateForEndWork()
             action?(new)
         }
-        lastDate = Date()
-        refreshWorkTime()
+        lastDateForWork = Date()
         toggleWorking()
     }
 
+    func onSwipePauseButton() {
+        lastDateForPause = Date()
+        if isPauseOn {
+            pauseTimeInSec += currentPauseTimeInSec
+        }
+        currentPauseTimeInSec = 0
+        withAnimation(.easeIn.delay(1)) {
+            isPauseOn.toggle()
+        }
+    }
+
     func refreshWorkTime() {
-        currentWorkTimeInSec = Int(Date().timeIntervalSince(lastDate)) - pause
+        if isPauseOn {
+            currentPauseTimeInSec = Int(Date().timeIntervalSince(lastDateForPause))
+            let pauseTogether = pauseTimeInSec + currentPauseTimeInSec
+            currentWorkTimeInSec = Int(Date().timeIntervalSince(lastDateForWork)) - pauseTogether
+        } else {
+            currentWorkTimeInSec = Int(Date().timeIntervalSince(lastDateForWork)) - pauseTimeInSec
+        }
+
     }
 
     func checkCurrentWork() { // if user forgot stop working
-        if working && abs(lastDate.timeIntervalSince(Date())) > Config.automaticCheckoutAfterSec {
+        if working && abs(lastDateForWork.timeIntervalSince(Date())) > Config.automaticCheckoutAfterSec {
             toggleWorking()
         }
     }
@@ -52,14 +75,17 @@ class HomeViewModel: ObservableObject {
         withAnimation(.easeInOut(duration: 1)) {
             self.currentCell = working ? .working : .idle
         }
+        isPauseOn = false
+        pauseTimeInSec = 0 // TODO: In settings default pause time ??
+        currentPauseTimeInSec = 0
     }
 
     private func createNewDateForEndWork() -> New {
         var new = New()
-        new.date = lastDate
-        new.timeIn = lastDate
+        new.date = lastDateForWork
+        new.timeIn = lastDateForWork
         new.timeOut = Date()
-        new.secPause = pause
+        new.secPause = pauseTimeInSec
         new.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
         new.night = Calendar.current.component(.day, from: new.timeIn) !=
                     Calendar.current.component(.day, from: new.timeOut)

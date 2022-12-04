@@ -8,22 +8,53 @@
 import SwiftUI
 
 class SwipeButtonViewModel: ObservableObject {
-    enum ButtonType {
-        case end
-        case start
+    enum ButtonModel {
+        case startWork
+        case endWork
+        case startPause
+        case endPause
 
         var textBefore: some View {
             switch self {
-            case .end:
+            case .endWork:
                 return Text("End your work")
                         .font(.subheadline)
                         .fontWeight(.medium)
-            case .start:
+            case .startWork:
                 return Text("Start your work")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+            case .startPause:
+                return Text("Start your pause")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+            case .endPause:
+                return Text("End your pause")
                         .font(.subheadline)
                         .fontWeight(.medium)
             }
         }
+
+        var image: some View {
+            switch self {
+            case .startWork:
+                return Image.store.arrowUpRight
+                        .foregroundColor(Color.theme.green)
+                        .scaleEffect(1)
+            case .endWork:
+                return Image.store.arrowUpLeft
+                        .foregroundColor(Color.theme.red)
+                        .scaleEffect(1)
+            case .startPause, .endPause:
+                return Image.store.pauseCircle
+                    .foregroundColor(Color.theme.buttonText)
+                    .scaleEffect(1.4)
+            }
+        }
+    }
+    enum ButtonType {
+        case end
+        case start
 
         var textAfter: some View {
             switch self {
@@ -63,6 +94,7 @@ class SwipeButtonViewModel: ObservableObject {
     // MARK: Published properties
     @Published var circleOffset: CGSize = .zero
     @Published var state: State = .idle
+    @Published var type: ButtonType = .start
 
     // MARK: Public properties
     let buttonSize: CGSize = CGSize(width: 250, height: 50)
@@ -74,7 +106,6 @@ class SwipeButtonViewModel: ObservableObject {
 
     // MARK: Properties onAppear
     var action: (() -> Void)?
-    var type: ButtonType = .start
 
     // MARK: Public functions
     func onChangedDragGesture(gesture: DragGesture.Value) {
@@ -137,6 +168,7 @@ class SwipeButtonViewModel: ObservableObject {
 struct SwipeButton: View {
     @StateObject var viewModel: SwipeButtonViewModel = SwipeButtonViewModel()
     let type: SwipeButtonViewModel.ButtonType
+    let model: SwipeButtonViewModel.ButtonModel
     let disabled: Bool
     let action: (() -> Void)?
 
@@ -147,7 +179,7 @@ struct SwipeButton: View {
                 .stroke(lineWidth: viewModel.strokeWidth)
                 .foregroundColor(Color.theme.shadow)
                 .frame(height: viewModel.buttonSize.height)
-            viewModel.type.textBefore
+            model.textBefore
             HStack {
                 if viewModel.type == .end { Spacer(minLength: 0) }
                 RoundedRectangle(cornerSize: CGSize(width: viewModel.diameterCircle * 0.5,
@@ -170,14 +202,7 @@ struct SwipeButton: View {
                     .frame(height: viewModel.diameterCircle)
                     .overlay(
                         ZStack {
-                            switch viewModel.type {
-                            case .start:
-                                Image.store.arrowUpRight
-                                    .foregroundColor(Color.theme.green)
-                            case .end:
-                                Image.store.arrowUpLeft
-                                    .foregroundColor(Color.theme.red)
-                            }
+                            model.image
                         }
                     )
                     .offset(viewModel.circleOffsetForView())
@@ -208,6 +233,6 @@ struct SwipeButton: View {
 
 struct SwipeButton_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeButton(type: .start, disabled: false, action: nil)
+        SwipeButton(type: .start, model: .startWork, disabled: false, action: nil)
     }
 }

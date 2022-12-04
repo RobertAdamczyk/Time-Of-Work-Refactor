@@ -42,8 +42,9 @@ struct PickerView: View {
         self._date = date
         self._pause = pause
     }
-    @State var value1: Int = 0
-    @State var value2: Int = 0
+    @State var hour: Int = 0
+    @State var min: Int = 0
+    @State var sec: Int = 0
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.theme.background.opacity(0.01) // need to be opacity, because .clear doesnt work
@@ -95,34 +96,47 @@ struct PickerView: View {
     var pauseView: some View {
         GeometryReader { reader in
             HStack(spacing: 0) {
-                Picker("h", selection: $value1) {
+                Picker("h", selection: $hour) {
                     ForEach(0...23, id: \.self) { index in
                         Text("\(index) h")
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
-                .frame(width: reader.size.width/2, height: reader.size.height)
+                .frame(width: reader.size.width/3, height: reader.size.height)
                 .compositingGroup()
                 .clipped()
-                Picker("h", selection: $value2) {
+                Picker("m", selection: $min) {
                     ForEach(0...59, id: \.self) { index in
                         Text("\(index) m")
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
-                .frame(width: reader.size.width/2, height: reader.size.height)
+                .frame(width: reader.size.width/3, height: reader.size.height)
+                .compositingGroup()
+                .clipped()
+                Picker("s", selection: $sec) {
+                    ForEach(0...59, id: \.self) { index in
+                        Text("\(index) s")
+                    }
+                }
+                .pickerStyle(WheelPickerStyle())
+                .frame(width: reader.size.width/3, height: reader.size.height)
                 .compositingGroup()
                 .clipped()
             }
-            .onChange(of: value1) { _ in
-                self.pause = value1 * 3600 + value2 * 60
+            .onChange(of: hour) { _ in
+                self.pause = hour * 3600 + min * 60 + sec
             }
-            .onChange(of: value2) { _ in
-                self.pause = value1 * 3600 + value2 * 60
+            .onChange(of: min) { _ in
+                self.pause = hour * 3600 + min * 60 + sec
+            }
+            .onChange(of: sec) { _ in
+                self.pause = hour * 3600 + min * 60 + sec
             }
             .onAppear {
-                value1 = self.pause / 3600
-                value2 = self.pause % 3600 / 60
+                hour = self.pause / 3600
+                min = self.pause % 3600 / 60
+                sec = self.pause % 3600 % 60
             }
         }
         .frame(height: 220)

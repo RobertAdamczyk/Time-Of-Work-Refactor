@@ -38,8 +38,9 @@ struct MainView: View {
             .zIndex(0)
             .blur(radius: viewModel.showPickerType != nil ? 10 : 0)
             if let pickerType = viewModel.showPickerType {
-                PickerView(type: pickerType, date: $homeViewModel.lastDate,
-                           pause: $homeViewModel.pause, onCloseAction: {
+                PickerView(type: pickerType, date: $homeViewModel.lastDateForWork,
+                           pause: $homeViewModel.pauseTimeInSec, onCloseAction: {
+                    homeViewModel.refreshWorkTime()
                     viewModel.showPicker(pickerType: nil)
                 })
                 .transition(.move(edge: .bottom))

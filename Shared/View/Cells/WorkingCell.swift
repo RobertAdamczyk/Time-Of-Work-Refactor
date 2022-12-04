@@ -15,11 +15,19 @@ struct WorkingCell: View, HomeCellProvider {
             cellShape
             VStack {
                 NowRow()
-                ButtonsRow()
-                    .padding(.top, 20)
                 Spacer()
-                SwipeButton(type: .end, disabled: viewModel.currentCell == .idle, action: {
-                    viewModel.onSwipeButton { newRecord in
+                if !viewModel.isPauseOn {
+                    SwipeButton(type: .start, model: .startPause, disabled: false) {
+                        viewModel.onSwipePauseButton()
+                    }
+                } else {
+                    SwipeButton(type: .end, model: .endPause, disabled: false) {
+                        viewModel.onSwipePauseButton()
+                    }
+                }
+                Spacer()
+                SwipeButton(type: .end, model: .endWork, disabled: viewModel.currentCell == .idle, action: {
+                    viewModel.onSwipeWorkButton { newRecord in
                         coreDataManager.addDate(for: newRecord)
                     }
                 })

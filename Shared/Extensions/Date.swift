@@ -22,7 +22,8 @@ extension Date {
     }
 }
 
-/// AppStorage wrapper supports objects that conform to RawRepresentable protocol, where that raw value is a String or Int.
+/// AppStorage wrapper supports objects that conform to RawRepresentable protocol,
+/// where that raw value is a String or Int.
 extension Date: RawRepresentable {
     private static let formatter = ISO8601DateFormatter()
 
