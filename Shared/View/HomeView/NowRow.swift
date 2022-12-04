@@ -22,26 +22,21 @@ struct NowRow: View {
                         Text("Pause:")
                             .fontWeight(.semibold)
                             .foregroundColor(Color.theme.accent)
-                        Text("\(viewModel.pause.toTimeString())")
+                        Text("\((viewModel.pauseTimeInSec+viewModel.currentPauseTimeInSec).toTimeStringTimerFormat())")
                     }
                     .onTapGesture {
+                        guard !viewModel.isPauseOn else { return }
                         mainViewModel.showPicker(pickerType: .pause)
-                    }
-                    .onChange(of: viewModel.pause) { _ in
-                       viewModel.refreshWorkTime()
                     }
                     Spacer()
                     VStack {
                         Text("Start:")
                             .fontWeight(.semibold)
                             .foregroundColor(Color.theme.accent)
-                        Text("\(viewModel.lastDate, style: .time)")
+                        Text("\(viewModel.lastDateForWork, style: .time)")
                     }
                     .onTapGesture {
                         mainViewModel.showPicker(pickerType: .timeIn)
-                    }
-                    .onChange(of: viewModel.lastDate) { _ in
-                        viewModel.refreshWorkTime()
                     }
                 }
                 ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursWeek / setting.daysWeek ) : 0)
@@ -51,8 +46,16 @@ struct NowRow: View {
                             Text("Work:")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.theme.accent)
-                            Text("\(viewModel.currentWorkTimeInSec.toTimeString())")
-                        }.offset(y: -5)
+                            Text("\(viewModel.currentWorkTimeInSec.toTimeStringTimerFormat())")
+                            ZStack {
+                                HammerAnimation()
+                                    .opacity(viewModel.isPauseOn ? 0 : 1)
+                                Image.store.pauseCircle
+                                    .foregroundColor(Color.theme.gray)
+                                    .opacity(viewModel.isPauseOn ? 1 : 0)
+                            }
+                        }
+                        .offset(y: -5)
                     )
                     .overlay(LoadingView()
                                 .frame(width: Config.screenHeight * 0.12, height: Config.screenHeight * 0.12))
@@ -60,6 +63,7 @@ struct NowRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
+            guard mainViewModel.activeSheet == nil && mainViewModel.showPickerType == nil else { return }
             viewModel.refreshWorkTime()
         }
         .onAppear {
@@ -72,5 +76,18 @@ struct NowRow: View {
 struct NowRow_Previews: PreviewProvider {
     static var previews: some View {
         NowRow()
+    }
+}
+
+struct HammerAnimation: View {
+    @State var startAnimation: Bool = false
+    var body: some View {
+        Image.store.hammer
+            .foregroundColor(Color.theme.gray)
+            .rotationEffect(Angle(degrees: startAnimation ? 15 : 0), anchor: .bottomLeading)
+            .animation(.default.repeatForever(), value: startAnimation)
+            .onAppear {
+                startAnimation.toggle()
+            }
     }
 }

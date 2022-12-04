@@ -7,17 +7,23 @@
 
 enum Storable {
     case working
-    case pause
-    case lastDate
+    case isPauseOn
+    case pauseTimeInSec
+    case lastDateForWork
+    case lastDateForPause
 
     var key: String {
         switch self {
         case .working:
             return "working"
-        case .pause:
-            return "pause"
-        case .lastDate:
-            return "lastDate"
+        case .pauseTimeInSec:
+            return "pauseTimeInSec"
+        case .lastDateForWork:
+            return "lastDateForWork"
+        case .isPauseOn:
+            return "isPauseOn"
+        case .lastDateForPause:
+            return "lastDateForPause"
         }
     }
 }

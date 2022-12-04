@@ -16,8 +16,8 @@ struct IdleCell: View, HomeCellProvider {
             VStack {
                 LastWorkView()
                 Spacer()
-                SwipeButton(type: .startWork, disabled: viewModel.currentCell == .working, action: {
-                    viewModel.onSwipeButton()
+                SwipeButton(type: .start, model: .startWork, disabled: viewModel.currentCell == .working, action: {
+                    viewModel.onSwipeWorkButton()
                 })
             }
             .padding(.vertical, 40)
