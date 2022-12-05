@@ -13,6 +13,7 @@ class CoreDataManager: ObservableObject {
     // MARK: Published variables
     @Published var dates: [Dates] = []
     @Published var lastRecord: New?
+    @Published var datesForChart: [New] = []
 
     // MARK: Private variables
     private let container: NSPersistentContainer
@@ -70,6 +71,7 @@ class CoreDataManager: ObservableObject {
         do {
             dates = try container.viewContext.fetch(request)
             loadLastRecord()
+            loadDatesForChart()
         } catch let error {
             print("Error featch Dates: \(error)")
         }
@@ -89,6 +91,40 @@ class CoreDataManager: ObservableObject {
             lastRecord = New(date: date, timeIn: timeIn, timeOut: timeOut, secPause: last.secPause,
                              night: last.night, specialDay: SpecialDays(rawValue: last.specialDay ?? ""),
                              secWork: last.secWork)
+        } else {
+            lastRecord = nil
         }
     }
+
+    private func loadDatesForChart() {
+        datesForChart = []
+        let timeIntervalLast6Days: TimeInterval = 6 * 24 * 3600
+        let dateBefor6Days = Date().addingTimeInterval(-timeIntervalLast6Days)
+        for item in dates {
+            if let date = item.date, let timeIn = item.timeIn, let timeOut = item.timeOut,
+               date > dateBefor6Days && date < Date().addingTimeInterval(-24 * 3600) {
+                let new = New(date: date, timeIn: timeIn, timeOut: timeOut, secPause: item.secPause,
+                              night: item.night, specialDay: SpecialDays(rawValue: item.specialDay ?? ""),
+                              secWork: item.secWork)
+                datesForChart.append(new)
+            }
+        }
+        // loop to create fake 5 items.5
+        // one item = one day
+        for index in 1..<6 {
+            let date = Date().addingTimeInterval(TimeInterval(-index * 24 * 3600))
+            let new = New(date: date, timeIn: date, timeOut: date, secPause: 0,
+                          night: false, specialDay: nil, secWork: 0)
+            datesForChart.append(new)
+        }
+    }
+
+    #if DEBUG
+    func removeAllDates() {
+        for date in dates {
+            container.viewContext.delete(date)
+        }
+        saveData()
+    }
+    #endif
 }

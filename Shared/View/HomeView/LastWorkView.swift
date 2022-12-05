@@ -13,7 +13,6 @@ struct LastWorkView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            if let last = coreDataManager.lastRecord, let secWork = last.secWork {
                 VStack(spacing: 5) {
                     Text("LAST WORK")
                         .font(.system(size: 12))
@@ -22,41 +21,41 @@ struct LastWorkView: View {
                     HStack { // hstack for date
                         Image.store.calendar
                             .foregroundColor(Color.theme.gray)
-                        if last.night {
+                        if coreDataManager.lastRecord?.night == true {
                             VStack {
-                                Text("From \(last.date, style: .date)")
-                                Text("Until \(last.date.plusOneDay() ?? Date(), style: .date)")
+                                Text("From \(coreDataManager.lastRecord?.date ?? Date(), style: .date)")
+                                Text("Until \(coreDataManager.lastRecord?.date.plusOneDay() ?? Date(), style: .date)")
                             }
                         } else {
-                            Text("\(last.date, style: .date)")
+                            Text("\(coreDataManager.lastRecord?.date ?? Date(), style: .date)")
                         }
                     }
                     HStack(spacing: 10) { // hstack for timeIn and timeOut
                         HStack(spacing: 2) {
                             Image.store.arrowUpRight
                                 .foregroundColor(Color.theme.green)
-                            Text("\(last.timeIn, style: .time)")
+                            Text("\(coreDataManager.lastRecord?.timeIn ?? Date(), style: .time)")
                         }
                         HStack(spacing: 2) {
                             Image.store.arrowUpLeft
                                 .foregroundColor(Color.theme.red)
-                            Text("\(last.timeOut, style: .time)")
+                            Text("\(coreDataManager.lastRecord?.timeOut ?? Date(), style: .time)")
                         }
                     }
                     HStack(spacing: 10) { // hstack for secwork and secpause
                         HStack(spacing: 2) {
                             Image.store.hammer
                                 .foregroundColor(Color.theme.gray)
-                            Text("\(secWork.toTimeString())")
+                            Text("\(coreDataManager.lastRecord?.secWork.toTimeString() ?? "--:--")")
                         }
                         HStack(spacing: 2) {
                             Image.store.pauseCircle
                                 .foregroundColor(Color.theme.gray)
-                            Text("\(last.secPause.toTimeString())")
+                            Text("\(coreDataManager.lastRecord?.secPause.toTimeString() ?? "--:--")")
                         }
                     }
                 }
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 20)
                 .overlay(
                     HStack {
                         Rectangle()
@@ -65,8 +64,16 @@ struct LastWorkView: View {
                         Spacer()
                     }
                 )
-            }
         }
+        .opacity(coreDataManager.lastRecord == nil ? 0 : 1)
+        .overlay(
+            Text("Start your first work by\nswiping button to the right.")
+                .multilineTextAlignment(.center)
+                .font(.caption)
+                .foregroundColor(Color.theme.gray)
+                .opacity(coreDataManager.lastRecord == nil ? 1 : 0)
+        )
+        .padding(.horizontal, 40)
     }
 }
 

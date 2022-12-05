@@ -13,9 +13,9 @@ struct IdleCell: View, HomeCellProvider {
     var body: some View {
         ZStack {
             cellShape
-            VStack {
+            VStack(spacing: 20) {
                 LastWorkView()
-                Spacer()
+                ChartView()
                 SwipeButton(type: .start, model: .startWork, disabled: viewModel.currentCell == .working, action: {
                     viewModel.onSwipeWorkButton()
                 })
