@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-struct New {
+struct New: Hashable {
     var date: Date
     var timeIn: Date
     var timeOut: Date
     var secPause: Int
     var night: Bool
-    var secWork: Int? // only for LastDateView
+    var secWork: Int
     var specialDay: SpecialDays?
     var hoursSpecialDayInSec: Double = 8 * 3600 // variable for hours sickness/holiday
 
@@ -21,6 +21,7 @@ struct New {
         timeIn = Date()
         timeOut = Date()
         secPause = 0
+        secWork = 0
         night = false
     }
 

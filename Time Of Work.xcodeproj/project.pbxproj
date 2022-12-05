@@ -24,6 +24,7 @@
 		69B53584293A42330000787D /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B53583293A42330000787D /* Storable.swift */; };
 		69D4CDCF292AB39C00E04681 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */; };
 		69DCF7BB292D7A0F00520254 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCF7BA292D7A0F00520254 /* HistoryView.swift */; };
+		69EE9C05293EA53E00B6A911 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EE9C04293EA53E00B6A911 /* ChartView.swift */; };
 		69F8A96629353C41003C770C /* SwipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F8A96529353C41003C770C /* SwipeButton.swift */; };
 		E10B09F72603F739009FADEB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B09F62603F739009FADEB /* LoadingView.swift */; };
 		E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189E25FCE50B00A32772 /* ProgressCircleView.swift */; };
@@ -80,6 +81,7 @@
 		69B53583293A42330000787D /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		69DCF7BA292D7A0F00520254 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		69EE9C04293EA53E00B6A911 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		69F8A96529353C41003C770C /* SwipeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButton.swift; sourceTree = "<group>"; };
 		E10B09F62603F739009FADEB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				69F8A96529353C41003C770C /* SwipeButton.swift */,
 				69981E7429392183007476D5 /* PickerView.swift */,
+				69EE9C04293EA53E00B6A911 /* ChartView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */,
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,
 				E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */,
+				69EE9C05293EA53E00B6A911 /* ChartView.swift in Sources */,
 				694E2C862933E72C009E923B /* TotalValue.swift in Sources */,
 				694E2C842933E6C2009E923B /* TotalView.swift in Sources */,
 				E16D43DA26092D20001D5D49 /* HoursPicker.swift in Sources */,
