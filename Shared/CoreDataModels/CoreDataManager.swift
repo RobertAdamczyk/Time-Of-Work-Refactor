@@ -14,6 +14,7 @@ class CoreDataManager: ObservableObject {
     @Published var dates: [Dates] = []
     @Published var lastRecord: New?
     @Published var datesForChart: [New] = []
+    @Published var uniqueDatesForChartCount: Int = 0
 
     // MARK: Private variables
     private let container: NSPersistentContainer
@@ -98,25 +99,25 @@ class CoreDataManager: ObservableObject {
 
     private func loadDatesForChart() {
         datesForChart = []
-        let timeIntervalLast6Days: TimeInterval = 6 * 24 * 3600
-        let dateBefor6Days = Date().addingTimeInterval(-timeIntervalLast6Days)
-        for item in dates {
-            if let date = item.date, let timeIn = item.timeIn, let timeOut = item.timeOut,
-               date > dateBefor6Days && date < Date().addingTimeInterval(-24 * 3600) {
+        var uniqueDates: [String] = []
+        let calendar = Calendar.current
+        dates.forEach { item in
+            guard uniqueDates.count < 5 else { return }
+            if let date = item.date, let timeIn = item.timeIn, let timeOut = item.timeOut {
                 let new = New(date: date, timeIn: timeIn, timeOut: timeOut, secPause: item.secPause,
                               night: item.night, specialDay: SpecialDays(rawValue: item.specialDay ?? ""),
                               secWork: item.secWork)
+                let day = String(calendar.component(.day, from: date))
+                let month = String(calendar.component(.month, from: date))
+                let year = String(calendar.component(.year, from: date))
+                let string = day + month + year
                 datesForChart.append(new)
+                if !uniqueDates.contains(string) {
+                    uniqueDates.append(string)
+                }
             }
         }
-        // loop to create fake 5 items.5
-        // one item = one day
-        for index in 1..<6 {
-            let date = Date().addingTimeInterval(TimeInterval(-index * 24 * 3600))
-            let new = New(date: date, timeIn: date, timeOut: date, secPause: 0,
-                          night: false, specialDay: nil, secWork: 0)
-            datesForChart.append(new)
-        }
+        uniqueDatesForChartCount = uniqueDates.count
     }
 
     #if DEBUG
