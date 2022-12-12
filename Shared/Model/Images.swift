@@ -24,10 +24,12 @@ struct ImageStore {
     let caseFill = Image(systemName: "case.fill")
     let flag = Image(systemName: "flag.fill")
     let bandage = Image(systemName: "bandage.fill")
+    let menu = Image(systemName: "line.3.horizontal")
     let gearshape = Image(systemName: "gearshape.fill")
     let calendar = Image(systemName: "calendar")
     let plus = Image(systemName: "plus.circle.fill")
     let square2x2 = Image(systemName: "square.grid.2x2")
     let listNumber = Image(systemName: "list.number")
     let close = Image(systemName: "xmark")
+    let envelope = Image(systemName: "envelope.fill")
 }

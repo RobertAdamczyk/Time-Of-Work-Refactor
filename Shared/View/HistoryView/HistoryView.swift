@@ -71,7 +71,6 @@ struct HistoryView: View {
                     .scaleEffect(2)
             }
         })
-        .accentColor(Color.theme.accent)
         .onAppear {
             viewModel.onViewAppear(dates: coreDataManager.dates)
         }

@@ -10,6 +10,7 @@ import SwiftUI
 class SettingsViewModel: ObservableObject {
 
     // MARK: Published variables
-    @Published var hoursWeek = UserDefaults.standard.object(forKey: "hoursWeek") as? Int ?? 40
-    @Published var daysWeek = UserDefaults.standard.object(forKey: "daysWeek") as? Int ?? 5
+    @AppStorage(Storable.hoursDaySetting.key) var hoursDaySetting: Double = 8
+    @AppStorage(Storable.defaultPauseSetting.key) var defaultPauseSetting: Bool = false
+    @AppStorage(Storable.defaultPauseInSecSetting.key) var defaultPauseInSecSetting: Int = 0
 }

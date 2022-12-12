@@ -42,9 +42,6 @@ struct PickerView: View {
         self._date = date
         self._pause = pause
     }
-    @State var hour: Int = 0
-    @State var min: Int = 0
-    @State var sec: Int = 0
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.theme.background.opacity(0.01) // need to be opacity, because .clear doesnt work
@@ -68,7 +65,7 @@ struct PickerView: View {
                 switch viewModel.type {
                 case .date: dateView
                 case .timeIn, .timeOut: timeView
-                case .pause: pauseView
+                case .pause: PausePickerView(pause: $pause)
                 }
             }
             .padding()
@@ -92,8 +89,14 @@ struct PickerView: View {
         DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
             .datePickerStyle(.wheel)
     }
+}
 
-    var pauseView: some View {
+struct PausePickerView: View {
+    @Binding var pause: Int
+    @State var hour: Int = 0
+    @State var min: Int = 0
+    @State var sec: Int = 0
+    var body: some View {
         GeometryReader { reader in
             HStack(spacing: 0) {
                 Picker("h", selection: $hour) {

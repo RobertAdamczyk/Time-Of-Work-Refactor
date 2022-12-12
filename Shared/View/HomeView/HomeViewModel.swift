@@ -13,6 +13,8 @@ class HomeViewModel: ObservableObject {
     @AppStorage(Storable.pauseTimeInSec.key) var pauseTimeInSec: Int = 0
     @AppStorage(Storable.working.key) var working: Bool = false
     @AppStorage(Storable.isPauseOn.key) var isPauseOn: Bool = false
+    @AppStorage(Storable.defaultPauseSetting.key) var defaultPauseSetting: Bool = false
+    @AppStorage(Storable.defaultPauseInSecSetting.key) var defaultPauseInSecSetting: Int = 0
     @AppStorage(Storable.lastDateForWork.key) var lastDateForWork: Date = Date()
     @AppStorage(Storable.lastDateForPause.key) var lastDateForPause: Date = Date()
 
@@ -76,7 +78,7 @@ class HomeViewModel: ObservableObject {
             self.currentCell = working ? .working : .idle
         }
         isPauseOn = false
-        pauseTimeInSec = 0 // TODO: In settings default pause time ??
+        pauseTimeInSec = defaultPauseSetting ? defaultPauseInSecSetting : 0
         currentPauseTimeInSec = 0
     }
 

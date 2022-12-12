@@ -39,7 +39,7 @@ struct NowRow: View {
                         mainViewModel.showPicker(pickerType: .timeIn)
                     }
                 }
-                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursWeek / setting.daysWeek ) : 0)
+                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursDaySetting ) : 0)
                     .frame(width: Config.screenHeight * 0.18, height: Config.screenHeight * 0.18)
                     .overlay(
                         VStack {
@@ -63,7 +63,8 @@ struct NowRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            guard mainViewModel.activeSheet == nil && mainViewModel.showPickerType == nil else { return }
+            guard mainViewModel.activeSheet == nil && mainViewModel.showPickerType == nil &&
+                  mainViewModel.showMenu == false else { return }
             viewModel.refreshWorkTime()
         }
         .onAppear {

@@ -8,46 +8,40 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var viewModel = MainViewModel()
-    @ObservedObject var settingsViewModel = SettingsViewModel()
+    @StateObject var viewModel = MainViewModel()
+    @StateObject var settingsViewModel = SettingsViewModel()
     @StateObject var coreDataManager = CoreDataManager()
     @StateObject var homeViewModel = HomeViewModel()
 
-    init() {
-        /// Orange title in navigations view
-        let navBarAppearance = UINavigationBar.appearance()
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(.theme.accent)]
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(.theme.accent)]
-    }
-
     var body: some View {
-        ZStack {
-            ZStack(alignment: .bottom) {
-                Color.theme.background
-                VStack {
-                    if viewModel.view == .home {
-                        HomeView()
-                            .environmentObject(settingsViewModel)
+        NavigationView {
+            ZStack {
+                ZStack(alignment: .bottom) {
+                    Color.theme.background
+
+                    switch viewModel.view {
+                    case .home: HomeView()
+                    case .history: HistoryView()
                     }
-                    if viewModel.view == .history {
-                        HistoryView()
-                    }
+                    ToolbarView()
                 }
-                ToolbarView()
+                .zIndex(0)
+                .blur(radius: viewModel.showPickerType != nil || viewModel.showMenu ? 10 : 0)
+                if let pickerType = viewModel.showPickerType {
+                    PickerView(type: pickerType, date: $homeViewModel.lastDateForWork,
+                               pause: $homeViewModel.pauseTimeInSec, onCloseAction: {
+                        homeViewModel.refreshWorkTime()
+                        viewModel.showPicker(pickerType: nil)
+                    })
+                    .transition(.move(edge: .bottom))
+                    .zIndex(1)
+                }
+                MenuView()
+                    .offset(x: viewModel.showMenu ? 0 : -Config.screenWidth)
+                    .environmentObject(settingsViewModel)
             }
-            .zIndex(0)
-            .blur(radius: viewModel.showPickerType != nil ? 10 : 0)
-            if let pickerType = viewModel.showPickerType {
-                PickerView(type: pickerType, date: $homeViewModel.lastDateForWork,
-                           pause: $homeViewModel.pauseTimeInSec, onCloseAction: {
-                    homeViewModel.refreshWorkTime()
-                    viewModel.showPicker(pickerType: nil)
-                })
-                .transition(.move(edge: .bottom))
-                .zIndex(1)
-            }
+            .ignoresSafeArea()
         }
-        .environmentObject(viewModel)
         .sheet(item: $viewModel.activeSheet) { item in
             switch item {
             case .addDate:
@@ -58,11 +52,11 @@ struct MainView: View {
                     viewModel.activeSheet = nil
                     coreDataManager.removeDate(date: viewModel.dateToEdit)
                 })
-            case .settings:
-                MainSettingView()
-                    .environmentObject(settingsViewModel)
             }
         }
+        .accentColor(Color.theme.accent)
+        .environmentObject(viewModel)
+        .environmentObject(settingsViewModel)
         .environmentObject(coreDataManager)
         .environmentObject(homeViewModel)
         .ignoresSafeArea(.all)

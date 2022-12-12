@@ -8,55 +8,49 @@
 import SwiftUI
 
 struct MainSettingView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.theme.background
-                    .ignoresSafeArea()
-                VStack(spacing: 20) {
-                    HStack {
-                        Text("Settings")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.accent)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 5)
-                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                    .padding(10)
-                    .backgroundWithBottom
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Image.store.person
-                            Text("User Preferences")
-                        }
-                        .foregroundColor(Color.theme.gray)
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                        NavigationLink(destination: TimeSettingView()) {
-                            RowSetting(name: "Time")
-                                .backgroundWithBottomTop
-                        }
-                    } // Time row in menu
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Image.store.info
-                            Text("Info")
-                        }
-                        .foregroundColor(Color.theme.gray)
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                        NavigationLink(destination: AboutView()) {
-                            RowSetting(name: "About")
-                                .backgroundWithBottomTop
-                        }
-                    }
-                    Spacer()
+        Form {
+            Section(header: Text("Your personal time settings")) {
+                NavigationLink(destination: TimeSettingView()) {
+                    Text("Time")
                 }
-                .buttonStyle(PlainButtonStyle())
             }
-            .navigationBarHidden(true)
         }
-        .ignoresSafeArea()
+        .navigationBarTitle("Settings", displayMode: .large)
+    }
+}
+
+struct TimeSettingView: View {
+    let pauseFooter = "The default pause will save you time while" +
+                      " using the application if you know how long your break is."
+    @EnvironmentObject var viewModel: SettingsViewModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    var body: some View {
+        Form {
+            Section(header: Text("Your goal")) {
+                HStack {
+                    Text("Working hours a day")
+                    Spacer()
+                    Text("\(Int(viewModel.hoursDaySetting))")
+                        .foregroundColor(Color.theme.accent)
+                }
+                Slider(value: $viewModel.hoursDaySetting, in: 0...12, step: 1)
+            }
+            Section(footer: Text(pauseFooter)) {
+                Toggle("Default pause", isOn: $viewModel.defaultPauseSetting.animation())
+                    .onChange(of: viewModel.defaultPauseSetting) { newValue in
+                        homeViewModel.pauseTimeInSec = newValue ? viewModel.defaultPauseInSecSetting : 0
+                    }
+            }
+            if viewModel.defaultPauseSetting {
+                PausePickerView(pause: $viewModel.defaultPauseInSecSetting)
+                    .onChange(of: viewModel.defaultPauseInSecSetting) { newValue in
+                        homeViewModel.pauseTimeInSec = newValue
+                    }
+            }
+
+        }
+        .navigationBarTitle("Time", displayMode: .inline)
     }
 }

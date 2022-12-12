@@ -12,6 +12,10 @@ enum Storable {
     case lastDateForWork
     case lastDateForPause
 
+    case hoursDaySetting
+    case defaultPauseSetting
+    case defaultPauseInSecSetting
+
     var key: String {
         switch self {
         case .working:
@@ -24,6 +28,12 @@ enum Storable {
             return "isPauseOn"
         case .lastDateForPause:
             return "lastDateForPause"
+        case .hoursDaySetting:
+            return "hoursDaySetting"
+        case .defaultPauseSetting:
+            return "defaultPauseSetting"
+        case .defaultPauseInSecSetting:
+            return "defaultPauseInSecSetting"
         }
     }
 }

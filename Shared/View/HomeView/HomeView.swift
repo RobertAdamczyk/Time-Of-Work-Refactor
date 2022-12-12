@@ -22,17 +22,16 @@ struct HomeView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        mainViewModel.activeSheet = .settings
+                        mainViewModel.showMenuAction()
                     } label: {
-                        Image.store.gearshape
+                        Image.store.menu
                             .font(.title3)
                     }
                 }
             }
         }
-        .accentColor(Color.theme.accent)
         .environmentObject(viewModel)
     }
 }

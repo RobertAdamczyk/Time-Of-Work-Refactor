@@ -12,6 +12,7 @@ class MainViewModel: ObservableObject {
     @Published var view = Views.home
     @Published var activeSheet: SheetView?
     @Published var showPickerType: PickerType?
+    @Published var showMenu: Bool = false
 
     // MARK: Public properties
     /// Record from coreData that AddEditView takes to edit
@@ -21,6 +22,12 @@ class MainViewModel: ObservableObject {
     func showPicker(pickerType: PickerType?) {
         withAnimation {
             showPickerType = pickerType
+        }
+    }
+
+    func showMenuAction() {
+        withAnimation {
+            showMenu.toggle()
         }
     }
 }
