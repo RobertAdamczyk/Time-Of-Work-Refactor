@@ -38,8 +38,9 @@ class HomeViewModel: ObservableObject {
         if working {
             let new = createNewDateForEndWork()
             action?(new)
+        } else {
+            lastDateForWork = Date()
         }
-        lastDateForWork = Date()
         toggleWorking()
     }
 

@@ -18,10 +18,10 @@ class DebugMenuViewModel: ObservableObject {
 }
 
 struct DebugMenuView: View {
+    @EnvironmentObject var homeViewModel: HomeViewModel
     var body: some View {
-        ZStack {
-            Color.theme.background
-            Text("Debug")
+        Form {
+            DatePicker("Set last date", selection: $homeViewModel.lastDateForWork)
         }
     }
 }

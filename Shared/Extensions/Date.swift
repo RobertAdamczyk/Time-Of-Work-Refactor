@@ -20,6 +20,9 @@ extension Date {
     func plusOneDay() -> Date? {
         return Calendar.current.date(byAdding: .day, value: 1, to: self)
     }
+    func minusOneDay() -> Date? {
+        return Calendar.current.date(byAdding: .day, value: -1, to: self)
+    }
 }
 
 /// AppStorage wrapper supports objects that conform to RawRepresentable protocol,

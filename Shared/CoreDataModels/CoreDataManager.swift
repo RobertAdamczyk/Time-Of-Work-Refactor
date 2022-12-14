@@ -39,13 +39,28 @@ class CoreDataManager: ObservableObject {
         newData.date = new.date
         newData.timeIn = new.timeIn
 
+        // in home view works work at night without if statement
+        // if statement is for add/edit view
+        let sameDayForInOut = Calendar.current.component(.day, from: new.timeIn) ==
+                              Calendar.current.component(.day, from: new.timeOut)
         if new.night {
-            guard let timeOut = new.timeOut.plusOneDay() else { return }
-            newData.timeOut = timeOut
-            newData.secWork = Int(timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+            if sameDayForInOut, let timeOut = new.timeOut.plusOneDay() {
+                newData.timeOut = timeOut
+                newData.secWork = Int(timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+            } else {
+                newData.timeOut = new.timeOut
+                newData.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+            }
+
         } else {
-            newData.timeOut = new.timeOut
-            newData.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+            if !sameDayForInOut, let timeOut = new.timeOut.minusOneDay() {
+                newData.timeOut = timeOut
+                newData.secWork = Int(timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+            } else {
+                newData.timeOut = new.timeOut
+                newData.secWork = Int(new.timeOut.timeIntervalSince(new.timeIn)) - new.secPause
+            }
+
         }
         newData.night = new.night
         newData.secPause = new.secPause
