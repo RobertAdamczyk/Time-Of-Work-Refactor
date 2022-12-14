@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69015911294A53A300271F59 /* ShakeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69015910294A53A300271F59 /* ShakeProvider.swift */; };
+		69015914294A559800271F59 /* DebugMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69015913294A559800271F59 /* DebugMenuView.swift */; };
 		690554EE293FE0C00029E5EE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690554ED293FE0C00029E5EE /* MenuView.swift */; };
 		692CF5A02928212F00C6B389 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF59F2928212F00C6B389 /* Colors.swift */; };
 		692CF5A229282D3800C6B389 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF5A129282D3800C6B389 /* Images.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69015910294A53A300271F59 /* ShakeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeProvider.swift; sourceTree = "<group>"; };
+		69015913294A559800271F59 /* DebugMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuView.swift; sourceTree = "<group>"; };
 		690554ED293FE0C00029E5EE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		692CF59F2928212F00C6B389 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		692CF5A129282D3800C6B389 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -124,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69015912294A557C00271F59 /* DebugMenu */ = {
+			isa = PBXGroup;
+			children = (
+				69015913294A559800271F59 /* DebugMenuView.swift */,
+			);
+			path = DebugMenu;
+			sourceTree = "<group>";
+		};
 		690554EC293FE0860029E5EE /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +260,7 @@
 		E18335A225EE988D00E3A952 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				69015912294A557C00271F59 /* DebugMenu */,
 				690554EC293FE0860029E5EE /* Menu */,
 				69981E78293952E4007476D5 /* Components */,
 				69DCF7B9292D79FC00520254 /* HistoryView */,
@@ -311,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				E1851EB025EFEF6700C721E9 /* OrangeButtonStyle.swift */,
+				69015910294A53A300271F59 /* ShakeProvider.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -426,9 +440,11 @@
 			files = (
 				E1F20B572607B5E100790CEA /* MainViewModel.swift in Sources */,
 				69D4CDCF292AB39C00E04681 /* CoreDataManager.swift in Sources */,
+				69015914294A559800271F59 /* DebugMenuView.swift in Sources */,
 				E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */,
 				692CF5A02928212F00C6B389 /* Colors.swift in Sources */,
 				69839F8B2936A3E700920333 /* IdleCell.swift in Sources */,
+				69015911294A53A300271F59 /* ShakeProvider.swift in Sources */,
 				69B53584293A42330000787D /* Storable.swift in Sources */,
 				690554EE293FE0C00029E5EE /* MenuView.swift in Sources */,
 				E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */,

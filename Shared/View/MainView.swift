@@ -12,7 +12,9 @@ struct MainView: View {
     @StateObject var settingsViewModel = SettingsViewModel()
     @StateObject var coreDataManager = CoreDataManager()
     @StateObject var homeViewModel = HomeViewModel()
-
+    #if DEBUG
+    @StateObject var debugViewModel = DebugMenuViewModel()
+    #endif
     var body: some View {
         NavigationView {
             ZStack {
@@ -39,6 +41,13 @@ struct MainView: View {
                 MenuView()
                     .offset(x: viewModel.showMenu ? 0 : -Config.screenWidth)
                     .environmentObject(settingsViewModel)
+                #if DEBUG
+                DebugMenuView()
+                    .onShake {
+                        debugViewModel.showMenu()
+                    }
+                    .opacity(debugViewModel.showDebugMenu ? 1 : 0)
+                #endif
             }
             .ignoresSafeArea()
         }
