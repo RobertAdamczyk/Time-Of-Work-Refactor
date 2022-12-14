@@ -9,71 +9,80 @@ import SwiftUI
 
 struct LastWorkView: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @EnvironmentObject var coreDataManager: CoreDataManager
-
+    @FetchRequest(entity: Dates.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
+    var result : FetchedResults<Dates>
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-                VStack(spacing: 5) {
-                    Text("LAST WORK")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color.theme.gray.opacity(0.8))
-                        .padding(.leading)
-                    HStack { // hstack for date
-                        Image.store.calendar
-                            .foregroundColor(Color.theme.gray)
-                        if coreDataManager.lastRecord?.night == true {
-                            VStack {
-                                Text("From \(coreDataManager.lastRecord?.date ?? Date(), style: .date)")
-                                Text("Until \(coreDataManager.lastRecord?.date.plusOneDay() ?? Date(), style: .date)")
+            if viewModel.lastRecord != nil {
+                Text("LAST WORK")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.gray.opacity(0.8))
+                    .padding(.leading)
+                HStack{
+                    Spacer()
+                    VStack(spacing: 5){
+                        HStack{ // hstack for date
+                            Image(systemName: "calendar")
+                                .foregroundColor(.gray)
+                            if viewModel.lastRecord!.night {
+                                Text("\(viewModel.lastRecord!.date, style: .date) - \(viewModel.lastRecord!.date.plusOneDay() ?? Date(), style: .date)")
+                            }else{
+                                Text("\(viewModel.lastRecord!.date, style: .date)")
                             }
-                        } else {
-                            Text("\(coreDataManager.lastRecord?.date ?? Date(), style: .date)")
+                            
                         }
-                    }
-                    HStack(spacing: 10) { // hstack for timeIn and timeOut
-                        HStack(spacing: 2) {
-                            Image.store.arrowUpRight
-                                .foregroundColor(Color.theme.green)
-                            Text("\(coreDataManager.lastRecord?.timeIn ?? Date(), style: .time)")
+                        HStack(spacing: 10){ // hstack for timeIn and timeOut
+                            HStack(spacing: 2){
+                                Image(systemName: "arrowshape.turn.up.right.fill")
+                                    .foregroundColor(.green)
+                                Text("\(viewModel.lastRecord!.timeIn, style: .time)")
+                            }
+                            HStack(spacing: 2){
+                                Image(systemName: "arrowshape.turn.up.left.fill")
+                                    .foregroundColor(.red)
+                                Text("\(viewModel.lastRecord!.timeOut, style: .time)")
+                            }
                         }
-                        HStack(spacing: 2) {
-                            Image.store.arrowUpLeft
-                                .foregroundColor(Color.theme.red)
-                            Text("\(coreDataManager.lastRecord?.timeOut ?? Date(), style: .time)")
+                        HStack(spacing: 10){ // hstack for secwork and secpause
+                            HStack(spacing: 2){
+                                Image(systemName: "hammer.fill")
+                                    .foregroundColor(.gray)
+                                Text("\(viewModel.lastRecord!.secWork!.toTimeString())")
+                                
+                            }
+                            HStack(spacing: 2){
+                                Image(systemName: "pause.circle")
+                                    .foregroundColor(.gray)
+                                Text("\(viewModel.lastRecord!.secPause.toTimeString())")
+                            }
                         }
-                    }
-                    HStack(spacing: 10) { // hstack for secwork and secpause
-                        HStack(spacing: 2) {
-                            Image.store.hammer
-                                .foregroundColor(Color.theme.gray)
-                            Text("\(coreDataManager.lastRecord?.secWork.toTimeString() ?? "--:--")")
-                        }
-                        HStack(spacing: 2) {
-                            Image.store.pauseCircle
-                                .foregroundColor(Color.theme.gray)
-                            Text("\(coreDataManager.lastRecord?.secPause.toTimeString() ?? "--:--")")
-                        }
-                    }
+                        
+                    }// close VStack
+                    Spacer()
                 }
-                .padding(.horizontal, 20)
                 .overlay(
-                    HStack {
+                    HStack{
                         Rectangle()
-                            .fill(Color.theme.accent)
+                            .fill(Color("Orange"))
                             .frame(width: 2)
                         Spacer()
                     }
                 )
+                .padding()
+                .roundedBackgroundWithBorder
+            }
+            
+            
         }
-        .opacity(coreDataManager.lastRecord == nil ? 0 : 1)
-        .overlay(
-            Text("Start your first work by\nswiping button to the right.")
-                .multilineTextAlignment(.center)
-                .font(.caption)
-                .foregroundColor(Color.theme.gray)
-                .opacity(coreDataManager.lastRecord == nil ? 1 : 0)
-        )
-        .padding(.horizontal, 40)
+        .padding(.horizontal)
+        .padding(.vertical, viewModel.padding)
+        .onAppear() {
+            viewModel.loadLast(result: result)
+        }
+        .onChange(of: viewModel.working) { _ in
+            viewModel.loadLast(result: result)
+        }
     }
 }
 

@@ -9,19 +9,23 @@
 import Foundation
 import CoreData
 
+
 extension Dates {
 
-    @NSManaged public var date: Date?
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Dates> {
+        return NSFetchRequest<Dates>(entityName: "Dates")
+    }
+
+    @NSManaged public var date: Date
     @NSManaged public var night: Bool
     @NSManaged public var secPause: Int
     @NSManaged public var secWork: Int
     @NSManaged public var specialDay: String?
-    @NSManaged public var timeIn: Date?
-    @NSManaged public var timeOut: Date?
-    @NSManaged public var section: String?
+    @NSManaged public var timeIn: Date
+    @NSManaged public var timeOut: Date
 
 }
 
-extension Dates: Identifiable {
+extension Dates : Identifiable {
 
 }
