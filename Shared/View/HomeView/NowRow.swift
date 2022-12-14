@@ -10,80 +10,64 @@ import SwiftUI
 struct NowRow: View {
     @EnvironmentObject var viewModel: HomeViewModel
     @EnvironmentObject var setting: SettingsViewModel
-    @AppStorage("working") var working = false
-    
+    @EnvironmentObject var mainViewModel: MainViewModel
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(spacing: 40) {
             Text("NOW")
                 .font(.system(size: 12))
-                .foregroundColor(Color.gray.opacity(0.8))
-                .padding(.leading)
-            ZStack(alignment: .top){
-                HStack{
-                    VStack{
+                .foregroundColor(Color.theme.gray.opacity(0.8))
+            ZStack(alignment: .top) {
+                HStack {
+                    VStack {
                         Text("Pause:")
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("Orange"))
-                        Text("\(working ? viewModel.pause.toTimeString() : "--:--")")
+                            .foregroundColor(Color.theme.accent)
+                        Text("\((viewModel.pauseTimeInSec+viewModel.currentPauseTimeInSec).toTimeStringTimerFormat())")
                     }
-                    .onChange(of: viewModel.pause) { _ in
-                       viewModel.refreshWorkTime()
+                    .onTapGesture {
+                        guard !viewModel.isPauseOn else { return }
+                        mainViewModel.showPicker(pickerType: .pause)
                     }
-                        
                     Spacer()
-                    VStack{
+                    VStack {
                         Text("Start:")
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("Orange"))
-                        Text("\(viewModel.lastDate, style: .time)")
-                            
+                            .foregroundColor(Color.theme.accent)
+                        Text("\(viewModel.lastDateForWork, style: .time)")
+                    }
+                    .onTapGesture {
+                        mainViewModel.showPicker(pickerType: .timeIn)
                     }
                 }
-                
-                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentTime) / CGFloat( 3600 * setting.hoursWeek / setting.daysWeek ) : 0)
-                    .frame(width: viewModel.height * 0.18, height: viewModel.height * 0.18)
+                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursDaySetting ) : 0)
+                    .frame(width: Config.screenHeight * 0.18, height: Config.screenHeight * 0.18)
                     .overlay(
-                        VStack{
+                        VStack {
                             Text("Work:")
                                 .fontWeight(.semibold)
-                                .foregroundColor(Color("Orange"))
-                            Text("\(working ? viewModel.currentTime.toTimeString() : "--:--")")
-                        }.offset(y: -5)
+                                .foregroundColor(Color.theme.accent)
+                            Text("\(viewModel.currentWorkTimeInSec.toTimeStringTimerFormat())")
+                            ZStack {
+                                HammerAnimation()
+                                    .opacity(viewModel.isPauseOn ? 0 : 1)
+                                Image.store.pauseCircle
+                                    .foregroundColor(Color.theme.gray)
+                                    .opacity(viewModel.isPauseOn ? 1 : 0)
+                            }
+                        }
+                        .offset(y: -5)
                     )
                     .overlay(LoadingView()
-                                .frame(width: viewModel.height * 0.12, height: viewModel.height * 0.12))
-                
+                                .frame(width: Config.screenHeight * 0.12, height: Config.screenHeight * 0.12))
             }
-            .overlay(
-                VStack{
-                    Spacer()
-                    HStack{
-                        Spacer()
-                        Button(action:{
-                            viewModel.changeShowComponent(newValue: .timeInPicker)
-                        }){
-                            Text("New Start")
-                                .fontWeight(.semibold)
-                                .font(.caption)
-                                .foregroundColor(.white)
-                                .padding(-5)
-                        }
-                        .buttonStyle(OrangeButtonStyle())
-                    }
-                }
-            )
-            .padding()
-            .roundedBackgroundWithBorder
-            
-            
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            if viewModel.showComponent == nil{
-                viewModel.refreshWorkTime()
-            }
+            guard mainViewModel.activeSheet == nil && mainViewModel.showPickerType == nil &&
+                  mainViewModel.showMenu == false else { return }
+            viewModel.refreshWorkTime()
         }
-        .onAppear(){
+        .onAppear {
             viewModel.refreshWorkTime()
             viewModel.checkCurrentWork()
         }
@@ -93,5 +77,18 @@ struct NowRow: View {
 struct NowRow_Previews: PreviewProvider {
     static var previews: some View {
         NowRow()
+    }
+}
+
+struct HammerAnimation: View {
+    @State var startAnimation: Bool = false
+    var body: some View {
+        Image.store.hammer
+            .foregroundColor(Color.theme.gray)
+            .rotationEffect(Angle(degrees: startAnimation ? 15 : 0), anchor: .bottomLeading)
+            .animation(.default.repeatForever(), value: startAnimation)
+            .onAppear {
+                startAnimation.toggle()
+            }
     }
 }

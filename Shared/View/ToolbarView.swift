@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct ToolbarView: View {
-    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var viewModel: MainViewModel
     var body: some View {
-        ZStack(alignment: .top){
+        ZStack(alignment: .top) {
             VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
-                .frame(width: UIScreen.main.bounds.width, height: 85 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
+                .frame(width: Config.screenWidth,
+                       height: 85 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
                 .clipShape(CustomToolbar(radius: 35))
-                .overlay(CustomToolbar(radius: 35).stroke(Color("BorderColor")).padding(.horizontal,-1).padding(.bottom,-1))
-            HStack{
+                .overlay(
+                    CustomToolbar(radius: 35)
+                        .stroke(Color.theme.border)
+                        .padding(.horizontal, -1)
+                        .padding(.bottom, -1)
+                )
+            HStack {
                 Spacer()
-                
-                Button(action: { viewModel.view = .home }){
-                    VStack{
-                        Image(systemName: "square.grid.2x2")
+                Button {
+                    viewModel.view = .home
+                } label: {
+                    VStack {
+                        Image.store.square2x2
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("Home")
@@ -29,25 +35,24 @@ struct ToolbarView: View {
                     }
                     .frame(width: 50)
                     .padding(.top, 40)
-                    .foregroundColor(viewModel.view == .home ? Color("Orange") : Color.gray)
-                    
+                    .foregroundColor(viewModel.view == .home ? Color.theme.accent : Color.theme.gray)
                 }
-                
                 Spacer()
-                
-                Button(action: { viewModel.activeSheet = .addDate }){
-                    Image(systemName: "plus.circle.fill")
+                Button {
+                    viewModel.activeSheet = .addDate
+                } label: {
+                    Image.store.plus
                         .resizable()
                         .frame(width: 40, height: 40)
                 }
-                .foregroundColor(Color("Orange"))
+                .foregroundColor(Color.theme.accent)
                 .offset(y: -5)
-                
                 Spacer()
-                
-                Button(action: { viewModel.view = .history }){
-                    VStack{
-                        Image(systemName: "calendar")
+                Button {
+                    viewModel.view = .history
+                } label: {
+                    VStack {
+                        Image.store.calendar
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("History")
@@ -55,9 +60,8 @@ struct ToolbarView: View {
                     }
                     .frame(width: 50)
                     .padding(.top, 40)
-                    .foregroundColor(viewModel.view == .history ? Color("Orange") : Color.gray)
+                    .foregroundColor(viewModel.view == .history ? Color.theme.accent : Color.theme.gray)
                 }
-                
                 Spacer()
             }
         }

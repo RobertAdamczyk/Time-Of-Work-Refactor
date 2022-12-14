@@ -10,8 +10,7 @@ import Foundation
 enum SheetView: Identifiable {
     case addDate
     case editDate
-    case settings
-    
+
     var id: Int {
         hashValue
     }

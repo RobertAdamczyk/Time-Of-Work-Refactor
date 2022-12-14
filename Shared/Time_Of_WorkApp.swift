@@ -8,12 +8,10 @@
 import SwiftUI
 
 @main
-struct Time_Of_WorkApp: App {
-    
+struct TimeOfWorkApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
         }
     }
 }
