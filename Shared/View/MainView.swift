@@ -12,6 +12,7 @@ struct MainView: View {
     @StateObject var settingsViewModel = SettingsViewModel()
     @StateObject var coreDataManager = CoreDataManager()
     @StateObject var homeViewModel = HomeViewModel()
+    @StateObject var historyViewModel: HistoryViewModel = HistoryViewModel()
     #if DEBUG
     @StateObject var debugViewModel = DebugMenuViewModel()
     #endif
@@ -68,6 +69,7 @@ struct MainView: View {
         .environmentObject(settingsViewModel)
         .environmentObject(coreDataManager)
         .environmentObject(homeViewModel)
+        .environmentObject(historyViewModel)
         .ignoresSafeArea(.all)
     }
 }

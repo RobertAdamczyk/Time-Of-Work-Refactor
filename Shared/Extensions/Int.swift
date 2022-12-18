@@ -8,12 +8,15 @@
 extension Int {
     func toTimeString() -> String {
         let positive = abs(self)
+        let sec = positive % 3600 % 60
         let min = positive % 3600 / 60
         let hour = positive / 3600
 
         let hourString = "\(hour)h "
         let minString = "\(min)m"
-        return self < 0 ? "-" + hourString + minString : hourString + minString
+        let secString = " \(sec)s"
+        let completeString = hour == 0 ? minString + secString : hourString + minString
+        return self < 0 ? "-" + completeString : completeString
     }
 
     func toTimeStringTimerFormat() -> String {

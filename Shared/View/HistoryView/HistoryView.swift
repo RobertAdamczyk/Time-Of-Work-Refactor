@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     @EnvironmentObject var coreDataManager: CoreDataManager
-    @StateObject var viewModel: HistoryViewModel = HistoryViewModel()
+    @EnvironmentObject var viewModel: HistoryViewModel
 
     var body: some View {
         NavigationView {
@@ -55,11 +55,19 @@ struct HistoryView: View {
             }
             .navigationTitle("History")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         viewModel.onSectionButtonTapped(dates: coreDataManager.dates)
                     } label: {
-                        Image.store.listNumber
+                        Image.store.sliderHorizontal
+                            .font(.title3)
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        mainViewModel.showMenuAction()
+                    } label: {
+                        Image.store.menu
                             .font(.title3)
                     }
                 }

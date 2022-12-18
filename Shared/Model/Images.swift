@@ -29,7 +29,7 @@ struct ImageStore {
     let calendar = Image(systemName: "calendar")
     let plus = Image(systemName: "plus.circle.fill")
     let square2x2 = Image(systemName: "square.grid.2x2")
-    let listNumber = Image(systemName: "list.number")
+    let sliderHorizontal = Image(systemName: "slider.horizontal.3")
     let close = Image(systemName: "xmark")
     let envelope = Image(systemName: "envelope.fill")
 }
