@@ -27,7 +27,7 @@ struct MenuView: View {
                         HStack {
                             Image.store.gearshape
                             Text("Settings")
-                                .foregroundColor(Color.theme.buttonText)
+                                .foregroundColor(Color.theme.text)
                         }
                     }
 //                    Button {

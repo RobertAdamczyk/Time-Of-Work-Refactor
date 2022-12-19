@@ -20,5 +20,6 @@ struct ColorTheme {
     let green = Color.green
     let gray = Color.gray
     let shadow = Color("Shadow")
-    let cell = Color("CellColor")
+    let cell = Color("WhiteBlack")
+    let text = Color("BlackWhite")
 }
