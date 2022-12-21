@@ -23,23 +23,6 @@ struct AddEditDateView: View {
                     }
                     moreInformationSection
                 }
-                Button {
-                    activeSheet = nil
-                    if let date = value {
-                        coreDataManager.removeDate(date: date)
-                        coreDataManager.addDate(for: viewModel.new)
-                    } else {
-                        coreDataManager.addDate(for: viewModel.new)
-                    }
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text("Save")
-                        Spacer()
-                    }
-                }
-                .buttonStyle(OrangeButtonStyle())
-                .padding(.horizontal, 16)
             }
             .navigationTitle(value == nil ? "Add Date" : "Edit Date")
             .toolbar {
@@ -54,6 +37,26 @@ struct AddEditDateView: View {
                     }
                 }
             }
+            .overlay(
+                Button {
+                    activeSheet = nil
+                    if let date = value {
+                        coreDataManager.removeDate(date: date)
+                        coreDataManager.addDate(for: viewModel.new)
+                    } else {
+                        coreDataManager.addDate(for: viewModel.new)
+                    }
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("Save")
+                            .foregroundColor(Color.theme.buttonText)
+                        Spacer()
+                    }
+                }
+                .buttonStyle(OrangeButtonStyle())
+                .padding(.horizontal, 16)
+                .padding(.bottom, 8), alignment: .bottom)
         }
         .overlay(
             ZStack {
@@ -109,7 +112,7 @@ struct AddEditDateView: View {
             } label: {
                 HStack {
                     Text("Work day")
-                        .foregroundColor(Color.theme.buttonText)
+                        .foregroundColor(Color.theme.text)
                     Spacer()
                     if viewModel.new.night, let datePlusOneDay = viewModel.new.date.plusOneDay() {
                         Text("\(viewModel.new.date.toString(format: .shortDate)) -")
@@ -132,7 +135,7 @@ struct AddEditDateView: View {
             } label: {
                 HStack {
                     Text("Start")
-                        .foregroundColor(Color.theme.buttonText)
+                        .foregroundColor(Color.theme.text)
                     Spacer()
                     Text("\(viewModel.new.timeIn, style: .time)")
                 }
@@ -142,7 +145,7 @@ struct AddEditDateView: View {
             } label: {
                 HStack {
                     Text("End")
-                        .foregroundColor(Color.theme.buttonText)
+                        .foregroundColor(Color.theme.text)
                     Spacer()
                     Text("\(viewModel.new.timeOut, style: .time)")
                 }
@@ -158,7 +161,7 @@ struct AddEditDateView: View {
                 } label: {
                     HStack {
                         Text("Pause")
-                            .foregroundColor(Color.theme.buttonText)
+                            .foregroundColor(Color.theme.text)
                         Spacer()
                         Text("\(viewModel.new.secPause.toTimeString())")
                     }
@@ -188,7 +191,7 @@ struct SpecialDayView: View {
                     } label: {
                         HStack {
                             Text("\(item.rawValue)")
-                                .foregroundColor(Color.theme.buttonText)
+                                .foregroundColor(Color.theme.text)
                             Spacer()
                             if viewModel.new.specialDay == item {
                                 Image.store.checkmark

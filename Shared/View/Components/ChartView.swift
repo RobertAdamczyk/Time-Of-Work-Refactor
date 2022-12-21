@@ -15,7 +15,9 @@ struct ChartView: View {
             if coreDataManager.uniqueDatesForChartCount < 5 {
                 Spacer()
                 Text("You need more data\nto see the chart.")
+                    .frame(width: 200)
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
                     .font(.caption)
                     .foregroundColor(.theme.gray)
                 Spacer()
@@ -30,8 +32,10 @@ struct ChartView: View {
             }
         } else {
             Spacer()
-            Text("Update your iOS to version 16\n to see the charts here.")
+            Text("Update your iOS to version 16 to see the charts here.")
+                .frame(width: 200)
                 .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
                 .font(.caption)
                 .foregroundColor(.theme.gray)
             Spacer()

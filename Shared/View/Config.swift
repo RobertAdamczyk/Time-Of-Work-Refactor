@@ -9,9 +9,15 @@ import SwiftUI
 
 struct CellConfig {
     static let padding: CGFloat = 20
-    static let height: CGFloat = UIScreen.main.bounds.height * 0.5
-    static let offsetBottomCell: CGFloat = UIScreen.main.bounds.height * 0.7
-    static let offsetTopCell: CGFloat = UIScreen.main.bounds.height * 0.80
+    static var height: CGFloat {
+        if Config.screenHeight < 750 {
+            return UIScreen.main.bounds.height * 0.55
+        } else {
+            return UIScreen.main.bounds.height * 0.5
+        }
+    }
+    static let offsetBottomCell: CGFloat = Config.screenHeight * 0.7
+    static let offsetTopCell: CGFloat = Config.screenHeight * 0.80
 }
 
 struct Config {

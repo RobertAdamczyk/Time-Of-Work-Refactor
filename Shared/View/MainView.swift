@@ -51,6 +51,7 @@ struct MainView: View {
                 #endif
             }
             .ignoresSafeArea()
+            .navigationBarHidden(true)
         }
         .sheet(item: $viewModel.activeSheet) { item in
             switch item {

@@ -24,7 +24,7 @@ struct ImageStore {
     let caseFill = Image(systemName: "case.fill")
     let flag = Image(systemName: "flag.fill")
     let bandage = Image(systemName: "bandage.fill")
-    let menu = Image(systemName: "line.3.horizontal")
+    let menu = Image(systemName: "line.horizontal.3")
     let gearshape = Image(systemName: "gearshape.fill")
     let calendar = Image(systemName: "calendar")
     let plus = Image(systemName: "plus.circle.fill")

@@ -55,10 +55,7 @@ struct NowRow: View {
                                     .opacity(viewModel.isPauseOn ? 1 : 0)
                             }
                         }
-                        .offset(y: -5)
                     )
-                    .overlay(LoadingView()
-                                .frame(width: Config.screenHeight * 0.12, height: Config.screenHeight * 0.12))
             }
         }
         .padding()

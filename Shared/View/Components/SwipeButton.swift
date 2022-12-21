@@ -97,8 +97,8 @@ class SwipeButtonViewModel: ObservableObject {
     @Published var type: ButtonType = .start
 
     // MARK: Public properties
-    let buttonSize: CGSize = CGSize(width: 250, height: 50)
-    let diameterCircle: CGFloat = 42
+    let buttonSize: CGSize = CGSize(width: 250, height: 44)
+    let diameterCircle: CGFloat = 36
     let strokeWidth: CGFloat = 4
     var endOffset: CGFloat {
         return buttonSize.width - diameterCircle - 2 * strokeWidth
@@ -199,7 +199,7 @@ struct SwipeButton: View {
                 if viewModel.type == .end { Spacer() }
                 Circle()
                     .foregroundColor(Color.theme.accent)
-                    .frame(height: viewModel.diameterCircle)
+                    .frame(width: viewModel.diameterCircle, height: viewModel.diameterCircle)
                     .overlay(
                         ZStack {
                             model.image
