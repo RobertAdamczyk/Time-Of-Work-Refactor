@@ -25,7 +25,9 @@ class HomeViewModel: ObservableObject {
 
     // MARK: Public variables
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let liveWorkViewModel = LiveWorkViewModel()
 
+    // MARK: Lifecycle
     init() {
         self.currentCell = working ? .working : .idle
     }
@@ -38,8 +40,14 @@ class HomeViewModel: ObservableObject {
         if working {
             let new = createNewDateForEndWork()
             action?(new)
+            liveWorkViewModel.removeLiveWork()
         } else {
             lastDateForWork = Date()
+            liveWorkViewModel.startLiveWork(for: .work,
+                                            date: lastDateForWork,
+                                            startWorkDate: lastDateForWork,
+                                            pauseInSec: pauseTimeInSec,
+                                            workInSec: currentWorkTimeInSec)
         }
         toggleWorking()
     }
@@ -50,9 +58,10 @@ class HomeViewModel: ObservableObject {
             pauseTimeInSec += currentPauseTimeInSec
         }
         currentPauseTimeInSec = 0
-        withAnimation(.easeIn.delay(1)) {
+        withAnimation(.easeIn) {
             isPauseOn.toggle()
         }
+        updateLiveWork()
     }
 
     func refreshWorkTime() {
@@ -63,13 +72,20 @@ class HomeViewModel: ObservableObject {
         } else {
             currentWorkTimeInSec = Int(Date().timeIntervalSince(lastDateForWork)) - pauseTimeInSec
         }
-
     }
 
     func checkCurrentWork() { // if user forgot stop working
         if working && abs(lastDateForWork.timeIntervalSince(Date())) > Config.automaticCheckoutAfterSec {
             toggleWorking()
         }
+    }
+
+    func updateLiveWork() {
+        liveWorkViewModel.updateLiveWork(for: isPauseOn ? .pause : .work,
+                                         date: isPauseOn ? lastDateForPause : lastDateForWork,
+                                         startWorkDate: lastDateForWork,
+                                         pauseInSec: pauseTimeInSec,
+                                         workInSec: currentWorkTimeInSec)
     }
 
     // MARK: Private functions

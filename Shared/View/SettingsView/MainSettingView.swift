@@ -41,12 +41,14 @@ struct TimeSettingView: View {
                 Toggle("Default pause", isOn: $viewModel.defaultPauseSetting.animation())
                     .onChange(of: viewModel.defaultPauseSetting) { newValue in
                         homeViewModel.pauseTimeInSec = newValue ? viewModel.defaultPauseInSecSetting : 0
+                        homeViewModel.updateLiveWork()
                     }
             }
             if viewModel.defaultPauseSetting {
                 PausePickerView(pause: $viewModel.defaultPauseInSecSetting)
                     .onChange(of: viewModel.defaultPauseInSecSetting) { newValue in
                         homeViewModel.pauseTimeInSec = newValue
+                        homeViewModel.updateLiveWork()
                     }
             }
 
