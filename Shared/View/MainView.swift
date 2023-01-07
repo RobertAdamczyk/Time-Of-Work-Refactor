@@ -34,6 +34,7 @@ struct MainView: View {
                     PickerView(type: pickerType, date: $homeViewModel.lastDateForWork,
                                pause: $homeViewModel.pauseTimeInSec, onCloseAction: {
                         homeViewModel.refreshWorkTime()
+                        homeViewModel.updateLiveWork()
                         viewModel.showPicker(pickerType: nil)
                     })
                     .transition(.move(edge: .bottom))
@@ -48,6 +49,7 @@ struct MainView: View {
                         debugViewModel.showMenu()
                     }
                     .opacity(debugViewModel.showDebugMenu ? 1 : 0)
+                    .environmentObject(debugViewModel)
                 #endif
             }
             .ignoresSafeArea()
@@ -65,6 +67,20 @@ struct MainView: View {
                 })
             }
         }
+//        .onOpenURL { url in
+//            if let deepLink = LiveActivityDeepLink(rawValue: url.absoluteString) {
+//                TODO: Buttons handling
+//                switch deepLink {
+//                case .startPauseButton:
+//                    homeViewModel.onSwipePauseButton()
+//                case .endWorkButton:
+//                    homeViewModel.onSwipeWorkButton { newRecord in
+//                        coreDataManager.addDate(for: newRecord)
+//                    }
+//                    homeViewModel.liveWorkViewModel.removeLiveWork()
+//                }
+ //           }
+ //       }
         .accentColor(Color.theme.accent)
         .environmentObject(viewModel)
         .environmentObject(settingsViewModel)
