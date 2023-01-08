@@ -17,19 +17,19 @@ class SwipeButtonViewModel: ObservableObject {
         var textBefore: some View {
             switch self {
             case .endWork:
-                return Text("End your work")
+                return Text(localized(string: "swipe_button_end_work"))
                         .font(.subheadline)
                         .fontWeight(.medium)
             case .startWork:
-                return Text("Start your work")
+                return Text(localized(string: "swipe_button_start_work"))
                         .font(.subheadline)
                         .fontWeight(.medium)
             case .startPause:
-                return Text("Start your pause")
+                return Text(localized(string: "swipe_button_start_pause"))
                         .font(.subheadline)
                         .fontWeight(.medium)
             case .endPause:
-                return Text("End your pause")
+                return Text(localized(string: "swipe_button_end_pause"))
                         .font(.subheadline)
                         .fontWeight(.medium)
             }
@@ -59,12 +59,12 @@ class SwipeButtonViewModel: ObservableObject {
         var textAfter: some View {
             switch self {
             case .end:
-                return Text("Ended")
+                return Text(localized(string: "swipe_button_ended"))
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
                         .fontWeight(.medium)
             case .start:
-                return Text("Started")
+                return Text(localized(string: "swipe_button_started"))
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
                         .fontWeight(.medium)
@@ -74,12 +74,12 @@ class SwipeButtonViewModel: ObservableObject {
         var textDuring: some View {
             switch self {
             case .end:
-                return Text("Ending...")
+                return Text(localized(string: "swipe_button_ending"))
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
                         .fontWeight(.medium)
             case .start:
-                return Text("Starting...")
+                return Text(localized(string: "swipe_button_starting"))
                         .foregroundColor(Color.theme.buttonText)
                         .font(.subheadline)
                         .fontWeight(.medium)

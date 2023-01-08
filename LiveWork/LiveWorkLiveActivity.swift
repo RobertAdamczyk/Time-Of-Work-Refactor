@@ -16,7 +16,7 @@ struct LiveWorkLiveActivity: Widget {
             VStack {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(context.state.context == .work ? "Your work" : "Your pause")
+                        Text(context.state.context == .work ? localized(string: "generic_your_work") : localized(string: "generic_your_work"))
                             .font(.caption2)
                         Text("\(context.state.dateForTimer, style: .timer)")
                             .font(.title)
@@ -30,8 +30,10 @@ struct LiveWorkLiveActivity: Widget {
                             VStack {
                                 Image.store.pauseCircle
                                     .font(.largeTitle)
-                                Text(context.state.context == .work ? "Start pause" : "End pause")
+                                Text(context.state.context == .work ? localized(string: "generic_start_pause") : localized(string: "generic_end_pause"))
                                     .font(.caption2)
+                                    .frame(maxWidth: 60)
+                                    .multilineTextAlignment(.center)
                             }
                         }
                     }
@@ -43,22 +45,24 @@ struct LiveWorkLiveActivity: Widget {
                                 Image.store.arrowUpLeft
                                     .font(.largeTitle)
                                     .foregroundColor(Color.theme.red)
-                                Text("End work")
+                                Text(localized(string: "generic_end_work"))
                                     .font(.caption2)
+                                    .frame(maxWidth: 60)
+                                    .multilineTextAlignment(.center)
                             }
                         }
                     }
                 }
                 HStack(spacing: 5) {
-                    Text("Start at:")
+                    Text("\(localized(string: "live_activities_start_at")):")
                     Text("\(context.state.startWorkDate, style: .time)").foregroundColor(Color.theme.accent)
                     switch context.state.context {
                     case .pause:
-                        Text("Work:")
+                        Text("\(localized(string: "generic_work")))':")
                         Text("\(context.state.workInSec.toTimeStringTimerFormat())")
                             .foregroundColor(Color.theme.accent)
                     case .work:
-                        Text("Pause:")
+                        Text("\(localized(string: "generic_pause")):")
                         Text("\(context.state.pauseInSec.toTimeStringTimerFormat())")
                             .foregroundColor(Color.theme.accent)
                     }

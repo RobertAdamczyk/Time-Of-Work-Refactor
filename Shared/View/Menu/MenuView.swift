@@ -26,7 +26,7 @@ struct MenuView: View {
                     NavigationLink(destination: MainSettingView()) {
                         HStack {
                             Image.store.gearshape
-                            Text("Settings")
+                            Text(localized(string:"generic_settings"))
                                 .foregroundColor(Color.theme.text)
                         }
                     }

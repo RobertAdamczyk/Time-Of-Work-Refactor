@@ -30,10 +30,10 @@ struct ToolbarView: View {
                         Image.store.square2x2
                             .resizable()
                             .frame(width: 20, height: 20)
-                        Text("Home")
+                        Text(localized(string: "generic_home"))
                             .font(.system(size: 10))
                     }
-                    .frame(width: 50)
+                    .frame(width: 100)
                     .padding(.top, 40)
                     .foregroundColor(viewModel.view == .home ? Color.theme.accent : Color.theme.gray)
                 }
@@ -55,10 +55,10 @@ struct ToolbarView: View {
                         Image.store.calendar
                             .resizable()
                             .frame(width: 20, height: 20)
-                        Text("History")
+                        Text(localized(string: "generic_history"))
                             .font(.system(size: 10))
                     }
-                    .frame(width: 50)
+                    .frame(width: 100)
                     .padding(.top, 40)
                     .foregroundColor(viewModel.view == .history ? Color.theme.accent : Color.theme.gray)
                 }

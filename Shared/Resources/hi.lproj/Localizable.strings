@@ -1,0 +1,136 @@
+/* 
+  Localizable.strings
+  Time Of Work
+
+  Created by Robert Adamczyk on 08.01.23.
+  
+*/
+"generic_settings" = "सेटिंग्स";
+
+"swipe_button_end_work" = "काम खत्म करें";
+
+"swipe_button_start_work" = "काम शुरू करें";
+
+"swipe_button_start_pause" = "प्रस्थान शुरू करें";
+
+"swipe_button_end_pause" = "प्रस्थान खत्म करें";
+
+"swipe_button_ended" = "समाप्त";
+
+"swipe_button_started" = "शुरू हो गया";
+
+"swipe_button_ending" = "समाप्त हो रहा है...";
+
+"swipe_button_starting" = "शुरू हो रहा है...";
+
+"prefix_hours" = "घंटे";
+
+"prefix_minutes" = "मिनट";
+
+"prefix_seconds" = "सेकंड";
+
+"chart_more_data_needed" = "आपको चार्ट देखने के लिए अधिक डेटा की जरूरत है।";
+
+"chart_update_os" = "चार्ट्स देखने के लिए अपना iOS 16 संस्करण अपडेट करें।";
+
+"generic_day" = "दिन";
+
+"generic_hours" = "घंटे";
+
+"generic_week" = "सप्ताह";
+
+"generic_month" = "महीना";
+
+"generic_year" = "साल";
+
+"generic_days" = "दिन";
+
+"generic_work" = "काम";
+
+"generic_pause" = "विराम";
+
+"generic_time" = "समय";
+
+"history_total_of" = "कुल";
+
+"settings_section_general" = "सामान्य";
+
+"settings_section_additional" = "अतिरिक्त";
+
+"settings_lock_screen" = "लॉक स्क्रीन";
+
+"settings_your_goal" = "अपना लक्ष्य";
+
+"settings_working_hours_a_day" = "एक दिन में काम करने के घंटे";
+
+"settings_pause_footer" = "अगर आपने जाना है कि आपकी ब्रेक कितना लंबा है, तो डिफ़ॉल्ट विराम आपके समय को बचाएगा।";
+
+"settings_default_pause" = "डिफ़ॉल्ट विराम";
+
+"settings_live_activities_renew_description" = "यदि उपयोगकर्ता द्वारा 'लाइव वर्क' छुपाया गया है, तो वर्तमान काम के लिए फिर से सक्षम किया जा सकता है।";
+
+"settings_live_activities_renew" = "लाइव वर्क नवीनीकरण करें";
+
+"settings_pause_button" = "विराम बटन";
+
+"settings_end_work_button" = "काम समाप्त बटन";
+
+"add_date_title" = "तिथि जोड़ें";
+
+"edit_date_title" = "तिथि संपादित करें";
+
+"add_edit_work_day" = "काम दिन";
+
+"add_edit_work_night" = "रात काम";
+
+"add_edit_start_end_time" = "आपका शुरू और समाप्ति समय।";
+
+"add_edit_additional_info" = "अतिरिक्त जानकारी";
+
+"generic_start" = "शुरू";
+
+"generic_end" = "समाप्त";
+
+"generic_delete" = "हटाएं";
+
+"generic_save" = "सहेजें";
+
+"generic_special_day" = "विशेष दिन";
+
+"special_day_title" = "विशेष दिन";
+
+"add_edit_choose_special_day" = "अपना विशेष दिन चुनें";
+
+"add_edit_how_many_hours" = "कितने घंटे";
+
+"generic_now" = "अब";
+
+"home_last_work" = "पिछला काम";
+
+"generic_from" = "से";
+
+"generic_until" = "तक";
+
+"home_start_first_work" = "अपना पहला काम शुरू करने के लिए\nबटन को स्वाइप करें।";
+
+"generic_home" = "घर";
+
+"generic_history" = "इतिहास";
+
+"generic_your_work" = "आपका काम";
+
+"generic_your_pause" = "आपका विराम";
+
+"generic_start_pause" = "विराम शुरू करें";
+
+"generic_end_pause" = "विराम समाप्त करें";
+
+"generic_end_work" = "काम समाप्त करें";
+
+"add_edit_vacation" = "अवकाश";
+
+"add_edit_public_holiday" = "जनता होली";
+
+"add_edit_sickness" = "बीमारी";
+
+"live_activities_start_at" = "शुरू हुआ:";

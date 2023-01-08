@@ -14,7 +14,7 @@ struct ChartView: View {
         if #available(iOS 16.0, *) {
             if coreDataManager.uniqueDatesForChartCount < 5 {
                 Spacer()
-                Text("You need more data\nto see the chart.")
+                Text(localized(string: "chart_more_data_needed"))
                     .frame(width: 200)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
@@ -24,15 +24,15 @@ struct ChartView: View {
             } else {
                 Chart {
                     ForEach(coreDataManager.datesForChart.reversed(), id: \.self) { item in
-                        BarMark(x: .value("Day", item.date.toString(format: .shortDate)),
-                                y: .value("Hours", Double(item.secWork) / 3600))
+                        BarMark(x: .value(localized(string: "generic_day"), item.date.toString(format: .shortDate)),
+                                y: .value(localized(string: "generic_hours"), Double(item.secWork) / 3600))
                     }
                 }
                 .padding(.horizontal, 40)
             }
         } else {
             Spacer()
-            Text("Update your iOS to version 16 to see the charts here.")
+            Text(localized(string: "chart_update_os"))
                 .frame(width: 200)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)

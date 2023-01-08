@@ -53,7 +53,7 @@ struct HistoryView: View {
                 // TODO: Value = 120 ? Maybe property ?
                 // We need spacer, because last value is in the back of toolbar bottom
             }
-            .navigationTitle("History")
+            .navigationTitle(localized(string: "generic_history"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

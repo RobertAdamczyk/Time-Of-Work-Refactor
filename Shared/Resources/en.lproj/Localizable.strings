@@ -1,0 +1,136 @@
+/* 
+  Localizable.strings
+  Time Of Work
+
+  Created by Robert Adamczyk on 08.01.23.
+  
+*/
+"generic_settings" = "Settings";
+
+"swipe_button_end_work" = "End work";
+
+"swipe_button_start_work" = "Start work";
+
+"swipe_button_start_pause" = "Start pause";
+
+"swipe_button_end_pause" = "End pause";
+
+"swipe_button_ended" = "Ended";
+
+"swipe_button_started" = "Started";
+
+"swipe_button_ending" = "Ending...";
+
+"swipe_button_starting" = "Starting...";
+
+"prefix_hours" = "h";
+
+"prefix_minutes" = "m";
+
+"prefix_seconds" = "s";
+
+"chart_more_data_needed" = "You need more data\nto see the chart.";
+
+"chart_update_os" = "Update your iOS to version 16 to see the charts here.";
+
+"generic_day" = "Day";
+
+"generic_hours" = "Hours";
+
+"generic_week" = "week";
+
+"generic_month" = "month";
+
+"generic_year" = "year";
+
+"generic_days" = "Days";
+
+"generic_work" = "Work";
+
+"generic_pause" = "Pause";
+
+"generic_time" = "Time";
+
+"history_total_of" = "Total of the";
+
+"settings_section_general" = "General";
+
+"settings_section_additional" = "Additional";
+
+"settings_lock_screen" = "Lock Screen";
+
+"settings_your_goal" = "Your goal";
+
+"settings_working_hours_a_day" = "Working hours a day";
+
+"settings_pause_footer" = "The default pause will save you time while using the application if you know how long your break is.";
+
+"settings_default_pause" = "Default pause";
+
+"settings_live_activities_renew_description" = "In case 'Live work' has been hidden by the user, it can be reenabled for current work.";
+
+"settings_live_activities_renew" = "Renew live work";
+
+"settings_pause_button" = "Pause button";
+
+"settings_end_work_button" = "End work button";
+
+"add_date_title" = "Add Date";
+
+"edit_date_title" = "Edit Date";
+
+"add_edit_work_day" = "Work day";
+
+"add_edit_work_night" = "Work at the night";
+
+"add_edit_start_end_time" = "Your start and finish time.";
+
+"add_edit_additional_info" = "Additional information";
+
+"generic_start" = "Start";
+
+"generic_end" = "End";
+
+"generic_delete" = "Delete";
+
+"generic_save" = "Save";
+
+"generic_special_day" = "Special day";
+
+"special_day_title" = "Special Day";
+
+"add_edit_choose_special_day" = "Choose your special day";
+
+"add_edit_how_many_hours" = "How many hours";
+
+"generic_now" = "Now";
+
+"home_last_work" = "Last work";
+
+"generic_from" = "From";
+
+"generic_until" = "Until";
+
+"home_start_first_work" = "Start your first work by\nswiping button to the right.";
+
+"generic_home" = "Home";
+
+"generic_history" = "History";
+
+"generic_your_work" = "Your work";
+
+"generic_your_pause" = "Your pause";
+
+"generic_start_pause" = "Start pause";
+
+"generic_end_pause" = "End pause";
+
+"generic_end_work" = "End work";
+
+"add_edit_vacation" = "Vacation";
+
+"add_edit_public_holiday" = "Public Holiday";
+
+"add_edit_sickness" = "Sickness";
+
+"live_activities_start_at" = "Started at:";

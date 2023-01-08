@@ -1,0 +1,136 @@
+/* 
+  Localizable.strings
+  Time Of Work
+
+  Created by Robert Adamczyk on 08.01.23.
+  
+*/
+"generic_settings" = "設定";
+
+"swipe_button_end_work" = "仕事を終了する";
+
+"swipe_button_start_work" = "仕事を開始する";
+
+"swipe_button_start_pause" = "休憩を開始する";
+
+"swipe_button_end_pause" = "休憩を終了する";
+
+"swipe_button_ended" = "終了";
+
+"swipe_button_started" = "開始";
+
+"swipe_button_ending" = "終了中...";
+
+"swipe_button_starting" = "開始中...";
+
+"prefix_hours" = "h";
+
+"prefix_minutes" = "m";
+
+"prefix_seconds" = "s";
+
+"chart_more_data_needed" = "チャートを見るには\nもっとデータが必要です。";
+
+"chart_update_os" = "チャートを見るにはiOSをバージョン16にアップデートしてください。";
+
+"generic_day" = "日";
+
+"generic_hours" = "時間";
+
+"generic_week" = "週";
+
+"generic_month" = "月";
+
+"generic_year" = "年";
+
+"generic_days" = "日";
+
+"generic_work" = "作業";
+
+"generic_pause" = "休憩";
+
+"generic_time" = "時間";
+
+"history_total_of" = "合計";
+
+"settings_section_general" = "一般";
+
+"settings_section_additional" = "追加";
+
+"settings_lock_screen" = "ロック画面";
+
+"settings_your_goal" = "目標";
+
+"settings_working_hours_a_day" = "1日あたりの労働時間";
+
+"settings_pause_footer" = "デフォルトのポーズは、アプリケーションを使用する際に時間を節約します。";
+
+"settings_default_pause" = "デフォルトのポーズ";
+
+"settings_live_activities_renew_description" = "ユーザーによって「ライブワーク」が非表示にされた場合は、現在の作業に再び有効にできます。";
+
+"settings_live_activities_renew" = "ライブワークを更新する";
+
+"settings_pause_button" = "ポーズボタン";
+
+"settings_end_work_button" = "作業終了ボタン";
+
+"add_date_title" = "日付を追加する";
+
+"edit_date_title" = "日付を編集する";
+
+"add_edit_work_day" = "平日";
+
+"add_edit_work_night" = "夜間勤務";
+
+"add_edit_start_end_time" = "開始時刻と終了時刻。";
+
+"add_edit_additional_info" = "追加情報";
+
+"generic_start" = "開始";
+
+"generic_end" = "終了";
+
+"generic_delete" = "削除";
+
+"generic_save" = "保存";
+
+"generic_special_day" = "特別な日";
+
+"special_day_title" = "特別な日";
+
+"add_edit_choose_special_day" = "特別な日を選んでください";
+
+"add_edit_how_many_hours" = "何時間";
+
+"generic_now" = "今";
+
+"home_last_work" = "最後の仕事";
+
+"generic_from" = "から";
+
+"generic_until" = "まで";
+
+"home_start_first_work" = "スワイプボタンを右にスライドして最初の仕事を開始してください。";
+
+"generic_home" = "ホーム";
+
+"generic_history" = "歴史";
+
+"generic_your_work" = "あなたの仕事";
+
+"generic_your_pause" = "あなたの休憩";
+
+"generic_start_pause" = "休憩を開始する";
+
+"generic_end_pause" = "休憩を終了する";
+
+"generic_end_work" = "仕事を終了する";
+
+"add_edit_vacation" = "休暇";
+
+"add_edit_public_holiday" = "国民の祝日";
+
+"add_edit_sickness" = "病気";
+
+"live_activities_start_at" = "開始日時:";

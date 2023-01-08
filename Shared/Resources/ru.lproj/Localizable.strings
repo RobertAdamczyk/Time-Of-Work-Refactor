@@ -1,0 +1,134 @@
+/* 
+  Localizable.strings
+  Time Of Work
+
+  Created by Robert Adamczyk on 08.01.23.
+  
+*/
+"generic_settings" = "Настройки";
+
+"swipe_button_end_work" = "Завершить работу";
+
+"swipe_button_start_work" = "Начать работу";
+
+"swipe_button_start_pause" = "Начать паузу";
+
+"swipe_button_end_pause" = "Закончить паузу";
+
+"swipe_button_ended" = "Закончено";
+
+"swipe_button_started" = "Начато";
+
+"swipe_button_ending" = "Завершение...";
+
+"prefix_hours" = "ч";
+
+"prefix_minutes" = "м";
+
+"prefix_seconds" = "с";
+
+"chart_more_data_needed" = "Вам нужно больше данных, чтобы увидеть график.";
+
+"chart_update_os" = "Обновите свой iOS до версии 16, чтобы увидеть графики здесь.";
+
+"generic_day" = "День";
+
+"generic_hours" = "Часы";
+
+"generic_week" = "неделя";
+
+"generic_month" = "месяц";
+
+"generic_year" = "год";
+
+"generic_days" = "Дни";
+
+"generic_work" = "Работа";
+
+"generic_pause" = "Пауза";
+
+"generic_time" = "Время";
+
+"history_total_of" = "Всего в";
+
+"settings_section_general" = "Общие";
+
+"settings_section_additional" = "Дополнительно";
+
+"settings_lock_screen" = "Экран блокировки";
+
+"settings_your_goal" = "Ваша цель";
+
+"settings_working_hours_a_day" = "Часов работы в день";
+
+"settings_pause_footer" = "Перерыв по умолчанию сохранит вам время при использовании приложения, если вы знаете, сколько времени у вас на перерыв.";
+
+"settings_default_pause" = "Перерыв по умолчанию";
+
+"settings_live_activities_renew_description" = "В случае, если «Live work» было скрыто пользователем, оно может быть повторно включено для текущей работы.";
+
+"settings_live_activities_renew" = "Обновить живую работу";
+
+"settings_pause_button" = "Кнопка паузы";
+
+"settings_end_work_button" = "Кнопка завершения работы";
+
+"add_date_title" = "Добавить дату";
+
+"edit_date_title" = "Редактировать дату";
+
+"add_edit_work_day" = "Рабочий день";
+
+"add_edit_work_night" = "Работа ночью";
+
+"add_edit_start_end_time" = "Ваше начальное и конечное время.";
+
+"add_edit_additional_info" = "Дополнительная информация";
+
+"generic_start" = "Начало";
+
+"generic_end" = "Конец";
+
+"generic_delete" = "Удалить";
+
+"generic_save" = "Сохранить";
+
+"generic_special_day" = "Особый день";
+
+"special_day_title" = "Особый день";
+
+"add_edit_choose_special_day" = "Выберите свой особый день";
+
+"add_edit_how_many_hours" = "Сколько часов";
+
+"generic_now" = "Сейчас";
+
+"home_last_work" = "Последняя работа";
+
+"generic_from" = "С";
+
+"generic_until" = "По";
+
+"home_start_first_work" = "Начните свою первую работу,\nсвайпая кнопку вправо.";
+
+"generic_home" = "Главная";
+
+"generic_history" = "История";
+
+"generic_your_work" = "Ваша работа";
+
+"generic_your_pause" = "Ваш перерыв";
+
+"generic_start_pause" = "Начать перерыв";
+
+"generic_end_pause" = "Закончить перерыв";
+
+"generic_end_work" = "Закончить работу";
+
+"add_edit_vacation" = "Отпуск";
+
+"add_edit_public_holiday" = "Праздник";
+
+"add_edit_sickness" = "Болезнь";
+
+"live_activities_start_at" = "Начало в:";

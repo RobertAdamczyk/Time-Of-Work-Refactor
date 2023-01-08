@@ -14,7 +14,7 @@ struct TotalView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(spacing: 0) {
-                Text("Total of the \(viewModel.sectionType.name) ")
+                Text("\(localized(string: "history_total_of")) \(viewModel.sectionType.name) ")
                 Text("(\(viewModel.sectionType.sectionText(date: date))):")
                     .fontWeight(.bold)
             }
@@ -24,9 +24,9 @@ struct TotalView: View {
                 .weight(.semibold)
             )
             HStack {
-                Text("Days: \(total.days)")
-                Text("Work: \(total.secWork.toTimeString())")
-                Text("Pause: \(total.secPause.toTimeString())")
+                Text("\(localized(string: "generic_days")): \(total.days)")
+                Text("\(localized(string: "generic_work")): \(total.secWork.toTimeString())")
+                Text("\(localized(string: "generic_pause")): \(total.secPause.toTimeString())")
                 Spacer()
             }
             .foregroundColor(.theme.gray)

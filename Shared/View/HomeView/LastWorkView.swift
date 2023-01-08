@@ -14,7 +14,7 @@ struct LastWorkView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
                 VStack(spacing: 5) {
-                    Text("LAST WORK")
+                    Text(localized(string: "home_last_work"))
                         .font(.system(size: 12))
                         .foregroundColor(Color.theme.gray.opacity(0.8))
                         .padding(.leading)
@@ -23,8 +23,8 @@ struct LastWorkView: View {
                             .foregroundColor(Color.theme.gray)
                         if coreDataManager.lastRecord?.night == true {
                             VStack {
-                                Text("From \(coreDataManager.lastRecord?.date ?? Date(), style: .date)")
-                                Text("Until \(coreDataManager.lastRecord?.date.plusOneDay() ?? Date(), style: .date)")
+                                Text("\(localized(string: "generic_from")) \(coreDataManager.lastRecord?.date ?? Date(), style: .date)")
+                                Text("\(localized(string: "generic_until")) \(coreDataManager.lastRecord?.date.plusOneDay() ?? Date(), style: .date)")
                             }
                         } else {
                             Text("\(coreDataManager.lastRecord?.date ?? Date(), style: .date)")
@@ -67,7 +67,7 @@ struct LastWorkView: View {
         }
         .opacity(coreDataManager.lastRecord == nil ? 0 : 1)
         .overlay(
-            Text("Start your first work by\nswiping button to the right.")
+            Text(localized(string: "home_start_first_work"))
                 .multilineTextAlignment(.center)
                 .font(.caption)
                 .foregroundColor(Color.theme.gray)
