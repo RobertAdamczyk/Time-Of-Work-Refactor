@@ -16,6 +16,10 @@ enum Storable {
     case defaultPauseSetting
     case defaultPauseInSecSetting
 
+    case liveActivitiesPermission
+    case liveActivitiesPauseButton
+    case liveActivitiesEndWorkButton
+
     var key: String {
         switch self {
         case .working:
@@ -34,6 +38,12 @@ enum Storable {
             return "defaultPauseSetting"
         case .defaultPauseInSecSetting:
             return "defaultPauseInSecSetting"
+        case .liveActivitiesPermission:
+            return "liveActivitiesPermission"
+        case .liveActivitiesPauseButton:
+            return "liveActivitiesPauseButton"
+        case .liveActivitiesEndWorkButton:
+            return "liveActivitiesEndWorkButton"
         }
     }
 }

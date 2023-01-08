@@ -9,19 +9,32 @@ import SwiftUI
 import ActivityKit
 
 class LiveWorkViewModel {
+
+    /// DeepLinks to handle user clicks in live activities
     enum DeepLink: String {
-        case startPauseButton = "liveActivities://start.pause.button"
+        case pauseButton = "liveActivities://pause.button"
         case endWorkButton = "liveActivities://end.work.button"
     }
+
     enum Context: Codable, Hashable {
         case work
         case pause
     }
+
+    // MARK: Private properties
+
+    /// Properties to store user defaults
+    @AppStorage(Storable.liveActivitiesPauseButton.key) private var liveActivitiesPauseButton: Bool = true
+    @AppStorage(Storable.liveActivitiesEndWorkButton.key) private var liveActivitiesEndWorkButton: Bool = true
+
+    // MARK: Public functions
     public func startLiveWork(for context: LiveWorkViewModel.Context, date: Date,
                               startWorkDate: Date, pauseInSec: Int, workInSec: Int) {
         if #available(iOS 16.1, *) {
+            guard Activity<LiveWorkAttributes>.activities.count == 0 else { return }
             let dateForTimer = date.advanced(by: TimeInterval(pauseInSec))
-            let activityAttribute = LiveWorkAttributes()
+            let activityAttribute = LiveWorkAttributes(liveActivitiesPauseButton: liveActivitiesPauseButton,
+                                                       liveActivitiesEndWorkButton: liveActivitiesEndWorkButton)
             let initialContentState = LiveWorkAttributes.ContentState(context: context,
                                                                       dateForTimer: dateForTimer,
                                                                       startWorkDate: startWorkDate,
@@ -30,7 +43,9 @@ class LiveWorkViewModel {
             do {
                 let activity = try Activity<LiveWorkAttributes>.request(attributes: activityAttribute,
                                                                         contentState: initialContentState)
+                #if DEBUG
                 print("Activity added: \(activity.id)")
+                #endif
             } catch {
                 print(error.localizedDescription)
             }

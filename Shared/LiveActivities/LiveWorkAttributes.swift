@@ -17,7 +17,9 @@ struct LiveWorkAttributes: ActivityAttributes {
         var pauseInSec: Int
         var workInSec: Int
     }
-
+    /// User defaults
+    var liveActivitiesPauseButton: Bool
+    var liveActivitiesEndWorkButton: Bool
     // Fixed non-changing properties about your activity go here!
 
 }
