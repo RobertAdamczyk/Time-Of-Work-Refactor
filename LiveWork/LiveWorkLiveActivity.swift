@@ -24,7 +24,8 @@ struct LiveWorkLiveActivity: Widget {
                     }
                     .frame(width: 165)
                     Spacer()
-                    if let url = URL(string: LiveWorkViewModel.DeepLink.startPauseButton.rawValue) {
+                    if let url = URL(string: LiveWorkViewModel.DeepLink.pauseButton.rawValue),
+                        context.attributes.liveActivitiesPauseButton {
                         Link(destination: url) {
                             VStack {
                                 Image.store.pauseCircle
@@ -34,8 +35,9 @@ struct LiveWorkLiveActivity: Widget {
                             }
                         }
                     }
-                    Spacer()
-                    if let url2 = URL(string: LiveWorkViewModel.DeepLink.endWorkButton.rawValue) {
+                    if let url2 = URL(string: LiveWorkViewModel.DeepLink.endWorkButton.rawValue),
+                        context.attributes.liveActivitiesEndWorkButton {
+                        Spacer()
                         Link(destination: url2) {
                             VStack {
                                 Image.store.arrowUpLeft

@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import ActivityKit
 
 struct MainSettingView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     var body: some View {
         Form {
-            Section(header: Text("Your personal time settings")) {
+            Section(header: Text("General")) {
                 NavigationLink(destination: TimeSettingView()) {
                     Text("Time")
+                }
+                NavigationLink(destination: LockScreenView()) {
+                    Text("Lock Screen")
                 }
             }
         }
@@ -54,5 +58,36 @@ struct TimeSettingView: View {
 
         }
         .navigationBarTitle("Time", displayMode: .inline)
+    }
+}
+
+struct LockScreenView: View {
+    @EnvironmentObject var viewModel: SettingsViewModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    let renew = "In case 'Live work' has been hidden by the user, it can be reenabled for current work."
+    var body: some View {
+        Form {
+            Section(header: Text("General")) {
+                Toggle("Lock screen", isOn: $viewModel.liveActivitiesPermission)
+            }
+            Section(footer: Text("\(renew)")) {
+                Button {
+                    homeViewModel.liveWorkViewModel.startLiveWork(for: .work,
+                                                                  date: homeViewModel.lastDateForWork,
+                                                                  startWorkDate: homeViewModel.lastDateForWork,
+                                                                  pauseInSec: homeViewModel.pauseTimeInSec,
+                                                                  workInSec: homeViewModel.currentWorkTimeInSec)
+                } label: {
+                    Text("Renew live work")
+                        .foregroundColor(Color.theme.text)
+                }
+                .disabled(!homeViewModel.working) // if not working we dont want live activities
+            }
+            Section(header: Text("Additional")) {
+                Toggle("Pause button", isOn: $viewModel.liveActivitiesPauseButton)
+                Toggle("End work button", isOn: $viewModel.liveActivitiesEndWorkButton)
+            }
+        }
+        .navigationBarTitle("Lock Screen", displayMode: .inline)
     }
 }

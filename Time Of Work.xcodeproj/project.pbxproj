@@ -22,6 +22,7 @@
 		69477CCB2969882D0081137F /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* Int.swift */; };
 		69477CCE2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */; };
 		69477CCF2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */; };
+		69477CD2296AFBAC0081137F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B53583293A42330000787D /* Storable.swift */; };
 		694E2C7A293189C1009E923B /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2C79293189C1009E923B /* HistoryViewModel.swift */; };
 		694E2C822933E6A9009E923B /* HistoryListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2C812933E6A9009E923B /* HistoryListRowView.swift */; };
 		694E2C842933E6C2009E923B /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2C832933E6C2009E923B /* TotalView.swift */; };
@@ -557,6 +558,7 @@
 				6926F5E6295A4F340058D511 /* LiveWorkAttributes.swift in Sources */,
 				69477CCB2969882D0081137F /* Int.swift in Sources */,
 				69B1ECF2295BA62200C34CBB /* Images.swift in Sources */,
+				69477CD2296AFBAC0081137F /* Storable.swift in Sources */,
 				6926F5D5295A4DAC0058D511 /* LiveWorkBundle.swift in Sources */,
 				6926F5D7295A4DAC0058D511 /* LiveWorkLiveActivity.swift in Sources */,
 			);

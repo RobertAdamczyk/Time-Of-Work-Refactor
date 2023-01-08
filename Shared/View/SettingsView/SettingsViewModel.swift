@@ -13,4 +13,9 @@ class SettingsViewModel: ObservableObject {
     @AppStorage(Storable.hoursDaySetting.key) var hoursDaySetting: Double = 8
     @AppStorage(Storable.defaultPauseSetting.key) var defaultPauseSetting: Bool = false
     @AppStorage(Storable.defaultPauseInSecSetting.key) var defaultPauseInSecSetting: Int = 0
+
+    /// Live activities properties
+    @AppStorage(Storable.liveActivitiesPermission.key) var liveActivitiesPermission: Bool = true
+    @AppStorage(Storable.liveActivitiesPauseButton.key) var liveActivitiesPauseButton: Bool = true
+    @AppStorage(Storable.liveActivitiesEndWorkButton.key) var liveActivitiesEndWorkButton: Bool = true
 }

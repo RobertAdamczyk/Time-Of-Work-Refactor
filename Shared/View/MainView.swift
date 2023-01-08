@@ -67,20 +67,18 @@ struct MainView: View {
                 })
             }
         }
-//        .onOpenURL { url in
-//            if let deepLink = LiveActivityDeepLink(rawValue: url.absoluteString) {
-//                TODO: Buttons handling
-//                switch deepLink {
-//                case .startPauseButton:
-//                    homeViewModel.onSwipePauseButton()
-//                case .endWorkButton:
-//                    homeViewModel.onSwipeWorkButton { newRecord in
-//                        coreDataManager.addDate(for: newRecord)
-//                    }
-//                    homeViewModel.liveWorkViewModel.removeLiveWork()
-//                }
- //           }
- //       }
+        .onOpenURL { url in
+            if let deepLink = LiveWorkViewModel.DeepLink(rawValue: url.absoluteString) {
+                switch deepLink {
+                case .pauseButton:
+                    homeViewModel.onSwipePauseButton()
+                case .endWorkButton:
+                    homeViewModel.onSwipeWorkButton { newRecord in
+                        coreDataManager.addDate(for: newRecord)
+                    }
+                }
+            }
+        }
         .accentColor(Color.theme.accent)
         .environmentObject(viewModel)
         .environmentObject(settingsViewModel)
