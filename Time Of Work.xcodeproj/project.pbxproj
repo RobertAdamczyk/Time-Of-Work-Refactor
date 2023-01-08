@@ -40,6 +40,7 @@
 		699A6FD5296B162C008C1403 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699A6FD4296B162C008C1403 /* Localized.swift */; };
 		699A6FD6296B162C008C1403 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699A6FD4296B162C008C1403 /* Localized.swift */; };
 		699A6FD7296B24B2008C1403 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69477CD8296B12CE0081137F /* Localizable.strings */; };
+		699A6FDC296B6C86008C1403 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 699A6FDF296B6C86008C1403 /* InfoPlist.strings */; };
 		69B1ECF2295BA62200C34CBB /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF5A129282D3800C6B389 /* Images.swift */; };
 		69B1ECF3295BAEBB00C34CBB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF59F2928212F00C6B389 /* Colors.swift */; };
 		69B53584293A42330000787D /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B53583293A42330000787D /* Storable.swift */; };
@@ -137,6 +138,15 @@
 		69981E7A2939536B007476D5 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		699A6FD4296B162C008C1403 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		699A6FD8296B2A00008C1403 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		699A6FDE296B6C86008C1403 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		699A6FE0296B6C8A008C1403 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		699A6FE1296B6C8B008C1403 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		699A6FE2296B6C8F008C1403 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		699A6FE3296B6C90008C1403 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		699A6FE4296B6C90008C1403 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		699A6FE5296B6C91008C1403 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		699A6FE6296B6C92008C1403 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		699A6FE7296B6C92008C1403 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		69B53583293A42330000787D /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		69DCF7BA292D7A0F00520254 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				69477CD8296B12CE0081137F /* Localizable.strings */,
+				699A6FDF296B6C86008C1403 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -556,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E183359625EE988100E3A952 /* Assets.xcassets in Resources */,
+				699A6FDC296B6C86008C1403 /* InfoPlist.strings in Resources */,
 				69477CD6296B12CE0081137F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,6 +694,22 @@
 				699A6FD8296B2A00008C1403 /* pl */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		699A6FDF296B6C86008C1403 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				699A6FDE296B6C86008C1403 /* en */,
+				699A6FE0296B6C8A008C1403 /* fr */,
+				699A6FE1296B6C8B008C1403 /* de */,
+				699A6FE2296B6C8F008C1403 /* hi */,
+				699A6FE3296B6C90008C1403 /* id */,
+				699A6FE4296B6C90008C1403 /* ja */,
+				699A6FE5296B6C91008C1403 /* pl */,
+				699A6FE6296B6C92008C1403 /* pt-BR */,
+				699A6FE7296B6C92008C1403 /* ru */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
