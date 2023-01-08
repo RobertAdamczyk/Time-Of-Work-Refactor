@@ -1,0 +1,138 @@
+/* 
+  Localizable.strings
+  Time Of Work
+
+  Created by Robert Adamczyk on 08.01.23.
+
+ Przetlumacz mi ciagi tekstow na angielski, niemiecki, francuski, hindi, indonezyjski, japonski, portugalski (brazylia) i rosyjski:
+  
+*/
+"generic_settings" = "Ustawienia";
+
+"swipe_button_end_work" = "Zakończ pracę";
+
+"swipe_button_start_work" = "Rozpocznij pracę";
+
+"swipe_button_start_pause" = "Rozpocznij przerwę";
+
+"swipe_button_end_pause" = "Zakończ przerwę";
+
+"swipe_button_ended" = "Zakończone";
+
+"swipe_button_started" = "Rozpoczęte";
+
+"swipe_button_ending" = "Zakończanie...";
+
+"swipe_button_starting" = "Rozpoczynanie...";
+
+"prefix_hours" = "g";
+
+"prefix_minutes" = "m";
+
+"prefix_seconds" = "s";
+
+"chart_more_data_needed" = "Potrzebujesz więcej danych, aby zobaczyć wykres.";
+
+"chart_update_os" = "Zaktualizuj swoje iOS do wersji 16, aby zobaczyć wykresy tutaj.";
+
+"generic_day" = "Dzień";
+
+"generic_hours" = "Godziny";
+
+"generic_week" = "tydzień";
+
+"generic_month" = "miesiąc";
+
+"generic_year" = "rok";
+
+"generic_days" = "Dni";
+
+"generic_work" = "Praca";
+
+"generic_pause" = "Przerwa";
+
+"generic_time" = "Czas";
+
+"history_total_of" = "Suma";
+
+"settings_section_general" = "Ogólne";
+
+"settings_section_additional" = "Dodatkowe";
+
+"settings_lock_screen" = "Ekran blokady";
+
+"settings_your_goal" = "Twój cel";
+
+"settings_working_hours_a_day" = "Godziny pracy dziennie";
+
+"settings_pause_footer" = "Domyślna przerwa zaoszczędzi Ci czas podczas korzystania z aplikacji, jeśli wiesz, jak długo trwa twoja przerwa.";
+
+"settings_default_pause" = "Domyślna przerwa";
+
+"settings_live_activities_renew_description" = "W przypadku, gdy 'Live work' został ukryty przez użytkownika, może zostać ponownie włączony dla bieżącej pracy.";
+
+"settings_live_activities_renew" = "Odśwież live work";
+
+"settings_pause_button" = "Przycisk wstrzymania";
+
+"settings_end_work_button" = "Przycisk zakończenia pracy";
+
+"add_date_title" = "Dodaj datę";
+
+"edit_date_title" = "Edytuj datę";
+
+"add_edit_work_day" = "Dzień pracy";
+
+"add_edit_work_night" = "Praca w nocy";
+
+"add_edit_start_end_time" = "Twoja godzina rozpoczęcia i zakończenia.";
+
+"add_edit_additional_info" = "Dodatkowe informacje";
+
+"generic_start" = "Rozpocznij";
+
+"generic_end" = "Zakończ";
+
+"generic_delete" = "Usuń";
+
+"generic_save" = "Zapisz";
+
+"generic_special_day" = "Specjalny dzień";
+
+"special_day_title" = "Specjalny dzień";
+
+"add_edit_choose_special_day" = "Wybierz swój specjalny dzień";
+
+"add_edit_how_many_hours" = "Ile godzin";
+
+"generic_now" = "Teraz";
+
+"home_last_work" = "Ostatnia praca";
+
+"generic_from" = "Od";
+
+"generic_until" = "Do";
+
+"home_start_first_work" = "Rozpocznij swoją pierwszą pracę\nprzesuwając przycisk w prawo.";
+
+"generic_home" = "Strona główna";
+
+"generic_history" = "Historia";
+
+"generic_your_work" = "Twoja praca";
+
+"generic_your_pause" = "Twój przerwa";
+
+"generic_start_pause" = "Rozpocznij przerwę";
+
+"generic_end_pause" = "Zakończ przerwę";
+
+"generic_end_work" = "Zakończ pracę";
+
+"add_edit_vacation" = "Urlop";
+
+"add_edit_public_holiday" = "Święto narodowe";
+
+"add_edit_sickness" = "Zwolnienie lekarskie";
+
+"live_activities_start_at" = "Rozpoczęto o:";

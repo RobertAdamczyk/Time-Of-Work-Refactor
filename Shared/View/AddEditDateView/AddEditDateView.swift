@@ -24,14 +24,14 @@ struct AddEditDateView: View {
                     moreInformationSection
                 }
             }
-            .navigationTitle(value == nil ? "Add Date" : "Edit Date")
+            .navigationTitle(value == nil ? localized(string: "add_date_title") : localized(string: "edit_date_title"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if value != nil {
                         Button {
                             deleteAction?()
                         } label: {
-                            Text("Delete")
+                            Text(localized(string: "generic_delete"))
                                 .foregroundColor(Color.theme.red)
                         }
                     }
@@ -49,7 +49,7 @@ struct AddEditDateView: View {
                 } label: {
                     HStack {
                         Spacer()
-                        Text("Save")
+                        Text(localized(string: "generic_save"))
                             .foregroundColor(Color.theme.buttonText)
                         Spacer()
                     }
@@ -111,7 +111,7 @@ struct AddEditDateView: View {
                 viewModel.showPicker(pickerType: .date)
             } label: {
                 HStack {
-                    Text("Work day")
+                    Text(localized(string: "add_edit_work_day"))
                         .foregroundColor(Color.theme.text)
                     Spacer()
                     if viewModel.new.night, let datePlusOneDay = viewModel.new.date.plusOneDay() {
@@ -123,18 +123,18 @@ struct AddEditDateView: View {
                 }
             }
             if viewModel.new.specialDay == nil { // don't need work at night for special day
-                Toggle("Work at the night", isOn: $viewModel.new.night)
+                Toggle(localized(string: "add_edit_work_night"), isOn: $viewModel.new.night)
             }
         }
     }
 
     var startEndTimeSection: some View {
-        Section(header: Text("Your start and finish time.")) {
+        Section(header: Text(localized(string: "add_edit_start_end_time"))) {
             Button {
                 viewModel.showPicker(pickerType: .timeIn)
             } label: {
                 HStack {
-                    Text("Start")
+                    Text(localized(string: "generic_start"))
                         .foregroundColor(Color.theme.text)
                     Spacer()
                     Text("\(viewModel.new.timeIn, style: .time)")
@@ -144,7 +144,7 @@ struct AddEditDateView: View {
                 viewModel.showPicker(pickerType: .timeOut)
             } label: {
                 HStack {
-                    Text("End")
+                    Text(localized(string: "generic_end"))
                         .foregroundColor(Color.theme.text)
                     Spacer()
                     Text("\(viewModel.new.timeOut, style: .time)")
@@ -154,13 +154,13 @@ struct AddEditDateView: View {
     }
 
     var moreInformationSection: some View {
-        Section(header: Text("Additional information")) {
+        Section(header: Text(localized(string: "add_edit_additional_info"))) {
             if viewModel.new.specialDay == nil { // we dont need pause time for for special day
                 Button {
                     viewModel.showPicker(pickerType: .pause)
                 } label: {
                     HStack {
-                        Text("Pause")
+                        Text(localized(string: "generic_pause"))
                             .foregroundColor(Color.theme.text)
                         Spacer()
                         Text("\(viewModel.new.secPause.toTimeString())")
@@ -169,10 +169,10 @@ struct AddEditDateView: View {
             }
             NavigationLink(destination: SpecialDayView(), label: {
                 HStack {
-                    Text("Special Day")
+                    Text(localized(string: "generic_special_day"))
                     Spacer()
                     if let specialDay = viewModel.new.specialDay {
-                        Text("\(specialDay.rawValue)")
+                        Text("\(specialDay.string)")
                     }
                 }
             })
@@ -184,13 +184,13 @@ struct SpecialDayView: View {
     @EnvironmentObject var viewModel: AddEditDateViewModel
     var body: some View {
         Form {
-            Section(header: Text("Choose your special day")) {
+            Section(header: Text(localized(string: "add_edit_choose_special_day"))) {
                 ForEach(SpecialDays.allCases) { item in
                     Button {
                         viewModel.new.specialDay = viewModel.new.specialDay == item ? nil : item
                     } label: {
                         HStack {
-                            Text("\(item.rawValue)")
+                            Text("\(item.string)")
                                 .foregroundColor(Color.theme.text)
                             Spacer()
                             if viewModel.new.specialDay == item {
@@ -201,11 +201,11 @@ struct SpecialDayView: View {
                     }
                 }
             }
-            Section(header: Text("How many hours")) {
+            Section(header: Text(localized(string: "add_edit_how_many_hours"))) {
                 Text("\(Int(viewModel.new.hoursSpecialDayInSec).toTimeString())")
                 Slider(value: $viewModel.new.hoursSpecialDayInSec, in: 0...(12 * 3600), step: 600)
             }
         }
-        .navigationBarTitle("Special Day", displayMode: .inline)
+        .navigationBarTitle(localized(string: "special_day_title"), displayMode: .inline)
     }
 }

@@ -26,4 +26,12 @@ enum SpecialDays: String, CaseIterable, Identifiable {
             return Image.store.bandage
         }
     }
+
+    var string: String {
+        switch self {
+        case .holiday: return localized(string: "add_edit_vacation")
+        case .publicHoliday: return localized(string: "add_edit_public_holiday")
+        case .sickness: return localized(string: "add_edit_sickness")
+        }
+    }
 }

@@ -13,13 +13,13 @@ struct NowRow: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     var body: some View {
         VStack(spacing: 40) {
-            Text("NOW")
+            Text(localized(string: "generic_now"))
                 .font(.system(size: 12))
                 .foregroundColor(Color.theme.gray.opacity(0.8))
             ZStack(alignment: .top) {
                 HStack {
                     VStack {
-                        Text("Pause:")
+                        Text("\(localized(string: "generic_pause")):")
                             .fontWeight(.semibold)
                             .foregroundColor(Color.theme.accent)
                         Text("\((viewModel.pauseTimeInSec+viewModel.currentPauseTimeInSec).toTimeStringTimerFormat())")
@@ -30,7 +30,7 @@ struct NowRow: View {
                     }
                     Spacer()
                     VStack {
-                        Text("Start:")
+                        Text("\(localized(string: "generic_start")):")
                             .fontWeight(.semibold)
                             .foregroundColor(Color.theme.accent)
                         Text("\(viewModel.lastDateForWork, style: .time)")
@@ -43,7 +43,7 @@ struct NowRow: View {
                     .frame(width: Config.screenHeight * 0.18, height: Config.screenHeight * 0.18)
                     .overlay(
                         VStack {
-                            Text("Work:")
+                            Text("\(localized(string: "generic_work")):")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.theme.accent)
                             Text("\(viewModel.currentWorkTimeInSec.toTimeStringTimerFormat())")

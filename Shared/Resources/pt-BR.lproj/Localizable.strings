@@ -1,0 +1,136 @@
+/* 
+  Localizable.strings
+  Time Of Work
+
+  Created by Robert Adamczyk on 08.01.23.
+  
+*/
+"generic_settings" = "Configurações";
+
+"swipe_button_end_work" = "Terminar trabalho";
+
+"swipe_button_start_work" = "Iniciar trabalho";
+
+"swipe_button_start_pause" = "Iniciar pausa";
+
+"swipe_button_end_pause" = "Terminar pausa";
+
+"swipe_button_ended" = "Terminado";
+
+"swipe_button_started" = "Começou";
+
+"swipe_button_ending" = "Terminando...";
+
+"swipe_button_starting" = "Começando...";
+
+"prefix_hours" = "h";
+
+"prefix_minutes" = "m";
+
+"prefix_seconds" = "s";
+
+"chart_more_data_needed" = "Você precisa de mais dados\npara ver o gráfico.";
+
+"chart_update_os" = "Atualize o seu iOS para a versão 16 para ver os gráficos aqui.";
+
+"generic_day" = "Dia";
+
+"generic_hours" = "Horas";
+
+"generic_week" = "semana";
+
+"generic_month" = "mês";
+
+"generic_year" = "ano";
+
+"generic_days" = "Dias";
+
+"generic_work" = "Trabalho";
+
+"generic_pause" = "Pausa";
+
+"generic_time" = "Tempo";
+
+"history_total_of" = "Total do";
+
+"settings_section_general" = "Geral";
+
+"settings_section_additional" = "Adicional";
+
+"settings_lock_screen" = "Bloquear tela";
+
+"settings_your_goal" = "Seu objetivo";
+
+"settings_working_hours_a_day" = "Horas de trabalho por dia";
+
+"settings_pause_footer" = "A pausa padrão vai economizar tempo enquanto você usa o aplicativo se você souber por quanto tempo é a sua pausa.";
+
+"settings_default_pause" = "Pausa padrão";
+
+"settings_live_activities_renew_description" = "Caso o 'Trabalho ao vivo' tenha sido escondido pelo usuário, ele pode ser reativado para o trabalho atual.";
+
+"settings_live_activities_renew" = "Renovar trabalho ao vivo";
+
+"settings_pause_button" = "Botão de pausa";
+
+"settings_end_work_button" = "Botão para terminar o trabalho";
+
+"add_date_title" = "Adicionar data";
+
+"edit_date_title" = "Editar data";
+
+"add_edit_work_day" = "Dia de trabalho";
+
+"add_edit_work_night" = "Trabalho à noite";
+
+"add_edit_start_end_time" = "Seu horário de início e término.";
+
+"add_edit_additional_info" = "Informações adicionais";
+
+"generic_start" = "Começar";
+
+"generic_end" = "Terminar";
+
+"generic_delete" = "Excluir";
+
+"generic_save" = "Salvar";
+
+"generic_special_day" = "Dia especial";
+
+"special_day_title" = "Dia especial";
+
+"add_edit_choose_special_day" = "Escolha o seu dia especial";
+
+"add_edit_how_many_hours" = "Quantas horas";
+
+"generic_now" = "Agora";
+
+"home_last_work" = "Último trabalho";
+
+"generic_from" = "De";
+
+"generic_until" = "Até";
+
+"home_start_first_work" = "Inicie seu primeiro trabalho\nesvaziando a barra para a direita.";
+
+"generic_home" = "Início";
+
+"generic_history" = "Histórico";
+
+"generic_your_work" = "Seu trabalho";
+
+"generic_your_pause" = "Sua pausa";
+
+"generic_start_pause" = "Iniciar pausa";
+
+"generic_end_pause" = "Finalizar pausa";
+
+"generic_end_work" = "Finalizar trabalho";
+
+"add_edit_vacation" = "Férias";
+
+"add_edit_public_holiday" = "Feriado público";
+
+"add_edit_sickness" = "Doença";
+
+"live_activities_start_at" = "Começou em:";

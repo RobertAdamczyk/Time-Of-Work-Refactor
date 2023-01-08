@@ -101,7 +101,7 @@ struct PausePickerView: View {
             HStack(spacing: 0) {
                 Picker("h", selection: $hour) {
                     ForEach(0...23, id: \.self) { index in
-                        Text("\(index) h")
+                        Text("\(index) \(localized(string: "prefix_hours"))")
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
@@ -110,7 +110,7 @@ struct PausePickerView: View {
                 .clipped()
                 Picker("m", selection: $min) {
                     ForEach(0...59, id: \.self) { index in
-                        Text("\(index) m")
+                        Text("\(index) \(localized(string: "prefix_minutes"))")
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
@@ -119,7 +119,7 @@ struct PausePickerView: View {
                 .clipped()
                 Picker("s", selection: $sec) {
                     ForEach(0...59, id: \.self) { index in
-                        Text("\(index) s")
+                        Text("\(index) \(localized(string: "prefix_seconds"))")
                     }
                 }
                 .pickerStyle(WheelPickerStyle())

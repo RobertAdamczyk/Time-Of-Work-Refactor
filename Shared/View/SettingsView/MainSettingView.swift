@@ -12,37 +12,35 @@ struct MainSettingView: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     var body: some View {
         Form {
-            Section(header: Text("General")) {
+            Section(header: Text(localized(string: "settings_section_general"))) {
                 NavigationLink(destination: TimeSettingView()) {
-                    Text("Time")
+                    Text(localized(string: "generic_time"))
                 }
                 NavigationLink(destination: LockScreenView()) {
-                    Text("Lock Screen")
+                    Text(localized(string: "settings_lock_screen"))
                 }
             }
         }
-        .navigationBarTitle("Settings", displayMode: .large)
+        .navigationBarTitle(localized(string: "generic_settings"), displayMode: .large)
     }
 }
 
 struct TimeSettingView: View {
-    let pauseFooter = "The default pause will save you time while" +
-                      " using the application if you know how long your break is."
     @EnvironmentObject var viewModel: SettingsViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
     var body: some View {
         Form {
-            Section(header: Text("Your goal")) {
+            Section(header: Text(localized(string: "settings_your_goal"))) {
                 HStack {
-                    Text("Working hours a day")
+                    Text(localized(string: "settings_working_hours_a_day"))
                     Spacer()
                     Text("\(Int(viewModel.hoursDaySetting))")
                         .foregroundColor(Color.theme.accent)
                 }
                 Slider(value: $viewModel.hoursDaySetting, in: 0...12, step: 1)
             }
-            Section(footer: Text(pauseFooter)) {
-                Toggle("Default pause", isOn: $viewModel.defaultPauseSetting.animation())
+            Section(footer: Text(localized(string: "settings_pause_footer"))) {
+                Toggle(localized(string: "settings_default_pause"), isOn: $viewModel.defaultPauseSetting.animation())
                     .onChange(of: viewModel.defaultPauseSetting) { newValue in
                         homeViewModel.pauseTimeInSec = newValue ? viewModel.defaultPauseInSecSetting : 0
                         homeViewModel.updateLiveWork()
@@ -64,13 +62,12 @@ struct TimeSettingView: View {
 struct LockScreenView: View {
     @EnvironmentObject var viewModel: SettingsViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
-    let renew = "In case 'Live work' has been hidden by the user, it can be reenabled for current work."
     var body: some View {
         Form {
-            Section(header: Text("General")) {
-                Toggle("Lock screen", isOn: $viewModel.liveActivitiesPermission)
+            Section(header: Text(localized(string: "settings_section_general"))) {
+                Toggle(localized(string: "settings_lock_screen"), isOn: $viewModel.liveActivitiesPermission)
             }
-            Section(footer: Text("\(renew)")) {
+            Section(footer: Text(localized(string: "settings_live_activities_renew_description"))) {
                 Button {
                     homeViewModel.liveWorkViewModel.startLiveWork(for: .work,
                                                                   date: homeViewModel.lastDateForWork,
@@ -78,16 +75,16 @@ struct LockScreenView: View {
                                                                   pauseInSec: homeViewModel.pauseTimeInSec,
                                                                   workInSec: homeViewModel.currentWorkTimeInSec)
                 } label: {
-                    Text("Renew live work")
+                    Text(localized(string: "settings_live_activities_renew"))
                         .foregroundColor(Color.theme.text)
                 }
                 .disabled(!homeViewModel.working) // if not working we dont want live activities
             }
-            Section(header: Text("Additional")) {
-                Toggle("Pause button", isOn: $viewModel.liveActivitiesPauseButton)
-                Toggle("End work button", isOn: $viewModel.liveActivitiesEndWorkButton)
+            Section(header: Text(localized(string: "settings_section_additional"))) {
+                Toggle(localized(string: "settings_pause_button"), isOn: $viewModel.liveActivitiesPauseButton)
+                Toggle(localized(string: "settings_end_work_button"), isOn: $viewModel.liveActivitiesEndWorkButton)
             }
         }
-        .navigationBarTitle("Lock Screen", displayMode: .inline)
+        .navigationBarTitle(localized(string: "settings_lock_screen"), displayMode: .inline)
     }
 }

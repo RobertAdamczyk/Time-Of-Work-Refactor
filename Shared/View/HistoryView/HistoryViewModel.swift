@@ -143,11 +143,11 @@ extension HistoryViewModel {
         var name: String {
             switch self {
             case .week:
-                return "week"
+                return localized(string: "generic_week")
             case .month:
-                return "month"
+                return localized(string: "generic_month")
             case .year:
-                return "year"
+                return localized(string: "generic_year")
             }
         }
     }

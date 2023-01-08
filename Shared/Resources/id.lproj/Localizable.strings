@@ -1,0 +1,136 @@
+/* 
+  Localizable.strings
+  Time Of Work
+
+  Created by Robert Adamczyk on 08.01.23.
+  
+*/
+"generic_settings" = "Pengaturan";
+
+"swipe_button_end_work" = "Akhiri pekerjaan";
+
+"swipe_button_start_work" = "Mulai pekerjaan";
+
+"swipe_button_start_pause" = "Mulai jeda";
+
+"swipe_button_end_pause" = "Akhiri jeda";
+
+"swipe_button_ended" = "Selesai";
+
+"swipe_button_started" = "Dimulai";
+
+"swipe_button_ending" = "Mengakhiri...";
+
+"swipe_button_starting" = "Memulai...";
+
+"prefix_hours" = "j";
+
+"prefix_minutes" = "m";
+
+"prefix_seconds" = "d";
+
+"chart_more_data_needed" = "Kamu membutuhkan lebih banyak data\nuntuk melihat grafik ini.";
+
+"chart_update_os" = "Perbarui iOS-mu ke versi 16 untuk melihat grafik di sini.";
+
+"generic_day" = "Hari";
+
+"generic_hours" = "Jam";
+
+"generic_week" = "minggu";
+
+"generic_month" = "bulan";
+
+"generic_year" = "tahun";
+
+"generic_days" = "Hari";
+
+"generic_work" = "Kerja";
+
+"generic_pause" = "Istirahat";
+
+"generic_time" = "Waktu";
+
+"history_total_of" = "Total dari";
+
+"settings_section_general" = "Umum";
+
+"settings_section_additional" = "Tambahan";
+
+"settings_lock_screen" = "Kunci Layar";
+
+"settings_your_goal" = "Tujuanmu";
+
+"settings_working_hours_a_day" = "Jam kerja per hari";
+
+"settings_pause_footer" = "Istirahat default akan menghemat waktumu saat menggunakan aplikasi jika kamu tahu berapa lama istirahatmu.";
+
+"settings_default_pause" = "Istirahat default";
+
+"settings_live_activities_renew_description" = "Jika 'Kerja Langsung' telah disembunyikan oleh pengguna, ia dapat diaktifkan kembali untuk kerja saat ini.";
+
+"settings_live_activities_renew" = "Perbarui kerja langsung";
+
+"settings_pause_button" = "Tombol istirahat";
+
+"settings_end_work_button" = "Tombol akhir kerja";
+
+"add_date_title" = "Tambahkan Tanggal";
+
+"edit_date_title" = "Edit Tanggal";
+
+"add_edit_work_day" = "Hari kerja";
+
+"add_edit_work_night" = "Kerja di malam hari";
+
+"add_edit_start_end_time" = "Waktu mulai dan selesaimu.";
+
+"add_edit_additional_info" = "Informasi tambahan";
+
+"generic_start" = "Mulai";
+
+"generic_end" = "Akhir";
+
+"generic_delete" = "Hapus";
+
+"generic_save" = "Simpan";
+
+"generic_special_day" = "Hari khusus";
+
+"special_day_title" = "Hari Khusus";
+
+"add_edit_choose_special_day" = "Pilih hari khususmu";
+
+"add_edit_how_many_hours" = "Berapa jam";
+
+"generic_now" = "Sekarang";
+
+"home_last_work" = "Pekerjaan terakhir";
+
+"generic_from" = "Dari";
+
+"generic_until" = "Hingga";
+
+"home_start_first_work" = "Mulai pekerjaan pertamamu dengan\nmendorong tombol ke kanan.";
+
+"generic_home" = "Beranda";
+
+"generic_history" = "Riwayat";
+
+"generic_your_work" = "Pekerjaanmu";
+
+"generic_your_pause" = "Istirahatmu";
+
+"generic_start_pause" = "Mulai istirahat";
+
+"generic_end_pause" = "Akhiri istirahat";
+
+"generic_end_work" = "Akhiri pekerjaan";
+
+"add_edit_vacation" = "Liburan";
+
+"add_edit_public_holiday" = "Hari libur nasional";
+
+"add_edit_sickness" = "Sakit";
+
+"live_activities_start_at" = "Dimulai pada:";
