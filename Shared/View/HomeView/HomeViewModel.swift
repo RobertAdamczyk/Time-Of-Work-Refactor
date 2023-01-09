@@ -34,6 +34,7 @@ class HomeViewModel: ObservableObject {
 
     // MARK: Public functions
     func onSwipeWorkButton(action: ((New) -> Void)? = nil) {
+        Analytics.logFirebaseSwipeEvent(working ? .endWork : .startWork)
         if isPauseOn {
             pauseTimeInSec += currentPauseTimeInSec
         }

@@ -23,8 +23,8 @@ struct MainView: View {
                     Color.theme.background
 
                     switch viewModel.view {
-                    case .home: HomeView()
-                    case .history: HistoryView()
+                    case .home: HomeView().onAppear { Analytics.logFirebaseScreenEvent(.homeScreen) }
+                    case .history: HistoryView().onAppear { Analytics.logFirebaseScreenEvent(.history) }
                     }
                     ToolbarView()
                 }
