@@ -1,3 +1,5 @@
 "CFBundleDisplayName" = "Czas Pracy";
 
 "CFBundleName" = "Czas Pracy";
+
+"NSUserTrackingUsageDescription" = "Sledzenie uytkownika jest wykorzystywane jedynie w celach poprawy aplikacji.";

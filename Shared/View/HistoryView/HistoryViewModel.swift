@@ -40,6 +40,7 @@ class HistoryViewModel: ObservableObject {
     }
 
     func onSectionButtonTapped(dates: [Dates]) {
+        Analytics.logFirebaseClickEvent(.historySection)
         state = .loading
         DispatchQueue.main.async { [weak self] in
             self?.changeSectionType()

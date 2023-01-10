@@ -8,3 +8,5 @@
 "CFBundleDisplayName" = "कार्य का समय";
 
 "CFBundleName" = "कार्य का समय";
+
+"NSUserTrackingUsageDescription" = "उपयोगकर्ता की ट्रैकिंग केवल एप्लिकेशन को बेहतर बनाने के उद्देश्य से का उपयोग किया जाता है।";

@@ -17,8 +17,29 @@ class AddEditDateViewModel: ObservableObject {
 
     // MARK: Public functions
     func showPicker(pickerType: PickerType?) {
+        logPicker(for: pickerType)
         withAnimation {
             showPickerType = pickerType
         }
+    }
+}
+
+// MARK: Analytics
+extension AddEditDateViewModel {
+    private func logPicker(for pickerType: PickerType?) {
+        let analyticsValue: Analytics.Value
+        switch pickerType {
+        case .pause:
+            analyticsValue = .pausePicker
+        case .timeIn:
+            analyticsValue = .timeInPicker
+        case .timeOut:
+            analyticsValue = .timeOutPicker
+        case .date:
+            analyticsValue = .datePicker
+        default:
+            analyticsValue = .closePicker
+        }
+        Analytics.logFirebaseClickEvent(analyticsValue)
     }
 }

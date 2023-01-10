@@ -22,6 +22,9 @@ struct MainSettingView: View {
             }
         }
         .navigationBarTitle(localized(string: "generic_settings"), displayMode: .large)
+        .onAppear {
+            Analytics.logFirebaseScreenEvent(.settings)
+        }
     }
 }
 
@@ -56,6 +59,9 @@ struct TimeSettingView: View {
 
         }
         .navigationBarTitle("Time", displayMode: .inline)
+        .onAppear {
+            Analytics.logFirebaseScreenEvent(.settingsTime)
+        }
     }
 }
 
@@ -86,5 +92,8 @@ struct LockScreenView: View {
             }
         }
         .navigationBarTitle(localized(string: "settings_lock_screen"), displayMode: .inline)
+        .onAppear {
+            Analytics.logFirebaseScreenEvent(.settingsLiveWork)
+        }
     }
 }

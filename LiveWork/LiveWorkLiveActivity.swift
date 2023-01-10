@@ -30,10 +30,11 @@ struct LiveWorkLiveActivity: Widget {
                             VStack {
                                 Image.store.pauseCircle
                                     .font(.largeTitle)
+                                    .frame(height: 35)
                                 Text(context.state.context == .work ? localized(string: "generic_start_pause") : localized(string: "generic_end_pause"))
                                     .font(.caption2)
-                                    .frame(maxWidth: 60)
                                     .multilineTextAlignment(.center)
+                                Spacer()
                             }
                         }
                     }
@@ -45,10 +46,11 @@ struct LiveWorkLiveActivity: Widget {
                                 Image.store.arrowUpLeft
                                     .font(.largeTitle)
                                     .foregroundColor(Color.theme.red)
+                                    .frame(height: 35)
                                 Text(localized(string: "generic_end_work"))
                                     .font(.caption2)
-                                    .frame(maxWidth: 60)
                                     .multilineTextAlignment(.center)
+                                Spacer()
                             }
                         }
                     }

@@ -8,3 +8,5 @@
 "CFBundleDisplayName" = "仕事の時間";
 
 "CFBundleName" = "仕事の時間";
+
+"NSUserTrackingUsageDescription" = "ユーザーの追跡は、アプリケーションの改善のためだけに使用されます。";
