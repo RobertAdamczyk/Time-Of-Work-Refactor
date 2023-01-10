@@ -7,6 +7,6 @@
 */
 "CFBundleDisplayName" = "Journale de temps";
 
-"CFBundleName" = "Temps de Travail";
+"CFBundleName" = "Journale de temps";
 
 "NSUserTrackingUsageDescription" = "Le suivi de l'utilisateur est utilisé uniquement dans le but d'améliorer l'application.";
