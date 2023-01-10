@@ -18,15 +18,18 @@ struct WorkingCell: View, HomeCellProvider {
                 Spacer()
                 if !viewModel.isPauseOn {
                     SwipeButton(type: .start, model: .startPause, disabled: false) {
+                        Analytics.logFirebaseSwipeEvent(.startPause)
                         viewModel.onSwipePauseButton()
                     }
                 } else {
                     SwipeButton(type: .end, model: .endPause, disabled: false) {
+                        Analytics.logFirebaseSwipeEvent(.endPause)
                         viewModel.onSwipePauseButton()
                     }
                 }
                 Spacer()
                 SwipeButton(type: .end, model: .endWork, disabled: viewModel.currentCell == .idle, action: {
+                    Analytics.logFirebaseSwipeEvent(.endWork)
                     viewModel.onSwipeWorkButton { newRecord in
                         coreDataManager.addDate(for: newRecord)
                     }

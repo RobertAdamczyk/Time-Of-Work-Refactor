@@ -39,6 +39,7 @@ struct AddEditDateView: View {
             }
             .overlay(
                 Button {
+                    Analytics.logFirebaseClickEvent(.addEditSaveButton)
                     activeSheet = nil
                     if let date = value {
                         coreDataManager.removeDate(date: date)
@@ -100,6 +101,7 @@ struct AddEditDateView: View {
                 viewModel.new.specialDay = SpecialDays(rawValue: value.specialDay ?? "")
                 viewModel.new.hoursSpecialDayInSec = value.specialDay != nil ? Double(value.secWork) : 8
             }
+            Analytics.logFirebaseScreenEvent(value == nil ? .addDate : .editDate)
         }
         .environmentObject(viewModel)
         .accentColor(Color.theme.accent)
@@ -188,6 +190,7 @@ struct SpecialDayView: View {
                 ForEach(SpecialDays.allCases) { item in
                     Button {
                         viewModel.new.specialDay = viewModel.new.specialDay == item ? nil : item
+                        Analytics.logFirebaseClickEvent(viewModel.new.specialDay?.analyticsValue ?? "empty")
                     } label: {
                         HStack {
                             Text("\(item.string)")
@@ -207,5 +210,8 @@ struct SpecialDayView: View {
             }
         }
         .navigationBarTitle(localized(string: "special_day_title"), displayMode: .inline)
+        .onAppear {
+            Analytics.logFirebaseScreenEvent(.addEditSpecialDay)
+        }
     }
 }

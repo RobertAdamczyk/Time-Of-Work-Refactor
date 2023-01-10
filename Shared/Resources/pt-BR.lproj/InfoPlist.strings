@@ -8,3 +8,5 @@
 "CFBundleDisplayName" = "Tempo de Trabalho";
 
 "CFBundleName" = "Tempo de Trabalho";
+
+"NSUserTrackingUsageDescription" = "O rastreamento de usuários é usado apenas com o objetivo de melhorar o aplicativo.";

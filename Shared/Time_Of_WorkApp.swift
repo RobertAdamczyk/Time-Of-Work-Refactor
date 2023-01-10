@@ -7,13 +7,31 @@
 
 import SwiftUI
 import FirebaseCore
+import AppTrackingTransparency
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-    return true
-  }
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        requestTrackingAuthorization()
+        return true
+    }
+
+    private func requestTrackingAuthorization() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    Analytics.activateFirebase()
+                case .denied:
+                    Analytics.deactivateFirebase()
+                default:
+                    Analytics.deactivateFirebase()
+                }
+            }
+        }
+    }
 }
 
 @main

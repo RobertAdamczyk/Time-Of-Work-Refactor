@@ -8,3 +8,5 @@
 "CFBundleDisplayName" = "Время работы";
 
 "CFBundleName" = "Время работы";
+
+"NSUserTrackingUsageDescription" = "Отслеживание пользователя используется только для улучшения приложения.";

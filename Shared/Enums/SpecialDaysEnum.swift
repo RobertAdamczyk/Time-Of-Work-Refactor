@@ -34,4 +34,12 @@ enum SpecialDays: String, CaseIterable, Identifiable {
         case .sickness: return localized(string: "add_edit_sickness")
         }
     }
+
+    var analyticsValue: String {
+        switch self {
+        case .holiday: return "holiday"
+        case .publicHoliday: return "public_holiday"
+        case .sickness: return "sickness"
+        }
+    }
 }

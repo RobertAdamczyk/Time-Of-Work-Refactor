@@ -6,11 +6,29 @@
 //
 
 import Foundation
+import SwiftUI
 import FirebaseAnalytics
+import FirebaseCore
 
 struct Analytics {
+    @AppStorage(Storable.firebaseAnalytics.key) static var firebaseAnalytics: Bool = false
+
+    public static func activateFirebase() {
+        firebaseAnalytics = true
+        FirebaseApp.app()?.isDataCollectionDefaultEnabled = true
+        FirebaseAnalytics.Analytics.setAnalyticsCollectionEnabled(true)
+
+    }
+
+    public static func deactivateFirebase() {
+        firebaseAnalytics = false
+        FirebaseApp.app()?.isDataCollectionDefaultEnabled = false
+        FirebaseAnalytics.Analytics.setAnalyticsCollectionEnabled(false)
+    }
+
     /// Logs a custom event with the specified name and parameter dictionary.
     public static func logFirebaseEvent(_ name: String, parameters: [String: Any] = [:]) {
+        guard firebaseAnalytics else { return }
         let firebaseParameters = mapToFirebase(parameters)
         #if DEBUG
         if let param = firebaseParameters {
@@ -30,6 +48,16 @@ struct Analytics {
     public static func logFirebaseSwipeEvent(_ value: Analytics.Value) {
         let param = [Analytics.Parameter.action.rawValue: value.rawValue]
         Analytics.logFirebaseEvent(Analytics.Event.swipe.rawValue, parameters: param)
+    }
+
+    public static func logFirebaseClickEvent(_ value: Analytics.Value) {
+        let param = [Analytics.Parameter.action.rawValue: value.rawValue]
+        Analytics.logFirebaseEvent(Analytics.Event.click.rawValue, parameters: param)
+    }
+
+    public static func logFirebaseClickEvent(_ value: String) {
+        let param = [Analytics.Parameter.action.rawValue: value]
+        Analytics.logFirebaseEvent(Analytics.Event.click.rawValue, parameters: param)
     }
 
     /// Maps the values of the specified dictionary to the valid data types required by Firebase.

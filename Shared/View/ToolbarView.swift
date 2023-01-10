@@ -25,6 +25,7 @@ struct ToolbarView: View {
                 Spacer()
                 Button {
                     viewModel.view = .home
+                    Analytics.logFirebaseClickEvent(.homeToolbar)
                 } label: {
                     VStack {
                         Image.store.square2x2
@@ -40,6 +41,7 @@ struct ToolbarView: View {
                 Spacer()
                 Button {
                     viewModel.activeSheet = .addDate
+                    Analytics.logFirebaseClickEvent(.addDateToolbar)
                 } label: {
                     Image.store.plus
                         .resizable()
@@ -50,6 +52,7 @@ struct ToolbarView: View {
                 Spacer()
                 Button {
                     viewModel.view = .history
+                    Analytics.logFirebaseClickEvent(.historyToolbar)
                 } label: {
                     VStack {
                         Image.store.calendar

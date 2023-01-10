@@ -71,8 +71,10 @@ struct MainView: View {
             if let deepLink = LiveWorkViewModel.DeepLink(rawValue: url.absoluteString) {
                 switch deepLink {
                 case .pauseButton:
+                    Analytics.logFirebaseClickEvent(.pauseLiveWork)
                     homeViewModel.onSwipePauseButton()
                 case .endWorkButton:
+                    Analytics.logFirebaseClickEvent(.endLiveWork)
                     homeViewModel.onSwipeWorkButton { newRecord in
                         coreDataManager.addDate(for: newRecord)
                     }
