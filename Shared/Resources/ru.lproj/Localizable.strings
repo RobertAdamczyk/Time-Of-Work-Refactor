@@ -132,3 +132,5 @@
 "add_edit_sickness" = "Болезнь";
 
 "live_activities_start_at" = "Начало в";
+
+"settings_update_live_activities" = "Вы должны обновить версию iOS до 16.1, чтобы использовать свою работу на заблокированном экране.";

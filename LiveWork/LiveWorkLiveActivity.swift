@@ -16,7 +16,7 @@ struct LiveWorkLiveActivity: Widget {
             VStack {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(context.state.context == .work ? localized(string: "generic_your_work") : localized(string: "generic_your_work"))
+                        Text(context.state.context == .work ? localized(string: "generic_your_work") : localized(string: "generic_your_pause"))
                             .font(.caption2)
                         Text("\(context.state.dateForTimer, style: .timer)")
                             .font(.title)
@@ -60,7 +60,7 @@ struct LiveWorkLiveActivity: Widget {
                     Text("\(context.state.startWorkDate, style: .time)").foregroundColor(Color.theme.accent)
                     switch context.state.context {
                     case .pause:
-                        Text("\(localized(string: "generic_work")))':")
+                        Text("\(localized(string: "generic_work")):")
                         Text("\(context.state.workInSec.toTimeStringTimerFormat())")
                             .foregroundColor(Color.theme.accent)
                     case .work:

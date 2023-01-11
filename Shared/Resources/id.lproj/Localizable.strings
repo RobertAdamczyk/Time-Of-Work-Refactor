@@ -134,3 +134,5 @@
 "add_edit_sickness" = "Sakit";
 
 "live_activities_start_at" = "Dimulai pada";
+
+"settings_update_live_activities" = "Anda harus memperbarui versi iOS Anda ke 16.1 untuk menggunakan pekerjaan Anda di layar terkunci.";

@@ -73,6 +73,7 @@ struct HistoryView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .overlay( ZStack {
             if viewModel.state == .loading {
                 ProgressView()

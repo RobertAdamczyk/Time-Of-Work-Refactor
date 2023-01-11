@@ -134,3 +134,5 @@
 "add_edit_sickness" = "Sickness";
 
 "live_activities_start_at" = "Started at";
+
+"settings_update_live_activities" = "You must update your iOS version to 16.1 to use your work on the locked screen.";
