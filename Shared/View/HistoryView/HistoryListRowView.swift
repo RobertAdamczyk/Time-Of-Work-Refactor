@@ -37,12 +37,12 @@ struct HistoryListRowView: View {
                     VStack(alignment: .trailing) {
                         HStack {
                             Text("\(timeIn, style: .time)")
-                            Image.store.arrowUpLeft
+                            ImageStore.arrowUpLeft.image
                                 .foregroundColor(Color.theme.green)
                         }
                         HStack {
                             Text("\(timeOut, style: .time)")
-                            Image.store.arrowUpRight
+                            ImageStore.arrowUpRight.image
                                 .foregroundColor(Color.theme.red)
                         }
                     }
@@ -54,8 +54,8 @@ struct HistoryListRowView: View {
                         if value.specialDay == nil { Text("\(value.secPause.toTimeString())") }
                     }
                     VStack {
-                        Image.store.hammer
-                        if value.specialDay == nil { Image.store.pauseCircle }
+                        ImageStore.hammer.image
+                        if value.specialDay == nil { ImageStore.pauseCircle.image }
                     }
                     .foregroundColor(Color.theme.gray)
                 }

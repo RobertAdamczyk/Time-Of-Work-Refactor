@@ -50,7 +50,7 @@ struct NowRow: View {
                             ZStack {
                                 HammerAnimation()
                                     .opacity(viewModel.isPauseOn ? 0 : 1)
-                                Image.store.pauseCircle
+                                ImageStore.pauseCircle.image
                                     .foregroundColor(Color.theme.gray)
                                     .opacity(viewModel.isPauseOn ? 1 : 0)
                             }
@@ -80,7 +80,7 @@ struct NowRow_Previews: PreviewProvider {
 struct HammerAnimation: View {
     @State var startAnimation: Bool = false
     var body: some View {
-        Image.store.hammer
+        ImageStore.hammer.image
             .foregroundColor(Color.theme.gray)
             .rotationEffect(Angle(degrees: startAnimation ? 15 : 0), anchor: .bottomLeading)
             .animation(.default.repeatForever(), value: startAnimation)

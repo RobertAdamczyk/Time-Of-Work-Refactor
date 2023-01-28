@@ -19,11 +19,11 @@ enum SpecialDays: String, CaseIterable, Identifiable {
     var image: Image {
         switch self {
         case .holiday:
-            return Image.store.caseFill
+            return ImageStore.caseFill.image
         case .publicHoliday:
-            return Image.store.flag
+            return ImageStore.flag.image
         case .sickness:
-            return Image.store.bandage
+            return ImageStore.bandage.image
         }
     }
 

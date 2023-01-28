@@ -26,7 +26,7 @@ struct HomeView: View {
                     Button {
                         mainViewModel.showMenuAction()
                     } label: {
-                        Image.store.menu
+                        ImageStore.menu.image
                             .font(.title3)
                     }
                 }

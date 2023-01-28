@@ -19,7 +19,7 @@ struct LastWorkView: View {
                         .foregroundColor(Color.theme.gray.opacity(0.8))
                         .padding(.leading)
                     HStack { // hstack for date
-                        Image.store.calendar
+                        ImageStore.calendar.image
                             .foregroundColor(Color.theme.gray)
                         if coreDataManager.lastRecord?.night == true {
                             VStack {
@@ -32,24 +32,24 @@ struct LastWorkView: View {
                     }
                     HStack(spacing: 10) { // hstack for timeIn and timeOut
                         HStack(spacing: 2) {
-                            Image.store.arrowUpRight
+                            ImageStore.arrowUpRight.image
                                 .foregroundColor(Color.theme.green)
                             Text("\(coreDataManager.lastRecord?.timeIn ?? Date(), style: .time)")
                         }
                         HStack(spacing: 2) {
-                            Image.store.arrowUpLeft
+                            ImageStore.arrowUpLeft.image
                                 .foregroundColor(Color.theme.red)
                             Text("\(coreDataManager.lastRecord?.timeOut ?? Date(), style: .time)")
                         }
                     }
                     HStack(spacing: 10) { // hstack for secwork and secpause
                         HStack(spacing: 2) {
-                            Image.store.hammer
+                            ImageStore.hammer.image
                                 .foregroundColor(Color.theme.gray)
                             Text("\(coreDataManager.lastRecord?.secWork.toTimeString() ?? "--:--")")
                         }
                         HStack(spacing: 2) {
-                            Image.store.pauseCircle
+                            ImageStore.pauseCircle.image
                                 .foregroundColor(Color.theme.gray)
                             Text("\(coreDataManager.lastRecord?.secPause.toTimeString() ?? "--:--")")
                         }

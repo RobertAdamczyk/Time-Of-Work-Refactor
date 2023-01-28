@@ -38,15 +38,15 @@ class SwipeButtonViewModel: ObservableObject {
         var image: some View {
             switch self {
             case .startWork:
-                return Image.store.arrowUpRight
+                return ImageStore.arrowUpRight.image
                         .foregroundColor(Color.theme.green)
                         .scaleEffect(1)
             case .endWork:
-                return Image.store.arrowUpLeft
+                return ImageStore.arrowUpLeft.image
                         .foregroundColor(Color.theme.red)
                         .scaleEffect(1)
             case .startPause, .endPause:
-                return Image.store.pauseCircle
+                return ImageStore.pauseCircle.image
                     .foregroundColor(Color.theme.buttonText)
                     .scaleEffect(1.4)
             }

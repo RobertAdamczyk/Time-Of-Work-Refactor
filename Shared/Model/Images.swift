@@ -7,29 +7,59 @@
 
 import SwiftUI
 
-extension Image {
-    static let store = ImageStore()
+enum ImageStore: String, CaseIterable {
+    case checkmark = "checkmark"
+    case person = "person.fill"
+    case info = "info"
+    case chevronRight = "chevron.right"
+    case chevronBackward = "chevron.backward"
+    case arrowUpLeft = "arrowshape.turn.up.left.fill"
+    case arrowUpRight = "arrowshape.turn.up.right.fill"
+    case hammer = "hammer.fill"
+    case pauseCircle = "pause.circle"
+    case caseFill = "case.fill"
+    case flag = "flag.fill"
+    case bandage = "bandage.fill"
+    case menu = "line.horizontal.3"
+    case gearshape = "gearshape.fill"
+    case calendar = "calendar"
+    case plus = "plus.circle.fill"
+    case square2x2 = "square.grid.2x2"
+    case sliderHorizontal = "slider.horizontal.3"
+    case close = "xmark"
+    case envelope = "envelope.fill"
+
+    var image: Image {
+        return Image(systemName: self.rawValue)
+    }
 }
 
-struct ImageStore {
-    let checkmark = Image(systemName: "checkmark")
-    let person = Image(systemName: "person.fill")
-    let info = Image(systemName: "info")
-    let chevronRight = Image(systemName: "chevron.right")
-    let chevronBackward = Image(systemName: "chevron.backward")
-    let arrowUpLeft = Image(systemName: "arrowshape.turn.up.left.fill")
-    let arrowUpRight = Image(systemName: "arrowshape.turn.up.right.fill")
-    let hammer = Image(systemName: "hammer.fill")
-    let pauseCircle = Image(systemName: "pause.circle")
-    let caseFill = Image(systemName: "case.fill")
-    let flag = Image(systemName: "flag.fill")
-    let bandage = Image(systemName: "bandage.fill")
-    let menu = Image(systemName: "line.horizontal.3")
-    let gearshape = Image(systemName: "gearshape.fill")
-    let calendar = Image(systemName: "calendar")
-    let plus = Image(systemName: "plus.circle.fill")
-    let square2x2 = Image(systemName: "square.grid.2x2")
-    let sliderHorizontal = Image(systemName: "slider.horizontal.3")
-    let close = Image(systemName: "xmark")
-    let envelope = Image(systemName: "envelope.fill")
+#if DEBUG
+private struct ImagesList: View {
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+        ]
+    var body: some View {
+        LazyVGrid(columns: columns) {
+            ForEach(ImageStore.allCases, id: \.self) { item in
+                VStack{
+                    HStack {
+                        Text(item.rawValue)
+                        Spacer()
+                        item.image
+                            .font(.largeTitle)
+                    }
+                    Divider()
+                }
+            }
+        }
+    }
 }
+
+struct ImagesList_Previews: PreviewProvider {
+    static var previews: some View {
+        ImagesList()
+    }
+}
+#endif

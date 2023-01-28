@@ -28,7 +28,7 @@ struct ToolbarView: View {
                     Analytics.logFirebaseClickEvent(.homeToolbar)
                 } label: {
                     VStack {
-                        Image.store.square2x2
+                        ImageStore.square2x2.image
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text(localized(string: "generic_home"))
@@ -43,7 +43,7 @@ struct ToolbarView: View {
                     viewModel.activeSheet = .addDate
                     Analytics.logFirebaseClickEvent(.addDateToolbar)
                 } label: {
-                    Image.store.plus
+                    ImageStore.plus.image
                         .resizable()
                         .frame(width: 40, height: 40)
                 }
@@ -55,7 +55,7 @@ struct ToolbarView: View {
                     Analytics.logFirebaseClickEvent(.historyToolbar)
                 } label: {
                     VStack {
-                        Image.store.calendar
+                        ImageStore.calendar.image
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text(localized(string: "generic_history"))

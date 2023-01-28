@@ -54,7 +54,7 @@ struct PickerView: View {
                     Button {
                         viewModel.onCloseAction()
                     } label: {
-                        Image.store.close
+                        ImageStore.close.image
                             .font(
                                 .title3
                                 .weight(.semibold)

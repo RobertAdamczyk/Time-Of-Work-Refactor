@@ -30,7 +30,7 @@ struct CellConfig {
 struct Config {
     static let screenHeight = UIScreen.main.bounds.height
     static let screenWidth = UIScreen.main.bounds.width
-    static let menuWidth = screenWidth * 0.4
+    static let menuWidth = screenWidth * 0.7
     /// After 24 hours auto-checkout
     static let automaticCheckoutAfterSec: Double = 3600 * 24
 }

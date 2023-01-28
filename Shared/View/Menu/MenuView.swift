@@ -7,12 +7,7 @@
 
 import SwiftUI
 
-class MenuViewModel: ObservableObject {
-
-}
-
 struct MenuView: View {
-    @StateObject var viewModel: MenuViewModel = MenuViewModel()
     @EnvironmentObject var mainViewModel: MainViewModel
     var body: some View {
         ZStack(alignment: .leading) {
@@ -22,31 +17,80 @@ struct MenuView: View {
                 }
             ZStack {
                 Color.theme.background
-                VStack(alignment: .leading, spacing: 30) {
+                VStack(alignment: .leading, spacing: 20) {
                     NavigationLink(destination: MainSettingView()) {
-                        HStack {
-                            Image.store.gearshape
-                            Text(localized(string:"generic_settings"))
-                                .foregroundColor(Color.theme.text)
-                        }
+                        NavigationItem(imageStore: .gearshape,
+                                       title: localized(string: "generic_settings"))
                     }
-//                    Button {
-//
-//                    } label: {
-//                        HStack {
-//                            Image.store.envelope
-//                            Text("Feedback")
-//                                .foregroundColor(Color.theme.buttonText)
+                    Divider()
+//                    ButtonItem(imageStore: .envelope,
+//                               title: "Send feedback",
+//                               action: {
+//                        let mailTo = "mailto:nemecek@support.com"
+//                            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//                        let mailtoUrl = URL(string: mailTo!)!
+//                        if UIApplication.shared.canOpenURL(mailtoUrl) {
+//                                UIApplication.shared.open(mailtoUrl, options: [:])
 //                        }
-//                    }
-
+//                    })
+//                    Divider()
                     Spacer()
                 }
                 .padding(.vertical, 150)
+                .padding(.horizontal, 16)
             }
             .frame(width: Config.menuWidth)
         }
         .ignoresSafeArea()
+        .onDisappear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                // hide menu after disappear
+                mainViewModel.showMenu = false
+            }
+        }
+    }
+}
+
+// MARK: Cell views
+extension MenuView {
+    private struct NavigationItem: View {
+        var imageStore: ImageStore
+        var title: String
+        var body: some View {
+            VStack {
+                HStack {
+                    imageStore.image
+                        .foregroundColor(Color.theme.accent)
+                    Text(title)
+                        .foregroundColor(Color.theme.text)
+                    Spacer()
+                    ImageStore.chevronRight.image
+                        .foregroundColor(Color.theme.accent)
+                        .font(.system(size: 16, weight: .black))
+                }
+            }
+        }
+    }
+
+    private struct ButtonItem: View {
+        var imageStore: ImageStore
+        var title: String
+        var action: () -> Void
+        var body: some View {
+            Button {
+                action()
+            } label: {
+                VStack {
+                    HStack {
+                        imageStore.image
+                            .foregroundColor(Color.theme.accent)
+                        Text(title)
+                            .foregroundColor(Color.theme.text)
+                        Spacer()
+                    }
+                }
+            }
+        }
     }
 }
 

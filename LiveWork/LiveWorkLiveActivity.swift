@@ -28,7 +28,7 @@ struct LiveWorkLiveActivity: Widget {
                         context.attributes.liveActivitiesPauseButton {
                         Link(destination: url) {
                             VStack {
-                                Image.store.pauseCircle
+                                ImageStore.pauseCircle.image
                                     .font(.largeTitle)
                                     .frame(height: 35)
                                 Text(context.state.context == .work ? localized(string: "generic_start_pause") : localized(string: "generic_end_pause"))
@@ -43,7 +43,7 @@ struct LiveWorkLiveActivity: Widget {
                         Spacer()
                         Link(destination: url2) {
                             VStack {
-                                Image.store.arrowUpLeft
+                                ImageStore.arrowUpLeft.image
                                     .font(.largeTitle)
                                     .foregroundColor(Color.theme.red)
                                     .frame(height: 35)

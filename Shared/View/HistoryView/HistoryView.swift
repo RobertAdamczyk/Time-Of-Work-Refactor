@@ -59,7 +59,7 @@ struct HistoryView: View {
                     Button {
                         viewModel.onSectionButtonTapped(dates: coreDataManager.dates)
                     } label: {
-                        Image.store.sliderHorizontal
+                        ImageStore.sliderHorizontal.image
                             .font(.title3)
                     }
                 }
@@ -67,7 +67,7 @@ struct HistoryView: View {
                     Button {
                         mainViewModel.showMenuAction()
                     } label: {
-                        Image.store.menu
+                        ImageStore.menu.image
                             .font(.title3)
                     }
                 }

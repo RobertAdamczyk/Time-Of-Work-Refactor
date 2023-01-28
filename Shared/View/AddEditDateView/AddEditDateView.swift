@@ -197,7 +197,7 @@ struct SpecialDayView: View {
                                 .foregroundColor(Color.theme.text)
                             Spacer()
                             if viewModel.new.specialDay == item {
-                                Image.store.checkmark
+                                ImageStore.checkmark.image
                                     .foregroundColor(Color.theme.accent)
                             }
                         }
