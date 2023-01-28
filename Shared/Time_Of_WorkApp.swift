@@ -13,12 +13,21 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        FirebaseApp.configure()
-        requestTrackingAuthorization()
+        #if DEBUG
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info-Debug", ofType: "plist")
+        #else
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
+        #endif
+
+        if let filePath = filePath, let options = FirebaseOptions(contentsOfFile: filePath) {
+            FirebaseApp.configure(options: options)
+            requestTrackingAuthorization()
+        }
         return true
     }
 
     private func requestTrackingAuthorization() {
+        // I don't know why, but i need make 2 sec delay to show request
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             ATTrackingManager.requestTrackingAuthorization { status in
                 switch status {

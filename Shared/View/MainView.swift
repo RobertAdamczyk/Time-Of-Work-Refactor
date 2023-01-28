@@ -12,7 +12,7 @@ struct MainView: View {
     @StateObject var settingsViewModel = SettingsViewModel()
     @StateObject var coreDataManager = CoreDataManager()
     @StateObject var homeViewModel = HomeViewModel()
-    @StateObject var historyViewModel: HistoryViewModel = HistoryViewModel()
+    @StateObject var historyViewModel = HistoryViewModel()
     #if DEBUG
     @StateObject var debugViewModel = DebugMenuViewModel()
     #endif

@@ -43,6 +43,7 @@
 		69981E7529392183007476D5 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69981E7429392183007476D5 /* PickerView.swift */; };
 		69981E7729392706007476D5 /* CustomRoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69981E7629392706007476D5 /* CustomRoundedCorner.swift */; };
 		69981E7B2939536B007476D5 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69981E7A2939536B007476D5 /* Config.swift */; };
+		6998976B2985993E00A05C61 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6998976A2985993E00A05C61 /* GoogleService-Info-Debug.plist */; };
 		699A6FD5296B162C008C1403 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699A6FD4296B162C008C1403 /* Localized.swift */; };
 		699A6FD6296B162C008C1403 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699A6FD4296B162C008C1403 /* Localized.swift */; };
 		699A6FD7296B24B2008C1403 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69477CD8296B12CE0081137F /* Localizable.strings */; };
@@ -145,6 +146,7 @@
 		69981E7429392183007476D5 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		69981E7629392706007476D5 /* CustomRoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedCorner.swift; sourceTree = "<group>"; };
 		69981E7A2939536B007476D5 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		6998976A2985993E00A05C61 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		699A6FD4296B162C008C1403 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		699A6FD8296B2A00008C1403 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		699A6FDE296B6C86008C1403 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		69477CD3296B12520081137F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6998976A2985993E00A05C61 /* GoogleService-Info-Debug.plist */,
 				69801BF2296CB86800EE86EC /* GoogleService-Info.plist */,
 				69477CD8296B12CE0081137F /* Localizable.strings */,
 				699A6FDF296B6C86008C1403 /* InfoPlist.strings */,
@@ -601,6 +604,7 @@
 				69801BF3296CB86800EE86EC /* GoogleService-Info.plist in Resources */,
 				699A6FDC296B6C86008C1403 /* InfoPlist.strings in Resources */,
 				69477CD6296B12CE0081137F /* Localizable.strings in Resources */,
+				6998976B2985993E00A05C61 /* GoogleService-Info-Debug.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
