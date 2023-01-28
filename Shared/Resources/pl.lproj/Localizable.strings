@@ -121,7 +121,7 @@
 
 "generic_your_work" = "Twoja praca";
 
-"generic_your_pause" = "Twój przerwa";
+"generic_your_pause" = "Twoja przerwa";
 
 "generic_start_pause" = "Rozpocznij przerwę";
 
@@ -136,3 +136,5 @@
 "add_edit_sickness" = "Zwolnienie lekarskie";
 
 "live_activities_start_at" = "Rozpoczęto o";
+
+"settings_update_live_activities" = "Musisz zaktualizować swoją wersję systemu iOS do wersji 16.1, aby moc korzystać ze śledzenia twojej pracy na zablokowanych ekranie.";

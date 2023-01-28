@@ -13,7 +13,7 @@ protocol HomeCellProvider {
 
 extension HomeCellProvider where Self: View {
     var cellShape: AnyView {
-        AnyView(RoundedRectangle(cornerSize: CGSize(width: CellConfig.padding, height: CellConfig.padding))
+        AnyView(RoundedRectangle(cornerSize: CellConfig.cornerSize)
             .foregroundColor(Color.theme.cell)
             .shadow(color: Color.theme.shadow,
                     radius: 5, x: 0, y: 4))

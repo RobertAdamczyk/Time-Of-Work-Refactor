@@ -134,3 +134,5 @@
 "add_edit_sickness" = "病気";
 
 "live_activities_start_at" = "開始日時";
+
+"settings_update_live_activities" = "ロックされた画面で作業を行うには、iOS のバージョンを 16.1 に更新する必要があります。";

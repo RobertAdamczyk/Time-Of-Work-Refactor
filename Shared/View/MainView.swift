@@ -55,6 +55,7 @@ struct MainView: View {
             .ignoresSafeArea()
             .navigationBarHidden(true)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(item: $viewModel.activeSheet) { item in
             switch item {
             case .addDate:

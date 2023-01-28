@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct CellConfig {
-    static let padding: CGFloat = 20
+    static let cornerSize: CGSize = CGSize(width: 20, height: 20)
+    static var padding: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 200
+        } else {
+            return 20
+        }
+    }
     static var height: CGFloat {
         if Config.screenHeight < 750 {
             return UIScreen.main.bounds.height * 0.55

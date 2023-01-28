@@ -134,3 +134,5 @@
 "add_edit_sickness" = "Krankheit";
 
 "live_activities_start_at" = "Gestartet um";
+
+"settings_update_live_activities" = "Sie müssen Ihre iOS-Version auf 16.1 aktualisieren, um Ihre Arbeit auf dem gesperrten Bildschirm verwenden zu können.";

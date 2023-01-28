@@ -134,3 +134,5 @@
 "add_edit_sickness" = "Doença";
 
 "live_activities_start_at" = "Começou em";
+
+"settings_update_live_activities" = "Você deve atualizar sua versão do iOS para 16.1 para usar seu trabalho na tela bloqueada.";

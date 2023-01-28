@@ -70,25 +70,31 @@ struct LockScreenView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     var body: some View {
         Form {
-            Section(header: Text(localized(string: "settings_section_general"))) {
-                Toggle(localized(string: "settings_lock_screen"), isOn: $viewModel.liveActivitiesPermission)
-            }
-            Section(footer: Text(localized(string: "settings_live_activities_renew_description"))) {
-                Button {
-                    homeViewModel.liveWorkViewModel.startLiveWork(for: .work,
-                                                                  date: homeViewModel.lastDateForWork,
-                                                                  startWorkDate: homeViewModel.lastDateForWork,
-                                                                  pauseInSec: homeViewModel.pauseTimeInSec,
-                                                                  workInSec: homeViewModel.currentWorkTimeInSec)
-                } label: {
-                    Text(localized(string: "settings_live_activities_renew"))
-                        .foregroundColor(Color.theme.text)
+            if #available(iOS 16.1, *) {
+                Section(header: Text(localized(string: "settings_section_general"))) {
+                    Toggle(localized(string: "settings_lock_screen"), isOn: $viewModel.liveActivitiesPermission)
                 }
-                .disabled(!homeViewModel.working) // if not working we dont want live activities
-            }
-            Section(header: Text(localized(string: "settings_section_additional"))) {
-                Toggle(localized(string: "settings_pause_button"), isOn: $viewModel.liveActivitiesPauseButton)
-                Toggle(localized(string: "settings_end_work_button"), isOn: $viewModel.liveActivitiesEndWorkButton)
+                Section(footer: Text(localized(string: "settings_live_activities_renew_description"))) {
+                    Button {
+                        homeViewModel.liveWorkViewModel.startLiveWork(for: .work,
+                                                                      date: homeViewModel.lastDateForWork,
+                                                                      startWorkDate: homeViewModel.lastDateForWork,
+                                                                      pauseInSec: homeViewModel.pauseTimeInSec,
+                                                                      workInSec: homeViewModel.currentWorkTimeInSec)
+                    } label: {
+                        Text(localized(string: "settings_live_activities_renew"))
+                            .foregroundColor(Color.theme.text)
+                    }
+                    .disabled(!homeViewModel.working) // if not working we dont want live activities
+                }
+                Section(header: Text(localized(string: "settings_section_additional"))) {
+                    Toggle(localized(string: "settings_pause_button"), isOn: $viewModel.liveActivitiesPauseButton)
+                    Toggle(localized(string: "settings_end_work_button"), isOn: $viewModel.liveActivitiesEndWorkButton)
+                }
+            } else {
+                Section(footer: Text(localized(string: "settings_update_live_activities"))) {
+                    EmptyView()
+                }
             }
         }
         .navigationBarTitle(localized(string: "settings_lock_screen"), displayMode: .inline)
