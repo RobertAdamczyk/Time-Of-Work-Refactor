@@ -10,9 +10,18 @@ class MainViewModel: ObservableObject {
 
     // MARK: Published variables
     @Published var view = Views.home
-    @Published var activeSheet: SheetView?
     @Published var showPickerType: PickerType?
     @Published var showMenu: Bool = false
+
+    var isSheetActive: Bool {
+        coordinator.sheet != nil
+    }
+
+    private let coordinator: Coordinator
+
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
+    }
 
     // MARK: Public properties
     /// Record from coreData that AddEditView takes to edit
@@ -31,6 +40,14 @@ class MainViewModel: ObservableObject {
         withAnimation {
             showMenu.toggle()
         }
+    }
+
+    func onHistoryRowTapped(date: Dates) {
+        coordinator.showSheet(.editDate(date))
+    }
+
+    func onToolbarPlusTapped() {
+        coordinator.showSheet(.addDate)
     }
 }
 

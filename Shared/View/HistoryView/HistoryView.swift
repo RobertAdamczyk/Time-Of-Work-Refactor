@@ -32,8 +32,7 @@ struct HistoryView: View {
                                 HistoryListRowView(value: date)
                                     .contentShape(Rectangle())
                                     .onTapGesture {
-                                        mainViewModel.dateToEdit = date
-                                        mainViewModel.activeSheet = .editDate
+                                        mainViewModel.onHistoryRowTapped(date: date)
                                     }
                                 Divider()
                                 if viewModel.showTotalView(in: coreDataManager.dates, for: date) {

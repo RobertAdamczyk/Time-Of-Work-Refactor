@@ -40,7 +40,7 @@ struct ToolbarView: View {
                 }
                 Spacer()
                 Button {
-                    viewModel.activeSheet = .addDate
+                    viewModel.onToolbarPlusTapped()
                     Analytics.logFirebaseClickEvent(.addDateToolbar)
                 } label: {
                     ImageStore.plus.image
@@ -68,11 +68,5 @@ struct ToolbarView: View {
                 Spacer()
             }
         }
-    }
-}
-
-struct ToolbarView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }

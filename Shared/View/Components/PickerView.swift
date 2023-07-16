@@ -14,6 +14,80 @@ enum PickerType {
     case date
 }
 
+enum PickerTypeV2 {
+    case pause(Int, (Int) -> Void)
+    case date(DatePickerComponents, Date, (Date) -> Void)
+}
+
+final class PickerViewModelV2: ObservableObject {
+
+    @Published var date: Date = .init() {
+        didSet {
+            onSet()
+        }
+    }
+    @Published var pause: Int = 0 {
+        didSet {
+            onSet()
+        }
+    }
+
+    let type: PickerTypeV2
+    var datePickerComponents: DatePickerComponents = .date
+
+    private let parentCoordinator: Coordinator
+
+    init(type: PickerTypeV2, parentCoordinator: Coordinator) {
+        self.parentCoordinator = parentCoordinator
+        self.type = type
+        switch type {
+        case .pause(let int, _):
+            self.pause = int
+        case .date(let components, let date, _):
+            self.date = date
+            self.datePickerComponents = components
+        }
+    }
+
+    func onSet() {
+        switch type {
+        case .pause(_, let completion):
+            completion(pause)
+        case .date(_, _, let completion):
+            completion(date)
+        }
+    }
+}
+
+struct PickerViewV2: View {
+
+    @StateObject var viewModel: PickerViewModelV2
+
+    init(type: PickerTypeV2, parentCoordinator: Coordinator) {
+        self._viewModel = .init(wrappedValue: .init(type: type, parentCoordinator: parentCoordinator))
+    }
+
+    var body: some View {
+        ZStack {
+            Color.theme.background.ignoresSafeArea()
+            switch viewModel.type {
+            case .date: datePicker
+            case .pause: pausePicker
+            }
+        }
+    }
+
+    var datePicker: some View {
+        DatePicker("", selection: $viewModel.date, displayedComponents: viewModel.datePickerComponents)
+            .datePickerStyle(.wheel)
+            .labelsHidden()
+    }
+
+    var pausePicker: some View {
+        PausePickerView(pause: $viewModel.pause)
+    }
+}
+
 class PickerViewModel: ObservableObject {
 
     // MARK: Published properties

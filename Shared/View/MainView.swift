@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel = MainViewModel()
+    @StateObject var viewModel: MainViewModel
     @StateObject var settingsViewModel = SettingsViewModel()
-    @StateObject var coreDataManager = CoreDataManager()
+    @EnvironmentObject var coreDataManager: CoreDataManager
     @StateObject var homeViewModel = HomeViewModel()
     @StateObject var historyViewModel = HistoryViewModel()
     #if DEBUG
     @StateObject var debugViewModel = DebugMenuViewModel()
     #endif
+
+    init(coordinator: Coordinator) {
+        self._viewModel = .init(wrappedValue: .init(coordinator: coordinator))
+    }
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -56,18 +61,6 @@ struct MainView: View {
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .sheet(item: $viewModel.activeSheet) { item in
-            switch item {
-            case .addDate:
-                AddEditDateView(activeSheet: $viewModel.activeSheet)
-            case .editDate:
-                AddEditDateView(activeSheet: $viewModel.activeSheet,
-                                value: viewModel.dateToEdit, deleteAction: {
-                    viewModel.activeSheet = nil
-                    coreDataManager.removeDate(date: viewModel.dateToEdit)
-                })
-            }
-        }
         .onOpenURL { url in
             if let deepLink = LiveWorkViewModel.DeepLink(rawValue: url.absoluteString) {
                 switch deepLink {
@@ -89,12 +82,5 @@ struct MainView: View {
         .environmentObject(homeViewModel)
         .environmentObject(historyViewModel)
         .ignoresSafeArea(.all)
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .preferredColorScheme(.light)
     }
 }

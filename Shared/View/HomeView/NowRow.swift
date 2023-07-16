@@ -60,7 +60,7 @@ struct NowRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            guard mainViewModel.activeSheet == nil && mainViewModel.showPickerType == nil &&
+            guard !mainViewModel.isSheetActive && mainViewModel.showPickerType == nil &&
                   mainViewModel.showMenu == false else { return }
             viewModel.refreshWorkTime()
         }

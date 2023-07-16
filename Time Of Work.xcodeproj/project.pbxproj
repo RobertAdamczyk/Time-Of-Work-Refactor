@@ -59,17 +59,18 @@
 		E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1134CDD26053A9D006BFD87 /* LastWorkView.swift */; };
 		E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575825F9330E003BD1CD /* DateFormatEnum.swift */; };
 		E119576725F94891003BD1CD /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* Int.swift */; };
+		E12420772A6410D7003E09D2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12420762A6410D7003E09D2 /* Coordinator.swift */; };
+		E12420792A641167003E09D2 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12420782A641167003E09D2 /* Views.swift */; };
+		E124207B2A6411CD003E09D2 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124207A2A6411CD003E09D2 /* ViewFactory.swift */; };
 		E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */; };
 		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
-		E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17468752601377B00F9CE02 /* SheetViewsEnum.swift */; };
 		E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174B0B6260F0E53001B8B86 /* AboutView.swift */; };
 		E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */; };
 		E17C2D92260FC03C000B3412 /* Dates+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */; };
 		E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */; };
 		E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86425F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld */; };
 		E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183357F25EE988000E3A952 /* Time_Of_WorkApp.swift */; };
-		E183359425EE988100E3A952 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183358025EE988000E3A952 /* ContentView.swift */; };
 		E183359625EE988100E3A952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183358125EE988100E3A952 /* Assets.xcassets */; };
 		E18335AE25EE98C500E3A952 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18335AD25EE98C500E3A952 /* MainView.swift */; };
 		E18335B325EE9ACC00E3A952 /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18335B225EE9ACC00E3A952 /* CustomToolbar.swift */; };
@@ -167,17 +168,18 @@
 		E1134CDD26053A9D006BFD87 /* LastWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastWorkView.swift; sourceTree = "<group>"; };
 		E119575825F9330E003BD1CD /* DateFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatEnum.swift; sourceTree = "<group>"; };
 		E119576625F94891003BD1CD /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		E12420762A6410D7003E09D2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E12420782A641167003E09D2 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		E124207A2A6411CD003E09D2 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDaysEnum.swift; sourceTree = "<group>"; };
 		E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateViewModel.swift; sourceTree = "<group>"; };
 		E13291CD25F2B2C500348BC3 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
-		E17468752601377B00F9CE02 /* SheetViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewsEnum.swift; sourceTree = "<group>"; };
 		E174B0B6260F0E53001B8B86 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dates+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dates+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateView.swift; sourceTree = "<group>"; };
 		E17FD86525F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeOfWorkCoreData.xcdatamodel; sourceTree = "<group>"; };
 		E183357F25EE988000E3A952 /* Time_Of_WorkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_Of_WorkApp.swift; sourceTree = "<group>"; };
-		E183358025EE988000E3A952 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E183358125EE988100E3A952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E183358625EE988100E3A952 /* Time Of Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Of Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E183358925EE988100E3A952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -371,7 +373,9 @@
 				E18335A225EE988D00E3A952 /* View */,
 				69981E7A2939536B007476D5 /* Config.swift */,
 				E183357F25EE988000E3A952 /* Time_Of_WorkApp.swift */,
-				E183358025EE988000E3A952 /* ContentView.swift */,
+				E12420782A641167003E09D2 /* Views.swift */,
+				E124207A2A6411CD003E09D2 /* ViewFactory.swift */,
+				E12420762A6410D7003E09D2 /* Coordinator.swift */,
 				E183358125EE988100E3A952 /* Assets.xcassets */,
 				E17FD86425F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld */,
 			);
@@ -459,7 +463,6 @@
 			children = (
 				E18335C225EEA03900E3A952 /* ViewsEnum.swift */,
 				E119575825F9330E003BD1CD /* DateFormatEnum.swift */,
-				E17468752601377B00F9CE02 /* SheetViewsEnum.swift */,
 				E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */,
 			);
 			path = Enums;
@@ -659,20 +662,20 @@
 				692CF5A02928212F00C6B389 /* Colors.swift in Sources */,
 				69839F8B2936A3E700920333 /* IdleCell.swift in Sources */,
 				695595C1296CBB070042E1B7 /* FirebaseAnalytics.swift in Sources */,
+				E12420772A6410D7003E09D2 /* Coordinator.swift in Sources */,
 				69015911294A53A300271F59 /* ShakeProvider.swift in Sources */,
 				69B53584293A42330000787D /* Storable.swift in Sources */,
 				690554EE293FE0C00029E5EE /* MenuView.swift in Sources */,
 				6926F5E5295A4EC20058D511 /* LiveWorkAttributes.swift in Sources */,
 				E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */,
 				E18335AE25EE98C500E3A952 /* MainView.swift in Sources */,
-				E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */,
 				694E2C822933E6A9009E923B /* HistoryListRowView.swift in Sources */,
 				E18335B325EE9ACC00E3A952 /* CustomToolbar.swift in Sources */,
 				E1F20B5C2607B7A800790CEA /* MainSettingView.swift in Sources */,
 				E18335B825EE9B6A00E3A952 /* GlassEffect.swift in Sources */,
 				E1D624382926E09C00AC87D6 /* Date.swift in Sources */,
-				E183359425EE988100E3A952 /* ContentView.swift in Sources */,
 				E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */,
+				E12420792A641167003E09D2 /* Views.swift in Sources */,
 				E1851EB425EFF60D00C721E9 /* NowRow.swift in Sources */,
 				69839F892936A0DD00920333 /* WorkingCell.swift in Sources */,
 				694E2C8A29340BB6009E923B /* HomeView.swift in Sources */,
@@ -702,6 +705,7 @@
 				E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */,
 				E18335BE25EE9D5300E3A952 /* ToolbarView.swift in Sources */,
 				E17C2D92260FC03C000B3412 /* Dates+CoreDataProperties.swift in Sources */,
+				E124207B2A6411CD003E09D2 /* ViewFactory.swift in Sources */,
 				E119576725F94891003BD1CD /* Int.swift in Sources */,
 				69981E7529392183007476D5 /* PickerView.swift in Sources */,
 			);
@@ -941,7 +945,7 @@
 				DEVELOPMENT_TEAM = 38Q6TG2KG3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -971,7 +975,7 @@
 				DEVELOPMENT_TEAM = 38Q6TG2KG3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

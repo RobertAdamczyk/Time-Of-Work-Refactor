@@ -47,9 +47,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct TimeOfWorkApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var coordinator: Coordinator = .init()
+    @StateObject var coreDataManager = CoreDataManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView(coordinator: coordinator)
+                .sheet(item: $coordinator.sheet) {
+                    StandardSheetView(sheetView: $0, parentCoordinator: coordinator)
+                }
+                .environmentObject(coreDataManager)
         }
     }
 }
