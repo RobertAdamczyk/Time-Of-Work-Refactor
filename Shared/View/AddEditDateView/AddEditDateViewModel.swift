@@ -23,7 +23,7 @@ final class AddEditDateViewModel: ObservableObject {
     }
 
     func onTimeInTapped() {
-        logPicker(for: .timeIn)
+        Analytics.logFirebaseClickEvent(.timeInPicker)
         coordinator.showSheet(.picker(.date(.hourAndMinute, new.timeIn, { [weak self] timeIn in
             DispatchQueue.main.async {
                 self?.new.timeIn = timeIn
@@ -32,7 +32,7 @@ final class AddEditDateViewModel: ObservableObject {
     }
 
     func onTimeOutTapped() {
-        logPicker(for: .timeOut)
+        Analytics.logFirebaseClickEvent(.timeOutPicker)
         coordinator.showSheet(.picker(.date(.hourAndMinute, new.timeOut, { [weak self] timeOut in
             DispatchQueue.main.async {
                 self?.new.timeOut = timeOut
@@ -41,7 +41,7 @@ final class AddEditDateViewModel: ObservableObject {
     }
 
     func onDateTapped() {
-        logPicker(for: .date)
+        Analytics.logFirebaseClickEvent(.datePicker)
         coordinator.showSheet(.picker(.date(.date, new.date, { [weak self] date in
             DispatchQueue.main.async {
                 self?.new.date = date
@@ -50,7 +50,7 @@ final class AddEditDateViewModel: ObservableObject {
     }
 
     func onPauseTapped() {
-        logPicker(for: .pause)
+        Analytics.logFirebaseClickEvent(.pausePicker)
         coordinator.showSheet(.picker(.pause(new.secPause, { [weak self] secPause in
             DispatchQueue.main.async {
                 self?.new.secPause = secPause
@@ -64,25 +64,5 @@ final class AddEditDateViewModel: ObservableObject {
 
     func onDeleteTapped() {
         parentCoordinator.dismissSheet()
-    }
-}
-
-// MARK: Analytics
-extension AddEditDateViewModel {
-    private func logPicker(for pickerType: PickerType?) {
-        let analyticsValue: Analytics.Value
-        switch pickerType {
-        case .pause:
-            analyticsValue = .pausePicker
-        case .timeIn:
-            analyticsValue = .timeInPicker
-        case .timeOut:
-            analyticsValue = .timeOutPicker
-        case .date:
-            analyticsValue = .datePicker
-        default:
-            analyticsValue = .closePicker
-        }
-        Analytics.logFirebaseClickEvent(analyticsValue)
     }
 }

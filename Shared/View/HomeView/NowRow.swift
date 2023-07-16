@@ -26,7 +26,7 @@ struct NowRow: View {
                     }
                     .onTapGesture {
                         guard !viewModel.isPauseOn else { return }
-                        mainViewModel.showPicker(pickerType: .pause)
+                        viewModel.onPauseTapped()
                     }
                     Spacer()
                     VStack {
@@ -36,7 +36,7 @@ struct NowRow: View {
                         Text("\(viewModel.lastDateForWork, style: .time)")
                     }
                     .onTapGesture {
-                        mainViewModel.showPicker(pickerType: .timeIn)
+                        viewModel.onTimeInTapped()
                     }
                 }
                 ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursDaySetting ) : 0)
@@ -60,8 +60,7 @@ struct NowRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            guard !mainViewModel.isSheetActive && mainViewModel.showPickerType == nil &&
-                  mainViewModel.showMenu == false else { return }
+            guard mainViewModel.showMenu == false else { return }
             viewModel.refreshWorkTime()
         }
         .onAppear {

@@ -11,7 +11,7 @@ struct MainView: View {
     @StateObject var viewModel: MainViewModel
     @StateObject var settingsViewModel = SettingsViewModel()
     @EnvironmentObject var coreDataManager: CoreDataManager
-    @StateObject var homeViewModel = HomeViewModel()
+    @StateObject var homeViewModel: HomeViewModel
     @StateObject var historyViewModel = HistoryViewModel()
     #if DEBUG
     @StateObject var debugViewModel = DebugMenuViewModel()
@@ -19,6 +19,7 @@ struct MainView: View {
 
     init(coordinator: Coordinator) {
         self._viewModel = .init(wrappedValue: .init(coordinator: coordinator))
+        self._homeViewModel = .init(wrappedValue: .init(coordinator: coordinator))
     }
 
     var body: some View {
@@ -34,17 +35,7 @@ struct MainView: View {
                     ToolbarView()
                 }
                 .zIndex(0)
-                .blur(radius: viewModel.showPickerType != nil || viewModel.showMenu ? 10 : 0)
-                if let pickerType = viewModel.showPickerType {
-                    PickerView(type: pickerType, date: $homeViewModel.lastDateForWork,
-                               pause: $homeViewModel.pauseTimeInSec, onCloseAction: {
-                        homeViewModel.refreshWorkTime()
-                        homeViewModel.updateLiveWork()
-                        viewModel.showPicker(pickerType: nil)
-                    })
-                    .transition(.move(edge: .bottom))
-                    .zIndex(1)
-                }
+                .blur(radius: viewModel.showMenu ? 10 : 0)
                 MenuView()
                     .offset(x: viewModel.showMenu ? 0 : -Config.screenWidth)
                     .environmentObject(settingsViewModel)

@@ -27,12 +27,34 @@ class HomeViewModel: ObservableObject {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let liveWorkViewModel = LiveWorkViewModel()
 
+    private let coordinator: Coordinator
+
     // MARK: Lifecycle
-    init() {
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
         self.currentCell = working ? .working : .idle
     }
 
     // MARK: Public functions
+
+    func onPauseTapped() {
+        Analytics.logFirebaseClickEvent(.pausePicker)
+        coordinator.showSheet(.picker(.pause(pauseTimeInSec, { [weak self] pauseSec in
+            DispatchQueue.main.async {
+                self?.pauseTimeInSec = pauseSec
+            }
+        })))
+    }
+
+    func onTimeInTapped() {
+        Analytics.logFirebaseClickEvent(.timeInPicker)
+        coordinator.showSheet(.picker(.date(.hourAndMinute, lastDateForWork, { [weak self] date in
+            DispatchQueue.main.async {
+                self?.lastDateForWork = date
+            }
+        })))
+    }
+
     func onSwipeWorkButton(action: ((New) -> Void)? = nil) {
         if isPauseOn {
             pauseTimeInSec += currentPauseTimeInSec

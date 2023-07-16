@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum PickerType {
-    case pause
-    case timeIn
-    case timeOut
-    case date
-}
-
 enum PickerTypeV2 {
     case pause(Int, (Int) -> Void)
     case date(DatePickerComponents, Date, (Date) -> Void)
@@ -57,6 +50,10 @@ final class PickerViewModelV2: ObservableObject {
             completion(date)
         }
     }
+
+    func onViewDisappear() {
+        Analytics.logFirebaseClickEvent(.closePicker)
+    }
 }
 
 struct PickerViewV2: View {
@@ -75,6 +72,7 @@ struct PickerViewV2: View {
             case .pause: pausePicker
             }
         }
+        .onDisappear(perform: viewModel.onViewDisappear)
     }
 
     var datePicker: some View {
@@ -85,83 +83,6 @@ struct PickerViewV2: View {
 
     var pausePicker: some View {
         PausePickerView(pause: $viewModel.pause)
-    }
-}
-
-class PickerViewModel: ObservableObject {
-
-    // MARK: Published properties
-    @Published var type: PickerType
-    @Published var date = Date()
-
-    // MARK: Public properties
-    let onCloseAction: () -> Void
-
-    // MARK: Lifecycle
-    init(type: PickerType,
-         onCloseAction: @escaping () -> Void) {
-        self.type = type
-        self.onCloseAction = onCloseAction
-    }
-}
-
-struct PickerView: View {
-    @ObservedObject var viewModel: PickerViewModel
-    @Binding var date: Date
-    @Binding var pause: Int
-    init(type: PickerType, date: Binding<Date>, pause: Binding<Int>,
-         onCloseAction: @escaping () -> Void) {
-        viewModel = PickerViewModel(type: type,
-                                    onCloseAction: onCloseAction)
-        self._date = date
-        self._pause = pause
-    }
-    var body: some View {
-        ZStack(alignment: .bottom) {
-            Color.theme.background.opacity(0.01) // need to be opacity, because .clear doesnt work
-                .onTapGesture {
-                    viewModel.onCloseAction()
-                }
-            VStack(spacing: 5) {
-                HStack {
-                    Spacer()
-                    Button {
-                        viewModel.onCloseAction()
-                    } label: {
-                        ImageStore.close.image
-                            .font(
-                                .title3
-                                .weight(.semibold)
-                            )
-                    }
-                }
-                .padding()
-                switch viewModel.type {
-                case .date: dateView
-                case .timeIn, .timeOut: timeView
-                case .pause: PausePickerView(pause: $pause)
-                }
-            }
-            .padding()
-            .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
-            .background(
-                Rectangle()
-                    .cornerRadius(50, corners: [.topLeft, .topRight])
-                    .foregroundColor(Color.theme.background)
-            )
-        }
-        .ignoresSafeArea()
-        .accentColor(Color.theme.accent)
-    }
-
-    var dateView: some View {
-        DatePicker("", selection: $date, displayedComponents: .date)
-            .datePickerStyle(.wheel)
-    }
-
-    var timeView: some View {
-        DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
-            .datePickerStyle(.wheel)
     }
 }
 
@@ -217,12 +138,5 @@ struct PausePickerView: View {
             }
         }
         .frame(height: 220)
-    }
-}
-
-struct PickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PickerView(type: .pause, date: .constant(Date()), pause: .constant(231),
-                   onCloseAction: {})
     }
 }

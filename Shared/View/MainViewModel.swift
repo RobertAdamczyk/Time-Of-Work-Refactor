@@ -10,7 +10,6 @@ class MainViewModel: ObservableObject {
 
     // MARK: Published variables
     @Published var view = Views.home
-    @Published var showPickerType: PickerType?
     @Published var showMenu: Bool = false
 
     var isSheetActive: Bool {
@@ -28,12 +27,6 @@ class MainViewModel: ObservableObject {
     var dateToEdit: Dates?
 
     // MARK: Public functions
-    func showPicker(pickerType: PickerType?) {
-        logPicker(for: pickerType)
-        withAnimation {
-            showPickerType = pickerType
-        }
-    }
 
     func showMenuAction() {
         Analytics.logFirebaseClickEvent(showMenu ? .hideMenu : .showMenu)
@@ -48,25 +41,5 @@ class MainViewModel: ObservableObject {
 
     func onToolbarPlusTapped() {
         coordinator.showSheet(.addDate)
-    }
-}
-
-// MARK: Analytics
-extension MainViewModel {
-    private func logPicker(for pickerType: PickerType?) {
-        let analyticsValue: Analytics.Value
-        switch pickerType {
-        case .pause:
-            analyticsValue = .pausePicker
-        case .timeIn:
-            analyticsValue = .timeInPicker
-        case .timeOut:
-            analyticsValue = .timeOutPicker
-        case .date:
-            analyticsValue = .datePicker
-        default:
-            analyticsValue = .closePicker
-        }
-        Analytics.logFirebaseClickEvent(analyticsValue)
     }
 }
