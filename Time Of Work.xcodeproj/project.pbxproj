@@ -62,6 +62,8 @@
 		E12420772A6410D7003E09D2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12420762A6410D7003E09D2 /* Coordinator.swift */; };
 		E12420792A641167003E09D2 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12420782A641167003E09D2 /* Views.swift */; };
 		E124207B2A6411CD003E09D2 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124207A2A6411CD003E09D2 /* ViewFactory.swift */; };
+		E124207E2A6479FD003E09D2 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124207D2A6479FD003E09D2 /* Dependencies.swift */; };
+		E12420802A647B06003E09D2 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124207F2A647B06003E09D2 /* CoreDataService.swift */; };
 		E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */; };
 		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
@@ -171,6 +173,8 @@
 		E12420762A6410D7003E09D2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E12420782A641167003E09D2 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		E124207A2A6411CD003E09D2 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		E124207D2A6479FD003E09D2 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		E124207F2A647B06003E09D2 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDaysEnum.swift; sourceTree = "<group>"; };
 		E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateViewModel.swift; sourceTree = "<group>"; };
 		E13291CD25F2B2C500348BC3 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
@@ -327,6 +331,15 @@
 			path = HistoryView;
 			sourceTree = "<group>";
 		};
+		E124207C2A6479DA003E09D2 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				E124207D2A6479FD003E09D2 /* Dependencies.swift */,
+				E124207F2A647B06003E09D2 /* CoreDataService.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		E167660D25F3B787007ECDC9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +375,7 @@
 		E183357E25EE988000E3A952 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E124207C2A6479DA003E09D2 /* Repositories */,
 				695595BF296CBAEA0042E1B7 /* Analytics */,
 				69477CD3296B12520081137F /* Resources */,
 				69477CCC2969AF510081137F /* LiveActivities */,
@@ -682,6 +696,8 @@
 				E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */,
 				69F8A96629353C41003C770C /* SwipeButton.swift in Sources */,
 				69839F852936A05500920333 /* HomeViewModel.swift in Sources */,
+				E12420802A647B06003E09D2 /* CoreDataService.swift in Sources */,
+				E124207E2A6479FD003E09D2 /* Dependencies.swift in Sources */,
 				E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */,
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,
 				E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */,

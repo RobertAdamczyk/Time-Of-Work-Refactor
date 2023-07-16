@@ -12,10 +12,6 @@ class MainViewModel: ObservableObject {
     @Published var view = Views.home
     @Published var showMenu: Bool = false
 
-    var isSheetActive: Bool {
-        coordinator.sheet != nil
-    }
-
     private let coordinator: Coordinator
 
     init(coordinator: Coordinator) {

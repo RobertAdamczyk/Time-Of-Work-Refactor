@@ -23,17 +23,6 @@ struct MenuView: View {
                                        title: localized(string: "generic_settings"))
                     }
                     Divider()
-//                    ButtonItem(imageStore: .envelope,
-//                               title: "Send feedback",
-//                               action: {
-//                        let mailTo = "mailto:nemecek@support.com"
-//                            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//                        let mailtoUrl = URL(string: mailTo!)!
-//                        if UIApplication.shared.canOpenURL(mailtoUrl) {
-//                                UIApplication.shared.open(mailtoUrl, options: [:])
-//                        }
-//                    })
-//                    Divider()
                     Spacer()
                 }
                 .padding(.vertical, 150)
