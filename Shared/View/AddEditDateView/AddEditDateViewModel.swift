@@ -14,12 +14,37 @@ final class AddEditDateViewModel: ObservableObject {
     // MARK: Published variables
     @Published var new = New()
 
+    var navigationTitle: String {
+        workUnit == nil ? localized(string: "add_date_title") : localized(string: "edit_date_title")
+    }
+
+    var shouldShowDeleteButton: Bool {
+        workUnit != nil
+    }
+
     private let parentCoordinator: Coordinator
     private let coordinator: Coordinator
+    private let workUnit: WorkUnit?
 
-    init(coordinator: Coordinator, parentCoordinator: Coordinator) {
+    @Dependency private var dependencies: Dependencies
+
+    init(coordinator: Coordinator, parentCoordinator: Coordinator, workUnit: WorkUnit?) {
         self.coordinator = coordinator
         self.parentCoordinator = parentCoordinator
+        self.workUnit = workUnit
+        if let workUnit, let timeIn = workUnit.timeIn, let timeOut = workUnit.timeOut, let date = workUnit.date {
+            new.date = date // TODO: Make custom init
+            new.timeIn = timeIn
+            new.timeOut = timeOut
+            new.night = workUnit.night
+            new.secPause = workUnit.secPause
+            new.specialDay = SpecialDays(rawValue: workUnit.specialDay ?? "")
+            new.hoursSpecialDayInSec = workUnit.specialDay != nil ? Double(workUnit.secWork) : 8
+        }
+    }
+
+    func onViewAppear() {
+        Analytics.logFirebaseScreenEvent(workUnit == nil ? .addDate : .editDate)
     }
 
     func onTimeInTapped() {
@@ -59,10 +84,18 @@ final class AddEditDateViewModel: ObservableObject {
     }
 
     func onSaveTapped() {
+        Analytics.logFirebaseClickEvent(.addEditSaveButton)
+        if let workUnit {
+            dependencies.coreDataService.removeWorkUnit(workUnit)
+            dependencies.coreDataService.addWorkUnit(for: new)
+        } else {
+            dependencies.coreDataService.addWorkUnit(for: new)
+        }
         parentCoordinator.dismissSheet()
     }
 
     func onDeleteTapped() {
+        dependencies.coreDataService.removeWorkUnit(workUnit)
         parentCoordinator.dismissSheet()
     }
 }

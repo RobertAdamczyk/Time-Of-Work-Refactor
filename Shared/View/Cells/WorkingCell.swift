@@ -9,7 +9,6 @@ import SwiftUI
 
 struct WorkingCell: View, HomeCellProvider {
     @EnvironmentObject var viewModel: HomeViewModel
-    @EnvironmentObject var coreDataManager: CoreDataManager
     var body: some View {
         ZStack {
             cellShape
@@ -17,23 +16,13 @@ struct WorkingCell: View, HomeCellProvider {
                 NowRow()
                 Spacer()
                 if !viewModel.isPauseOn {
-                    SwipeButton(type: .start, model: .startPause, disabled: false) {
-                        Analytics.logFirebaseSwipeEvent(.startPause)
-                        viewModel.onSwipePauseButton()
-                    }
+                    SwipeButton(type: .start, model: .startPause, disabled: false, action: viewModel.onSwipePauseButton)
                 } else {
-                    SwipeButton(type: .end, model: .endPause, disabled: false) {
-                        Analytics.logFirebaseSwipeEvent(.endPause)
-                        viewModel.onSwipePauseButton()
-                    }
+                    SwipeButton(type: .end, model: .endPause, disabled: false, action: viewModel.onSwipePauseButton)
                 }
                 Spacer()
-                SwipeButton(type: .end, model: .endWork, disabled: viewModel.currentCell == .idle, action: {
-                    Analytics.logFirebaseSwipeEvent(.endWork)
-                    viewModel.onSwipeWorkButton { newRecord in
-                        coreDataManager.addDate(for: newRecord)
-                    }
-                })
+                SwipeButton(type: .end, model: .endWork, disabled: viewModel.currentCell == .idle,
+                            action: viewModel.onSwipeWorkButton)
                 .padding(.bottom, 30)
             }
         }

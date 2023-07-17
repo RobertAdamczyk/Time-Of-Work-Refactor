@@ -10,9 +10,8 @@ import SwiftUI
 struct MainView: View {
     @StateObject var viewModel: MainViewModel
     @StateObject var settingsViewModel = SettingsViewModel()
-    @EnvironmentObject var coreDataManager: CoreDataManager
     @StateObject var homeViewModel: HomeViewModel
-    @StateObject var historyViewModel = HistoryViewModel()
+    @StateObject var historyViewModel: HistoryViewModel
     #if DEBUG
     @StateObject var debugViewModel = DebugMenuViewModel()
     #endif
@@ -20,6 +19,7 @@ struct MainView: View {
     init(coordinator: Coordinator) {
         self._viewModel = .init(wrappedValue: .init(coordinator: coordinator))
         self._homeViewModel = .init(wrappedValue: .init(coordinator: coordinator))
+        self._historyViewModel = .init(wrappedValue: .init(coordinator: coordinator))
     }
 
     var body: some View {
@@ -29,8 +29,8 @@ struct MainView: View {
                     Color.theme.background
 
                     switch viewModel.view {
-                    case .home: HomeView().onAppear { Analytics.logFirebaseScreenEvent(.homeScreen) }
-                    case .history: HistoryView().onAppear { Analytics.logFirebaseScreenEvent(.history) }
+                    case .home: HomeView()
+                    case .history: HistoryView()
                     }
                     ToolbarView()
                 }
@@ -52,24 +52,10 @@ struct MainView: View {
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onOpenURL { url in
-            if let deepLink = LiveWorkViewModel.DeepLink(rawValue: url.absoluteString) {
-                switch deepLink {
-                case .pauseButton:
-                    Analytics.logFirebaseClickEvent(.pauseLiveWork)
-                    homeViewModel.onSwipePauseButton()
-                case .endWorkButton:
-                    Analytics.logFirebaseClickEvent(.endLiveWork)
-                    homeViewModel.onSwipeWorkButton { newRecord in
-                        coreDataManager.addDate(for: newRecord)
-                    }
-                }
-            }
-        }
+        .onOpenURL(perform: homeViewModel.handleDeeplink)
         .accentColor(Color.theme.accent)
         .environmentObject(viewModel)
         .environmentObject(settingsViewModel)
-        .environmentObject(coreDataManager)
         .environmentObject(homeViewModel)
         .environmentObject(historyViewModel)
         .ignoresSafeArea(.all)

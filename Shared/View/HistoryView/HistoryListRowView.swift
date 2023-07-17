@@ -8,12 +8,82 @@
 import SwiftUI
 
 struct HistoryListRowView: View {
-    let value: Dates
+
+    @EnvironmentObject var viewModel: HistoryViewModel
+
+    let previousWorkUnit: WorkUnit?
+    let workUnit: WorkUnit
+    let nextWorkUnit: WorkUnit?
+
+    var shouldShowSection: Bool {
+        guard let previousDate = previousWorkUnit?.date, let currentDate = workUnit.date else { return true }
+        let firstCondition = Calendar.current.isDate(previousDate, equalTo: currentDate,
+                                                     toGranularity: viewModel.sectionType.components.first)
+        if let second = viewModel.sectionType.components.second {
+            let secondCondition = Calendar.current.isDate(previousDate, equalTo: currentDate, toGranularity: second)
+            return !(firstCondition && secondCondition)
+        } else {
+            return !firstCondition
+        }
+    }
+
+    var shouldShowTotalView: Bool {
+        guard let nextDate = nextWorkUnit?.date, let currentDate = workUnit.date else { return true }
+        let firstCondition = Calendar.current.isDate(nextDate, equalTo: currentDate,
+                                                     toGranularity: viewModel.sectionType.components.first)
+        if let second = viewModel.sectionType.components.second {
+            let secondCondition = Calendar.current.isDate(nextDate, equalTo: currentDate, toGranularity: second)
+            return !(firstCondition && secondCondition)
+        } else {
+            return !firstCondition
+        }
+    }
+
+    var total: TotalValue {
+        let days = viewModel.workUnits.filter { unit in
+            guard let unitDate = unit.date, let currentDate = workUnit.date else { return false }
+            let firstCondition = Calendar.current.isDate(unitDate, equalTo: currentDate,
+                                                         toGranularity: viewModel.sectionType.components.first)
+            if let second = viewModel.sectionType.components.second {
+                let secondCondition = Calendar.current.isDate(unitDate, equalTo: currentDate, toGranularity: second)
+                return (firstCondition && secondCondition)
+            } else {
+                return firstCondition
+            }
+        }
+        return .init(days: days.count, secWork: 1, secPause: 1, specialDays: [], lastDate: workUnit)
+    }
+
     var body: some View {
+        VStack(spacing: 16) {
+            if shouldShowSection {
+                HStack {
+                    Text(viewModel.sectionType.sectionText(for: workUnit))
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.theme.gray)
+                    Spacer()
+                }
+                .padding(.top, 10)
+            }
+            workUnitRow
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    viewModel.onHistoryRowTapped(date: workUnit)
+                }
+            if shouldShowTotalView {
+                TotalView(workUnit: workUnit, total: total)
+            }
+            Divider()
+        }
+    }
+
+    @ViewBuilder
+    private var workUnitRow: some View {
         HStack(spacing: 0) {
-            if let timeIn = value.timeIn, let timeOut = value.timeOut, let date = value.date {
+            if let timeIn = workUnit.timeIn, let timeOut = workUnit.timeOut, let date = workUnit.date {
                 VStack(alignment: .leading) {
-                    if value.night {
+                    if workUnit.night {
                         Text("\(date.toString(format: .dayOnlyShort))-" +
                              "\(date.plusOneDay()!.toString(format: .dayOnlyShort))")
                         Text("\(date.toString(format: .dayOnlyNumber))-" +
@@ -25,7 +95,7 @@ struct HistoryListRowView: View {
                 }
                 .frame(width: Config.screenWidth * 0.28, alignment: .leading)
                 Spacer()
-                if let specialDay = value.specialDay {
+                if let specialDay = workUnit.specialDay {
                     HStack {
                         Text("\(specialDay)")
                         if let special = SpecialDays(rawValue: specialDay) {
@@ -50,12 +120,12 @@ struct HistoryListRowView: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .trailing) {
-                        Text("\(value.secWork.toTimeString())")
-                        if value.specialDay == nil { Text("\(value.secPause.toTimeString())") }
+                        Text("\(workUnit.secWork.toTimeString())")
+                        if workUnit.specialDay == nil { Text("\(workUnit.secPause.toTimeString())") }
                     }
                     VStack {
                         ImageStore.hammer.image
-                        if value.specialDay == nil { ImageStore.pauseCircle.image }
+                        if workUnit.specialDay == nil { ImageStore.pauseCircle.image }
                     }
                     .foregroundColor(Color.theme.gray)
                 }

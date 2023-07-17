@@ -23,6 +23,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             FirebaseApp.configure(options: options)
             requestTrackingAuthorization()
         }
+
+        let coreDataService: CoreDataService = .init()
+
+        let dependencies: Dependencies = .init(coreDataService: coreDataService)
+
+        DependencyContainer.register(dependencies as Dependencies)
+
         return true
     }
 
@@ -45,17 +52,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct TimeOfWorkApp: App {
-    // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var coordinator: Coordinator = .init()
-    @StateObject var coreDataManager = CoreDataManager()
+
+    @StateObject var coordinator: Coordinator
+
+    init() {
+        self._coordinator = .init(wrappedValue: .init())
+    }
+
     var body: some Scene {
         WindowGroup {
             MainView(coordinator: coordinator)
                 .sheet(item: $coordinator.sheet) {
                     StandardSheetView(sheetView: $0, parentCoordinator: coordinator)
                 }
-                .environmentObject(coreDataManager)
         }
     }
 }

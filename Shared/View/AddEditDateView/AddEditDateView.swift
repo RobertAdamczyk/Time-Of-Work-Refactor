@@ -9,12 +9,11 @@ import SwiftUI
 
 struct AddEditDateView: View {
     @StateObject var viewModel: AddEditDateViewModel
-    @EnvironmentObject var coreDataManager: CoreDataManager
-    var value: Dates?
 
-    init(coordinator: Coordinator, parentCoordinator: Coordinator, workUnit: Dates? = nil) {
-        self._viewModel = .init(wrappedValue: .init(coordinator: coordinator, parentCoordinator: parentCoordinator))
-        self.value = workUnit
+    init(coordinator: Coordinator, parentCoordinator: Coordinator, workUnit: WorkUnit? = nil) {
+        self._viewModel = .init(wrappedValue: .init(coordinator: coordinator,
+                                                    parentCoordinator: parentCoordinator,
+                                                    workUnit: workUnit))
     }
 
     var body: some View {
@@ -28,12 +27,11 @@ struct AddEditDateView: View {
                     moreInformationSection
                 }
             }
-            .navigationTitle(value == nil ? localized(string: "add_date_title") : localized(string: "edit_date_title"))
+            .navigationTitle(viewModel.navigationTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if value != nil {
+                    if viewModel.shouldShowDeleteButton {
                         Button {
-                            coreDataManager.removeDate(date: value)
                             viewModel.onDeleteTapped()
                         } label: {
                             Text(localized(string: "generic_delete"))
@@ -44,13 +42,6 @@ struct AddEditDateView: View {
             }
             .overlay(
                 Button {
-                    Analytics.logFirebaseClickEvent(.addEditSaveButton)
-                    if let date = value {
-                        coreDataManager.removeDate(date: date)
-                        coreDataManager.addDate(for: viewModel.new)
-                    } else {
-                        coreDataManager.addDate(for: viewModel.new)
-                    }
                     viewModel.onSaveTapped()
                 } label: {
                     HStack {
@@ -65,18 +56,7 @@ struct AddEditDateView: View {
                 .padding(.bottom, 8), alignment: .bottom)
         }
         .ignoresSafeArea()
-        .onAppear {
-            if let value = value, let timeIn = value.timeIn, let timeOut = value.timeOut, let date = value.date {
-                viewModel.new.date = date
-                viewModel.new.timeIn = timeIn
-                viewModel.new.timeOut = timeOut
-                viewModel.new.night = value.night
-                viewModel.new.secPause = value.secPause
-                viewModel.new.specialDay = SpecialDays(rawValue: value.specialDay ?? "")
-                viewModel.new.hoursSpecialDayInSec = value.specialDay != nil ? Double(value.secWork) : 8
-            }
-            Analytics.logFirebaseScreenEvent(value == nil ? .addDate : .editDate)
-        }
+        .onAppear(perform: viewModel.onViewAppear)
         .environmentObject(viewModel)
         .accentColor(Color.theme.accent)
     }

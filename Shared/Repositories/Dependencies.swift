@@ -8,5 +8,10 @@
 import Foundation
 
 struct Dependencies {
-    // TODO: Make hier
+
+    let coreDataService: CoreDataService
+
+    init(coreDataService: CoreDataService) {
+        self.coreDataService = coreDataService
+    }
 }

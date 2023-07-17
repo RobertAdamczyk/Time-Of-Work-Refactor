@@ -23,16 +23,27 @@ class HomeViewModel: ObservableObject {
     @Published var currentPauseTimeInSec: Int = 0
     @Published var currentCell: HomeCell = .idle
 
+    @Published var lastWorkUnit: WorkUnit?
+
     // MARK: Public variables
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let liveWorkViewModel = LiveWorkViewModel()
 
     private let coordinator: Coordinator
+    private var workUnitsTask: Task<(), Never>?
+
+    @Dependency private var dependencies: Dependencies
 
     // MARK: Lifecycle
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
         self.currentCell = working ? .working : .idle
+        setupWorkUnitsObserver()
+    }
+
+    func onViewAppear() {
+        Analytics.logFirebaseScreenEvent(.homeScreen)
+        dependencies.coreDataService.fetchWorkUnits()
     }
 
     // MARK: Public functions
@@ -55,15 +66,17 @@ class HomeViewModel: ObservableObject {
         })))
     }
 
-    func onSwipeWorkButton(action: ((New) -> Void)? = nil) {
+    func onSwipeWorkButton() {
         if isPauseOn {
             pauseTimeInSec += currentPauseTimeInSec
         }
         if working {
-            let new = createNewDateForEndWork()
-            action?(new)
+            Analytics.logFirebaseSwipeEvent(.endWork)
+            let workUnit = createNewDateForEndWork()
+            dependencies.coreDataService.addWorkUnit(for: workUnit)
             liveWorkViewModel.removeLiveWork()
         } else {
+            Analytics.logFirebaseSwipeEvent(.startWork)
             lastDateForWork = Date()
             liveWorkViewModel.startLiveWork(for: .work,
                                             date: lastDateForWork,
@@ -77,7 +90,10 @@ class HomeViewModel: ObservableObject {
     func onSwipePauseButton() {
         lastDateForPause = Date()
         if isPauseOn {
+            Analytics.logFirebaseSwipeEvent(.endPause)
             pauseTimeInSec += currentPauseTimeInSec
+        } else {
+            Analytics.logFirebaseSwipeEvent(.startPause)
         }
         currentPauseTimeInSec = 0
         withAnimation(.easeIn) {
@@ -110,7 +126,32 @@ class HomeViewModel: ObservableObject {
                                          workInSec: currentWorkTimeInSec)
     }
 
+    func handleDeeplink(for url: URL) {
+        if let deepLink = LiveWorkViewModel.DeepLink(rawValue: url.absoluteString) {
+            switch deepLink {
+            case .pauseButton:
+                Analytics.logFirebaseClickEvent(.pauseLiveWork)
+                onSwipePauseButton()
+            case .endWorkButton:
+                Analytics.logFirebaseClickEvent(.endLiveWork)
+                onSwipeWorkButton()
+            }
+        }
+    }
+
     // MARK: Private functions
+
+    private func setupWorkUnitsObserver() {
+        workUnitsTask = Task { [weak self] in
+            guard let self else { return }
+            for await observedUnits in dependencies.coreDataService.$workUnits.values {
+                await MainActor.run {
+                    self.lastWorkUnit = observedUnits.first
+                }
+            }
+        }
+    }
+
     private func toggleWorking() {
         working.toggle()
         withAnimation(.easeInOut(duration: 1)) {

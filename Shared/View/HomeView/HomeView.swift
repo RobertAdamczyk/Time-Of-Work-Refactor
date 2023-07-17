@@ -33,6 +33,7 @@ struct HomeView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: viewModel.onViewAppear)
     }
 }
 

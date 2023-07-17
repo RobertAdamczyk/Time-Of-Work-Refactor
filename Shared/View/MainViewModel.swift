@@ -31,10 +31,6 @@ class MainViewModel: ObservableObject {
         }
     }
 
-    func onHistoryRowTapped(date: Dates) {
-        coordinator.showSheet(.editDate(date))
-    }
-
     func onToolbarPlusTapped() {
         coordinator.showSheet(.addDate)
     }
