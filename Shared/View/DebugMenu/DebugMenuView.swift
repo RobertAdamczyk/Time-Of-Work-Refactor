@@ -8,46 +8,43 @@
 import SwiftUI
 
 class DebugMenuViewModel: ObservableObject {
-    @Published var showDebugMenu: Bool = false
 
-    let liveWorkViewModel = LiveWorkViewModel()
+    // MARK: AppStorage variables
+    @AppStorage(Storable.pauseTimeInSec.key) var pauseTimeInSec: Int = 0
+    @AppStorage(Storable.lastDateForWork.key) var lastDateForWork: Date = Date()
+    @AppStorage(Storable.lastDateForPause.key) var lastDateForPause: Date = Date()
 
-    func showMenu() {
-        withAnimation {
-            showDebugMenu.toggle()
-        }
+    private let parentCoordinator: Coordinator
+
+    init(parentCoordinator: Coordinator) {
+        self.parentCoordinator = parentCoordinator
+    }
+
+    func onSetLastDateTapped() {
+        // TODO: todo
     }
 }
 
 struct DebugMenuView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
-    @EnvironmentObject var viewModel: DebugMenuViewModel
+    @StateObject var viewModel: DebugMenuViewModel
+
+    init(parentCoordinator: Coordinator) {
+        self._viewModel = .init(wrappedValue: .init(parentCoordinator: parentCoordinator))
+    }
+
     var body: some View {
         Form {
             Section {
-                DatePicker("Set last date", selection: $homeViewModel.lastDateForWork)
+                DatePicker("Set last date", selection: $viewModel.lastDateForWork)
                 Button {
-                    viewModel.liveWorkViewModel.startLiveWork(for: .work,
-                                                              date: homeViewModel.lastDateForWork,
-                                                              startWorkDate: homeViewModel.lastDateForWork,
-                                                              pauseInSec: homeViewModel.pauseTimeInSec,
-                                                              workInSec: homeViewModel.currentWorkTimeInSec)
+                    viewModel.onSetLastDateTapped()
                 } label: {
                     Text("Start live work")
                 }
                 Button {
-                    viewModel.liveWorkViewModel.updateLiveWork(for: .pause,
-                                                               date: Date(), // aktualna data zaktualizowania ??
-                                                               startWorkDate: homeViewModel.lastDateForWork,
-                                                               pauseInSec: homeViewModel.pauseTimeInSec,
-                                                               workInSec: homeViewModel.currentWorkTimeInSec)
+                    // TODO: todo
                 } label: {
                     Text("Update live work (pause)")
-                }
-                Button {
-                    viewModel.showDebugMenu.toggle()
-                } label: {
-                    Text("Close debug menu")
                 }
             }
         }
@@ -57,7 +54,7 @@ struct DebugMenuView: View {
 
 struct DebugMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        DebugMenuView()
+        DebugMenuView(parentCoordinator: .init())
     }
 }
 #endif

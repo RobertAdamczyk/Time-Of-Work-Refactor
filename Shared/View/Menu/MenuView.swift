@@ -7,20 +7,43 @@
 
 import SwiftUI
 
+final class MenuViewModel: ObservableObject {
+
+    private let coordinator: Coordinator
+
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
+    }
+
+    func onBackgroundTapped() {
+        coordinator.hideMenu()
+    }
+
+    func onSettingsTapped() {
+        coordinator.push(.settings(.main))
+        coordinator.hideMenu()
+    }
+}
+
 struct MenuView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
+    @StateObject var viewModel: MenuViewModel
+
+    init(coordinator: Coordinator) {
+        self._viewModel = .init(wrappedValue: .init(coordinator: coordinator))
+    }
+
     var body: some View {
         ZStack(alignment: .leading) {
             Color.theme.background.opacity(0.01)
-                .onTapGesture {
-                    mainViewModel.showMenuAction()
-                }
+                .onTapGesture(perform: viewModel.onBackgroundTapped)
             ZStack {
                 Color.theme.background
                 VStack(alignment: .leading, spacing: 20) {
-                    NavigationLink(destination: MainSettingView()) {
-                        NavigationItem(imageStore: .gearshape,
-                                       title: localized(string: "generic_settings"))
+                    NavigationItem(imageStore: .gearshape,
+                                   title: localized(string: "generic_settings"))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        viewModel.onSettingsTapped()
                     }
                     Divider()
                     Spacer()
@@ -31,12 +54,6 @@ struct MenuView: View {
             .frame(width: Config.menuWidth)
         }
         .ignoresSafeArea()
-        .onDisappear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                // hide menu after disappear
-                mainViewModel.showMenu = false
-            }
-        }
     }
 }
 
@@ -85,6 +102,6 @@ extension MenuView {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(coordinator: .init())
     }
 }

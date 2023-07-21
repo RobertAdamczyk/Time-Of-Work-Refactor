@@ -9,12 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel
-    @StateObject var settingsViewModel = SettingsViewModel()
     @StateObject var homeViewModel: HomeViewModel
     @StateObject var historyViewModel: HistoryViewModel
-    #if DEBUG
-    @StateObject var debugViewModel = DebugMenuViewModel()
-    #endif
 
     init(coordinator: Coordinator) {
         self._viewModel = .init(wrappedValue: .init(coordinator: coordinator))
@@ -23,41 +19,33 @@ struct MainView: View {
     }
 
     var body: some View {
-        NavigationView {
+        ZStack {
             ZStack {
-                ZStack(alignment: .bottom) {
-                    Color.theme.background
-
-                    switch viewModel.view {
-                    case .home: HomeView()
-                    case .history: HistoryView()
-                    }
+                Color.theme.background.ignoresSafeArea()
+                switch viewModel.view {
+                case .home: HomeView()
+                case .history: HistoryView()
+                }
+                VStack {
+                    Spacer()
                     ToolbarView()
                 }
-                .zIndex(0)
-                .blur(radius: viewModel.showMenu ? 10 : 0)
-                MenuView()
-                    .offset(x: viewModel.showMenu ? 0 : -Config.screenWidth)
-                    .environmentObject(settingsViewModel)
-                #if DEBUG
-                DebugMenuView()
-                    .onShake {
-                        debugViewModel.showMenu()
-                    }
-                    .opacity(debugViewModel.showDebugMenu ? 1 : 0)
-                    .environmentObject(debugViewModel)
-                #endif
+                .ignoresSafeArea()
             }
-            .ignoresSafeArea()
-            .navigationBarHidden(true)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    viewModel.onMenuTapped()
+                } label: {
+                    ImageStore.menu.image
+                        .font(.title3)
+                }
+            }
+        }
         .onOpenURL(perform: homeViewModel.handleDeeplink)
-        .accentColor(Color.theme.accent)
         .environmentObject(viewModel)
-        .environmentObject(settingsViewModel)
         .environmentObject(homeViewModel)
         .environmentObject(historyViewModel)
-        .ignoresSafeArea(.all)
     }
 }

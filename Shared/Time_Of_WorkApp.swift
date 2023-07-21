@@ -24,9 +24,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             requestTrackingAuthorization()
         }
 
+        let liveActivitiesService: LiveActivitiesService = .init()
         let coreDataService: CoreDataService = .init()
 
-        let dependencies: Dependencies = .init(coreDataService: coreDataService)
+        let dependencies: Dependencies = .init(coreDataService: coreDataService,
+                                               liveActivitiesService: liveActivitiesService)
 
         DependencyContainer.register(dependencies as Dependencies)
 
@@ -62,10 +64,31 @@ struct TimeOfWorkApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView(coordinator: coordinator)
-                .sheet(item: $coordinator.sheet) {
-                    StandardSheetView(sheetView: $0, parentCoordinator: coordinator)
-                }
+            NavigationStack(path: $coordinator.stackViews) {
+                MainView(coordinator: coordinator)
+                    .blur(radius: coordinator.shouldShowMenu ? 10 : 0)
+                    .animation(.easeInOut, value: coordinator.shouldShowMenu)
+                    .navigationDestination(for: Stack.self) {
+                        DestinationView(stack: $0, coordinator: coordinator)
+                    }
+            }
+            .sheet(item: $coordinator.presentedSheet) {
+                StandardSheetView(sheet: $0, parentCoordinator: coordinator)
+            }
+            .fullScreenCover(item: $coordinator.presentedFullCoverSheet) {
+                FullCoverSheetView(fullCoverSheet: $0, parentCoordinator: coordinator)
+            }
+            .overlay {
+                MenuView(coordinator: coordinator)
+                    .offset(x: coordinator.shouldShowMenu ? 0 : -Config.screenWidth)
+                    .animation(.easeInOut, value: coordinator.shouldShowMenu)
+            }
+            .tint(Color.theme.accent)
+            #if DEBUG
+            .onShake {
+                coordinator.onDeviceShaked()
+            }
+            #endif
         }
     }
 }

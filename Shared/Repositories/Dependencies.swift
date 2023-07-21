@@ -10,8 +10,11 @@ import Foundation
 struct Dependencies {
 
     let coreDataService: CoreDataService
+    let liveActivitiesService: LiveActivitiesService
 
-    init(coreDataService: CoreDataService) {
+    init(coreDataService: CoreDataService,
+         liveActivitiesService: LiveActivitiesService) {
         self.coreDataService = coreDataService
+        self.liveActivitiesService = liveActivitiesService
     }
 }

@@ -21,8 +21,8 @@
 		692CF5A229282D3800C6B389 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF5A129282D3800C6B389 /* Images.swift */; };
 		694388D22A648F1700642F22 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694388D12A648F1700642F22 /* DependencyContainer.swift */; };
 		69477CCB2969882D0081137F /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* Int.swift */; };
-		69477CCE2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */; };
-		69477CCF2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */; };
+		69477CCE2969AF9E0081137F /* LiveActivitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */; };
+		69477CCF2969AF9E0081137F /* LiveActivitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */; };
 		69477CD2296AFBAC0081137F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B53583293A42330000787D /* Storable.swift */; };
 		69477CD6296B12CE0081137F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69477CD8296B12CE0081137F /* Localizable.strings */; };
 		694E2C7A293189C1009E923B /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2C79293189C1009E923B /* HistoryViewModel.swift */; };
@@ -125,7 +125,7 @@
 		692CF5A129282D3800C6B389 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		692CF5A3292850DC00C6B389 /* Time Of Work (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Time Of Work (iOS).entitlements"; sourceTree = "<group>"; };
 		694388D12A648F1700642F22 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
-		69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkViewModel.swift; sourceTree = "<group>"; };
+		69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitiesService.swift; sourceTree = "<group>"; };
 		69477CD7296B12CE0081137F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		69477CD9296B12DC0081137F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		69477CDB296B13E00081137F /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				6926F5E4295A4EC20058D511 /* LiveWorkAttributes.swift */,
-				69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */,
+				69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */,
 			);
 			path = LiveActivities;
 			sourceTree = "<group>";
@@ -650,7 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69B1ECF3295BAEBB00C34CBB /* Colors.swift in Sources */,
-				69477CCF2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */,
+				69477CCF2969AF9E0081137F /* LiveActivitiesService.swift in Sources */,
 				6926F5E6295A4F340058D511 /* LiveWorkAttributes.swift in Sources */,
 				69477CCB2969882D0081137F /* Int.swift in Sources */,
 				699A6FD6296B162C008C1403 /* Localized.swift in Sources */,
@@ -707,7 +707,7 @@
 				E13291CE25F2B2C500348BC3 /* New.swift in Sources */,
 				69DCF7BB292D7A0F00520254 /* HistoryView.swift in Sources */,
 				E18335C325EEA03900E3A952 /* ViewsEnum.swift in Sources */,
-				69477CCE2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */,
+				69477CCE2969AF9E0081137F /* LiveActivitiesService.swift in Sources */,
 				695595C3296CC1770042E1B7 /* FirebaseValuesEvents.swift in Sources */,
 				69839F8329369FC100920333 /* HomeCellProvider.swift in Sources */,
 				E1851EB125EFEF6700C721E9 /* OrangeButtonStyle.swift in Sources */,

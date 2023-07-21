@@ -27,7 +27,6 @@ class HomeViewModel: ObservableObject {
 
     // MARK: Public variables
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    let liveWorkViewModel = LiveWorkViewModel()
 
     private let coordinator: Coordinator
     private var workUnitsTask: Task<(), Never>?
@@ -38,12 +37,17 @@ class HomeViewModel: ObservableObject {
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
         self.currentCell = working ? .working : .idle
-        setupWorkUnitsObserver()
     }
 
     func onViewAppear() {
+        setupWorkUnitsObserver()
         Analytics.logFirebaseScreenEvent(.homeScreen)
         dependencies.coreDataService.fetchWorkUnits()
+    }
+
+    func onViewDisappear() {
+        workUnitsTask?.cancel()
+        workUnitsTask = nil
     }
 
     // MARK: Public functions
@@ -74,15 +78,15 @@ class HomeViewModel: ObservableObject {
             Analytics.logFirebaseSwipeEvent(.endWork)
             let workUnit = createNewDateForEndWork()
             dependencies.coreDataService.addWorkUnit(for: workUnit)
-            liveWorkViewModel.removeLiveWork()
+            dependencies.liveActivitiesService.removeLiveWork()
         } else {
             Analytics.logFirebaseSwipeEvent(.startWork)
             lastDateForWork = Date()
-            liveWorkViewModel.startLiveWork(for: .work,
-                                            date: lastDateForWork,
-                                            startWorkDate: lastDateForWork,
-                                            pauseInSec: pauseTimeInSec,
-                                            workInSec: currentWorkTimeInSec)
+            dependencies.liveActivitiesService.startLiveWork(for: .work,
+                                                             date: lastDateForWork,
+                                                             startWorkDate: lastDateForWork,
+                                                             pauseInSec: pauseTimeInSec,
+                                                             workInSec: currentWorkTimeInSec)
         }
         toggleWorking()
     }
@@ -119,15 +123,15 @@ class HomeViewModel: ObservableObject {
     }
 
     func updateLiveWork() {
-        liveWorkViewModel.updateLiveWork(for: isPauseOn ? .pause : .work,
-                                         date: isPauseOn ? lastDateForPause : lastDateForWork,
-                                         startWorkDate: lastDateForWork,
-                                         pauseInSec: pauseTimeInSec,
-                                         workInSec: currentWorkTimeInSec)
+        dependencies.liveActivitiesService.updateLiveWork(for: isPauseOn ? .pause : .work,
+                                                          date: isPauseOn ? lastDateForPause : lastDateForWork,
+                                                          startWorkDate: lastDateForWork,
+                                                          pauseInSec: pauseTimeInSec,
+                                                          workInSec: currentWorkTimeInSec)
     }
 
     func handleDeeplink(for url: URL) {
-        if let deepLink = LiveWorkViewModel.DeepLink(rawValue: url.absoluteString) {
+        if let deepLink = LiveActivitiesService.DeepLink(rawValue: url.absoluteString) {
             switch deepLink {
             case .pauseButton:
                 Analytics.logFirebaseClickEvent(.pauseLiveWork)

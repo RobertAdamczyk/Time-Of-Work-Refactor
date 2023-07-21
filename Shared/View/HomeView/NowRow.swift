@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct NowRow: View {
+
     @EnvironmentObject var viewModel: HomeViewModel
-    @EnvironmentObject var setting: SettingsViewModel
-    @EnvironmentObject var mainViewModel: MainViewModel
+    @AppStorage(Storable.hoursDaySetting.key) private var hoursDaySetting: Double = 8
+
     var body: some View {
         VStack(spacing: 40) {
             Text(localized(string: "generic_now"))
@@ -39,7 +40,7 @@ struct NowRow: View {
                         viewModel.onTimeInTapped()
                     }
                 }
-                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursDaySetting ) : 0)
+                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * hoursDaySetting ) : 0)
                     .frame(width: Config.screenHeight * 0.18, height: Config.screenHeight * 0.18)
                     .overlay(
                         VStack {
@@ -60,7 +61,6 @@ struct NowRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            guard mainViewModel.showMenu == false else { return }
             viewModel.refreshWorkTime()
         }
         .onAppear {

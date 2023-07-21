@@ -10,7 +10,6 @@ class MainViewModel: ObservableObject {
 
     // MARK: Published variables
     @Published var view = Views.home
-    @Published var showMenu: Bool = false
 
     private let coordinator: Coordinator
 
@@ -24,14 +23,11 @@ class MainViewModel: ObservableObject {
 
     // MARK: Public functions
 
-    func showMenuAction() {
-        Analytics.logFirebaseClickEvent(showMenu ? .hideMenu : .showMenu)
-        withAnimation {
-            showMenu.toggle()
-        }
-    }
-
     func onToolbarPlusTapped() {
         coordinator.showSheet(.addDate)
+    }
+
+    func onMenuTapped() {
+        coordinator.showMenu()
     }
 }

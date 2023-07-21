@@ -23,12 +23,17 @@ final class HistoryViewModel: ObservableObject {
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
         self.sectionType = .week
-        setupWorkUnitsObserver()
     }
 
     func onViewAppear() {
+        setupWorkUnitsObserver()
         Analytics.logFirebaseScreenEvent(.history)
         dependencies.coreDataService.fetchWorkUnits()
+    }
+
+    func onViewDisappear() {
+        workUnitsTask?.cancel()
+        workUnitsTask = nil
     }
 
     // MARK: Public functions
