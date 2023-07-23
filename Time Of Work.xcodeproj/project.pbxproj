@@ -66,7 +66,6 @@
 		E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */; };
 		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
-		E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174B0B6260F0E53001B8B86 /* AboutView.swift */; };
 		E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */; };
 		E17C2D92260FC03C000B3412 /* Dates+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */; };
 		E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */; };
@@ -176,7 +175,6 @@
 		E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDaysEnum.swift; sourceTree = "<group>"; };
 		E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateViewModel.swift; sourceTree = "<group>"; };
 		E13291CD25F2B2C500348BC3 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
-		E174B0B6260F0E53001B8B86 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dates+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dates+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateView.swift; sourceTree = "<group>"; };
@@ -494,7 +492,6 @@
 			children = (
 				E1F20B5B2607B7A800790CEA /* MainSettingView.swift */,
 				E1F20B612607C0AB00790CEA /* SettingsViewModel.swift */,
-				E174B0B6260F0E53001B8B86 /* AboutView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -689,7 +686,6 @@
 				E1851EB425EFF60D00C721E9 /* NowRow.swift in Sources */,
 				69839F892936A0DD00920333 /* WorkingCell.swift in Sources */,
 				694E2C8A29340BB6009E923B /* HomeView.swift in Sources */,
-				E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */,
 				69F8A96629353C41003C770C /* SwipeButton.swift in Sources */,
 				69839F852936A05500920333 /* HomeViewModel.swift in Sources */,
 				E12420802A647B06003E09D2 /* CoreDataService.swift in Sources */,
