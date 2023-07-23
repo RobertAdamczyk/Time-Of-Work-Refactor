@@ -13,28 +13,31 @@ struct LiveWorkLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveWorkAttributes.self) { context in
             // Lock screen/banner UI goes here
-            VStack {
+            VStack(spacing: 4) {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(context.state.context == .work ? localized(string: "generic_your_work") : localized(string: "generic_your_pause"))
                             .font(.caption2)
+                        Spacer(minLength: 0)
                         Text("\(context.state.dateForTimer, style: .timer)")
                             .font(.title)
                             .foregroundColor(Color.theme.accent)
+                        Spacer(minLength: 0)
                     }
                     .frame(width: 165)
                     Spacer()
                     if let url = URL(string: LiveActivitiesService.DeepLink.pauseButton.rawValue),
                         context.attributes.liveActivitiesPauseButton {
                         Link(destination: url) {
-                            VStack {
+                            VStack(spacing: 2) {
                                 ImageStore.pauseCircle.image
                                     .font(.largeTitle)
                                     .frame(height: 35)
+                                Spacer(minLength: 0)
                                 Text(context.state.context == .work ? localized(string: "generic_start_pause") : localized(string: "generic_end_pause"))
                                     .font(.caption2)
                                     .multilineTextAlignment(.center)
-                                Spacer()
+                                Spacer(minLength: 0)
                             }
                         }
                     }
@@ -42,15 +45,16 @@ struct LiveWorkLiveActivity: Widget {
                         context.attributes.liveActivitiesEndWorkButton {
                         Spacer()
                         Link(destination: url2) {
-                            VStack {
+                            VStack(spacing: 2) {
                                 ImageStore.arrowUpLeft.image
                                     .font(.largeTitle)
                                     .foregroundColor(Color.theme.red)
                                     .frame(height: 35)
+                                Spacer(minLength: 0)
                                 Text(localized(string: "generic_end_work"))
                                     .font(.caption2)
                                     .multilineTextAlignment(.center)
-                                Spacer()
+                                Spacer(minLength: 0)
                             }
                         }
                     }
