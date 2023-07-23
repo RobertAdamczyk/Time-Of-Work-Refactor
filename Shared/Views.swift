@@ -22,12 +22,14 @@ enum Sheet: Identifiable {
 }
 
 enum FullCoverSheet: Identifiable {
+    case empty
     #if DEBUG
     case debugMenu
     #endif
 
     var id: String {
         switch self {
+        case .empty: return "001"
         #if DEBUG
         case .debugMenu: return "000"
         #endif

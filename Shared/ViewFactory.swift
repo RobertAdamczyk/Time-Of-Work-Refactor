@@ -33,6 +33,7 @@ struct FullCoverSheetView: View {
     @ViewBuilder
     private func makeFullCoverSheet(_ fullCoverSheet: FullCoverSheet) -> some View {
         switch fullCoverSheet {
+        case .empty: EmptyView()
         #if DEBUG
         case .debugMenu: DebugMenuView(parentCoordinator: parentCoordinator)
         #endif
