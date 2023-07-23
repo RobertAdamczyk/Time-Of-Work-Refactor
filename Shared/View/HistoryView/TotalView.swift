@@ -9,13 +9,13 @@ import SwiftUI
 
 struct TotalView: View {
     @EnvironmentObject var viewModel: HistoryViewModel
-    let date: Dates
+    let workUnit: WorkUnit
     let total: TotalValue
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(spacing: 0) {
                 Text("\(localized(string: "history_total_of")) \(viewModel.sectionType.name) ")
-                Text("(\(viewModel.sectionType.sectionText(date: date))):")
+                Text("(\(viewModel.sectionType.sectionText(for: workUnit))):")
                     .fontWeight(.bold)
             }
             .foregroundColor(.theme.accent)

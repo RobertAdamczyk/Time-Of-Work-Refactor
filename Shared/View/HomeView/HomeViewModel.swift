@@ -23,31 +23,73 @@ class HomeViewModel: ObservableObject {
     @Published var currentPauseTimeInSec: Int = 0
     @Published var currentCell: HomeCell = .idle
 
+    @Published var lastWorkUnit: WorkUnit?
+
     // MARK: Public variables
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    let liveWorkViewModel = LiveWorkViewModel()
+
+    private let coordinator: Coordinator
+    private var workUnitsTask: Task<(), Never>?
+
+    @Dependency private var dependencies: Dependencies
 
     // MARK: Lifecycle
-    init() {
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
         self.currentCell = working ? .working : .idle
     }
 
+    func onViewAppear() {
+        dependencies.liveActivitiesService.delegate = self
+        setupWorkUnitsObserver()
+        Analytics.logFirebaseScreenEvent(.homeScreen)
+        dependencies.coreDataService.fetchWorkUnits()
+    }
+
+    func onViewDisappear() {
+        workUnitsTask?.cancel()
+        workUnitsTask = nil
+    }
+
     // MARK: Public functions
-    func onSwipeWorkButton(action: ((New) -> Void)? = nil) {
+
+    func onPauseTapped() {
+        Analytics.logFirebaseClickEvent(.pausePicker)
+        coordinator.showSheet(.picker(.pause(pauseTimeInSec, { [weak self] pauseSec in
+            DispatchQueue.main.async {
+                self?.pauseTimeInSec = pauseSec
+                self?.updateLiveWork()
+            }
+        })))
+    }
+
+    func onTimeInTapped() {
+        Analytics.logFirebaseClickEvent(.timeInPicker)
+        coordinator.showSheet(.picker(.date(.hourAndMinute, lastDateForWork, { [weak self] date in
+            DispatchQueue.main.async {
+                self?.lastDateForWork = date
+                self?.updateLiveWork()
+            }
+        })))
+    }
+
+    func onSwipeWorkButton() {
         if isPauseOn {
             pauseTimeInSec += currentPauseTimeInSec
         }
         if working {
-            let new = createNewDateForEndWork()
-            action?(new)
-            liveWorkViewModel.removeLiveWork()
+            Analytics.logFirebaseSwipeEvent(.endWork)
+            let workUnit = createNewDateForEndWork()
+            dependencies.coreDataService.addWorkUnit(for: workUnit)
+            dependencies.liveActivitiesService.removeLiveWork()
         } else {
+            Analytics.logFirebaseSwipeEvent(.startWork)
             lastDateForWork = Date()
-            liveWorkViewModel.startLiveWork(for: .work,
-                                            date: lastDateForWork,
-                                            startWorkDate: lastDateForWork,
-                                            pauseInSec: pauseTimeInSec,
-                                            workInSec: currentWorkTimeInSec)
+            dependencies.liveActivitiesService.startLiveWork(for: .work,
+                                                             date: lastDateForWork,
+                                                             startWorkDate: lastDateForWork,
+                                                             pauseInSec: pauseTimeInSec,
+                                                             workInSec: currentWorkTimeInSec)
         }
         toggleWorking()
     }
@@ -55,7 +97,10 @@ class HomeViewModel: ObservableObject {
     func onSwipePauseButton() {
         lastDateForPause = Date()
         if isPauseOn {
+            Analytics.logFirebaseSwipeEvent(.endPause)
             pauseTimeInSec += currentPauseTimeInSec
+        } else {
+            Analytics.logFirebaseSwipeEvent(.startPause)
         }
         currentPauseTimeInSec = 0
         withAnimation(.easeIn) {
@@ -81,14 +126,39 @@ class HomeViewModel: ObservableObject {
     }
 
     func updateLiveWork() {
-        liveWorkViewModel.updateLiveWork(for: isPauseOn ? .pause : .work,
-                                         date: isPauseOn ? lastDateForPause : lastDateForWork,
-                                         startWorkDate: lastDateForWork,
-                                         pauseInSec: pauseTimeInSec,
-                                         workInSec: currentWorkTimeInSec)
+        dependencies.liveActivitiesService.updateLiveWork(for: isPauseOn ? .pause : .work,
+                                                          date: isPauseOn ? lastDateForPause : lastDateForWork,
+                                                          startWorkDate: lastDateForWork,
+                                                          pauseInSec: pauseTimeInSec,
+                                                          workInSec: currentWorkTimeInSec)
+    }
+
+    func handleDeeplink(for url: URL) {
+        if let deepLink = LiveActivitiesService.DeepLink(rawValue: url.absoluteString) {
+            switch deepLink {
+            case .pauseButton:
+                Analytics.logFirebaseClickEvent(.pauseLiveWork)
+                onSwipePauseButton()
+            case .endWorkButton:
+                Analytics.logFirebaseClickEvent(.endLiveWork)
+                onSwipeWorkButton()
+            }
+        }
     }
 
     // MARK: Private functions
+
+    private func setupWorkUnitsObserver() {
+        workUnitsTask = Task { [weak self] in
+            guard let self else { return }
+            for await observedUnits in dependencies.coreDataService.$workUnits.values {
+                await MainActor.run {
+                    self.lastWorkUnit = observedUnits.first
+                }
+            }
+        }
+    }
+
     private func toggleWorking() {
         working.toggle()
         withAnimation(.easeInOut(duration: 1)) {
@@ -110,5 +180,17 @@ class HomeViewModel: ObservableObject {
                     Calendar.current.component(.day, from: new.timeOut)
         new.specialDay = nil
         return new
+    }
+}
+
+extension HomeViewModel: LiveActivitiesDelegate {
+
+    func startLiveActivities() {
+        guard working else { return }
+        dependencies.liveActivitiesService.startLiveWork(for: .work,
+                                                         date: lastDateForWork,
+                                                         startWorkDate: lastDateForWork,
+                                                         pauseInSec: pauseTimeInSec,
+                                                         workInSec: currentWorkTimeInSec)
     }
 }

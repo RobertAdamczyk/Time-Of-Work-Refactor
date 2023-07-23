@@ -7,62 +7,61 @@
 
 import SwiftUI
 
-class HistoryViewModel: ObservableObject {
+final class HistoryViewModel: ObservableObject {
 
     // MARK: Published properties
     @Published var sectionType: SectionType
-    @Published var total: [TotalValue] = [] // array with values for sums of week/month/year...
 
-    // If user have a lot of data view needs time to load
-    @Published var state: State
+    @Published var workUnits: [WorkUnit] = []
+
+    @Dependency private var dependencies: Dependencies
+
+    private let coordinator: Coordinator
+    private var workUnitsTask: Task<(), Never>?
 
     // MARK: Lifecycle
-    init() {
-        sectionType = .week
-        state = .loading
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
+        self.sectionType = .week
+    }
+
+    func onViewAppear() {
+        setupWorkUnitsObserver()
+        Analytics.logFirebaseScreenEvent(.history)
+        dependencies.coreDataService.fetchWorkUnits()
+    }
+
+    func onViewDisappear() {
+        workUnitsTask?.cancel()
+        workUnitsTask = nil
     }
 
     // MARK: Public functions
 
-    /// We check if next date has section value. If yes(date is lastone in section) show for current date totalView..
-    func showTotalView(in dates: [Dates], for date: Dates) -> Bool {
-        guard let index = dates.firstIndex(of: date) else { return false }
-        if index + 1 < dates.count {
-            let nextDate = dates[index+1]
-            if nextDate.section != nil {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return true
-        }
-    }
-
-    func onSectionButtonTapped(dates: [Dates]) {
+    func onSectionButtonTapped() {
         Analytics.logFirebaseClickEvent(.historySection)
-        state = .loading
         DispatchQueue.main.async { [weak self] in
             self?.changeSectionType()
-            self?.createSection(dates: dates)
         }
     }
 
-    func onViewAppear(dates: [Dates]) {
-        state = .loading
-        DispatchQueue.main.async { [weak self] in
-            self?.createSection(dates: dates)
-        }
-    }
-
-    func onChangeDates(dates: [Dates]) {
-        state = .loading
-        DispatchQueue.main.async { [weak self] in
-            self?.createSection(dates: dates)
-        }
+    func onHistoryRowTapped(date: Dates) {
+        coordinator.showSheet(.editDate(date))
     }
 
     // MARK: Private functions
+
+    private func setupWorkUnitsObserver() {
+        workUnitsTask = Task { [weak self] in
+            guard let self else { return }
+            for await observedUnits in dependencies.coreDataService.$workUnits.values {
+                await MainActor.run {
+                    self.workUnits = observedUnits
+                }
+            }
+        }
+    }
+
     private func changeSectionType() {
         switch sectionType {
         case .week:
@@ -73,38 +72,6 @@ class HistoryViewModel: ObservableObject {
             sectionType = .week
         }
     }
-
-    /// Func to create sections und sums for history view
-    private func createSection(dates: [Dates]) {
-        DispatchQueue.main.async { [weak self] in
-            for date in dates {
-                date.section = nil
-            }
-            self?.total.removeAll()
-            for date in dates {
-                let filter = dates.filter { $0.section == self?.sectionType.sectionText(date: date) }
-                if filter.isEmpty {
-                    // We add section if not exist yet and we create first object of total
-                    date.section = self?.sectionType.sectionText(date: date)
-                    self?.total.append(TotalValue(date: date))
-                } else {
-                    // If section already exist increacse only total value
-                    if let lastTotal = self?.total.last, let lastIndex = self?.total.lastIndex(of: lastTotal) {
-                        self?.total[lastIndex] = TotalValue(last: lastTotal, to: TotalValue(date: date))
-                    }
-                }
-            }
-            self?.state = .idle
-        }
-    }
-}
-
-// MARK: State
-extension HistoryViewModel {
-    enum State {
-        case loading
-        case idle
-    }
 }
 
 // MARK: SectionType
@@ -114,7 +81,7 @@ extension HistoryViewModel {
         case month
         case year
 
-        var component: (first: Calendar.Component, second: Calendar.Component?) {
+        var components: (first: Calendar.Component, second: Calendar.Component?) {
             switch self {
             case .week:
                 return (first: .weekOfYear, second: .yearForWeekOfYear)
@@ -125,11 +92,11 @@ extension HistoryViewModel {
             }
         }
 
-        func value(for date: Dates) -> (first: String, second: String) {
+        private func value(for date: Dates) -> (first: String, second: String) {
             guard let date = date.date else { return (first: "", second: "") }
-            let firstValueFoSection = String(Calendar.current.component(self.component.first, from: date))
+            let firstValueFoSection = String(Calendar.current.component(self.components.first, from: date))
             let secondValueFoSection: String
-            if let value = self.component.second {
+            if let value = self.components.second {
                 secondValueFoSection = "/" + String(Calendar.current.component(value, from: date))
             } else {
                 secondValueFoSection = ""
@@ -137,8 +104,8 @@ extension HistoryViewModel {
             return (first: firstValueFoSection, second: secondValueFoSection)
         }
 
-        func sectionText(date: Dates) -> String {
-            return "\(self.value(for: date).first)\(self.value(for: date).second)"
+        func sectionText(for unit: WorkUnit) -> String {
+            return "\(self.value(for: unit).first)\(self.value(for: unit).second)"
         }
 
         var name: String {

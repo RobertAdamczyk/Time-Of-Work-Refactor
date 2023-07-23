@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct AddEditDateView: View {
-    @StateObject var viewModel = AddEditDateViewModel()
-    @EnvironmentObject var coreDataManager: CoreDataManager
-    @Binding var activeSheet: SheetView?
-    var value: Dates?
-    var deleteAction: (() -> Void)?
+    @StateObject var viewModel: AddEditDateViewModel
+
+    init(coordinator: Coordinator, parentCoordinator: Coordinator, workUnit: WorkUnit? = nil) {
+        self._viewModel = .init(wrappedValue: .init(coordinator: coordinator,
+                                                    parentCoordinator: parentCoordinator,
+                                                    workUnit: workUnit))
+    }
+
     var body: some View {
         NavigationView {
             VStack {
@@ -24,12 +27,12 @@ struct AddEditDateView: View {
                     moreInformationSection
                 }
             }
-            .navigationTitle(value == nil ? localized(string: "add_date_title") : localized(string: "edit_date_title"))
+            .navigationTitle(viewModel.navigationTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if value != nil {
+                    if viewModel.shouldShowDeleteButton {
                         Button {
-                            deleteAction?()
+                            viewModel.onDeleteTapped()
                         } label: {
                             Text(localized(string: "generic_delete"))
                                 .foregroundColor(Color.theme.red)
@@ -39,14 +42,7 @@ struct AddEditDateView: View {
             }
             .overlay(
                 Button {
-                    Analytics.logFirebaseClickEvent(.addEditSaveButton)
-                    activeSheet = nil
-                    if let date = value {
-                        coreDataManager.removeDate(date: date)
-                        coreDataManager.addDate(for: viewModel.new)
-                    } else {
-                        coreDataManager.addDate(for: viewModel.new)
-                    }
+                    viewModel.onSaveTapped()
                 } label: {
                     HStack {
                         Spacer()
@@ -59,50 +55,8 @@ struct AddEditDateView: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 8), alignment: .bottom)
         }
-        .overlay(
-            ZStack {
-                if let pickerType = viewModel.showPickerType {
-                    ZStack {
-                        switch pickerType {
-                        case .pause:
-                            PickerView(type: pickerType, date: $viewModel.new.date,
-                                       pause: $viewModel.new.secPause, onCloseAction: {
-                                viewModel.showPicker(pickerType: nil)
-                            })
-                        case .timeIn:
-                            PickerView(type: pickerType, date: $viewModel.new.timeIn,
-                                       pause: $viewModel.new.secPause, onCloseAction: {
-                                viewModel.showPicker(pickerType: nil)
-                            })
-                        case .timeOut:
-                            PickerView(type: pickerType, date: $viewModel.new.timeOut,
-                                       pause: $viewModel.new.secPause, onCloseAction: {
-                                viewModel.showPicker(pickerType: nil)
-                            })
-                        case .date:
-                            PickerView(type: pickerType, date: $viewModel.new.date,
-                                       pause: $viewModel.new.secPause, onCloseAction: {
-                                viewModel.showPicker(pickerType: nil)
-                            })
-                        }
-                    }
-                    .transition(.move(edge: .bottom))
-                }
-            }
-        )
         .ignoresSafeArea()
-        .onAppear {
-            if let value = value, let timeIn = value.timeIn, let timeOut = value.timeOut, let date = value.date {
-                viewModel.new.date = date
-                viewModel.new.timeIn = timeIn
-                viewModel.new.timeOut = timeOut
-                viewModel.new.night = value.night
-                viewModel.new.secPause = value.secPause
-                viewModel.new.specialDay = SpecialDays(rawValue: value.specialDay ?? "")
-                viewModel.new.hoursSpecialDayInSec = value.specialDay != nil ? Double(value.secWork) : 8
-            }
-            Analytics.logFirebaseScreenEvent(value == nil ? .addDate : .editDate)
-        }
+        .onAppear(perform: viewModel.onViewAppear)
         .environmentObject(viewModel)
         .accentColor(Color.theme.accent)
     }
@@ -110,7 +64,7 @@ struct AddEditDateView: View {
     var dayNightSection: some View {
         Section {
             Button {
-                viewModel.showPicker(pickerType: .date)
+                viewModel.onDateTapped()
             } label: {
                 HStack {
                     Text(localized(string: "add_edit_work_day"))
@@ -133,7 +87,7 @@ struct AddEditDateView: View {
     var startEndTimeSection: some View {
         Section(header: Text(localized(string: "add_edit_start_end_time"))) {
             Button {
-                viewModel.showPicker(pickerType: .timeIn)
+                viewModel.onTimeInTapped()
             } label: {
                 HStack {
                     Text(localized(string: "generic_start"))
@@ -143,7 +97,7 @@ struct AddEditDateView: View {
                 }
             }
             Button {
-                viewModel.showPicker(pickerType: .timeOut)
+                viewModel.onTimeOutTapped()
             } label: {
                 HStack {
                     Text(localized(string: "generic_end"))
@@ -159,7 +113,7 @@ struct AddEditDateView: View {
         Section(header: Text(localized(string: "add_edit_additional_info"))) {
             if viewModel.new.specialDay == nil { // we dont need pause time for for special day
                 Button {
-                    viewModel.showPicker(pickerType: .pause)
+                    viewModel.onPauseTapped()
                 } label: {
                     HStack {
                         Text(localized(string: "generic_pause"))

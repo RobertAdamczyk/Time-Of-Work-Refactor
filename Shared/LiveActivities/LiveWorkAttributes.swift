@@ -11,7 +11,7 @@ import SwiftUI
 struct LiveWorkAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var context: LiveWorkViewModel.Context
+        var context: LiveActivitiesService.Context
         var dateForTimer: Date
         var startWorkDate: Date
         var pauseInSec: Int

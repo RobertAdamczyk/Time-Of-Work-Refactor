@@ -23,6 +23,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             FirebaseApp.configure(options: options)
             requestTrackingAuthorization()
         }
+
+        let liveActivitiesService: LiveActivitiesService = .init()
+        let coreDataService: CoreDataService = .init()
+
+        let dependencies: Dependencies = .init(coreDataService: coreDataService,
+                                               liveActivitiesService: liveActivitiesService)
+
+        DependencyContainer.register(dependencies as Dependencies)
+
         return true
     }
 
@@ -45,11 +54,41 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct TimeOfWorkApp: App {
-    // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+    @StateObject var coordinator: Coordinator
+
+    init() {
+        self._coordinator = .init(wrappedValue: .init())
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $coordinator.stackViews) {
+                MainView(coordinator: coordinator)
+                    .blur(radius: coordinator.shouldShowMenu ? 10 : 0)
+                    .animation(.easeInOut, value: coordinator.shouldShowMenu)
+                    .navigationDestination(for: Stack.self) {
+                        DestinationView(stack: $0, coordinator: coordinator)
+                    }
+            }
+            .sheet(item: $coordinator.presentedSheet) {
+                StandardSheetView(sheet: $0, parentCoordinator: coordinator)
+            }
+            .fullScreenCover(item: $coordinator.presentedFullCoverSheet) {
+                FullCoverSheetView(fullCoverSheet: $0, parentCoordinator: coordinator)
+            }
+            .overlay {
+                MenuView(coordinator: coordinator)
+                    .offset(x: coordinator.shouldShowMenu ? 0 : -Config.screenWidth)
+                    .animation(.easeInOut, value: coordinator.shouldShowMenu)
+            }
+            .tint(Color.theme.accent)
+            #if DEBUG
+            .onShake {
+                coordinator.onDeviceShaked()
+            }
+            #endif
         }
     }
 }

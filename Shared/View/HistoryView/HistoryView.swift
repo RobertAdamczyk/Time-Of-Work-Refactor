@@ -8,85 +8,35 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
-    @EnvironmentObject var coreDataManager: CoreDataManager
     @EnvironmentObject var viewModel: HistoryViewModel
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                if viewModel.state == .idle {
-                    LazyVStack(spacing: 10) {
-                        ForEach(coreDataManager.dates, id: \.self) { date in
-                            VStack(spacing: 10) {
-                                if let section = date.section {
-                                    HStack {
-                                        Text(section)
-                                            .font(.caption)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.theme.gray)
-                                        Spacer()
-                                    }
-                                    .padding(.top, 10)
-                                }
-                                HistoryListRowView(value: date)
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        mainViewModel.dateToEdit = date
-                                        mainViewModel.activeSheet = .editDate
-                                    }
-                                Divider()
-                                if viewModel.showTotalView(in: coreDataManager.dates, for: date) {
-                                    ForEach(viewModel.total, id: \.self) { total in
-                                        if total.lastDate == date {
-                                            TotalView(date: date, total: total)
-                                                .padding(.bottom, 10)
-                                        }
-                                    }
-                                }
-                            }
-                            .padding(.horizontal, 17)
-                        } // foreach
-                    } // lazyvstack
-                } // if loading
-                Spacer().frame(height: 120)
-                // TODO: Value = 120 ? Maybe property ?
-                // We need spacer, because last value is in the back of toolbar bottom
-            }
-            .navigationTitle(localized(string: "generic_history"))
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        viewModel.onSectionButtonTapped(dates: coreDataManager.dates)
-                    } label: {
-                        ImageStore.sliderHorizontal.image
-                            .font(.title3)
-                    }
+        ScrollView {
+            LazyVStack(spacing: 8) {
+                ForEach(Array(viewModel.workUnits.enumerated()), id: \.element) { index, workUnit in
+                    HistoryListRowView(previousWorkUnit: index - 1 >= 0 ? viewModel.workUnits[index-1] : nil,
+                                       workUnit: workUnit,
+                                       nextWorkUnit: index + 1 < viewModel.workUnits.count ? viewModel.workUnits[index+1] : nil)
+                    .padding(.horizontal, 16)
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        mainViewModel.showMenuAction()
-                    } label: {
-                        ImageStore.menu.image
-                            .font(.title3)
-                    }
+            }
+            Spacer().frame(height: 120)
+            // TODO: Value = 120 ? Maybe property ?
+            // We need spacer, because last value is in the back of toolbar bottom
+        }
+        .navigationTitle(localized(string: "generic_history"))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.onSectionButtonTapped()
+                } label: {
+                    ImageStore.sliderHorizontal.image
+                        .font(.title3)
                 }
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .overlay( ZStack {
-            if viewModel.state == .loading {
-                ProgressView()
-                    .scaleEffect(2)
-            }
-        })
-        .onAppear {
-            viewModel.onViewAppear(dates: coreDataManager.dates)
-        }
-        .onChange(of: coreDataManager.dates) { newValue in
-            viewModel.onChangeDates(dates: newValue)
-        }
-        .environmentObject(viewModel)
+        .onAppear(perform: viewModel.onViewAppear)
+        .onDisappear(perform: viewModel.onViewDisappear)
     }
 }
 

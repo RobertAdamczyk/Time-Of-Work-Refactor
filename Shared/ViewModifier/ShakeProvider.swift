@@ -9,7 +9,6 @@ import SwiftUI
 
 // COPIED FROM HACKING WITH SWIFT
 
-
 // The notification we'll send when a shake gesture happens.
 extension UIDevice {
     static let deviceDidShakeNotification = Notification.Name(rawValue: "deviceDidShakeNotification")

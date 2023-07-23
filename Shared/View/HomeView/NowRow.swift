@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct NowRow: View {
+
     @EnvironmentObject var viewModel: HomeViewModel
-    @EnvironmentObject var setting: SettingsViewModel
-    @EnvironmentObject var mainViewModel: MainViewModel
+
     var body: some View {
         VStack(spacing: 40) {
             Text(localized(string: "generic_now"))
@@ -26,7 +26,7 @@ struct NowRow: View {
                     }
                     .onTapGesture {
                         guard !viewModel.isPauseOn else { return }
-                        mainViewModel.showPicker(pickerType: .pause)
+                        viewModel.onPauseTapped()
                     }
                     Spacer()
                     VStack {
@@ -36,10 +36,10 @@ struct NowRow: View {
                         Text("\(viewModel.lastDateForWork, style: .time)")
                     }
                     .onTapGesture {
-                        mainViewModel.showPicker(pickerType: .timeIn)
+                        viewModel.onTimeInTapped()
                     }
                 }
-                ProgressCircleView(progress: viewModel.working ? CGFloat(viewModel.currentWorkTimeInSec) / CGFloat( 3600 * setting.hoursDaySetting ) : 0)
+                ProgressCircleView()
                     .frame(width: Config.screenHeight * 0.18, height: Config.screenHeight * 0.18)
                     .overlay(
                         VStack {
@@ -60,8 +60,6 @@ struct NowRow: View {
         }
         .padding()
         .onReceive(viewModel.timer) { _ in
-            guard mainViewModel.activeSheet == nil && mainViewModel.showPickerType == nil &&
-                  mainViewModel.showMenu == false else { return }
             viewModel.refreshWorkTime()
         }
         .onAppear {

@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+typealias WorkUnit = Dates
+
 @objc(Dates)
 public class Dates: NSManagedObject {
 

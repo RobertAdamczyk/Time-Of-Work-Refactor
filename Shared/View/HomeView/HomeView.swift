@@ -8,31 +8,21 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
     @EnvironmentObject var viewModel: HomeViewModel
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                ForEach(HomeCell.allCases, id: \.self) { cell in
-                    cell
-                        .frame(height: CellConfig.height)
-                        .padding(.horizontal, CellConfig.padding)
-                        .stackedCells(for: cell, currentCell: viewModel.currentCell)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        mainViewModel.showMenuAction()
-                    } label: {
-                        ImageStore.menu.image
-                            .font(.title3)
-                    }
-                }
+        ZStack {
+            ForEach(HomeCell.allCases, id: \.self) { cell in
+                cell
+                    .frame(height: CellConfig.height)
+                    .padding(.horizontal, CellConfig.padding)
+                    .stackedCells(for: cell, currentCell: viewModel.currentCell)
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: viewModel.onViewAppear)
+        .onDisappear(perform: viewModel.onViewDisappear)
+        .frame(maxHeight: .infinity)
+        .navigationTitle("")
     }
 }
 

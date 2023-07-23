@@ -19,9 +19,10 @@
 		6926F5E6295A4F340058D511 /* LiveWorkAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6926F5E4295A4EC20058D511 /* LiveWorkAttributes.swift */; };
 		692CF5A02928212F00C6B389 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF59F2928212F00C6B389 /* Colors.swift */; };
 		692CF5A229282D3800C6B389 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF5A129282D3800C6B389 /* Images.swift */; };
+		694388D22A648F1700642F22 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694388D12A648F1700642F22 /* DependencyContainer.swift */; };
 		69477CCB2969882D0081137F /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* Int.swift */; };
-		69477CCE2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */; };
-		69477CCF2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */; };
+		69477CCE2969AF9E0081137F /* LiveActivitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */; };
+		69477CCF2969AF9E0081137F /* LiveActivitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */; };
 		69477CD2296AFBAC0081137F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B53583293A42330000787D /* Storable.swift */; };
 		69477CD6296B12CE0081137F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69477CD8296B12CE0081137F /* Localizable.strings */; };
 		694E2C7A293189C1009E923B /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E2C79293189C1009E923B /* HistoryViewModel.swift */; };
@@ -51,25 +52,26 @@
 		69B1ECF2295BA62200C34CBB /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF5A129282D3800C6B389 /* Images.swift */; };
 		69B1ECF3295BAEBB00C34CBB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692CF59F2928212F00C6B389 /* Colors.swift */; };
 		69B53584293A42330000787D /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B53583293A42330000787D /* Storable.swift */; };
-		69D4CDCF292AB39C00E04681 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */; };
 		69DCF7BB292D7A0F00520254 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCF7BA292D7A0F00520254 /* HistoryView.swift */; };
-		69EE9C05293EA53E00B6A911 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EE9C04293EA53E00B6A911 /* ChartView.swift */; };
 		69F8A96629353C41003C770C /* SwipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F8A96529353C41003C770C /* SwipeButton.swift */; };
 		E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112189E25FCE50B00A32772 /* ProgressCircleView.swift */; };
 		E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1134CDD26053A9D006BFD87 /* LastWorkView.swift */; };
 		E119575925F9330F003BD1CD /* DateFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119575825F9330E003BD1CD /* DateFormatEnum.swift */; };
 		E119576725F94891003BD1CD /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = E119576625F94891003BD1CD /* Int.swift */; };
+		E12420772A6410D7003E09D2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12420762A6410D7003E09D2 /* Coordinator.swift */; };
+		E12420792A641167003E09D2 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12420782A641167003E09D2 /* Views.swift */; };
+		E124207B2A6411CD003E09D2 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124207A2A6411CD003E09D2 /* ViewFactory.swift */; };
+		E124207E2A6479FD003E09D2 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124207D2A6479FD003E09D2 /* Dependencies.swift */; };
+		E12420802A647B06003E09D2 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124207F2A647B06003E09D2 /* CoreDataService.swift */; };
 		E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */; };
 		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
-		E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17468752601377B00F9CE02 /* SheetViewsEnum.swift */; };
 		E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174B0B6260F0E53001B8B86 /* AboutView.swift */; };
 		E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */; };
 		E17C2D92260FC03C000B3412 /* Dates+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */; };
 		E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */; };
 		E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17FD86425F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld */; };
 		E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183357F25EE988000E3A952 /* Time_Of_WorkApp.swift */; };
-		E183359425EE988100E3A952 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183358025EE988000E3A952 /* ContentView.swift */; };
 		E183359625EE988100E3A952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183358125EE988100E3A952 /* Assets.xcassets */; };
 		E18335AE25EE98C500E3A952 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18335AD25EE98C500E3A952 /* MainView.swift */; };
 		E18335B325EE9ACC00E3A952 /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18335B225EE9ACC00E3A952 /* CustomToolbar.swift */; };
@@ -122,7 +124,8 @@
 		692CF59F2928212F00C6B389 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		692CF5A129282D3800C6B389 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		692CF5A3292850DC00C6B389 /* Time Of Work (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Time Of Work (iOS).entitlements"; sourceTree = "<group>"; };
-		69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkViewModel.swift; sourceTree = "<group>"; };
+		694388D12A648F1700642F22 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitiesService.swift; sourceTree = "<group>"; };
 		69477CD7296B12CE0081137F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		69477CD9296B12DC0081137F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		69477CDB296B13E00081137F /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -159,25 +162,26 @@
 		699A6FE6296B6C92008C1403 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		699A6FE7296B6C92008C1403 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		69B53583293A42330000787D /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
-		69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		69DCF7BA292D7A0F00520254 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		69EE9C04293EA53E00B6A911 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		69F8A96529353C41003C770C /* SwipeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButton.swift; sourceTree = "<group>"; };
 		E112189E25FCE50B00A32772 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
 		E1134CDD26053A9D006BFD87 /* LastWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastWorkView.swift; sourceTree = "<group>"; };
 		E119575825F9330E003BD1CD /* DateFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatEnum.swift; sourceTree = "<group>"; };
 		E119576625F94891003BD1CD /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		E12420762A6410D7003E09D2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E12420782A641167003E09D2 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		E124207A2A6411CD003E09D2 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		E124207D2A6479FD003E09D2 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		E124207F2A647B06003E09D2 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDaysEnum.swift; sourceTree = "<group>"; };
 		E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateViewModel.swift; sourceTree = "<group>"; };
 		E13291CD25F2B2C500348BC3 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
-		E17468752601377B00F9CE02 /* SheetViewsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewsEnum.swift; sourceTree = "<group>"; };
 		E174B0B6260F0E53001B8B86 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dates+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dates+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDateView.swift; sourceTree = "<group>"; };
 		E17FD86525F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeOfWorkCoreData.xcdatamodel; sourceTree = "<group>"; };
 		E183357F25EE988000E3A952 /* Time_Of_WorkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_Of_WorkApp.swift; sourceTree = "<group>"; };
-		E183358025EE988000E3A952 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E183358125EE988100E3A952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E183358625EE988100E3A952 /* Time Of Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Of Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E183358925EE988100E3A952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -258,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				6926F5E4295A4EC20058D511 /* LiveWorkAttributes.swift */,
-				69477CCD2969AF9E0081137F /* LiveWorkViewModel.swift */,
+				69477CCD2969AF9E0081137F /* LiveActivitiesService.swift */,
 			);
 			path = LiveActivities;
 			sourceTree = "<group>";
@@ -299,7 +303,6 @@
 			children = (
 				69F8A96529353C41003C770C /* SwipeButton.swift */,
 				69981E7429392183007476D5 /* PickerView.swift */,
-				69EE9C04293EA53E00B6A911 /* ChartView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -323,6 +326,16 @@
 				694E2C832933E6C2009E923B /* TotalView.swift */,
 			);
 			path = HistoryView;
+			sourceTree = "<group>";
+		};
+		E124207C2A6479DA003E09D2 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				E124207D2A6479FD003E09D2 /* Dependencies.swift */,
+				E124207F2A647B06003E09D2 /* CoreDataService.swift */,
+				694388D12A648F1700642F22 /* DependencyContainer.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		E167660D25F3B787007ECDC9 /* Extensions */ = {
@@ -360,6 +373,7 @@
 		E183357E25EE988000E3A952 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E124207C2A6479DA003E09D2 /* Repositories */,
 				695595BF296CBAEA0042E1B7 /* Analytics */,
 				69477CD3296B12520081137F /* Resources */,
 				69477CCC2969AF510081137F /* LiveActivities */,
@@ -371,7 +385,9 @@
 				E18335A225EE988D00E3A952 /* View */,
 				69981E7A2939536B007476D5 /* Config.swift */,
 				E183357F25EE988000E3A952 /* Time_Of_WorkApp.swift */,
-				E183358025EE988000E3A952 /* ContentView.swift */,
+				E12420782A641167003E09D2 /* Views.swift */,
+				E124207A2A6411CD003E09D2 /* ViewFactory.swift */,
+				E12420762A6410D7003E09D2 /* Coordinator.swift */,
 				E183358125EE988100E3A952 /* Assets.xcassets */,
 				E17FD86425F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld */,
 			);
@@ -459,7 +475,6 @@
 			children = (
 				E18335C225EEA03900E3A952 /* ViewsEnum.swift */,
 				E119575825F9330E003BD1CD /* DateFormatEnum.swift */,
-				E17468752601377B00F9CE02 /* SheetViewsEnum.swift */,
 				E12C3F652610B5B10082EC30 /* SpecialDaysEnum.swift */,
 			);
 			path = Enums;
@@ -487,7 +502,6 @@
 		E1FD2D2B25F68551002D495B /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				69D4CDCE292AB39C00E04681 /* CoreDataManager.swift */,
 				E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */,
 				E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */,
 			);
@@ -636,7 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69B1ECF3295BAEBB00C34CBB /* Colors.swift in Sources */,
-				69477CCF2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */,
+				69477CCF2969AF9E0081137F /* LiveActivitiesService.swift in Sources */,
 				6926F5E6295A4F340058D511 /* LiveWorkAttributes.swift in Sources */,
 				69477CCB2969882D0081137F /* Int.swift in Sources */,
 				699A6FD6296B162C008C1403 /* Localized.swift in Sources */,
@@ -652,47 +666,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F20B572607B5E100790CEA /* MainViewModel.swift in Sources */,
-				69D4CDCF292AB39C00E04681 /* CoreDataManager.swift in Sources */,
 				69015914294A559800271F59 /* DebugMenuView.swift in Sources */,
 				E12C3F662610B5B10082EC30 /* SpecialDaysEnum.swift in Sources */,
 				699A6FD5296B162C008C1403 /* Localized.swift in Sources */,
 				692CF5A02928212F00C6B389 /* Colors.swift in Sources */,
 				69839F8B2936A3E700920333 /* IdleCell.swift in Sources */,
 				695595C1296CBB070042E1B7 /* FirebaseAnalytics.swift in Sources */,
+				E12420772A6410D7003E09D2 /* Coordinator.swift in Sources */,
 				69015911294A53A300271F59 /* ShakeProvider.swift in Sources */,
 				69B53584293A42330000787D /* Storable.swift in Sources */,
 				690554EE293FE0C00029E5EE /* MenuView.swift in Sources */,
 				6926F5E5295A4EC20058D511 /* LiveWorkAttributes.swift in Sources */,
 				E1134CDE26053A9D006BFD87 /* LastWorkView.swift in Sources */,
 				E18335AE25EE98C500E3A952 /* MainView.swift in Sources */,
-				E17468762601377B00F9CE02 /* SheetViewsEnum.swift in Sources */,
 				694E2C822933E6A9009E923B /* HistoryListRowView.swift in Sources */,
 				E18335B325EE9ACC00E3A952 /* CustomToolbar.swift in Sources */,
 				E1F20B5C2607B7A800790CEA /* MainSettingView.swift in Sources */,
 				E18335B825EE9B6A00E3A952 /* GlassEffect.swift in Sources */,
 				E1D624382926E09C00AC87D6 /* Date.swift in Sources */,
-				E183359425EE988100E3A952 /* ContentView.swift in Sources */,
 				E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */,
+				E12420792A641167003E09D2 /* Views.swift in Sources */,
 				E1851EB425EFF60D00C721E9 /* NowRow.swift in Sources */,
 				69839F892936A0DD00920333 /* WorkingCell.swift in Sources */,
 				694E2C8A29340BB6009E923B /* HomeView.swift in Sources */,
 				E174B0B7260F0E53001B8B86 /* AboutView.swift in Sources */,
 				69F8A96629353C41003C770C /* SwipeButton.swift in Sources */,
 				69839F852936A05500920333 /* HomeViewModel.swift in Sources */,
+				E12420802A647B06003E09D2 /* CoreDataService.swift in Sources */,
+				E124207E2A6479FD003E09D2 /* Dependencies.swift in Sources */,
 				E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */,
 				E17FD86625F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld in Sources */,
 				E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */,
-				69EE9C05293EA53E00B6A911 /* ChartView.swift in Sources */,
 				694E2C862933E72C009E923B /* TotalValue.swift in Sources */,
 				694E2C842933E6C2009E923B /* TotalView.swift in Sources */,
 				69981E7729392706007476D5 /* CustomRoundedCorner.swift in Sources */,
 				E1F20B622607C0AB00790CEA /* SettingsViewModel.swift in Sources */,
 				E112189F25FCE50B00A32772 /* ProgressCircleView.swift in Sources */,
 				694E2C7A293189C1009E923B /* HistoryViewModel.swift in Sources */,
+				694388D22A648F1700642F22 /* DependencyContainer.swift in Sources */,
 				E13291CE25F2B2C500348BC3 /* New.swift in Sources */,
 				69DCF7BB292D7A0F00520254 /* HistoryView.swift in Sources */,
 				E18335C325EEA03900E3A952 /* ViewsEnum.swift in Sources */,
-				69477CCE2969AF9E0081137F /* LiveWorkViewModel.swift in Sources */,
+				69477CCE2969AF9E0081137F /* LiveActivitiesService.swift in Sources */,
 				695595C3296CC1770042E1B7 /* FirebaseValuesEvents.swift in Sources */,
 				69839F8329369FC100920333 /* HomeCellProvider.swift in Sources */,
 				E1851EB125EFEF6700C721E9 /* OrangeButtonStyle.swift in Sources */,
@@ -702,6 +717,7 @@
 				E183359225EE988100E3A952 /* Time_Of_WorkApp.swift in Sources */,
 				E18335BE25EE9D5300E3A952 /* ToolbarView.swift in Sources */,
 				E17C2D92260FC03C000B3412 /* Dates+CoreDataProperties.swift in Sources */,
+				E124207B2A6411CD003E09D2 /* ViewFactory.swift in Sources */,
 				E119576725F94891003BD1CD /* Int.swift in Sources */,
 				69981E7529392183007476D5 /* PickerView.swift in Sources */,
 			);
@@ -941,7 +957,7 @@
 				DEVELOPMENT_TEAM = 38Q6TG2KG3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -971,7 +987,7 @@
 				DEVELOPMENT_TEAM = 38Q6TG2KG3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

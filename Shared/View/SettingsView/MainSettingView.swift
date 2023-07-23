@@ -9,15 +9,23 @@ import SwiftUI
 import ActivityKit
 
 struct MainSettingView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
+
+    @StateObject var viewModel: SettingsViewModel
+
+    init(coordinator: Coordinator) {
+        self._viewModel = .init(wrappedValue: .init(coordinator: coordinator))
+    }
+
     var body: some View {
         Form {
             Section(header: Text(localized(string: "settings_section_general"))) {
-                NavigationLink(destination: TimeSettingView()) {
+                Button(action: viewModel.onTimeSettingsTapped) {
                     Text(localized(string: "generic_time"))
+                        .foregroundColor(Color.theme.text)
                 }
-                NavigationLink(destination: LockScreenView()) {
+                Button(action: viewModel.onLockScreenSettingsTapped) {
                     Text(localized(string: "settings_lock_screen"))
+                        .foregroundColor(Color.theme.text)
                 }
             }
         }
@@ -25,12 +33,14 @@ struct MainSettingView: View {
         .onAppear {
             Analytics.logFirebaseScreenEvent(.settings)
         }
+        .environmentObject(viewModel)
     }
 }
 
 struct TimeSettingView: View {
-    @EnvironmentObject var viewModel: SettingsViewModel
-    @EnvironmentObject var homeViewModel: HomeViewModel
+
+    @ObservedObject var viewModel: SettingsViewModel
+
     var body: some View {
         Form {
             Section(header: Text(localized(string: "settings_your_goal"))) {
@@ -44,17 +54,11 @@ struct TimeSettingView: View {
             }
             Section(footer: Text(localized(string: "settings_pause_footer"))) {
                 Toggle(localized(string: "settings_default_pause"), isOn: $viewModel.defaultPauseSetting.animation())
-                    .onChange(of: viewModel.defaultPauseSetting) { newValue in
-                        homeViewModel.pauseTimeInSec = newValue ? viewModel.defaultPauseInSecSetting : 0
-                        homeViewModel.updateLiveWork()
-                    }
+                    .onChange(of: viewModel.defaultPauseSetting, perform: viewModel.onChangeToggleDefaultPause)
             }
             if viewModel.defaultPauseSetting {
                 PausePickerView(pause: $viewModel.defaultPauseInSecSetting)
-                    .onChange(of: viewModel.defaultPauseInSecSetting) { newValue in
-                        homeViewModel.pauseTimeInSec = newValue
-                        homeViewModel.updateLiveWork()
-                    }
+                    .onChange(of: viewModel.defaultPauseInSecSetting, perform: viewModel.onChangeDefaultPause)
             }
 
         }
@@ -66,8 +70,9 @@ struct TimeSettingView: View {
 }
 
 struct LockScreenView: View {
-    @EnvironmentObject var viewModel: SettingsViewModel
-    @EnvironmentObject var homeViewModel: HomeViewModel
+
+    @ObservedObject var viewModel: SettingsViewModel
+
     var body: some View {
         Form {
             if #available(iOS 16.1, *) {
@@ -76,16 +81,11 @@ struct LockScreenView: View {
                 }
                 Section(footer: Text(localized(string: "settings_live_activities_renew_description"))) {
                     Button {
-                        homeViewModel.liveWorkViewModel.startLiveWork(for: .work,
-                                                                      date: homeViewModel.lastDateForWork,
-                                                                      startWorkDate: homeViewModel.lastDateForWork,
-                                                                      pauseInSec: homeViewModel.pauseTimeInSec,
-                                                                      workInSec: homeViewModel.currentWorkTimeInSec)
+                        viewModel.onLiveActivitiesUpdateTapped()
                     } label: {
                         Text(localized(string: "settings_live_activities_renew"))
                             .foregroundColor(Color.theme.text)
                     }
-                    .disabled(!homeViewModel.working) // if not working we dont want live activities
                 }
                 Section(header: Text(localized(string: "settings_section_additional"))) {
                     Toggle(localized(string: "settings_pause_button"), isOn: $viewModel.liveActivitiesPauseButton)

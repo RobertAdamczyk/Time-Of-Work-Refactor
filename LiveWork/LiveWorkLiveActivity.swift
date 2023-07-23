@@ -24,7 +24,7 @@ struct LiveWorkLiveActivity: Widget {
                     }
                     .frame(width: 165)
                     Spacer()
-                    if let url = URL(string: LiveWorkViewModel.DeepLink.pauseButton.rawValue),
+                    if let url = URL(string: LiveActivitiesService.DeepLink.pauseButton.rawValue),
                         context.attributes.liveActivitiesPauseButton {
                         Link(destination: url) {
                             VStack {
@@ -38,7 +38,7 @@ struct LiveWorkLiveActivity: Widget {
                             }
                         }
                     }
-                    if let url2 = URL(string: LiveWorkViewModel.DeepLink.endWorkButton.rawValue),
+                    if let url2 = URL(string: LiveActivitiesService.DeepLink.endWorkButton.rawValue),
                         context.attributes.liveActivitiesEndWorkButton {
                         Spacer()
                         Link(destination: url2) {
@@ -79,21 +79,21 @@ struct LiveWorkLiveActivity: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                    Text(" ")
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+                    Text(" ")
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom")
+                    Text(" ")
                     // more content
                 }
             } compactLeading: {
-                Text("L")
+                Text(" ")
             } compactTrailing: {
-                Text("T")
+                Text(" ")
             } minimal: {
-                Text("Min")
+                Text(" ")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)

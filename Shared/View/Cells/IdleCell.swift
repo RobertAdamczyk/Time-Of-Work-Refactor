@@ -9,17 +9,13 @@ import SwiftUI
 
 struct IdleCell: View, HomeCellProvider {
     @EnvironmentObject var viewModel: HomeViewModel
-    @EnvironmentObject var coreDataManager: CoreDataManager
     var body: some View {
         ZStack {
             cellShape
-            VStack(spacing: 20) {
+            VStack(spacing: 64) {
                 LastWorkView()
-                ChartView()
-                SwipeButton(type: .start, model: .startWork, disabled: viewModel.currentCell == .working, action: {
-                    Analytics.logFirebaseSwipeEvent(.startWork)
-                    viewModel.onSwipeWorkButton()
-                })
+                SwipeButton(type: .start, model: .startWork, disabled: viewModel.currentCell == .working,
+                            action: viewModel.onSwipeWorkButton)
             }
             .padding(.vertical, 40)
         }

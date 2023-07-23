@@ -8,93 +8,44 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel = MainViewModel()
-    @StateObject var settingsViewModel = SettingsViewModel()
-    @StateObject var coreDataManager = CoreDataManager()
-    @StateObject var homeViewModel = HomeViewModel()
-    @StateObject var historyViewModel = HistoryViewModel()
-    #if DEBUG
-    @StateObject var debugViewModel = DebugMenuViewModel()
-    #endif
-    var body: some View {
-        NavigationView {
-            ZStack {
-                ZStack(alignment: .bottom) {
-                    Color.theme.background
+    @StateObject var viewModel: MainViewModel
+    @StateObject var homeViewModel: HomeViewModel
+    @StateObject var historyViewModel: HistoryViewModel
 
-                    switch viewModel.view {
-                    case .home: HomeView().onAppear { Analytics.logFirebaseScreenEvent(.homeScreen) }
-                    case .history: HistoryView().onAppear { Analytics.logFirebaseScreenEvent(.history) }
-                    }
+    init(coordinator: Coordinator) {
+        self._viewModel = .init(wrappedValue: .init(coordinator: coordinator))
+        self._homeViewModel = .init(wrappedValue: .init(coordinator: coordinator))
+        self._historyViewModel = .init(wrappedValue: .init(coordinator: coordinator))
+    }
+
+    var body: some View {
+        ZStack {
+            ZStack {
+                Color.theme.background.ignoresSafeArea()
+                switch viewModel.view {
+                case .home: HomeView()
+                case .history: HistoryView()
+                }
+                VStack {
+                    Spacer()
                     ToolbarView()
                 }
-                .zIndex(0)
-                .blur(radius: viewModel.showPickerType != nil || viewModel.showMenu ? 10 : 0)
-                if let pickerType = viewModel.showPickerType {
-                    PickerView(type: pickerType, date: $homeViewModel.lastDateForWork,
-                               pause: $homeViewModel.pauseTimeInSec, onCloseAction: {
-                        homeViewModel.refreshWorkTime()
-                        homeViewModel.updateLiveWork()
-                        viewModel.showPicker(pickerType: nil)
-                    })
-                    .transition(.move(edge: .bottom))
-                    .zIndex(1)
-                }
-                MenuView()
-                    .offset(x: viewModel.showMenu ? 0 : -Config.screenWidth)
-                    .environmentObject(settingsViewModel)
-                #if DEBUG
-                DebugMenuView()
-                    .onShake {
-                        debugViewModel.showMenu()
-                    }
-                    .opacity(debugViewModel.showDebugMenu ? 1 : 0)
-                    .environmentObject(debugViewModel)
-                #endif
-            }
-            .ignoresSafeArea()
-            .navigationBarHidden(true)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .sheet(item: $viewModel.activeSheet) { item in
-            switch item {
-            case .addDate:
-                AddEditDateView(activeSheet: $viewModel.activeSheet)
-            case .editDate:
-                AddEditDateView(activeSheet: $viewModel.activeSheet,
-                                value: viewModel.dateToEdit, deleteAction: {
-                    viewModel.activeSheet = nil
-                    coreDataManager.removeDate(date: viewModel.dateToEdit)
-                })
+                .ignoresSafeArea()
             }
         }
-        .onOpenURL { url in
-            if let deepLink = LiveWorkViewModel.DeepLink(rawValue: url.absoluteString) {
-                switch deepLink {
-                case .pauseButton:
-                    Analytics.logFirebaseClickEvent(.pauseLiveWork)
-                    homeViewModel.onSwipePauseButton()
-                case .endWorkButton:
-                    Analytics.logFirebaseClickEvent(.endLiveWork)
-                    homeViewModel.onSwipeWorkButton { newRecord in
-                        coreDataManager.addDate(for: newRecord)
-                    }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    viewModel.onMenuTapped()
+                } label: {
+                    ImageStore.menu.image
+                        .font(.title3)
                 }
             }
         }
-        .accentColor(Color.theme.accent)
+        .onOpenURL(perform: homeViewModel.handleDeeplink)
         .environmentObject(viewModel)
-        .environmentObject(settingsViewModel)
-        .environmentObject(coreDataManager)
         .environmentObject(homeViewModel)
         .environmentObject(historyViewModel)
-        .ignoresSafeArea(.all)
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .preferredColorScheme(.light)
     }
 }
