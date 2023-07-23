@@ -40,7 +40,7 @@ struct HistoryListRowView: View {
     }
 
     var total: TotalValue {
-        let days = viewModel.workUnits.filter { unit in
+        let units = viewModel.workUnits.filter { unit in
             guard let unitDate = unit.date, let currentDate = workUnit.date else { return false }
             let firstCondition = Calendar.current.isDate(unitDate, equalTo: currentDate,
                                                          toGranularity: viewModel.sectionType.components.first)
@@ -51,7 +51,11 @@ struct HistoryListRowView: View {
                 return firstCondition
             }
         }
-        return .init(days: days.count, secWork: 1, secPause: 1, specialDays: [], lastDate: workUnit)
+        let secWork = units.compactMap({ $0.secWork }).reduce(0, +)
+        let secPause = units.compactMap({ $0.secPause }).reduce(0, +)
+        let specialDays = units.compactMap({ SpecialDays(rawValue: $0.specialDay ?? "") })
+        return .init(days: units.count, secWork: secWork, secPause: secPause,
+                     specialDays: specialDays, lastDate: workUnit)
     }
 
     var body: some View {
@@ -95,13 +99,12 @@ struct HistoryListRowView: View {
                 }
                 .frame(width: Config.screenWidth * 0.28, alignment: .leading)
                 Spacer()
-                if let specialDay = workUnit.specialDay {
+                if let specialDayString = workUnit.specialDay,
+                   let specialDay = SpecialDays(rawValue: specialDayString) {
                     HStack {
-                        Text("\(specialDay)")
-                        if let special = SpecialDays(rawValue: specialDay) {
-                            special.image
-                                .foregroundColor(Color.theme.gray)
-                        }
+                        Text("\(specialDay.string)")
+                        specialDay.image
+                            .foregroundColor(Color.theme.gray)
                     }
                 } else {
                     VStack(alignment: .trailing) {
