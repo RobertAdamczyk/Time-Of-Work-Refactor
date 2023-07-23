@@ -79,21 +79,21 @@ struct LiveWorkLiveActivity: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                    Text(" ")
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+                    Text(" ")
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom")
+                    Text(" ")
                     // more content
                 }
             } compactLeading: {
-                Text("L")
+                Text(" ")
             } compactTrailing: {
-                Text("T")
+                Text(" ")
             } minimal: {
-                Text("Min")
+                Text(" ")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)

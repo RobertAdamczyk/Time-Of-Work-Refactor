@@ -21,9 +21,11 @@ struct MainSettingView: View {
             Section(header: Text(localized(string: "settings_section_general"))) {
                 Button(action: viewModel.onTimeSettingsTapped) {
                     Text(localized(string: "generic_time"))
+                        .foregroundColor(Color.theme.text)
                 }
                 Button(action: viewModel.onLockScreenSettingsTapped) {
                     Text(localized(string: "settings_lock_screen"))
+                        .foregroundColor(Color.theme.text)
                 }
             }
         }
