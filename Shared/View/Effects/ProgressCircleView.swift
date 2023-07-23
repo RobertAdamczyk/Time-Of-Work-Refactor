@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ProgressCircleView: View {
+
+    @EnvironmentObject var viewModel: HomeViewModel
+
     @State var progressAnimation: CGFloat = 0
-    @State var showEffect = false
-    var progress: CGFloat
+
+    @AppStorage(Storable.hoursDaySetting.key) private var hoursDaySetting: Double = 8
+
     var body: some View {
         GeometryReader { reader in
             ZStack {
@@ -23,39 +27,15 @@ struct ProgressCircleView: View {
                     .stroke(Color.theme.accent, style: StrokeStyle(lineWidth: reader.size.width/10, lineCap: .round))
                     .frame(width: reader.size.width, height: reader.size.height)
             }
-            .scaleEffect(showEffect ? 1.05 : 1)
-        }.onAppear {
-            setProgress(new: progress)
         }
-        .onChange(of: progress) { new in
-            setProgress(new: new)
-        }
-        .onChange(of: progressAnimation) { new in
-            if new == 1 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.7) {
-                    toggleShowEffect()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        toggleShowEffect()
-                    }
-                }
-            }
+        .animation(Animation.spring(response: 1, dampingFraction: 1, blendDuration: 1).speed(0.3),
+                   value: progressAnimation)
+        .onChange(of: viewModel.currentWorkTimeInSec) { newValue in
+            setProgress(new: CGFloat(newValue) / CGFloat( 3600 * hoursDaySetting ))
         }
     }
 
     func setProgress(new: CGFloat) {
-        withAnimation(Animation.spring(response: 1, dampingFraction: 1, blendDuration: 1).speed(0.3).delay(0.5)) {
-            progressAnimation = new > 1 ? 1 : new
-        }
-    }
-
-    func toggleShowEffect() {
-        withAnimation {
-            showEffect.toggle()
-        }
-    }
-}
-struct ProgressCircleView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressCircleView(progress: 0.1)
+        progressAnimation = viewModel.working ? new : 0
     }
 }

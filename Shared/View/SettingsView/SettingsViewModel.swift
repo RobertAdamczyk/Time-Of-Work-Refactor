@@ -10,7 +10,6 @@ import SwiftUI
 class SettingsViewModel: ObservableObject {
 
     // MARK: Published variables
-    @AppStorage(Storable.pauseTimeInSec.key) var pauseTimeInSec: Int = 0
     @AppStorage(Storable.hoursDaySetting.key) var hoursDaySetting: Double = 8
     @AppStorage(Storable.defaultPauseSetting.key) var defaultPauseSetting: Bool = false
     @AppStorage(Storable.defaultPauseInSecSetting.key) var defaultPauseInSecSetting: Int = 0
@@ -36,8 +35,15 @@ class SettingsViewModel: ObservableObject {
         coordinator.push(.settings(.lockScreenSettings(self)))
     }
 
-    func onChangeDefaultPuase(pauseInSec: Int) {
-        self.pauseTimeInSec = pauseInSec
-        dependencies.liveActivitiesService.
+    func onChangeDefaultPause(pauseInSec: Int) {
+        self.defaultPauseInSecSetting = pauseInSec
+    }
+
+    func onChangeToggleDefaultPause(newValue: Bool) {
+        self.defaultPauseSetting = newValue
+    }
+
+    func onLiveActivitiesUpdateTapped() {
+        dependencies.liveActivitiesService.delegate?.startLiveActivities()
     }
 }

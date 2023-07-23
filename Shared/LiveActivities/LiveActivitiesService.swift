@@ -8,6 +8,11 @@
 import SwiftUI
 import ActivityKit
 
+protocol LiveActivitiesDelegate: AnyObject {
+
+    func startLiveActivities()
+}
+
 final class LiveActivitiesService {
 
     /// DeepLinks to handle user clicks in live activities
@@ -21,6 +26,8 @@ final class LiveActivitiesService {
         case pause
     }
 
+    weak var delegate: LiveActivitiesDelegate?
+
     // MARK: Private properties
 
     /// Properties to store user defaults
@@ -30,25 +37,23 @@ final class LiveActivitiesService {
     // MARK: Public functions
     public func startLiveWork(for context: Context, date: Date,
                               startWorkDate: Date, pauseInSec: Int, workInSec: Int) {
-        if #available(iOS 16.1, *) {
-            guard Activity<LiveWorkAttributes>.activities.count == 0 else { return }
-            let dateForTimer = date.advanced(by: TimeInterval(pauseInSec))
-            let activityAttribute = LiveWorkAttributes(liveActivitiesPauseButton: liveActivitiesPauseButton,
-                                                       liveActivitiesEndWorkButton: liveActivitiesEndWorkButton)
-            let initialContentState = LiveWorkAttributes.ContentState(context: context,
-                                                                      dateForTimer: dateForTimer,
-                                                                      startWorkDate: startWorkDate,
-                                                                      pauseInSec: pauseInSec,
-                                                                      workInSec: workInSec)
-            do {
-                let activity = try Activity<LiveWorkAttributes>.request(attributes: activityAttribute,
-                                                                        contentState: initialContentState)
-                #if DEBUG
-                print("Activity added: \(activity.id)")
-                #endif
-            } catch {
-                print(error.localizedDescription)
-            }
+        guard Activity<LiveWorkAttributes>.activities.count == 0 else { return }
+        let dateForTimer = date.advanced(by: TimeInterval(pauseInSec))
+        let activityAttribute = LiveWorkAttributes(liveActivitiesPauseButton: liveActivitiesPauseButton,
+                                                   liveActivitiesEndWorkButton: liveActivitiesEndWorkButton)
+        let initialContentState = LiveWorkAttributes.ContentState(context: context,
+                                                                  dateForTimer: dateForTimer,
+                                                                  startWorkDate: startWorkDate,
+                                                                  pauseInSec: pauseInSec,
+                                                                  workInSec: workInSec)
+        do {
+            let activity = try Activity<LiveWorkAttributes>.request(attributes: activityAttribute,
+                                                                    contentState: initialContentState)
+            #if DEBUG
+            print("Activity added: \(activity.id)")
+            #endif
+        } catch {
+            print(error.localizedDescription)
         }
     }
 

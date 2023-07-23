@@ -40,6 +40,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func onViewAppear() {
+        dependencies.liveActivitiesService.delegate = self
         setupWorkUnitsObserver()
         Analytics.logFirebaseScreenEvent(.homeScreen)
         dependencies.coreDataService.fetchWorkUnits()
@@ -57,6 +58,7 @@ class HomeViewModel: ObservableObject {
         coordinator.showSheet(.picker(.pause(pauseTimeInSec, { [weak self] pauseSec in
             DispatchQueue.main.async {
                 self?.pauseTimeInSec = pauseSec
+                self?.updateLiveWork()
             }
         })))
     }
@@ -66,6 +68,7 @@ class HomeViewModel: ObservableObject {
         coordinator.showSheet(.picker(.date(.hourAndMinute, lastDateForWork, { [weak self] date in
             DispatchQueue.main.async {
                 self?.lastDateForWork = date
+                self?.updateLiveWork()
             }
         })))
     }
@@ -177,5 +180,17 @@ class HomeViewModel: ObservableObject {
                     Calendar.current.component(.day, from: new.timeOut)
         new.specialDay = nil
         return new
+    }
+}
+
+extension HomeViewModel: LiveActivitiesDelegate {
+
+    func startLiveActivities() {
+        guard working else { return }
+        dependencies.liveActivitiesService.startLiveWork(for: .work,
+                                                         date: lastDateForWork,
+                                                         startWorkDate: lastDateForWork,
+                                                         pauseInSec: pauseTimeInSec,
+                                                         workInSec: currentWorkTimeInSec)
     }
 }

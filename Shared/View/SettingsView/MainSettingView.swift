@@ -52,14 +52,11 @@ struct TimeSettingView: View {
             }
             Section(footer: Text(localized(string: "settings_pause_footer"))) {
                 Toggle(localized(string: "settings_default_pause"), isOn: $viewModel.defaultPauseSetting.animation())
-                    .onChange(of: viewModel.defaultPauseSetting) { newValue in
-                        viewModel.pauseTimeInSec = newValue ? viewModel.defaultPauseInSecSetting : 0
-                        // homeViewModel.updateLiveWork()
-                    }
+                    .onChange(of: viewModel.defaultPauseSetting, perform: viewModel.onChangeToggleDefaultPause)
             }
             if viewModel.defaultPauseSetting {
                 PausePickerView(pause: $viewModel.defaultPauseInSecSetting)
-                    .onChange(of: viewModel.defaultPauseInSecSetting, perform: viewModel.onChangeDefaultPuase)
+                    .onChange(of: viewModel.defaultPauseInSecSetting, perform: viewModel.onChangeDefaultPause)
             }
 
         }
@@ -82,16 +79,11 @@ struct LockScreenView: View {
                 }
                 Section(footer: Text(localized(string: "settings_live_activities_renew_description"))) {
                     Button {
-//                        homeViewModel.liveWorkViewModel.startLiveWork(for: .work,
-//                                                                      date: homeViewModel.lastDateForWork,
-//                                                                      startWorkDate: homeViewModel.lastDateForWork,
-//                                                                      pauseInSec: homeViewModel.pauseTimeInSec,
-//                                                                      workInSec: homeViewModel.currentWorkTimeInSec)
+                        viewModel.onLiveActivitiesUpdateTapped()
                     } label: {
                         Text(localized(string: "settings_live_activities_renew"))
                             .foregroundColor(Color.theme.text)
                     }
-//                    .disabled(!homeViewModel.working) // if not working we dont want live activities
                 }
                 Section(header: Text(localized(string: "settings_section_additional"))) {
                     Toggle(localized(string: "settings_pause_button"), isOn: $viewModel.liveActivitiesPauseButton)
