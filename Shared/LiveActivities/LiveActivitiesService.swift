@@ -33,10 +33,12 @@ final class LiveActivitiesService {
     /// Properties to store user defaults
     @AppStorage(Storable.liveActivitiesPauseButton.key) private var liveActivitiesPauseButton: Bool = true
     @AppStorage(Storable.liveActivitiesEndWorkButton.key) private var liveActivitiesEndWorkButton: Bool = true
+    @AppStorage(Storable.liveActivitiesPermission.key) private var liveActivitiesPermission: Bool = true
 
     // MARK: Public functions
     public func startLiveWork(for context: Context, date: Date,
                               startWorkDate: Date, pauseInSec: Int, workInSec: Int) {
+        guard liveActivitiesPermission else { return }
         guard Activity<LiveWorkAttributes>.activities.count == 0 else { return }
         let dateForTimer = date.advanced(by: TimeInterval(pauseInSec))
         let activityAttribute = LiveWorkAttributes(liveActivitiesPauseButton: liveActivitiesPauseButton,

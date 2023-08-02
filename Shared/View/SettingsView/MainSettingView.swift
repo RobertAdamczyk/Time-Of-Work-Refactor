@@ -78,6 +78,8 @@ struct LockScreenView: View {
             if #available(iOS 16.1, *) {
                 Section(header: Text(localized(string: "settings_section_general"))) {
                     Toggle(localized(string: "settings_lock_screen"), isOn: $viewModel.liveActivitiesPermission)
+                        .onChange(of: viewModel.liveActivitiesPermission,
+                                  perform: viewModel.onChangeLiveActivitiesPermission)
                 }
                 Section(footer: Text(localized(string: "settings_live_activities_renew_description"))) {
                     Button {

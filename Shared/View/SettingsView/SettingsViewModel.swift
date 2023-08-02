@@ -39,6 +39,12 @@ class SettingsViewModel: ObservableObject {
         self.defaultPauseInSecSetting = pauseInSec
     }
 
+    func onChangeLiveActivitiesPermission(newValue: Bool) {
+        if !newValue {
+            dependencies.liveActivitiesService.removeLiveWork()
+        }
+    }
+
     func onChangeToggleDefaultPause(newValue: Bool) {
         self.defaultPauseSetting = newValue
     }
