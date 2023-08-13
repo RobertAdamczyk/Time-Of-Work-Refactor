@@ -67,6 +67,7 @@
 		E13291CB25F2B2A500348BC3 /* AddEditDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CA25F2B2A500348BC3 /* AddEditDateViewModel.swift */; };
 		E13291CE25F2B2C500348BC3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13291CD25F2B2C500348BC3 /* New.swift */; };
 		E13E5A3F2A890D5E00BDDD42 /* SKStoreReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13E5A3E2A890D5E00BDDD42 /* SKStoreReviewRepository.swift */; };
+		E13E5A422A89128D00BDDD42 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69981E7A2939536B007476D5 /* Config.swift */; };
 		E17C2D91260FC03C000B3412 /* Dates+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D8F260FC03C000B3412 /* Dates+CoreDataClass.swift */; };
 		E17C2D92260FC03C000B3412 /* Dates+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17C2D90260FC03C000B3412 /* Dates+CoreDataProperties.swift */; };
 		E17F19E425FFDA1D009C3674 /* AddEditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F19E325FFDA1D009C3674 /* AddEditDateView.swift */; };
@@ -270,6 +271,7 @@
 		69477CD3296B12520081137F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E183358125EE988100E3A952 /* Assets.xcassets */,
 				6998976A2985993E00A05C61 /* GoogleService-Info-Debug.plist */,
 				69801BF2296CB86800EE86EC /* GoogleService-Info.plist */,
 				69477CD8296B12CE0081137F /* Localizable.strings */,
@@ -331,12 +333,39 @@
 		E124207C2A6479DA003E09D2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				69477CCC2969AF510081137F /* LiveActivities */,
 				E124207D2A6479FD003E09D2 /* Dependencies.swift */,
 				E124207F2A647B06003E09D2 /* CoreDataService.swift */,
 				694388D12A648F1700642F22 /* DependencyContainer.swift */,
 				E13E5A3E2A890D5E00BDDD42 /* SKStoreReviewRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		E13E5A402A89119600BDDD42 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E18335C125EEA02400E3A952 /* Enums */,
+				E18335A225EE988D00E3A952 /* Scenes */,
+				E1851EAB25EFEE9500C721E9 /* ViewModifier */,
+				E167660D25F3B787007ECDC9 /* Extensions */,
+				E13E5A412A8911CF00BDDD42 /* Common */,
+				E18335A425EE989800E3A952 /* Model */,
+				695595BF296CBAEA0042E1B7 /* Analytics */,
+				E124207C2A6479DA003E09D2 /* Repositories */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E13E5A412A8911CF00BDDD42 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				69981E7A2939536B007476D5 /* Config.swift */,
+				69B53583293A42330000787D /* Storable.swift */,
+				692CF5A129282D3800C6B389 /* Images.swift */,
+				692CF59F2928212F00C6B389 /* Colors.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		E167660D25F3B787007ECDC9 /* Extensions */ = {
@@ -374,22 +403,12 @@
 		E183357E25EE988000E3A952 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E124207C2A6479DA003E09D2 /* Repositories */,
-				695595BF296CBAEA0042E1B7 /* Analytics */,
 				69477CD3296B12520081137F /* Resources */,
-				69477CCC2969AF510081137F /* LiveActivities */,
-				E1FD2D2B25F68551002D495B /* CoreDataModels */,
-				E167660D25F3B787007ECDC9 /* Extensions */,
-				E1851EAB25EFEE9500C721E9 /* ViewModifier */,
-				E18335C125EEA02400E3A952 /* Enums */,
-				E18335A425EE989800E3A952 /* Model */,
-				E18335A225EE988D00E3A952 /* View */,
-				69981E7A2939536B007476D5 /* Config.swift */,
+				E13E5A402A89119600BDDD42 /* Sources */,
 				E183357F25EE988000E3A952 /* Time_Of_WorkApp.swift */,
 				E12420782A641167003E09D2 /* Views.swift */,
 				E124207A2A6411CD003E09D2 /* ViewFactory.swift */,
 				E12420762A6410D7003E09D2 /* Coordinator.swift */,
-				E183358125EE988100E3A952 /* Assets.xcassets */,
 				E17FD86425F7D00100CD126F /* TimeOfWorkCoreData.xcdatamodeld */,
 			);
 			path = Shared;
@@ -421,7 +440,7 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
-		E18335A225EE988D00E3A952 /* View */ = {
+		E18335A225EE988D00E3A952 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				69015912294A557C00271F59 /* DebugMenu */,
@@ -438,17 +457,15 @@
 				E1F20B562607B5E100790CEA /* MainViewModel.swift */,
 				E18335BD25EE9D5300E3A952 /* ToolbarView.swift */,
 			);
-			path = View;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		E18335A425EE989800E3A952 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1FD2D2B25F68551002D495B /* CoreDataModels */,
 				E13291CD25F2B2C500348BC3 /* New.swift */,
-				692CF59F2928212F00C6B389 /* Colors.swift */,
-				692CF5A129282D3800C6B389 /* Images.swift */,
 				694E2C852933E72C009E923B /* TotalValue.swift */,
-				69B53583293A42330000787D /* Storable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -656,6 +673,7 @@
 				699A6FD6296B162C008C1403 /* Localized.swift in Sources */,
 				69B1ECF2295BA62200C34CBB /* Images.swift in Sources */,
 				69477CD2296AFBAC0081137F /* Storable.swift in Sources */,
+				E13E5A422A89128D00BDDD42 /* Config.swift in Sources */,
 				6926F5D5295A4DAC0058D511 /* LiveWorkBundle.swift in Sources */,
 				6926F5D7295A4DAC0058D511 /* LiveWorkLiveActivity.swift in Sources */,
 			);
