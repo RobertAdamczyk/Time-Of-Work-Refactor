@@ -26,9 +26,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
         let liveActivitiesService: LiveActivitiesService = .init()
         let coreDataService: CoreDataService = .init()
+        let skStoreReviewRepository: SKStoreReviewRepository = .init()
 
         let dependencies: Dependencies = .init(coreDataService: coreDataService,
-                                               liveActivitiesService: liveActivitiesService)
+                                               liveActivitiesService: liveActivitiesService,
+                                               skStoreReviewRepository: skStoreReviewRepository)
 
         DependencyContainer.register(dependencies as Dependencies)
 

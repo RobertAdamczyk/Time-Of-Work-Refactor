@@ -12,9 +12,13 @@ struct Dependencies {
     let coreDataService: CoreDataService
     let liveActivitiesService: LiveActivitiesService
 
+    private let skStoreReviewRepository: SKStoreReviewRepository
+
     init(coreDataService: CoreDataService,
-         liveActivitiesService: LiveActivitiesService) {
+         liveActivitiesService: LiveActivitiesService,
+         skStoreReviewRepository: SKStoreReviewRepository) {
         self.coreDataService = coreDataService
         self.liveActivitiesService = liveActivitiesService
+        self.skStoreReviewRepository = skStoreReviewRepository
     }
 }

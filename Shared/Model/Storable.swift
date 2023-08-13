@@ -22,6 +22,9 @@ enum Storable {
 
     case firebaseAnalytics
 
+    case currentCountReview
+    case lastCountedReview
+
     var key: String {
         switch self {
         case .working:
@@ -48,6 +51,10 @@ enum Storable {
             return "liveActivitiesEndWorkButton"
         case .firebaseAnalytics:
             return "firebaseAnalytics"
+        case .currentCountReview:
+            return "currentCountReview"
+        case .lastCountedReview:
+            return "lastCountedReview"
         }
     }
 }
