@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55A945E92B88096200C30B03 /* CellBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A945E82B88096200C30B03 /* CellBackground.swift */; };
+		55A945EA2B88096200C30B03 /* CellBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A945E82B88096200C30B03 /* CellBackground.swift */; };
 		69015911294A53A300271F59 /* ShakeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69015910294A53A300271F59 /* ShakeProvider.swift */; };
 		69015914294A559800271F59 /* DebugMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69015913294A559800271F59 /* DebugMenuView.swift */; };
 		690554EE293FE0C00029E5EE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690554ED293FE0C00029E5EE /* MenuView.swift */; };
@@ -112,6 +114,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55A945E82B88096200C30B03 /* CellBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellBackground.swift; sourceTree = "<group>"; };
 		69015910294A53A300271F59 /* ShakeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeProvider.swift; sourceTree = "<group>"; };
 		69015913294A559800271F59 /* DebugMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuView.swift; sourceTree = "<group>"; };
 		690554ED293FE0C00029E5EE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -363,6 +366,7 @@
 				69981E7A2939536B007476D5 /* Config.swift */,
 				69B53583293A42330000787D /* Storable.swift */,
 				692CF5A129282D3800C6B389 /* Images.swift */,
+				55A945E82B88096200C30B03 /* CellBackground.swift */,
 				692CF59F2928212F00C6B389 /* Colors.swift */,
 			);
 			path = Common;
@@ -670,6 +674,7 @@
 				69477CCF2969AF9E0081137F /* LiveActivitiesService.swift in Sources */,
 				6926F5E6295A4F340058D511 /* LiveWorkAttributes.swift in Sources */,
 				69477CCB2969882D0081137F /* Int.swift in Sources */,
+				55A945EA2B88096200C30B03 /* CellBackground.swift in Sources */,
 				699A6FD6296B162C008C1403 /* Localized.swift in Sources */,
 				69B1ECF2295BA62200C34CBB /* Images.swift in Sources */,
 				69477CD2296AFBAC0081137F /* Storable.swift in Sources */,
@@ -690,6 +695,7 @@
 				692CF5A02928212F00C6B389 /* Colors.swift in Sources */,
 				69839F8B2936A3E700920333 /* IdleCell.swift in Sources */,
 				695595C1296CBB070042E1B7 /* FirebaseAnalytics.swift in Sources */,
+				55A945E92B88096200C30B03 /* CellBackground.swift in Sources */,
 				E12420772A6410D7003E09D2 /* Coordinator.swift in Sources */,
 				69015911294A53A300271F59 /* ShakeProvider.swift in Sources */,
 				69B53584293A42330000787D /* Storable.swift in Sources */,

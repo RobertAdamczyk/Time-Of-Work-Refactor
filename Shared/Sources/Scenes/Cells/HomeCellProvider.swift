@@ -8,15 +8,23 @@
 import SwiftUI
 
 protocol HomeCellProvider {
-    var cellShape: AnyView { get }
+    func makeCellShape(colorScheme: ColorScheme) -> AnyView
 }
 
 extension HomeCellProvider where Self: View {
-    var cellShape: AnyView {
-        AnyView(RoundedRectangle(cornerSize: CellConfig.cornerSize)
-            .foregroundColor(Color.theme.cell)
-            .shadow(color: Color.theme.shadow,
-                    radius: 5, x: 0, y: 4))
+
+    func makeCellShape(colorScheme: ColorScheme) -> AnyView {
+        if colorScheme == .dark {
+            return AnyView(RoundedRectangle(cornerSize: CellConfig.cornerSize)
+                .foregroundStyle(Color.clear)
+                .applyCellBackground()
+            )
+        } else {
+            return AnyView(RoundedRectangle(cornerSize: CellConfig.cornerSize)
+                .foregroundColor(Color.theme.cell)
+                .shadow(color: Color.theme.shadow, radius: 5, x: 0, y: 4)
+            )
+        }
     }
 }
 

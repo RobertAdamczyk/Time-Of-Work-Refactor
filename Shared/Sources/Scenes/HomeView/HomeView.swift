@@ -23,6 +23,7 @@ struct HomeView: View {
         .onDisappear(perform: viewModel.onViewDisappear)
         .frame(maxHeight: .infinity)
         .navigationTitle("")
+        .ignoresSafeArea()
     }
 }
 
@@ -41,11 +42,13 @@ extension View {
                     .offset(x: 0, y: -CellConfig.offsetTopCell)
                     .rotation3DEffect(.degrees(15), axis: (x: 1, y: 0, z: 0))
                     .scaleEffect(0.8)
+                    .opacity(0)
             } else {
                 return self
                     .offset(x: 0, y: 0)
                     .rotation3DEffect(.degrees(0), axis: (x: 1, y: 0, z: 0))
                     .scaleEffect(1)
+                    .opacity(1)
             }
         case .working:
             if currentCell == .working {
@@ -53,11 +56,13 @@ extension View {
                     .offset(x: 0, y: 0)
                     .rotation3DEffect(.degrees(0), axis: (x: 1, y: 0, z: 0))
                     .scaleEffect(1)
+                    .opacity(1)
             } else {
                 return self
                     .offset(x: 0, y: CellConfig.offsetBottomCell)
                     .rotation3DEffect(.degrees(0), axis: (x: 1, y: 0, z: 0))
                     .scaleEffect(0.9)
+                    .opacity(0)
             }
         }
     }

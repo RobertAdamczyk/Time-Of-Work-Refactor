@@ -9,9 +9,10 @@ import SwiftUI
 
 struct IdleCell: View, HomeCellProvider {
     @EnvironmentObject var viewModel: HomeViewModel
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack {
-            cellShape
+            makeCellShape(colorScheme: colorScheme)
             VStack(spacing: 64) {
                 LastWorkView()
                 SwipeButton(type: .start, model: .startWork, disabled: viewModel.currentCell == .working,

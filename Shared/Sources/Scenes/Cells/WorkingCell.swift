@@ -9,9 +9,11 @@ import SwiftUI
 
 struct WorkingCell: View, HomeCellProvider {
     @EnvironmentObject var viewModel: HomeViewModel
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         ZStack {
-            cellShape
+            makeCellShape(colorScheme: colorScheme)
             VStack {
                 NowRow()
                 Spacer()
