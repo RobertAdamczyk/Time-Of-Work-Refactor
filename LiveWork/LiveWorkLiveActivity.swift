@@ -10,6 +10,7 @@ import WidgetKit
 import SwiftUI
 
 struct LiveWorkLiveActivity: Widget {
+
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveWorkAttributes.self) { context in
             // Lock screen/banner UI goes here
@@ -21,7 +22,8 @@ struct LiveWorkLiveActivity: Widget {
                         Spacer(minLength: 0)
                         Text("\(context.state.dateForTimer, style: .timer)")
                             .font(.title)
-                            .foregroundColor(Color.theme.accent)
+                            .fontWeight(.semibold)
+                            .foregroundColor(context.attributes.isDarkMode ? Color.theme.accent : Color.theme.black)
                         Spacer(minLength: 0)
                     }
                     .frame(width: 165)
@@ -59,18 +61,26 @@ struct LiveWorkLiveActivity: Widget {
                         }
                     }
                 }
-                HStack(spacing: 5) {
-                    Text("\(localized(string: "live_activities_start_at")):")
-                    Text("\(context.state.startWorkDate, style: .time)").foregroundColor(Color.theme.accent)
-                    switch context.state.context {
-                    case .pause:
-                        Text("\(localized(string: "generic_work")):")
-                        Text("\(context.state.workInSec.toTimeStringTimerFormat())")
-                            .foregroundColor(Color.theme.accent)
-                    case .work:
-                        Text("\(localized(string: "generic_pause")):")
-                        Text("\(context.state.pauseInSec.toTimeStringTimerFormat())")
-                            .foregroundColor(Color.theme.accent)
+                HStack(spacing: 8) {
+                    HStack(spacing: 4) {
+                        Text("\(localized(string: "live_activities_start_at")):")
+                        Text("\(context.state.startWorkDate, style: .time)")
+                            .fontWeight(.medium)
+                            .foregroundColor(context.attributes.isDarkMode ? Color.theme.accent : Color.theme.black)
+                    }
+                    HStack(spacing: 4) {
+                        switch context.state.context {
+                        case .pause:
+                            Text("\(localized(string: "generic_work")):")
+                            Text("\(context.state.workInSec.toTimeStringTimerFormat())")
+                                .fontWeight(.medium)
+                                .foregroundColor(context.attributes.isDarkMode ? Color.theme.accent : Color.theme.black)
+                        case .work:
+                            Text("\(localized(string: "generic_pause")):")
+                            Text("\(context.state.pauseInSec.toTimeStringTimerFormat())")
+                                .fontWeight(.medium)
+                                .foregroundColor(context.attributes.isDarkMode ? Color.theme.accent : Color.theme.black)
+                        }
                     }
                     Spacer()
                 }
@@ -78,6 +88,7 @@ struct LiveWorkLiveActivity: Widget {
             }
             .padding(.vertical, 5)
             .padding(.horizontal, 20)
+            .customBackground(colorScheme: context.attributes.isDarkMode ? .dark : .light)
         } dynamicIsland: { _ in
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
@@ -101,6 +112,23 @@ struct LiveWorkLiveActivity: Widget {
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
+        }
+    }
+}
+
+extension View {
+
+    func customBackground(colorScheme: ColorScheme) -> some View {
+        switch colorScheme {
+        case .light:
+            self
+                .activityBackgroundTint(Color.theme.widgetBackgroundLight)
+        case .dark:
+            self
+                .activityBackgroundTint(Color.theme.widgetBackgroundDark)
+        @unknown default:
+            self
+                .activityBackgroundTint(Color.theme.widgetBackgroundLight)
         }
     }
 }

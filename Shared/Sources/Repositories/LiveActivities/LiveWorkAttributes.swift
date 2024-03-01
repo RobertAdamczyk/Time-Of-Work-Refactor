@@ -22,4 +22,6 @@ struct LiveWorkAttributes: ActivityAttributes {
     var liveActivitiesEndWorkButton: Bool
     // Fixed non-changing properties about your activity go here!
 
+    var isDarkMode: Bool
+
 }

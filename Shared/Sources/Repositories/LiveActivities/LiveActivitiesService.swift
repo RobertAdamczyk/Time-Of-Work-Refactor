@@ -42,7 +42,8 @@ final class LiveActivitiesService {
         guard Activity<LiveWorkAttributes>.activities.count == 0 else { return }
         let dateForTimer = date.advanced(by: TimeInterval(pauseInSec))
         let activityAttribute = LiveWorkAttributes(liveActivitiesPauseButton: liveActivitiesPauseButton,
-                                                   liveActivitiesEndWorkButton: liveActivitiesEndWorkButton)
+                                                   liveActivitiesEndWorkButton: liveActivitiesEndWorkButton,
+                                                   isDarkMode: UIScreen.main.traitCollection.userInterfaceStyle == .dark)
         let initialContentState = LiveWorkAttributes.ContentState(context: context,
                                                                   dateForTimer: dateForTimer,
                                                                   startWorkDate: startWorkDate,

@@ -13,7 +13,10 @@ extension Color {
 
 struct ColorTheme {
     let background = Color("BackgroundColor")
+    let widgetBackgroundLight = Color("WidgetBackground")
+    let widgetBackgroundDark = Color("WidgetBackgroundDark")
     let border = Color("BorderColor")
+    let black = Color("Black")
     let accent = Color("Orange")
     let buttonText = Color("White")
     let red = Color("Red")
