@@ -41,7 +41,7 @@ struct Analytics {
     }
 
     public static func logFirebaseScreenEvent(_ screen: Analytics.Screen) {
-        let param = [Analytics.Parameter.screenName.rawValue: screen.rawValue]
+        let param = [AnalyticsParameterScreenName: screen.rawValue]
         Analytics.logFirebaseEvent(AnalyticsEventScreenView, parameters: param)
     }
 
